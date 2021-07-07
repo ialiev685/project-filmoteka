@@ -6,8 +6,8 @@
 // Стили для файла с примером HTML-фрагмента
 
 // @import './example';
+@import './variables/variables';
+@import './options/commons-styles';
 
 @import './components/films-list';
 @import './components/card-form';
-@import './variables/variables';
-@import './options/commons-styles';
