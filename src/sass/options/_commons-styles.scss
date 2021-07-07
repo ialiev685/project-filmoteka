@@ -5,25 +5,19 @@
 }
 
 .container {
+  width: 320px;
   margin: 0 auto;
   padding: 0 20px;
   padding-top: 20px;
 
-  //   border: solid 1px tomato;
-  //   height: 500px;
-
-  @media screen and (min-width: $mobile) {
-    width: 280px;
-  }
-
   @media screen and (min-width: $tablet) {
-    width: 618px;
+    width: 768px;
     padding: 0 75px;
     padding-top: 60px;
   }
 
   @media screen and (min-width: $desktop) {
-    width: 882px;
+    width: 1024px;
     padding: 0 71px;
     padding-top: 60px;
   }
@@ -38,8 +32,8 @@
 }
 
 .films-item {
-  //   height: 100px;
-  //   background-color: turquoise;
+  // height: 100px;
+  // background-color: turquoise;
 
   @media screen and (min-width: $tablet) {
     width: calc((100% - 4 * 15px) / 2);
@@ -52,7 +46,7 @@
 }
 
 .films-item:not(:last-child) {
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: $tablet - 1) {
     margin-bottom: 20px;
   }
 }
