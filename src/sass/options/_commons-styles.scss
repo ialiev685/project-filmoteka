@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+body {
+  font-family: Roboto, sans-serif;
+}
+
 .container {
   width: 320px;
   margin: 0 auto;
@@ -20,33 +24,5 @@
     width: 1024px;
     padding: 0 71px;
     padding-top: 60px;
-  }
-}
-
-.films-list {
-  @media screen and (min-width: $tablet) {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -15px;
-  }
-}
-
-.films-item {
-  // height: 100px;
-  // background-color: turquoise;
-
-  @media screen and (min-width: $tablet) {
-    width: calc((100% - 4 * 15px) / 2);
-    margin: 15px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: calc((100% - 6 * 15px) / 3);
-  }
-}
-
-.films-item:not(:last-child) {
-  @media screen and (max-width: $tablet - 1) {
-    margin-bottom: 20px;
   }
 }
