@@ -66,6 +66,10 @@
   }
 }
 
+.header-input-hidden {
+  display: none;
+}
+
 .header-input::placeholder {
   color: var(--color-text-inverse);
 }
@@ -168,4 +172,8 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/mobile/header-home-mobile@2x.jpg');
   }
+}
+
+.library-btns-hidden {
+  display: none;
 }
