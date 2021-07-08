@@ -20,7 +20,7 @@
   }
 }
 
-.films-item:not(:last-child) {
+.film-card:not(:last-child) {
   @media screen and (max-width: $tablet - 1) {
     margin-bottom: 20px;
   }
