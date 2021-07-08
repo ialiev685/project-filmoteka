@@ -1,4 +1,5 @@
 <header class="overlay">
+
   <div class="container">
     <div class="navigation">
       <span class="logo js-logo">
@@ -14,11 +15,16 @@
       <button type="button" class="">Watched</button>
       <button type="button" class="">Queue</button>
     </div>
-    <input
-      type="text"
-      placeholder="Поиск фильмов"
-      class="header-input js-header-input"
-      name="submit"
-    />
+    
+    	<div class="home-search-div">
+			<input type="text" placeholder="Поиск фильмов" class="header-input js-header-input" name="submit" />
+			<button type="submit" class="search-button">
+				<span>
+					<img src="../src/images/header/search.svg" alt="magnifier-logo">
+				</span>
+			</button>
+			<p class="header-message is-hidden">Search result not successful. Enter the correct movie name and </p>
+		</div>
   </div>
 </header>
+
