@@ -64,6 +64,10 @@
   }
 }
 
+.header-input-hidden {
+  display: none;
+}
+
 .header-input::placeholder {
   color: var(--color-text-inverse);
 }
@@ -82,4 +86,8 @@
   @media sreen and (min-width: 1024px) {
     background-image: url('../images/header/desktop/header-home-desktop.jpg');
   }
+}
+
+.library-btns-hidden {
+  display: none;
 }
