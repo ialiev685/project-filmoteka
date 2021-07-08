@@ -5,16 +5,14 @@ import { renderFilms } from './renderFilms.js';
 refs.logo.addEventListener('click', onLogoClick);
 
 
-function onLogoClick(e) {
+async function onLogoClick(e) {
     e.preventDefault();
+    refs.filmList.innerHTML = '';
     if (!refs.libraryBtns.classList.contains('library-btns-hidden')) {
         refs.libraryBtns.classList.add('library-btns-hidden');
     };
     refs.headerInput.classList.remove('header-input-hidden');
-    getTrendItems()
-           .then(result => {
-            renderFilms(result.results)
-        });
-
+    const data = await getTrendItems();
+    renderFilms(data.results);
 
 }

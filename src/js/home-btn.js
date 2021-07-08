@@ -5,13 +5,11 @@ import { renderFilms } from './renderFilms.js';
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
 
-function onHomeBtnClick() {
+async function onHomeBtnClick() {
     refs.libraryBtns.classList.add('library-btns-hidden');
     refs.headerInput.classList.remove('header-input-hidden');
-    getTrendItems()
-           .then(result => {
-            renderFilms(result.results)
-        });
-
+    refs.filmList.innerHTML = '';
+    const data = await getTrendItems();
+    renderFilms(data.results);
 
 }
