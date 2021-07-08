@@ -4,6 +4,8 @@ export const refs = {
     headerInput: document.querySelector('.js-header-input'),
     libraryBtns: document.querySelector('.js-library-btns'),
     logo: document.querySelector('.js-logo'),
+    spinner: document.querySelector('.js-spinner'),
+
 
 }
 
