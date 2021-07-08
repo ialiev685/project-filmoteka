@@ -1,14 +1,29 @@
 import MoviesApiService from './fetchMovie.js';
+import { refs } from './refs.js';
 
-// const refs = {
-//     inputCountriesEl: document.querySelector('[name="countries"]'),
-//     cardContainer: document.querySelector('.card-container'),
-//     listContainer: document.querySelector('#list-container'),
-// };
 
 const moviesApiService = new MoviesApiService();
 
-// refs.inputCountriesEl.addEventListener('input', debounce(onCountiesInput, 500));
+refs.searchBtn.addEventListener('click', onMovieSearchClick);
 
-const d = moviesApiService.fetchMovie().then(r => console.log(r));
-export {moviesApiService, d}
+function onMovieSearchClick() {
+    moviesApiService.query = refs.headerInput.value.trim();
+    removeFilmList();
+
+    moviesApiService.fetchMovie().then(renderFilmsCards).catch(onFatchError);;
+
+}
+
+function renderFilmsCards() {
+console.log(123);
+};
+
+function removeFilmList() {
+  refs.filmList.innerHTML = '';
+};
+
+function onFatchError(error) {
+   console.log(error);
+};
+    
+export {moviesApiService}
