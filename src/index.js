@@ -1,2 +1,4 @@
 import './sass/main.scss';
-import cardForm from './hbs/cardForm.hbs';
+
+import './js/start-site.js';
+
