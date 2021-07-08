@@ -1,15 +1,24 @@
 <header class="overlay">
   <div class="container">
     <div class="navigation">
-      <span class="logo">
+      <span class="logo js-logo">
         <img src="./images/header/header-logo.svg" alt="logo" />
-        <a class="logo-name" href="/">Filmoteka</a>
+        <a class="logo-name" href="#">Filmoteka</a>
       </span>
       <div class="group-buttons">
-        <button type="button" class="header-button">home</button>
+        <button type="button" class="header-button js-header-btn">home</button>
         <button type="button" class="header-button">my library</button>
       </div>
     </div>
-    <input type="text" placeholder="Поиск фильмов" class="header-input" name="submit" />
+    <div class="js-library-btns library-btns-hidden">
+      <button type="button" class="">Watched</button>
+      <button type="button" class="">Queue</button>
+    </div>
+    <input
+      type="text"
+      placeholder="Поиск фильмов"
+      class="header-input js-header-input"
+      name="submit"
+    />
   </div>
 </header>
