@@ -1,12 +1,14 @@
-import { page, getTrendItems } from './base-api.js'; /* -- 'page' на будущее для пагинации */
-import cardForm from '../hbs/cardForm.hbs';
+import { getTrendItems } from "./base-api.js"; /* -- 'page' на будущее для пагинации */
+import cardForm from "../hbs/cardForm.hbs";
 
-const listFilm = document.querySelector('.films-list');
+const listFilm = document.querySelector(".films-list");
 
-async function getMarcup() {
-  const data = await getTrendItems();
+async function getMarcup(page) {
+  const data = await getTrendItems(page);
   const result = cardForm(data.results);
 
-  listFilm.insertAdjacentHTML('beforeend', result);
+  listFilm.innerHTML = result;
 }
-getMarcup();
+getMarcup(1);
+
+export { getMarcup };
