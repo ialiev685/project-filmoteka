@@ -7,7 +7,7 @@ async function getMarcup(page) {
   const data = await getTrendItems(page);
   const result = cardForm(data.results);
 
-  listFilm.innerHTML = result;
+  listFilm.insertAdjacentHTML("beforeend", result);
 }
 getMarcup(1);
 

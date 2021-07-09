@@ -1,7 +1,33 @@
 .pagination-btn {
-  margin: 5px;
+  width: 40px;
+  height: 40px;
+  font-weight: 500;
+  vertical-align: bottom;
+
+  margin: 3px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+
+  
 
   &.active {
-    background-color: red;
+    color: var(--color-white);
+    background-color: var(--color-accent);
   }
+}
+
+#pagination{
+justify-content: center;
+display: flex;
+align-items: center;
+}
+
+#next-arrow {
+  margin-left: 3px;
+}
+
+#back-arrow {
+  margin-right: 3px;
 }
