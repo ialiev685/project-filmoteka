@@ -1,0 +1,39 @@
+.btn-box {
+  position: fixed;
+  z-index: 50;
+
+  right: 5px;
+  bottom: 10px;
+  @media screen and (min-width: $tablet) {
+    right: 30px;
+  }
+  @media screen and (min-width: $desktop) {
+    right: 12px;
+  }
+}
+
+.arrow-top {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 4px solid var(--accent-color);
+  border-right: 4px solid var(--accent-color);
+  transform: rotate(-45deg);
+
+  @media screen and (min-width: $tablet) {
+    width: 30px;
+    height: 30px;
+    border-top: 5px solid var(--accent-color);
+    border-right: 5px solid var(--accent-color);
+  }
+  @media screen and (min-width: $desktop) {
+    width: 40px;
+    height: 40px;
+    border-top: 10px solid var(--accent-color);
+    border-right: 10px solid var(--accent-color);
+  }
+}
+
+.arrow-top-is-hidden {
+  display: none;
+}
