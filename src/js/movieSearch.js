@@ -12,8 +12,12 @@ refs.headerInput.addEventListener('input', DeleteWarningString);
 async function onMovieSearchClick() {
   try {
     moviesApiService.query = refs.headerInput.value.trim();
-    
-    if (refs.headerInput.value !== '') {
+   
+    if (!moviesApiService.query) {
+      showWarningString();
+    };
+
+    if (refs.headerInput.value !== '' && moviesApiService.query) {
       
       let fatch = await moviesApiService.fetchMovie();
       
@@ -46,6 +50,10 @@ function onEnterInputClick(e) {
 
 function DeleteWarningString() {
   refs.warningString.classList.add('is-hidden');
+};
+
+function showWarningString() {
+  refs.warningString.classList.remove('is-hidden');
 };
 
 export {moviesApiService}

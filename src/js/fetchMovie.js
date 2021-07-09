@@ -14,7 +14,7 @@ export default class MovieApiService {
         const response = await fetch(url);
         const films = await response.json();
         
-        if (films.results.length === 0) {
+        if (films.results === undefined || films.results.length === 0) {
             this.showWarningString();
             return
         }
