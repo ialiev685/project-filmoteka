@@ -1,7 +1,14 @@
 :root {
+  //палитра
   --color-white: #ffffff;
+  --color-orange: #ff6b01;
+  --buttons-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 
+  //переменные
   --color-text-inverse: var(--color-white);
+  --color-accent: #FF6B08;
+  --accent-color: var(--color-orange);
+
 }
 
 $mobile: 320px;

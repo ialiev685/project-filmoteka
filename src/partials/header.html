@@ -1,15 +1,35 @@
-<header class="overlay">
+<header class="js-header overlay">
   <div class="container">
     <div class="navigation">
-      <span class="logo">
+      <span class="logo js-logo">
         <img src="./images/header/header-logo.svg" alt="logo" />
-        <a class="logo-name" href="/">Filmoteka</a>
+        <a class="logo-name" href="#">Filmoteka</a>
       </span>
       <div class="group-buttons">
-        <button type="button" class="header-button">home</button>
-        <button type="button" class="header-button">my library</button>
+        <button type="button" class="header-button js-header-btn current">home</button>
+        <button type="button" class="header-button js-my-library-btn">my library</button>
       </div>
     </div>
-    <input type="text" placeholder="Поиск фильмов" class="header-input" name="submit" />
+    <div class="js-library-btns library-btns-hidden library-btn-container">
+      <button type="button" class="header-button-low js-head-watched">Watched</button>
+      <button type="button" class="header-button-low js-head-queue">Queue</button>
+    </div>
+
+    <div class="home-search-div">
+      <input
+        type="text"
+        placeholder="Поиск фильмов"
+        class="header-input js-header-input"
+        name="submit"
+      />
+      <button type="submit" class="search-button">
+        <span>
+          <img src="../src/images/header/search.svg" alt="magnifier-logo" />
+        </span>
+      </button>
+      <p class="header-message is-hidden">
+        Search result not successful. Enter the correct movie name and
+      </p>
+    </div>
   </div>
 </header>
