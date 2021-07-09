@@ -1,6 +1,6 @@
 export const refs = {
     homeBtn: document.querySelector('.js-header-btn'),
-    myLibraryBtn: document.querySelector('.js-my-library-btn'),
+    myLibraryBtn: document.querySelector('.js-my-library-btn'),   
     filmList: document.querySelector('.js-list-films'),
     headerInput: document.querySelector('.js-header-input'),
     libraryBtns: document.querySelector('.js-library-btns'),
@@ -12,6 +12,7 @@ export const refs = {
     queueBtn: document.querySelector('.js-head-queue'),
     overlay: document.querySelector('.js-header'),
     navContainer: document.querySelector('.navigation'),
+    
 
 }
 

@@ -4,6 +4,8 @@ refs.myLibraryBtn.addEventListener('click', openLibrary);
 refs.watchedBtn.addEventListener('click', onWatchedBtn);
 refs.queueBtn.addEventListener('click', onQueueBtn);
 
+
+
 function openLibrary() {
   refs.libraryBtns.classList.remove('library-btns-hidden');
   refs.myLibraryBtn.classList.add('current');
@@ -12,7 +14,9 @@ function openLibrary() {
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
   refs.navContainer.style.marginBottom = '49px';
+  
 }
+
 
 function onWatchedBtn() {
   refs.watchedBtn.classList.add('current-btn');
