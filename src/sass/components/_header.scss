@@ -10,7 +10,7 @@
   .logo-name {
     display: none;
 
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
       display: inline-block;
       margin-left: 10px;
       font-weight: 500;
@@ -61,7 +61,7 @@
   line-height: 1.143;
   margin-bottom: 22px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     width: 336px;
   }
 }
@@ -89,7 +89,7 @@
   padding: 0;
   margin: 0;
 
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: $desktop) {
     top: 0;
     right: 140px;
   }
@@ -121,15 +121,14 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  @media (min-width: 321px) and (max-width: 768px) {
-
+  @media (min-width: 321px) and (max-width: $tablet) {
     // padding: 20px 0;
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-home-tablet.jpg');
   }
 
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: $desktop) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/desktop/header-home-desktop.jpg');
   }
@@ -159,22 +158,22 @@
   }
 }
 
-@media screen and (min-device-pixel-ratio: 2) and (max-width: 768px),
-  screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px),
-  screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 768px),
-  screen and (min-resolution: 192dpi) and (max-width: 768px),
-  screen and (min-resolution: 2dppx) and (max-width: 768px) {
+@media screen and (min-device-pixel-ratio: 2) and (max-width: $tablet),
+  screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: $tablet),
+  screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: $tablet),
+  screen and (min-resolution: 192dpi) and (max-width: $tablet),
+  screen and (min-resolution: 2dppx) and (max-width: $tablet) {
   .overlay {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-home-tablet@2x.jpg');
   }
 }
 
-@media screen and (min-device-pixel-ratio: 2) and (max-width: 320px),
-  screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 320px),
-  screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 320px),
-  screen and (min-resolution: 192dpi) and (max-width: 320px),
-  screen and (min-resolution: 2dppx) and (max-width: 320px) {
+@media screen and (min-device-pixel-ratio: 2) and (max-width: $mobile),
+  screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: $mobile),
+  screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: $mobile),
+  screen and (min-resolution: 192dpi) and (max-width: $mobile),
+  screen and (min-resolution: 2dppx) and (max-width: $mobile) {
   .overlay {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/mobile/header-home-mobile@2x.jpg');

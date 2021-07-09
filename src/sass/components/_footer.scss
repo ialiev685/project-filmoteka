@@ -1,0 +1,43 @@
+.footer {
+  padding: 29px 0;
+  background-color: #f7f7f7;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1, 143;
+  color: #545454;
+  margin: 0;
+
+  @media (min-width: $tablet) {
+    font-size: 16px;
+    line-height: 1,188;
+  }
+
+  &:first-child {
+    margin-bottom: 10px;
+
+    @media (min-width: $tablet) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.footer-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: $tablet) {
+    flex-direction: row;
+  }
+}
+
+.footer-svg-heart {
+  margin: 0 10px;
+}
+
+.footer-students-link {
+  color: #545454;
+}
