@@ -10,7 +10,7 @@ const observerOn = new IntersectionObserver(observerHandlerOn, {
   threshold: 0.15,
 });
 
-observerOn.observe(refs.sectionHeader);
+observerOn.observe(refs.overlay);
 
 function observerHandlerOn([entries]) {
   if (!entries.isIntersecting) {
