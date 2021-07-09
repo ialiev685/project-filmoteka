@@ -1,6 +1,6 @@
 import MoviesApiService from './fetchMovie.js';
 import { refs } from './refs.js';
-
+import cardForm from '../hbs/cardForm.hbs';
 
 const moviesApiService = new MoviesApiService();
 
@@ -10,12 +10,12 @@ function onMovieSearchClick() {
     moviesApiService.query = refs.headerInput.value.trim();
     removeFilmList();
 
-    moviesApiService.fetchMovie().then(renderFilmsCards).catch(onFatchError);;
+    moviesApiService.fetchMovie().then(renderFilmsCards).catch(onFatchError);
 
 }
 
-function renderFilmsCards() {
-console.log(123);
+function renderFilmsCards(films) {
+  refs.filmList.insertAdjacentHTML('beforeend', cardForm(films.results));
 };
 
 function removeFilmList() {
