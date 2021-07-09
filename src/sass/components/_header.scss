@@ -75,8 +75,8 @@
 }
 
 .home-search-div {
-	position: relative;
-	text-align: -webkit-center;
+  position: relative;
+  text-align: -webkit-center;
 }
 
 .search-button {
@@ -90,14 +90,14 @@
   margin: 0;
 
   @media (min-width: 769px) and (max-width: 1024px) {
-	  top: 0;
-	  right: 140px;
+    top: 0;
+    right: 140px;
   }
 
   @media (min-width: 1025px) {
-	top: 0;
-	right: 272px;
-}
+    top: 0;
+    right: 272px;
+  }
 }
 
 .header-message {
@@ -107,9 +107,9 @@
   margin: 0;
 }
 
-// .header-message.is-hidden {
-//     display: none;
-// }
+.header-message.is-hidden {
+  display: none;
+}
 
 .overlay {
   height: 230px;
@@ -121,7 +121,7 @@
   background-repeat: no-repeat;
 
   @media (min-width: 321px) and (max-width: 768px) {
-	padding: 20px 0;
+    padding: 20px 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-home-tablet.jpg');
   }

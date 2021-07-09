@@ -6,24 +6,34 @@ const moviesApiService = new MoviesApiService();
 
 refs.searchBtn.addEventListener('click', onMovieSearchClick);
 
-function onMovieSearchClick() {
+async function onMovieSearchClick(e) {
+  try {
     moviesApiService.query = refs.headerInput.value.trim();
-    removeFilmList();
 
-    moviesApiService.fetchMovie().then(renderFilmsCards).catch(onFatchError);
-
+    if (refs.headerInput.value !== '') {
+      
+      let fatch = await moviesApiService.fetchMovie();
+      
+      if (fatch !== undefined) {
+        renderFilmsCards(fatch);
+      }
+    }
+    
+  } catch (error) {
+    console.log(error);
+  };
 }
 
 function renderFilmsCards(films) {
-  refs.filmList.insertAdjacentHTML('beforeend', cardForm(films.results));
+  removeFilmList();
+
+  refs.warningString.classList.add('is-hidden');
+
+  refs.filmList.insertAdjacentHTML('beforeend', cardForm(films));
 };
 
 function removeFilmList() {
   refs.filmList.innerHTML = '';
-};
-
-function onFatchError(error) {
-   console.log(error);
 };
     
 export {moviesApiService}
