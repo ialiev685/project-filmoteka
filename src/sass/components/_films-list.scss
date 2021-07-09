@@ -34,3 +34,11 @@
     margin-bottom: 20px;
   }
 }
+
+.base-list.dark-theme {
+  background: var(--color-bg-dark);
+}
+
+.base-list.light-theme {
+  background-color: var(--color-bg-ligth);
+}

@@ -50,7 +50,8 @@
 
 .overlay-library {
   height: 230px;
-  padding: 26px 0;
+
+  // padding: 26px 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url('../images/header/mobile/header-my-library-mobile.jpg');
   background-size: cover;
@@ -58,7 +59,7 @@
   background-repeat: no-repeat;
 
   @media (min-width: 321px) and (max-width: 768px) {
-    padding: 20px 0;
+    // padding: 20px 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-my-library-tablet.jpg');
   }
@@ -73,6 +74,11 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/desktop/header-my-library-desktop.jpg');
     background-size: contain;
+  }
+  .container {
+    padding-top: 46px;
+
+    position: relative;
   }
 }
 

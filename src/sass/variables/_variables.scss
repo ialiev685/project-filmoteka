@@ -2,13 +2,15 @@
   //палитра
   --color-white: #ffffff;
   --color-orange: #ff6b01;
+  --color-brown: #2d2925;
   --buttons-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 
   //переменные
   --color-text-inverse: var(--color-white);
-  --color-accent: #FF6B08;
+  --color-accent: #ff6b08;
   --accent-color: var(--color-orange);
-
+  --color-bg-dark: var(--color-brown);
+  --color-bg-ligth: var(--color-white);
 }
 
 $mobile: 320px;

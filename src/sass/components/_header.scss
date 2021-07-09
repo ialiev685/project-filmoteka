@@ -122,7 +122,6 @@
   background-repeat: no-repeat;
 
   @media (min-width: 321px) and (max-width: 768px) {
-
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-home-tablet.jpg');
   }
@@ -141,6 +140,8 @@
 
   .container {
     padding-top: 46px;
+
+    position: relative;
   }
 }
 
