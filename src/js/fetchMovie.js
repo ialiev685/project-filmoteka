@@ -15,19 +15,23 @@ export default class MovieApiService {
         const films = await response.json();
         
         if (films.results.length === 0) {
-            refs.warningString.classList.remove('is-hidden');
+            this.showWarningString();
             return
         }
-
+        
         return films.results;
     };
-
+    
     get query() {
         return this.searchQuery;
     };
-
+    
     set query(newQuery) {
         this.searchQuery = newQuery;
     };
+    
+    showWarningString() {
+        refs.warningString.classList.remove('is-hidden');
+    }
 }
 
