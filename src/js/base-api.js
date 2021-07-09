@@ -21,8 +21,7 @@ export { getTrendItems };
   
 // import { getTrendItems } from './js/base-api.js';
   
-=======
-
+  
 
 
 
