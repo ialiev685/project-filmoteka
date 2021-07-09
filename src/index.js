@@ -6,5 +6,8 @@ import './js/library-btn.js';
 import './js/logoClick.js';
 
 import './js/start-site.js';
-import './js/vote-avarage.js';
+
+
+
+import './js/scroll-to-top.js';
 
