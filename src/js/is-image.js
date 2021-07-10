@@ -1,4 +1,8 @@
-// import '../images/plug-image.png';
+// import defaultImage from '../images/plug-image.png';
+// import defaultImage from '../images/filmoteka.png';
+import defaultImage from '../images/filmoteka-plug.jpg';
+
+console.log(defaultImage);
 // console.log('../images/plug-image.png');
 export function checkHasFilmImage(data) {
     const filmImg = document.querySelectorAll('.js-film-image');
@@ -23,7 +27,7 @@ export function checkHasFilmImage(data) {
         if (elem.poster_path === null) {
             // filmImg[index].src = 'images/plug-image.png';
             console.log(filmImg[index]);
-            // filmImg[index].src = 'plug-image.png';
+            filmImg[index].src = defaultImage;
             console.log(filmImg[index]);
             // filmImg[index].src = 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Felis_silvestris_silvestris.jpg';
         }
