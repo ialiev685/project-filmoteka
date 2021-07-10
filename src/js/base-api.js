@@ -1,5 +1,5 @@
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=';
-const KEY = '222d2b89e8701088edcf9049fa569980';
+export const KEY = '222d2b89e8701088edcf9049fa569980';
 
 function getTrendItems(page) {
   try {
