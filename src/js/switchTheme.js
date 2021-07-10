@@ -29,19 +29,12 @@ function setBackgroud() {
   const classArticle = localStorage.getItem('theme');
 
   if (classArticle === Theme.LIGHT) refs.switchThemeCheckbox.checked = true;
-  if (classArticle === Theme.DARK) {
-    refs.switchThemeCheckbox.checked = false;
-
-    // refs.titleCardEl.classList.add(classArticle);
-  }
+  if (classArticle === Theme.DARK) refs.switchThemeCheckbox.checked = false;
 
   refs.articleEl.classList.add(classArticle);
 }
 
 function checkHowClassAndRemoveClass() {
-  // if (refs.titleCardEl.classList.contains(Theme.DARK)) {
-  //   refs.titleCardEl.classList.remove(Theme.DARK);
-  // }
   if (refs.articleEl.classList.contains(Theme.LIGHT)) {
     refs.articleEl.classList.remove(Theme.LIGHT);
   } else if (refs.articleEl.classList.contains(Theme.DARK)) {
