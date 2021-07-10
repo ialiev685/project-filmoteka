@@ -15,4 +15,5 @@ export const refs = {
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
   warningString: document.querySelector('.header-message'),
+  filmContainer: document.querySelector('.backdrop'),
 };

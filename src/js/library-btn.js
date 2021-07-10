@@ -14,7 +14,6 @@ function openLibrary() {
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
   refs.navContainer.style.marginBottom = '49px';
-  
 }
 
 
