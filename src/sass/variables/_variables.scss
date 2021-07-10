@@ -1,12 +1,10 @@
-@import './var-popular-sort';
-
 :root {
   //палитра
   --color-white: #ffffff;
   --color-orange: #ff6b01;
   --buttons-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   --color-card-overlay: rgba(17, 15, 15, 0.8);
-
+  --control-boxshadow-color: rgba(35, 80, 129, 0.1);
   //переменные
   --color-text-inverse: var(--color-white);
   --color-accent: #ff6b08;
