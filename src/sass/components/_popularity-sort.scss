@@ -3,14 +3,15 @@
 }
 .textarea-demo-left-item {
   height: 40px;
-  //   width: 100%;
+
   position: absolute;
   display: flex;
-  justify-content: flex-end;
-  top: 0;
-  right: 0;
+  // justify-content: flex-end;
+  align-items: center;
   //   margin-bottom: 5px;
-  //   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
 }
 .textarea-demo-left-item-left,
 .textarea-demo-left-item-right {
@@ -25,30 +26,30 @@
   margin-right: 10px;
   //   padding: 10px 0;
 }
-.textarea-demo-left-item-right {
-  //   right: 0;
-}
+// .textarea-demo-left-item-right {
+//   //   right: 0;
+// }
 .textarea-demo-left-item-right > .dropdown {
   min-width: 120px;
   //   width: 100%;
 }
-.textarea-demo-left-item > .checkbox {
-  position: relative;
-  top: 10px;
-}
-.textarea-demo-plugin {
-  border: 2px solid $text-color-light;
-  border-radius: 4px;
-  padding: 10px;
-  height: 350px;
-}
+// .textarea-demo-left-item > .checkbox {
+//   position: relative;
+//   top: 10px;
+// }
+// .textarea-demo-plugin {
+//   border: 2px solid $text-color-light;
+//   border-radius: 4px;
+//   padding: 10px;
+//   height: 350px;
+// }
 
 //---------------
 .dropdown {
-  border: 1px solid $border-color-light;
+  border: 1px solid $text-color-dark;
   background: $control-background-color;
   border-radius: 6px;
-  height: 30px;
+  height: 25px;
   position: relative;
   cursor: pointer;
   transition: border-color 0.3s;
@@ -83,10 +84,10 @@
   //   top: 0;
   //   bottom: 0;
   //   right: 0;
-  line-height: 20px;
+  // line-height: 20px;
   color: $text-color-dark;
   padding: 4px;
-  font-weight: $font-weight-semibold;
+  font-weight: 500;
   transition: color 0.3s;
 }
 .dropdown:hover .dropdown-value {
@@ -99,12 +100,14 @@
   position: absolute;
   transition: opacity 0.3s, visibility 0.3s, top 0.2s;
   max-height: 300px;
-  top: 50%;
+  // top: 50%;
   background: #fff;
-  padding: 3px;
+  color: $secondary-color;
+  // padding: 3px;
   border-radius: 6px;
   box-shadow: 0 16px 29px -10px $control-boxshadow-color, 0 12px 50px -5px $control-boxshadow-color;
-  z-index: 9999;
+  z-index: 999999;
+  border: 1px solid $secondary-color;
 }
 .active.dropdown .dropdown-list {
   opacity: 1;
@@ -112,13 +115,13 @@
   top: calc(100% + 1px);
 }
 .dropdown-list > div {
-  height: 35px;
+  height: 25px;
   transition: background 0.3s, color 0.3s;
   border-radius: 4px;
-  line-height: 35px;
+  line-height: 25px;
   padding: 0px 7px;
 }
 .dropdown-list > div:hover {
   background: $secondary-color;
-  color: #fff;
+  color: $control-background-color;
 }
