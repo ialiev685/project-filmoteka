@@ -1,17 +1,15 @@
 import { getTrendItems } from "../js/base-api.js";
 import { getMarcup } from "../js/start-site.js";
-
-const paginList = document.querySelector("#pagination");
-const listFilm = document.querySelector(".films-list");
+import { refs } from "./refs.js";
 
 let page = 1;
-async function grtTotalPages() {
+async function getTotalPages() {
   const data = await getTrendItems(page);
   return data.total_pages;
 }
 
-async function renderPagination() {
-  const pagesTotal = await grtTotalPages();
+export default async function renderPagination() {
+  const pagesTotal = await getTotalPages();
 
   const numbers = Array(pagesTotal)
     .fill(0)
@@ -47,7 +45,7 @@ async function renderPagination() {
   const end = page + step - 1;
   const slicedElements = elements.slice(start, end);
 
-  paginList.innerHTML =
+  refs.paginList.innerHTML =
     (page === 1 ? "" : backArrow) +
     (startCondition ? elements[0] + "&#8943" : "") +
     slicedElements.join("") +
@@ -58,7 +56,7 @@ async function renderPagination() {
 }
 renderPagination();
 
-paginList.addEventListener("click", (ev) => {
+refs.paginList.addEventListener("click", (ev) => {
   if (ev.target === ev.currentTarget || ev.target.textContent === `${page}`) {
     return;
   }
@@ -84,8 +82,8 @@ paginList.addEventListener("click", (ev) => {
 });
 
 function nextRenderMarcup(page) {
-  listFilm.innerHTML = "";
-  // paginList.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
+  refs.filmList.innerHTML = "";
+  // refs.paginList.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
   getMarcup(page);
 }
 
