@@ -13,11 +13,8 @@ window.addEventListener('click', e => {
 });
 
 async function modalFilm(page, cardNum) {
-
-  const data = await getTrendItems(page);
- 
-  const properFilm = data.results.find(elem => elem.id === Number(cardNum));
-  
+  const data = await getTrendItems(page); 
+  const properFilm = data.results.find(elem => elem.id === Number(cardNum));  
   const result = modalTpl(properFilm);
 
   refs.filmContainer.insertAdjacentHTML('beforeend', result);
