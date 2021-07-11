@@ -16,6 +16,7 @@ export const refs = {
   navContainer: document.querySelector('.navigation'),
   warningString: document.querySelector('.header-message'),
 
+  boxPopularSort: document.querySelector('.textarea-demo-left-item'),
   dropdownPopularSort: document.querySelector('#textarea-demo-height'),
   dropdownListPopularSortDay: document.querySelector('#day'),
   dropdownListPopularSortWeek: document.querySelector('#week'),

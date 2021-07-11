@@ -9,6 +9,7 @@ refs.headerInput.addEventListener('keydown', onEnterInputClick);
 refs.headerInput.addEventListener('focus', DeleteWarningString);
 refs.headerInput.addEventListener('input', DeleteWarningString);
 
+
 async function onMovieSearchClick() {
   try {
     moviesApiService.query = refs.headerInput.value.trim();
@@ -20,7 +21,8 @@ async function onMovieSearchClick() {
     if (refs.headerInput.value !== '' && moviesApiService.query) {
       
       let fatch = await moviesApiService.fetchMovie();
-      
+      BoxPopularSortRemove();
+
       if (fatch !== undefined) {
         renderFilmsCards(fatch);
       }
@@ -54,6 +56,14 @@ function DeleteWarningString() {
 
 function showWarningString() {
   refs.warningString.classList.remove('is-hidden');
+};
+
+function BoxPopularSortRemove() {
+  refs.boxPopularSort.classList.add('is-hidden');
+};
+
+export function BoxPopularSortAdd() {
+  refs.boxPopularSort.classList.remove('is-hidden');
 };
 
 export {moviesApiService}
