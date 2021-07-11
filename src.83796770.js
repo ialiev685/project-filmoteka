@@ -37,4 +37,4 @@ module.exports={genres:[{id:28,name:"Action"},{id:12,name:"Adventure"},{id:16,na
 },{"./refs.js":"VyiV"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/home-btn.js"),require("./js/library-btn.js"),require("./js/logoClick.js"),require("./js/start-site.js"),require("./js/movieSearch.js"),require("./js/pagination.js"),require("./js/scroll-to-top.js");
 },{"./sass/main.scss":"clu1","./js/home-btn.js":"TRXG","./js/library-btn.js":"siGo","./js/logoClick.js":"lgdn","./js/start-site.js":"nn7R","./js/movieSearch.js":"ryZl","./js/pagination.js":"o8lo","./js/scroll-to-top.js":"mh2G"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.987a65f6.js.map
+//# sourceMappingURL=/project-filmoteka/src.83796770.js.map
