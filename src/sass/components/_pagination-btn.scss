@@ -10,18 +10,16 @@
   border-radius: 5px;
   background-color: transparent;
 
-  
-
   &.active {
     color: var(--color-white);
     background-color: var(--color-accent);
   }
 }
 
-#pagination{
-justify-content: center;
-display: flex;
-align-items: center;
+#pagination {
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 #next-arrow {
@@ -30,4 +28,28 @@ align-items: center;
 
 #back-arrow {
   margin-right: 3px;
+}
+
+.dark-theme .pagination-btn {
+  color: var(--color-text-inverse);
+}
+
+.dark-theme #pagination {
+  color: var(--color-text-inverse);
+}
+
+.dark-theme .arrow {
+  stroke: currentColor;
+}
+
+.light-theme .arrow {
+  stroke: currentColor;
+}
+
+.dark-theme .arrow .rect {
+  background-color: var(--color-bg-dark);
+}
+
+.light-theme .arrow .rect {
+  fill: var(--color-bg-ligth);
 }

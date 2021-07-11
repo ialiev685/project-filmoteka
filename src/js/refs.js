@@ -15,5 +15,5 @@ export const refs = {
   navContainer: document.querySelector('.navigation'),
   warningString: document.querySelector('.header-message'),
   switchThemeCheckbox: document.querySelector('.switch-theme'),
-  articleEl: document.querySelector('.js-base-list'),
+  bodyEl: document.body,
 };

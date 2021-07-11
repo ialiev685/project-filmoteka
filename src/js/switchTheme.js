@@ -26,18 +26,18 @@ function setBackgroud() {
   if (!localStorage.getItem('theme')) localStorage.setItem('theme', Theme.LIGHT);
 
   checkHowClassAndRemoveClass();
-  const classArticle = localStorage.getItem('theme');
+  const classbody = localStorage.getItem('theme');
 
-  if (classArticle === Theme.LIGHT) refs.switchThemeCheckbox.checked = true;
-  if (classArticle === Theme.DARK) refs.switchThemeCheckbox.checked = false;
+  if (classbody === Theme.LIGHT) refs.switchThemeCheckbox.checked = true;
+  if (classbody === Theme.DARK) refs.switchThemeCheckbox.checked = false;
 
-  refs.articleEl.classList.add(classArticle);
+  refs.bodyEl.classList.add(classbody);
 }
 
 function checkHowClassAndRemoveClass() {
-  if (refs.articleEl.classList.contains(Theme.LIGHT)) {
-    refs.articleEl.classList.remove(Theme.LIGHT);
-  } else if (refs.articleEl.classList.contains(Theme.DARK)) {
-    refs.articleEl.classList.remove(Theme.DARK);
+  if (refs.bodyEl.classList.contains(Theme.LIGHT)) {
+    refs.bodyEl.classList.remove(Theme.LIGHT);
+  } else if (refs.bodyEl.classList.contains(Theme.DARK)) {
+    refs.bodyEl.classList.remove(Theme.DARK);
   }
 }
