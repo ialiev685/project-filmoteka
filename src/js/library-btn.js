@@ -1,4 +1,5 @@
 import { refs } from './refs.js';
+import { getFromLocalStorage } from './add-to-watched-btn.js';
 
 refs.myLibraryBtn.addEventListener('click', openLibrary);
 refs.watchedBtn.addEventListener('click', onWatchedBtn);
@@ -14,6 +15,7 @@ function openLibrary() {
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
   refs.navContainer.style.marginBottom = '49px';
+  getFromLocalStorage();
 }
 
 

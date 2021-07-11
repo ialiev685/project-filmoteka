@@ -4,6 +4,7 @@
   left: 0;
   width: 100%; //changed
   height: 100%; //changed
+  overflow: scroll;
 
   background-color: rgba(0, 0, 0, 0.6);
   &.is-hidden {
@@ -20,7 +21,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -32%) scale(1);
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
     background-color: #fff;
 
@@ -29,11 +30,13 @@
       padding: 42px 29px 40px 29px;
       display: flex;
       justify-content: center;
+      transform: translate(-50%, -50%) scale(1);
     }
 
     @media screen and (min-width: 1024px) {
       width: 822px;
       padding: 50px 30px 40px 30px;
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 }
