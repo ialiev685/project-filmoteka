@@ -8,17 +8,26 @@ const sortValue = refs.dropdownPopularSortValue;
 
 sortValue.addEventListener('click', onDropdownListClick);
 
+
 function onDropdownListClick() {
+    window.addEventListener('click', onRemoveSortInputClick);
+
     sortInput.classList.toggle('active');
     
     sortDay.addEventListener('click', onSortDayClick);
     sortWeek.addEventListener('click', onSortWeekClick);
 };
 
+function onRemoveSortInputClick(e) {
+    if (sortInput.classList.contains('active') && e.target.className !== "dropdown-value") {
+        sortInput.classList.toggle('active');
+    }
+};
+
 function onSortDayClick() {
     sortValue.textContent = 'за день';
     
-    serverRequestMoviesDay()
+    serverRequestMoviesDay();
 
     sortInput.classList.remove('active');
     sortDay.removeEventListener('click', onSortDayClick);
@@ -28,7 +37,7 @@ function onSortDayClick() {
 function onSortWeekClick() {
     sortValue.textContent = 'за неделю';
 
-    serverRequestMoviesWeek()
+    serverRequestMoviesWeek();
 
     sortInput.classList.remove('active');
      sortDay.removeEventListener('click', onSortDayClick);
