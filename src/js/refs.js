@@ -15,8 +15,8 @@ export const refs = {
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
   warningString: document.querySelector('.header-message'),
+
   dropdownPopularSort: document.querySelector('#textarea-demo-height'),
-  dropdownListPopularSort: document.querySelector('.dropdown-list'),
   dropdownListPopularSortDay: document.querySelector('#day'),
   dropdownListPopularSortWeek: document.querySelector('#week'),
   dropdownPopularSortValue: document.querySelector('.dropdown-value'),

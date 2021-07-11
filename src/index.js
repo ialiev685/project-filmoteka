@@ -12,6 +12,8 @@ import './js/movieSearch.js';
 import './js/pagination.js';
 import './js/scroll-to-top.js';
 
-import './js/popularity-sort.js';
+import './js/popularity-sort/popularity-sort.js';
+import './js/popularity-sort/fatch-popularity-sort.js';
+import './js/popularity-sort/render-popularity-sort';
 
 
