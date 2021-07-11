@@ -1,5 +1,6 @@
 .film-image {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
+  display: block;
   width: 280px;
   height: 430px;
   border-radius: 5px;
@@ -70,4 +71,8 @@
   font-size: 12px;
   line-height: 14px;
   color: rgba(255, 255, 255, 1);
+}
+
+.data-card {
+  margin-top: 10px;
 }
