@@ -7,7 +7,6 @@ refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
 async function onHomeBtnClick() {
     refs.libraryBtns.classList.add('library-btns-hidden');
-    // refs.headerInput.classList.remove('header-input-hidden');
     refs.filmList.innerHTML = '';
     refs.spinner.classList.remove('spinner-hidden');
     const data = await getTrendItems(1);
