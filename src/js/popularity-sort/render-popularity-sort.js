@@ -1,14 +1,29 @@
 import { getTrendMoviesDay, getTrendMoviesWeek } from './fatch-popularity-sort.js';
+import cardForm from '../../hbs/cardForm.hbs';
 import { refs } from '../refs.js';
-// console.dir(refs.dropdownPopularSort.outerText);
-// if (refs.dropdownPopularSort.outerText === 'за день') {
-//     console.log(111);
-// }
+import { removeFilmList } from '../movieSearch.js';
 
-// if (refs.dropdownListPopularSortDay.textContent === 'за неделю') {
-//     console.log('за неделю');
-// }
+async function serverRequestMoviesDay() {
+    try {
+        let fatch = await getTrendMoviesDay();
+        renderFilmsCards(fatch);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
-// getTrendMoviesWeek()
+async function serverRequestMoviesWeek() {
+    try {
+        let fatch = await getTrendMoviesWeek();
+        renderFilmsCards(fatch);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
-// getTrendMoviesDay()
+function renderFilmsCards(films) {
+    removeFilmList();
+   refs.filmList.insertAdjacentHTML('beforeend', cardForm(films)); 
+};
+
+export {serverRequestMoviesDay, serverRequestMoviesWeek}
