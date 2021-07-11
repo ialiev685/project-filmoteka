@@ -38,7 +38,7 @@ function renderFilmsCards(films) {
   refs.filmList.insertAdjacentHTML('beforeend', cardForm(films));
 };
 
-function removeFilmList() {
+export function removeFilmList() {
   refs.filmList.innerHTML = '';
 };
    
