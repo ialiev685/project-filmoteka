@@ -10,7 +10,7 @@ async function onHomeBtnClick() {
     // refs.headerInput.classList.remove('header-input-hidden');
     refs.filmList.innerHTML = '';
     refs.spinner.classList.remove('spinner-hidden');
-    const data = await getTrendItems();
+    const data = await getTrendItems(1);
     renderFilms(data.results);
     refs.spinner.classList.add('spinner-hidden');
     refs.searchContainer.classList.remove('header-input-hidden');

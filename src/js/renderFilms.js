@@ -8,7 +8,7 @@ import { checkHasFilmImage } from './is-image.js';
 export function renderFilms(array) {
     refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
     getGenres(array);
-    // getReleaseYear(array);
-    // checkHasFilmImage(array);
+    getReleaseYear(array);
+    checkHasFilmImage(array);
 
 }
