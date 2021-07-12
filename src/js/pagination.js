@@ -1,8 +1,6 @@
-import { getTrendItems } from '../js/base-api.js';
-import { getMarcup } from '../js/start-site.js';
-
-const paginList = document.querySelector('#pagination');
-const listFilm = document.querySelector('.films-list');
+import { getTrendItems } from "../js/base-api.js";
+import { getMarcup } from "../js/start-site.js";
+import { refs } from "./refs.js";
 
 let page = 1;
 async function grtTotalPages() {
@@ -11,14 +9,17 @@ async function grtTotalPages() {
 }
 
 async function renderPagination() {
-  const pagesTotal = await grtTotalPages();
+  let pagesTotalStartSite = await grtTotalPages();
 
-  const numbers = Array(pagesTotal)
+  const numbers = Array(pagesTotalStartSite)
     .fill(0)
     .map((el, i) => i + 1);
 
   const elements = numbers.map(
-    el => `<button class="pagination-btn ${el === page ? 'active' : ''}">${el}</button>`,
+    (el) =>
+      `<button class="pagination-btn ${
+        el === page ? "active" : ""
+      }">${el}</button>`
   );
 
   const backArrow = `<svg width="40" height="40" fill="none" class='arrow' id="back-arrow">
@@ -46,45 +47,22 @@ async function renderPagination() {
   const end = page + step - 1;
   const slicedElements = elements.slice(start, end);
 
-  paginList.innerHTML =
-    (page === 1 ? '' : backArrow) +
-    (startCondition ? elements[0] + '&#8943' : '') +
-    slicedElements.join('') +
-    (endConditionArrow ? '&#8943' : '') +
-    (endCondition ? elements[elements.length - 1] : '') +
-    (page === elements.length ? '' : nextArrow);
+  refs.paginListStart.innerHTML =
+    (page === 1 ? "" : backArrow) +
+    (startCondition ? elements[0] + "&#8943" : "") +
+    slicedElements.join("") +
+    (endConditionArrow ? "&#8943" : "") +
+    (endCondition ? elements[elements.length - 1] : "") +
+    (page === elements.length ? "" : nextArrow);
   nextArrow;
 }
 renderPagination();
 
-paginList.addEventListener('click', ev => {
-  if (ev.target === ev.currentTarget || ev.target.textContent === `${page}`) {
-    return;
-  }
-
-  const btns = [...ev.currentTarget.children];
-  btns.forEach(btn => btn.classList.remove('active'));
-  ev.target.classList.add('active');
-
-  if (ev.target.parentElement.id === 'next-arrow') {
-    incremRenderMarcup();
-    return;
-  }
-
-  if (ev.target.parentElement.id === 'back-arrow') {
-    decremRenderMarcup();
-    return;
-  }
-
-  page = Number(ev.target.textContent);
-  nextRenderMarcup(page);
-
-  renderPagination();
-});
+refs.paginListStart.addEventListener("click", listener, false);
 
 function nextRenderMarcup(page) {
-  listFilm.innerHTML = '';
-  // paginList.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
+  refs.filmList.innerHTML = "";
+  // refs.paginListStart.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
   getMarcup(page);
 }
 
@@ -97,5 +75,30 @@ function incremRenderMarcup() {
 function decremRenderMarcup() {
   page -= 1;
   nextRenderMarcup(page);
+  renderPagination();
+}
+
+function listener(ev) {
+  if (ev.target === ev.currentTarget || ev.target.textContent === `${page}`) {
+    return;
+  }
+
+  const btns = [...ev.currentTarget.children];
+  btns.forEach((btn) => btn.classList.remove("active"));
+  ev.target.classList.add("active");
+
+  if (ev.target.parentElement.id === "next-arrow") {
+    incremRenderMarcup();
+    return;
+  }
+
+  if (ev.target.parentElement.id === "back-arrow") {
+    decremRenderMarcup();
+    return;
+  }
+
+  page = Number(ev.target.textContent);
+  nextRenderMarcup(page);
+
   renderPagination();
 }
