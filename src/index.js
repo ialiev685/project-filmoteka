@@ -13,3 +13,4 @@ import './js/pagination.js';
 import './js/scroll-to-top.js';
 
 import './js/switchTheme.js';
+import './js/hintSearch.js';

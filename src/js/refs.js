@@ -1,5 +1,4 @@
 export const refs = {
-
   homeBtn: document.querySelector('.js-header-btn'),
   myLibraryBtn: document.querySelector('.js-my-library-btn'),
   searchBtn: document.querySelector('.search-button'),
@@ -19,7 +18,7 @@ export const refs = {
   switchThemeCheckbox: document.querySelector('.switch-theme'),
 
   bodyEl: document.body,
-  paginListStart: document.querySelector(".pagination-start"),
-  paginListSearch: document.querySelector(".pagination-search"),
+  paginListStart: document.querySelector('.pagination-start'),
+  paginListSearch: document.querySelector('.pagination-search'),
+  hintEl: document.querySelector('.search-hint'),
 };
-

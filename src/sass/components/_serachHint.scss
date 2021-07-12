@@ -1,0 +1,28 @@
+.search-hint {
+  position: absolute;
+
+  top: 20px;
+  left: 50%;
+
+  z-index: 1;
+
+  height: 200px;
+  overflow: scroll;
+
+  transform: translateX(-50%);
+
+  background-color: var(--color-bg-dark);
+
+  font-size: 14px;
+  color: var(--color-text-inverse);
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
+}
+
+.search-hint-table {
+  width: 100%;
+  & tr:hover td {
+    background: #fffabe;
+  }
+}

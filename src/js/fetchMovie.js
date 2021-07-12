@@ -1,11 +1,11 @@
-import { refs } from "./refs.js";
+import { refs } from './refs.js';
 
-const KEY = "222d2b89e8701088edcf9049fa569980";
+const KEY = '222d2b89e8701088edcf9049fa569980';
 const URL_MOVIE_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-US&include_adult=false`;
 
 export default class MovieApiService {
   constructor() {
-    this.searchQuery = "";
+    this.searchQuery = '';
   }
 
   async fetchMovie(page) {
@@ -31,6 +31,6 @@ export default class MovieApiService {
   }
 
   showWarningString() {
-    refs.warningString.classList.remove("is-hidden");
+    refs.warningString.classList.remove('is-hidden');
   }
 }
