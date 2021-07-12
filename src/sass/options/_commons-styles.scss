@@ -12,6 +12,14 @@ body {
   font-family: Roboto;
 }
 
+body.dark-theme {
+  background: var(--color-bg-dark);
+}
+
+body.light-theme {
+  background-color: var(--color-bg-ligth);
+}
+
 .container {
   width: 320px;
   margin: 0 auto;
