@@ -11,4 +11,5 @@ import './js/movieSearch.js';
 
 import './js/pagination.js';
 import './js/scroll-to-top.js';
+
 import './js/switchTheme.js';
