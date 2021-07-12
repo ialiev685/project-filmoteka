@@ -43,4 +43,4 @@ module.exports="/project-filmoteka/filmoteka-plug.a8f7ce0c.jpg";
 },{"./refs.js":"VyiV"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/home-btn.js"),require("./js/library-btn.js"),require("./js/logoClick.js"),require("./js/start-site.js"),require("./js/movieSearch.js"),require("./js/pagination.js"),require("./js/scroll-to-top.js"),require("./js/switchTheme.js");
 },{"./sass/main.scss":"clu1","./js/home-btn.js":"TRXG","./js/library-btn.js":"siGo","./js/logoClick.js":"lgdn","./js/start-site.js":"nn7R","./js/movieSearch.js":"ryZl","./js/pagination.js":"o8lo","./js/scroll-to-top.js":"mh2G","./js/switchTheme.js":"Sq5u"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.f32b0b3c.js.map
+//# sourceMappingURL=/project-filmoteka/src.e08ecd40.js.map
