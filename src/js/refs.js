@@ -14,5 +14,7 @@ export const refs = {
   queueBtn: document.querySelector('.js-head-queue'),
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
-  warningString: document.querySelector('.header-message'),
-};
+  warningString: document.querySelector('.header-message'), 
+}
+
+

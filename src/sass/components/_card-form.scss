@@ -1,5 +1,4 @@
-.film-image {
-  // margin-bottom: 10px;
+.film-image {  
   display: block;
   width: 280px;
   height: 430px;
@@ -38,15 +37,18 @@
   color: rgba(255, 107, 8, 1);
 }
 
-.name-genres {
-  padding-right: 3px;
+.name-genres { 
   margin-right: 3px;
-
-  border-right: 1px solid #ff6b08;
-}
+  max-width: 195px;
+}  
 
 .year-list {
-  margin-right: 12px;
+  margin-right: 10px;
+}
+
+.line {
+height: 10px;
+margin-right: 3px;
 }
 
 .data-vote {
@@ -67,6 +69,7 @@
 .vote-average {
   text-transform: uppercase;
 
+  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
