@@ -47,9 +47,9 @@
   fill: var(--color-bg-dark);
 }
 .dark-theme .arrow-path {
-  stroke: currentColor;
+  stroke: var(--color-text-inverse);
 }
 
 .light-theme .arrow-path {
-  stroke: currentColor;
+  stroke: var(--color-text-primary);
 }
