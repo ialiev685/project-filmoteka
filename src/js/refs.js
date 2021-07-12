@@ -6,6 +6,8 @@ export const refs = {
   filmList: document.querySelector('.js-list-films'),
   headerInput: document.querySelector('.js-header-input'),
   libraryBtns: document.querySelector('.js-library-btns'),
+  watchedHeaderBtn: document.querySelector('.js-head-watched'),
+  queueHeaderBtn: document.querySelector('.js-head-queue'),
   logo: document.querySelector('.js-logo'),
   spinner: document.querySelector('.js-spinner'),
   btnToTop: document.getElementById('btn-top'),
