@@ -18,6 +18,7 @@ export { getTrendItems };
 
 // import { getTrendItems } from './js/base-api.js';
 
+
 // async function test() {
 //   const t = await getTrendItems();
 // console.log(t);

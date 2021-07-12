@@ -1,11 +1,15 @@
 {{#each this}}
   <li class='film-card'>
-    <img
-      src='https://image.tmdb.org/t/p/w300/{{poster_path}}'
-      alt='{{title}}'
-      id='{{id}}'
-      class='film-image'
-    />
+    <div class='overlay-wrap'>
+      <img src='https://image.tmdb.org/t/p/w300/{{poster_path}}' alt='{{title}}' id='{{id}}' class='film-image js-film-image' />
+      <div class='card-overlay'>
+        <div>
+          <button type='button' class='overlay-btn'>add</button>
+          <button type='button' class='overlay-btn'>watch</button>
+          <button type='button' class='overlay-btn'>delete</button>
+        </div>
+      </div>
+    </div>
 
     <div class='data-card'>
       <h1 class='film-title'>
