@@ -13,5 +13,6 @@ import './js/about-btn.js';
 import './js/add-to-watched-btn.js';
 import './js/pagination.js';
 import './js/scroll-to-top.js';
+import './js/put-rounded-pop.js'
 
 
