@@ -22,18 +22,18 @@ async function renderPagination() {
   );
 
   const backArrow = `<svg width="40" height="40" fill="none" class='arrow' id="back-arrow">
-      <rect width="40" height="40" rx="5" fill="#F7F7F7" />
+      <rect width="40" height="40" rx="5" class="arrow-rect" />
       <path
         d="M24.667 20h-9.334M20 24.667L15.333 20 20 15.334"
-        stroke="#000"
+     class='arrow-path'  
         stroke-width="1.333"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
     </svg>`;
   const nextArrow = `<svg width="40" height="40" fill="none" class='arrow' id="next-arrow">
-  <rect class="rect" width="40" height="40" rx="5"  transform="matrix(-1 0 0 1 40 0)" />
-  <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"    stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect class="arrow-rect" width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" />
+  <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"  class='arrow-path'  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
   // выдернул из svg
   //fill="#F7F7F7"  у rect

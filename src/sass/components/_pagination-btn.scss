@@ -38,18 +38,17 @@
   color: var(--color-text-inverse);
 }
 
-.dark-theme .arrow {
-  stroke: currentColor;
-}
-
-.light-theme .arrow {
-  stroke: currentColor;
-}
-
-.dark-theme .arrow .rect {
-  background-color: var(--color-bg-dark);
-}
-
-.light-theme .arrow .rect {
+.light-theme .arrow-rect {
   fill: var(--color-bg-ligth);
+}
+
+.dark-theme .arrow-rect {
+  fill: var(--color-bg-dark);
+}
+.dark-theme .arrow-path {
+  stroke: currentColor;
+}
+
+.light-theme .arrow-path {
+  stroke: currentColor;
 }
