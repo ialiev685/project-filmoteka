@@ -1,12 +1,12 @@
 import { getTrendMoviesDay, getTrendMoviesWeek } from './fatch-popularity-sort.js';
-import cardForm from '../../hbs/cardForm.hbs';
-import { refs } from '../refs.js';
 import { removeFilmList } from '../movieSearch.js';
+import { renderFilms } from '../renderFilms.js';
 
 async function serverRequestMoviesDay() {
     try {
         let fatch = await getTrendMoviesDay();
-        renderFilmsCards(fatch);
+        removeFilmList();
+        renderFilms(fatch);
     } catch (error) {
         console.log(error);
     }
@@ -15,15 +15,11 @@ async function serverRequestMoviesDay() {
 async function serverRequestMoviesWeek() {
     try {
         let fatch = await getTrendMoviesWeek();
-        renderFilmsCards(fatch);
+        removeFilmList();
+        renderFilms(fatch);
     } catch (error) {
         console.log(error);
     }
-};
-
-function renderFilmsCards(films) {
-    removeFilmList();
-   refs.filmList.insertAdjacentHTML('beforeend', cardForm(films)); 
 };
 
 export {serverRequestMoviesDay, serverRequestMoviesWeek}

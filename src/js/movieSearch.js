@@ -1,6 +1,6 @@
 import MoviesApiService from './fetchMovie.js';
 import { refs } from './refs.js';
-import cardForm from '../hbs/cardForm.hbs';
+import { renderFilms } from './renderFilms.js';
 
 const moviesApiService = new MoviesApiService();
 
@@ -35,9 +35,8 @@ async function onMovieSearchClick() {
 
 function renderFilmsCards(films) {
   removeFilmList();
-  DeleteWarningString()
-
-  refs.filmList.insertAdjacentHTML('beforeend', cardForm(films));
+  DeleteWarningString();
+  renderFilms(films);
 };
 
 export function removeFilmList() {

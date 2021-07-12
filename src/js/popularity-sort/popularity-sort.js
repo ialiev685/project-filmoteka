@@ -20,7 +20,7 @@ function onDropdownListClick() {
 
 function onRemoveSortInputClick(e) {
     if (sortInput.classList.contains('active') && e.target.className !== "dropdown-value") {
-        sortInput.classList.toggle('active');
+        removeSortInput();
     }
 };
 
@@ -28,20 +28,19 @@ function onSortDayClick() {
     sortValue.textContent = 'за день';
     
     serverRequestMoviesDay();
-
-    sortInput.classList.remove('active');
-    sortDay.removeEventListener('click', onSortDayClick);
-    sortWeek.removeEventListener('click', onSortWeekClick);
+    removeSortInput();
 };
 
 function onSortWeekClick() {
     sortValue.textContent = 'за неделю';
 
     serverRequestMoviesWeek();
-
-    sortInput.classList.remove('active');
-     sortDay.removeEventListener('click', onSortDayClick);
-    sortWeek.removeEventListener('click', onSortWeekClick);
+    removeSortInput();
 };
 
-
+function removeSortInput() {
+    sortInput.classList.remove('active');
+    sortDay.removeEventListener('click', onSortDayClick);
+    sortWeek.removeEventListener('click', onSortWeekClick);
+    window.removeEventListener('click', onRemoveSortInputClick);
+};
