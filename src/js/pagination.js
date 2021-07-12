@@ -1,8 +1,8 @@
-import { getTrendItems } from "../js/base-api.js";
-import { getMarcup } from "../js/start-site.js";
+import { getTrendItems } from '../js/base-api.js';
+import { getMarcup } from '../js/start-site.js';
 
-const paginList = document.querySelector("#pagination");
-const listFilm = document.querySelector(".films-list");
+const paginList = document.querySelector('#pagination');
+const listFilm = document.querySelector('.films-list');
 
 let page = 1;
 async function grtTotalPages() {
@@ -18,27 +18,26 @@ async function renderPagination() {
     .map((el, i) => i + 1);
 
   const elements = numbers.map(
-    (el) =>
-      `<button class="pagination-btn ${
-        el === page ? "active" : ""
-      }">${el}</button>`
+    el => `<button class="pagination-btn ${el === page ? 'active' : ''}">${el}</button>`,
   );
 
-  const backArrow = `<svg width="40" height="40" fill="none" id="back-arrow">
-      <rect width="40" height="40" rx="5" fill="#F7F7F7" />
+  const backArrow = `<svg width="40" height="40" fill="none" class='arrow' id="back-arrow">
+      <rect width="40" height="40" rx="5" class="arrow-rect" />
       <path
         d="M24.667 20h-9.334M20 24.667L15.333 20 20 15.334"
-        stroke="#000"
+     class='arrow-path'  
         stroke-width="1.333"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
     </svg>`;
-  const nextArrow = `<svg width="40" height="40" fill="none" id="next-arrow">
-  <rect width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" fill="#F7F7F7"/>
-  <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+  const nextArrow = `<svg width="40" height="40" fill="none" class='arrow' id="next-arrow">
+  <rect class="arrow-rect" width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" />
+  <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"  class='arrow-path'  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-
+  // выдернул из svg
+  //fill="#F7F7F7"  у rect
+  //stroke="#000" у patch
   const step = 3;
   const startCondition = page - step > 1;
   const endCondition = page + step <= elements.length;
@@ -48,31 +47,31 @@ async function renderPagination() {
   const slicedElements = elements.slice(start, end);
 
   paginList.innerHTML =
-    (page === 1 ? "" : backArrow) +
-    (startCondition ? elements[0] + "&#8943" : "") +
-    slicedElements.join("") +
-    (endConditionArrow ? "&#8943" : "") +
-    (endCondition ? elements[elements.length - 1] : "") +
-    (page === elements.length ? "" : nextArrow);
+    (page === 1 ? '' : backArrow) +
+    (startCondition ? elements[0] + '&#8943' : '') +
+    slicedElements.join('') +
+    (endConditionArrow ? '&#8943' : '') +
+    (endCondition ? elements[elements.length - 1] : '') +
+    (page === elements.length ? '' : nextArrow);
   nextArrow;
 }
 renderPagination();
 
-paginList.addEventListener("click", (ev) => {
+paginList.addEventListener('click', ev => {
   if (ev.target === ev.currentTarget || ev.target.textContent === `${page}`) {
     return;
   }
 
   const btns = [...ev.currentTarget.children];
-  btns.forEach((btn) => btn.classList.remove("active"));
-  ev.target.classList.add("active");
+  btns.forEach(btn => btn.classList.remove('active'));
+  ev.target.classList.add('active');
 
-  if (ev.target.parentElement.id === "next-arrow") {
+  if (ev.target.parentElement.id === 'next-arrow') {
     incremRenderMarcup();
     return;
   }
 
-  if (ev.target.parentElement.id === "back-arrow") {
+  if (ev.target.parentElement.id === 'back-arrow') {
     decremRenderMarcup();
     return;
   }
@@ -84,7 +83,7 @@ paginList.addEventListener("click", (ev) => {
 });
 
 function nextRenderMarcup(page) {
-  listFilm.innerHTML = "";
+  listFilm.innerHTML = '';
   // paginList.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
   getMarcup(page);
 }

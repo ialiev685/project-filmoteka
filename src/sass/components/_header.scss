@@ -121,7 +121,9 @@
   background-position: center;
   background-repeat: no-repeat;
 
+
   @media (min-width: $mobile+1px) and (max-width: $tablet) {
+
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-home-tablet.jpg');
@@ -141,6 +143,8 @@
 
   .container {
     padding-top: 46px;
+
+    position: relative;
   }
 }
 
