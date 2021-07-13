@@ -10,7 +10,7 @@
   overflow-y: hidden;
 
   border-radius: 5px;
-  // padding: 5px;
+  padding: 5px;
 
   transform: translateX(-50%);
 
@@ -37,6 +37,9 @@
 .search-hint-table {
   width: 100%;
   border-collapse: collapse;
+  .item-table {
+    padding: 5px 0;
+  }
 
   & .row-table,
   & .item-table {
