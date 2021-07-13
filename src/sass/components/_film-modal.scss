@@ -1,37 +1,48 @@
 .backdrop {
-  position: absolute;
+
+  z-index: 6;
+  position: fixed;
+
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
+
+  opacity: 1;
   &.is-hidden {
     opacity: 0;
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     & .modal__flm-info {
-      transform: translate(-50%, -50%) scale(0);
+      transform: translate(-50%, -50%) scale(0.3);
     }
   }
   .modal__flm-info {
-    width: 240px;
+    width: 280px;
     padding: 48px 20px 41px 20px;
 
-    position: absolute;
+    position: fixed;
+
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
     background-color: #fff;
 
-    @media screen and (min-width: 768px) {
-      width: 560px;
+
+    @media screen and (min-width: $tablet) {
+      width: 618px;
+
       padding: 42px 29px 40px 29px;
       display: flex;
       justify-content: center;
     }
 
-    @media screen and (min-width: 1024px) {
-      width: 822px;
+
+    @media screen and (min-width: $desktop) {
+      width: 882px;
+
       padding: 50px 30px 40px 30px;
     }
   }
@@ -41,11 +52,13 @@
   width: 240px;
   height: auto;
   background-color: #f3f0f0;
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: $tablet) {
     width: 264px;
     margin-right: 32px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desktop) {
+
     width: 396px;
     margin-right: 25px;
   }
@@ -53,10 +66,12 @@
     width: 240px;
     height: auto;
     display: block;
-    @media screen and (min-width: 768px) {
+
+    @media screen and (min-width: $tablet) {
       width: 264px;
     }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $desktop) {
+
       width: 396px;
     }
   }
@@ -67,10 +82,12 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: $tablet) {
     width: 264px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desktop) {
+
     width: 396px;
   }
 
@@ -80,10 +97,12 @@
     font-size: 20px;
     line-height: 1.15;
     color: #000000;
-    @media screen and (min-width: 768px) {
+
+    @media screen and (min-width: $tablet) {
       margin-top: 0;
     }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $desktop) {
+
       margin-bottom: 15px;
       font-size: 30px;
       line-height: 1.17;
@@ -95,7 +114,9 @@
     color: #8c8c8c;
     display: flex;
 
-    @media screen and (min-width: 1024px) {
+
+    @media screen and (min-width: $desktop) {
+
       margin-bottom: 15px;
     }
     .modal__flm-rating,
@@ -107,7 +128,9 @@
       color: #ffffff;
       background: #ff6b01;
       border-radius: 5px;
-      @media screen and (min-width: 1024px) {
+
+      @media screen and (min-width: $desktop) {
+
         margin-left: 85px;
       }
     }
@@ -116,7 +139,9 @@
       line-height: 1.17;
       margin-left: 53px;
       color: #000;
-      @media screen and (min-width: 1024px) {
+
+      @media screen and (min-width: $desktop) {
+
         margin-left: 97px;
       }
     }
@@ -128,7 +153,9 @@
     }
     .modal-flm-title-data {
       margin-left: 39px;
-      @media screen and (min-width: 1024px) {
+
+      @media screen and (min-width: $desktop) {
+
         margin-left: 83px;
       }
     }
@@ -171,14 +198,19 @@
     background: #ff6b01;
     border: 1px solid #ff6b01;
   }
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: $tablet) {
+
     width: 123px;
     height: 56px;
     padding: 0;
   }
 
-  @media screen and (min-width: 1024px) {
+
+  @media screen and (min-width: $desktop) {
     width: 136px;
+    padding: 14px 10px 12px 10px;
+
   }
 }
 .modal__button.watched {
@@ -189,9 +221,12 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+
+  flex-wrap: wrap;
   & :first-child {
     margin-left: 76px;
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $desktop) {
+
       margin-left: 120px;
     }
   }
