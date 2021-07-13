@@ -18,5 +18,6 @@ import './js/modal-close.js';
 import './js/pagination.js';
 import './js/scroll-to-top.js';
 import './js/put-rounded-pop.js'
+import './js/apiAboutFilm.js';
 
 
