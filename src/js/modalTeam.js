@@ -3,8 +3,6 @@ const basicLightbox = require('basiclightbox');
 import teamImage from '../images/footer/our-team.jpg';
 import closeBtn from '../images/icon-close.svg';
 
-console.log(refs.footerModal);
-
 refs.footerModal.addEventListener('click', onFooterLinkClick);
 
 function onFooterLinkClick(e) {
@@ -48,6 +46,12 @@ function onFooterLinkClick(e) {
     {
       onShow: instance => {
         instance.element().querySelector('.close-modal-team-btn').onclick = instance.close;
+        window.addEventListener('keydown', function onEscClick(e) {
+          if (e.code === 'Escape') {
+            instance.close();
+            window.removeEventListener('keydown', onEscClick);
+          }
+        });
       },
     },
   );
