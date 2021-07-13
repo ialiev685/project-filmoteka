@@ -7,7 +7,7 @@ export function getFilmInfo(movieId) {
     const fullUrl = `${url}${movieId}?api_key=${KEY}`;
 
       const result = fetch(fullUrl).then(response => response.json());
-      // console.log(result);
+
     return result;
   } catch (error) {
     console.log(`Ошибка + ${error}`);
@@ -15,11 +15,3 @@ export function getFilmInfo(movieId) {
   }
 }
 
-// async function modalFilm(movieId) {
-//   const data = await getFilmInfo(movieId);
-//   console.log(data);
-//   return data;
-// }
-
-// export { modalFilm };
-// getFilmInfo(497698)

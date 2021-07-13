@@ -3,7 +3,6 @@ import { refs } from './refs.js';
 function closeModal() {
     refs.filmContainer.classList.add('is-hidden');
     refs.filmContainer.innerHTML = '';
-    // refs.filmContainer.removeEventListener('click', closeModal);
     window.removeEventListener('keydown', OnCloseModalByEscape);
 }
 
@@ -23,8 +22,3 @@ export function onBackdropClick(domEl) {
     }
   });
 }
-// window.addEventListener('keydown', e => {
-//   if (e.code === 'Escape') {
-//     closeModal();
-//   }
-// });
