@@ -2,8 +2,6 @@ import { refs } from './refs.js';
 import { onBackdropClick, OnCloseModalByEscape } from './modal-close.js';
 import { renderModalFilms } from './renderModalFilm.js';
 
-
-
 refs.filmList.addEventListener('click', e => {
 
   const id = e.target.dataset.overlayid;
