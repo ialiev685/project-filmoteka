@@ -1,0 +1,16 @@
+.sort-films-list {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  bottom: 5px;
+}
+.sort-films-item {
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+.sort-films-item-btn {
+  height: 100%;
+}
