@@ -25,5 +25,9 @@ export const refs = {
   paginListStart: document.querySelector(".pagination-start"),
   paginListSearch: document.querySelector(".pagination-search"),
 
+  sortFilmsBtnGenre: document.getElementById('genre'),
+  sortFilmsBtnRating: document.getElementById('rating'),
+  sortFilmsBtnYear: document.getElementById('year'),
+  sortFilmsBtnClear: document.getElementById('clear'),
 };
 
