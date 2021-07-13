@@ -38,6 +38,7 @@
   line-height: 1.167;
   text-align: center;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .header-button:first-child {
@@ -61,6 +62,14 @@
   line-height: 1.143;
   margin-bottom: 22px;
 
+//   &:focus {
+//     border-bottom: 0.5px solid var(--accent-color);
+//   }
+
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+
   @media screen and (min-width: $tablet) {
     width: 336px;
   }
@@ -82,21 +91,26 @@
 .search-button {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -15px;
   background-color: transparent;
   outline: none;
   border: none;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 
-  @media (min-width: 769px) and (max-width: $desktop) {
+  @media (min-width: $tablet) and (max-width: $desktop) {
     top: 0;
-    right: 140px;
+    right: 128px;
   }
 
-  @media (min-width: $desktop+1px) {
+  @media (min-width: $desktop) {
     top: 0;
-    right: 272px;
+    right: 260px;
+  }
+
+  .magnifier-logo {
+    padding: 14px;	
   }
 }
 
@@ -122,7 +136,6 @@
   background-repeat: no-repeat;
 
   @media (min-width: $mobile+1px) and (max-width: $tablet) {
-
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/header/tablet/header-home-tablet.jpg');
   }
@@ -141,6 +154,8 @@
 
   .container {
     padding-top: 46px;
+
+    position: relative;
   }
 }
 

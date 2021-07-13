@@ -1,6 +1,7 @@
 import { refs } from './refs.js';
 import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
+import {onClickDisappearVote} from './appear-votes.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
@@ -17,5 +18,7 @@ async function onHomeBtnClick() {
     refs.myLibraryBtn.classList.remove('current');
     refs.homeBtn.classList.add('current');
     refs.queueBtn.classList.remove('current-btn');
-
+    
+    onClickDisappearVote();
 }
+

@@ -18,18 +18,20 @@
     <div class="home-search-div">
       <input
         type="text"
-        placeholder="Поиск фильмов"
+        placeholder="Movie search / Поиск фильмов"
         class="header-input js-header-input"
+        autocomplete="off"
         name="submit"
       />
       <button type="submit" class="search-button">
-        <span>
+        <span class="magnifier-logo">
           <img src="../src/images/header/search.svg" alt="magnifier-logo" />
         </span>
       </button>
       <p class="header-message is-hidden">
-        Search result not successful. Enter the correct movie name and
+        The search result is not successful. Please, enter the correct movie name.
       </p>
     </div>
+    <include src="./partials/swith-theme.html"></include>
   </div>
 </header>

@@ -1,9 +1,10 @@
 import { refs } from './refs.js';
+import {onClickAppearVote} from './appear-votes.js';
+
 
 refs.myLibraryBtn.addEventListener('click', openLibrary);
 refs.watchedBtn.addEventListener('click', onWatchedBtn);
 refs.queueBtn.addEventListener('click', onQueueBtn);
-
 
 
 function openLibrary() {
@@ -14,7 +15,9 @@ function openLibrary() {
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
   refs.navContainer.style.marginBottom = '49px';
-  
+ 
+ onClickAppearVote();
+ 
 }
 
 
@@ -27,3 +30,4 @@ function onQueueBtn() {
   refs.watchedBtn.classList.remove('current-btn');
   refs.queueBtn.classList.add('current-btn');
 }
+

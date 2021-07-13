@@ -1,8 +1,6 @@
 import { getTrendItems } from "../js/base-api.js";
 import { getMarcup } from "../js/start-site.js";
-
-const paginList = document.querySelector("#pagination");
-const listFilm = document.querySelector(".films-list");
+import { refs } from "./refs.js";
 
 let page = 1;
 async function grtTotalPages() {
@@ -11,9 +9,9 @@ async function grtTotalPages() {
 }
 
 async function renderPagination() {
-  const pagesTotal = await grtTotalPages();
+  let pagesTotalStartSite = await grtTotalPages();
 
-  const numbers = Array(pagesTotal)
+  const numbers = Array(pagesTotalStartSite)
     .fill(0)
     .map((el, i) => i + 1);
 
@@ -24,21 +22,23 @@ async function renderPagination() {
       }">${el}</button>`
   );
 
-  const backArrow = `<svg width="40" height="40" fill="none" id="back-arrow">
-      <rect width="40" height="40" rx="5" fill="#F7F7F7" />
+  const backArrow = `<svg width="40" height="40" fill="none" class='arrow' id="back-arrow">
+      <rect width="40" height="40" rx="5" class="arrow-rect" />
       <path
         d="M24.667 20h-9.334M20 24.667L15.333 20 20 15.334"
-        stroke="#000"
+     class='arrow-path'  
         stroke-width="1.333"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
     </svg>`;
-  const nextArrow = `<svg width="40" height="40" fill="none" id="next-arrow">
-  <rect width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" fill="#F7F7F7"/>
-  <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+  const nextArrow = `<svg width="40" height="40" fill="none" class='arrow' id="next-arrow">
+  <rect class="arrow-rect" width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" />
+  <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"  class='arrow-path'  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-
+  // выдернул из svg
+  //fill="#F7F7F7"  у rect
+  //stroke="#000" у patch
   const step = 3;
   const startCondition = page - step > 1;
   const endCondition = page + step <= elements.length;
@@ -47,7 +47,7 @@ async function renderPagination() {
   const end = page + step - 1;
   const slicedElements = elements.slice(start, end);
 
-  paginList.innerHTML =
+  refs.paginListStart.innerHTML =
     (page === 1 ? "" : backArrow) +
     (startCondition ? elements[0] + "&#8943" : "") +
     slicedElements.join("") +
@@ -58,7 +58,27 @@ async function renderPagination() {
 }
 renderPagination();
 
-paginList.addEventListener("click", (ev) => {
+refs.paginListStart.addEventListener("click", listener, false);
+
+function nextRenderMarcup(page) {
+  refs.filmList.innerHTML = "";
+  // refs.paginListStart.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
+  getMarcup(page);
+}
+
+function incremRenderMarcup() {
+  page += 1;
+  nextRenderMarcup(page);
+  renderPagination();
+}
+
+function decremRenderMarcup() {
+  page -= 1;
+  nextRenderMarcup(page);
+  renderPagination();
+}
+
+function listener(ev) {
   if (ev.target === ev.currentTarget || ev.target.textContent === `${page}`) {
     return;
   }
@@ -80,23 +100,5 @@ paginList.addEventListener("click", (ev) => {
   page = Number(ev.target.textContent);
   nextRenderMarcup(page);
 
-  renderPagination();
-});
-
-function nextRenderMarcup(page) {
-  listFilm.innerHTML = "";
-  // paginList.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
-  getMarcup(page);
-}
-
-function incremRenderMarcup() {
-  page += 1;
-  nextRenderMarcup(page);
-  renderPagination();
-}
-
-function decremRenderMarcup() {
-  page -= 1;
-  nextRenderMarcup(page);
   renderPagination();
 }
