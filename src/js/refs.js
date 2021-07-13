@@ -14,5 +14,16 @@ export const refs = {
   queueBtn: document.querySelector('.js-head-queue'),
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
+
   warningString: document.querySelector('.header-message'),
+
+  footerModal: document.querySelector('.js-footer-modal'),
+
+  switchThemeCheckbox: document.querySelector('.switch-theme'),
+
+  bodyEl: document.body,
+  paginListStart: document.querySelector(".pagination-start"),
+  paginListSearch: document.querySelector(".pagination-search"),
+
 };
+
