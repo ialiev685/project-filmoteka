@@ -13,5 +13,9 @@ import './js/pagination.js';
 import './js/scroll-to-top.js';
 import './js/modalTeam.js';
 
+import './js/open-modal';
+
+
 import './js/switchTheme.js';
+
 import './js/sort-films/sortFilms.js';
