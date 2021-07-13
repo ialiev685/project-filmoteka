@@ -2,7 +2,10 @@
   //палитра
   --color-white: #ffffff;
   --color-white-2: #f7f7f7;
+  --color-white-3: rgb(216, 216, 216);
   --color-orange: #ff6b01;
+  --color-accent: #ff6b08;
+  --color-accent-trnsparent: rgb(255, 107, 1, 0.3);
   --color-brown: #2d2925;
   --color-black: #000000;
   --color-brown-2: #1d1713;
@@ -13,7 +16,10 @@
   --color-text-inverse: var(--color-white);
 
   --color-text-primary: var(--color-black);
-  --color-accent: #ff6b08;
+  --color-text-cell: var(--color-accent);
+  --color-bg-hover: var(--color-accent-trnsparent);
+  --color-text-hint: var(--color-white-3);
+  --color-bg-scroll: var(--color-white-3);
   --accent-color: var(--color-orange);
   --color-bg-dark: var(--color-brown);
   --color-bg-ligth: var(--color-white);
