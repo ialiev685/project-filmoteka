@@ -7,12 +7,19 @@ export function getFilmInfo(movieId) {
     const fullUrl = `${url}${movieId}?api_key=${KEY}`;
 
       const result = fetch(fullUrl).then(response => response.json());
-      console.log(result);
+      // console.log(result);
     return result;
   } catch (error) {
-    console.log(`Ошбика + ${error}`);
+    console.log(`Ошибка + ${error}`);
     // поидее здесь должна быть нотификация, что что-то пошло не так и типо перезагрузите страницу
   }
 }
 
+// async function modalFilm(movieId) {
+//   const data = await getFilmInfo(movieId);
+//   console.log(data);
+//   return data;
+// }
+
+// export { modalFilm };
 // getFilmInfo(497698)
