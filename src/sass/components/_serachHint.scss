@@ -10,7 +10,7 @@
   overflow-y: hidden;
 
   border-radius: 5px;
-  padding: 5px;
+  // padding: 5px;
 
   transform: translateX(-50%);
 
@@ -41,7 +41,6 @@
   & .row-table,
   & .item-table {
     color: var(--color-text-hint);
-    // position: relative;
   }
 
   & .row-table:hover .item-table {

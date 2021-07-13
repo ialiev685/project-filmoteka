@@ -31,7 +31,10 @@ function renderHint(data) {
   correctionVote(data);
   const markup = searchHint(data);
   refs.hintEl.classList.remove('is-hidden');
+
   refs.hintEl.innerHTML = markup;
+  window.addEventListener('keyup', closeWithKey);
+  refs.hintEl.addEventListener('click', addValueInput);
 }
 
 function sortVote(data) {
@@ -54,4 +57,20 @@ function correctionVote(data) {
 function removeHintBox() {
   refs.hintEl.innerHTML = '';
   refs.hintEl.classList.add('is-hidden');
+  window.removeEventListener('keyup', closeWithKey);
+}
+
+function closeWithKey(e) {
+  if (e.code === 'Escape') {
+    removeHintBox();
+    window.removeEventListener('keyup', closeWithKey);
+  }
+}
+
+function addValueInput(e) {
+  if (e.target.className === 'item-table cell-one') {
+    refs.headerInput.value = e.target.textContent.trim();
+    refs.headerInput.focus();
+    removeHintBox();
+  }
 }
