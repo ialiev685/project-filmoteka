@@ -1,5 +1,5 @@
 export const refs = {
-
+  body: document.querySelector('body'),
   homeBtn: document.querySelector('.js-header-btn'),
   myLibraryBtn: document.querySelector('.js-my-library-btn'),
   searchBtn: document.querySelector('.search-button'),
