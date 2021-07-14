@@ -1,5 +1,6 @@
 import movie from '../hbs/film-modal.hbs';
 import { refs } from './refs.js';
+import { checkHasFilmModalImage } from './is-image.js';
 
 const Movie = {   // Данные для Local Storage //
   WATCHED: 'watched',
@@ -10,25 +11,27 @@ const Movie = {   // Данные для Local Storage //
 refs.filmList.addEventListener('click', onMovieClick);
 
 async function onMovieClick(e) {
-    
+
     if (e.target.classList.value !== 'card-overlay') {
         return
     };
     const movieId = e.target.dataset.value;
     const article = await fetchFilm(movieId);
     await appendArticlesMarkup(article);
+    checkHasFilmModalImage(article);
+
 
     const closeButton = document.querySelector('[data-action="close-modal"]');
     const backdrop = document.querySelector('.backdrop');
     const buttonWatched = document.querySelector('.js-watched');
     const buttonQueue = document.querySelector('.js-queue');
 
-    
+
     clickButton(buttonWatched, buttonQueue, movieId);
     toggleClass(backdrop);
     closeModal(closeButton, backdrop)
 };
-   
+
 
 function fetchFilm(movieId) {
     const KEY = '222d2b89e8701088edcf9049fa569980';
@@ -50,7 +53,7 @@ function addButtonText(article) {
     newDataObject.queueBtnText = addQueueBtnText;
     newDataObject.watchedBtnText = addWatchedBtnText;
     return newDataObject;
-    
+
 }
 function selectButtonText(data, article) {
     let buttonText = "add to";
@@ -60,7 +63,7 @@ function selectButtonText(data, article) {
 
             localStorageData.map(elem => {
                 if (String(article.id)===elem) {
-                    buttonText = "remove from" 
+                    buttonText = "remove from"
                 };
             })
         };
@@ -69,8 +72,8 @@ function selectButtonText(data, article) {
 };
 
 function toggleClass(backdrop) {
-    
-    backdrop.classList.toggle('is-hidden') 
+
+    backdrop.classList.toggle('is-hidden')
 };
 
 function clickButton(buttonWatched, buttonQueue, movieId) {
@@ -79,7 +82,7 @@ function clickButton(buttonWatched, buttonQueue, movieId) {
         switchBtnText(button, e);
         writeDataToStorage(movieId, Movie.WATCHED)
     });
-        
+
     buttonQueue.addEventListener('click', (e) => {
         const button = 'queue';
         switchBtnText(button, e);
@@ -90,7 +93,7 @@ function clickButton(buttonWatched, buttonQueue, movieId) {
 
 function switchBtnText(button,e) {
     if (e.target.innerHTML === `add to ${button}`) {
-           
+
             e.target.innerHTML = `remove from ${button}`;
         } else {
             e.target.innerHTML = `add to ${button}`
@@ -117,19 +120,19 @@ function writeDataToStorage(movieId, storageData) {
 };
 
 function closeModal(closeButton, backdrop) {
-    
+
     closeButton.addEventListener('click', onButtonClick);
     backdrop.addEventListener('click', onBackdropClick);
     window.addEventListener('keydown', onEscKeyPress);
-    
+
     function onButtonClick() {
-     
+
         toggleClass(backdrop);
         function removeMovie() {
             backdrop.remove();
         };
         setTimeout(removeMovie, 500);
-        
+
         window.removeEventListener('keydown', onEscKeyPress);
         backdrop.removeEventListener('click', onBackdropClick);
     }
