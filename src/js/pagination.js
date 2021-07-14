@@ -4,7 +4,8 @@ import { refs } from "./refs.js";
 
 let page = 1;
 async function grtTotalPages() {
-  const data = await getTrendItems(page);
+  const valueSort = localStorage.getItem('popularity');
+  const data = await getTrendItems(page, valueSort);
   return data.total_pages;
 }
 
@@ -102,3 +103,4 @@ function listener(ev) {
 
   renderPagination();
 }
+

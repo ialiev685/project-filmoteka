@@ -1,6 +1,9 @@
 import { refs } from '../refs.js';
-import { serverRequestMoviesDay, serverRequestMoviesWeek } from './render-popularity-sort.js';
+// import { serverRequestMoviesDay, serverRequestMoviesWeek } from './render-popularity-sort.js';
 import { getMarcup } from '../start-site.js';
+import { getTrendItems } from '../base-api.js';
+import { renderFilms } from '../renderFilms.js';
+
 const sortInput = refs.dropdownPopularSort;
 const sortDay = refs.dropdownListPopularSortDay;
 const sortWeek = refs.dropdownListPopularSortWeek;
@@ -29,19 +32,29 @@ function onRemoveSortInputClick(e) {
     }
 };
 
-function onSortDayClick() {
+async function onSortDayClick() {
     sortValue.textContent = 'за день';
     
     forWriteStorageClick();
-    serverRequestMoviesDay();
+    
+    const valueSort = localStorage.getItem('popularity');
+    const films = await getTrendItems(1, valueSort);
+    
+    renderFilms(films.results);
+
     removeSortInput();
 };
 
-function onSortWeekClick() {
+async function onSortWeekClick() {
     sortValue.textContent = 'за неделю';
 
     forWriteStorageClick();
-    serverRequestMoviesWeek();
+
+    const valueSort = localStorage.getItem('popularity');
+    const films = await getTrendItems(1, valueSort);
+
+    renderFilms(films.results);
+
     removeSortInput();
 };
 
@@ -67,11 +80,13 @@ else if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
 export function forWriteStorageClick() {
     if (sortValue.textContent === 'за день') {
         localStorage.setItem('popularity', PopularitySort.DAY);
+
     } else if (sortValue.textContent === 'за неделю') {
         localStorage.setItem('popularity', PopularitySort.WEEK);
     }
+    return localStorage.getItem('popularity');
 };
 
-if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
-      serverRequestMoviesWeek();
-};
+// if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
+//     //   serverRequestMoviesWeek();
+// };

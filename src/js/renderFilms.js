@@ -6,6 +6,7 @@ import { checkHasFilmImage } from './is-image.js';
 import {getVote} from './vote-avarage.js';
 
 export function renderFilms(array) {
+    refs.filmList.innerHTML = '';
     refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
     getGenres(array);
     getReleaseYear(array);

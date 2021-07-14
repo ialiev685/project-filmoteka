@@ -1,7 +1,8 @@
-const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=';
-export const KEY = '222d2b89e8701088edcf9049fa569980';
+const KEY = '222d2b89e8701088edcf9049fa569980';
 
-function getTrendItems(page) {
+function getTrendItems(page, population) {
+  
+  const BASE_URL = `https://api.themoviedb.org/3/trending/movie/${population}?api_key=`;
   try {
     const url = `${BASE_URL}${KEY}&page=${page}`;
 
@@ -13,8 +14,8 @@ function getTrendItems(page) {
   }
 }
 
-export { getTrendItems, BASE_URL, KEY };
-
+export { getTrendItems, KEY };
+// export { getTrendItems, BASE_URL, KEY };
 
 //  *для теста, если кто будет работать с этим*
 
