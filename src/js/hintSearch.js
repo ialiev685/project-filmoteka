@@ -5,6 +5,7 @@ import searchHint from '../hbs/serachHint.hbs';
 const moviesApiService = new MoviesApiService();
 
 refs.headerInput.addEventListener('input', debounce(onHint, 200));
+let currentIndex = null;
 
 async function onHint(e) {
   const value = e.target.value.trim();
@@ -27,6 +28,8 @@ async function onHint(e) {
 }
 
 function renderHint(data) {
+  currentIndex = null; //обнуление текущей выбранной строки
+
   sortVote(data);
   correctionVote(data);
   const markup = searchHint(data);
@@ -34,6 +37,7 @@ function renderHint(data) {
 
   refs.hintEl.innerHTML = markup;
   window.addEventListener('keyup', closeWithKey);
+  window.addEventListener('keydown', activeArrow);
   refs.hintEl.addEventListener('click', addValueInput);
 }
 
@@ -61,7 +65,7 @@ function removeHintBox() {
 }
 
 function closeWithKey(e) {
-  if (e.code === 'Escape') {
+  if (e.code === 'Escape' || e.code === 'Enter') {
     removeHintBox();
     window.removeEventListener('keyup', closeWithKey);
   }
@@ -73,4 +77,29 @@ function addValueInput(e) {
     refs.headerInput.focus();
     removeHintBox();
   }
+}
+
+function activeArrow(e) {
+  const rowsHintList = document.querySelectorAll('.search-hint-table .row-table');
+  if (currentIndex === null) {
+    currentIndex = 0;
+  }
+
+  const lenRows = rowsHintList.length;
+  console.log(lenRows);
+
+  if (e.code === 'ArrowDown' && currentIndex < lenRows) {
+    rowsHintList[currentIndex].classList.remove('current');
+    currentIndex += 1;
+
+    rowsHintList[currentIndex].classList.add('current');
+  }
+  if (e.code === 'ArrowUp' && currentIndex > 0) {
+    rowsHintList[currentIndex].classList.remove('current');
+    currentIndex -= 1;
+
+    rowsHintList[currentIndex].classList.add('current');
+  }
+
+  console.log('текущий индекс', currentIndex);
 }

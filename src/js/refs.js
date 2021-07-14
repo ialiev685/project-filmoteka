@@ -21,4 +21,5 @@ export const refs = {
   paginListStart: document.querySelector('.pagination-start'),
   paginListSearch: document.querySelector('.pagination-search'),
   hintEl: document.querySelector('.search-hint'),
+  rowTableEl: document.querySelector('.search-hint-table .row-table'),
 };
