@@ -23,8 +23,8 @@ async function onMovieSearchClick() {
       let fatch = await moviesApiService.fetchMovie();
       BoxPopularSortRemove();
 
-      if (fatch !== undefined) {
-        renderFilmsCards(fatch);
+      if (fatch.results !== undefined) {
+        renderFilmsCards(fatch.results);
       }
     }
     

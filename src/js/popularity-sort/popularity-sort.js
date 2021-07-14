@@ -1,6 +1,6 @@
 import { refs } from '../refs.js';
 import { serverRequestMoviesDay, serverRequestMoviesWeek } from './render-popularity-sort.js';
-
+import { getMarcup } from '../start-site.js';
 const sortInput = refs.dropdownPopularSort;
 const sortDay = refs.dropdownListPopularSortDay;
 const sortWeek = refs.dropdownListPopularSortWeek;
@@ -71,3 +71,9 @@ export function forWriteStorageClick() {
         localStorage.setItem('popularity', PopularitySort.WEEK);
     }
 };
+
+if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
+      serverRequestMoviesWeek();
+    } else if (localStorage.getItem('popularity') === PopularitySort.DAY) {
+    getMarcup();
+    }

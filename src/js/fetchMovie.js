@@ -19,7 +19,7 @@ export default class MovieApiService {
             return
         }
         
-        return films.results;
+        return films;
     };
     
     get query() {
