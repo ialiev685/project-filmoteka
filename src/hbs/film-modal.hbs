@@ -1,8 +1,8 @@
-<div class="backdrop is-hidden">
+{{!-- <div class="backdrop is-hidden"> --}}
     <article class="modal__flm-info">
         <div class="modal__img-thumb">
             <img class="modal__flm-img" src="https://image.tmdb.org/t/p/w400/{{poster_path}}" alt="{{title}}"
-                id="{{id}}" />
+                data-id="{{id}}" />
         </div>
         <div class="modal__info-container">
             <h2 class="modal__flm-title">{{title}}</h2>
@@ -29,4 +29,4 @@
         </div>
         <button type="button" class="modal__close-button" data-action="close-modal"></button>
     </article>
-</div>
+{{!-- </div> --}}
