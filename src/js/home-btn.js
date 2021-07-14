@@ -4,6 +4,7 @@ import { renderFilms } from './renderFilms.js';
 import {onClickDisappearVote} from './appear-votes.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
+refs.logoNameBtn.addEventListener('click', onHomeBtnClick);
 
 
 async function onHomeBtnClick() {
@@ -13,7 +14,7 @@ async function onHomeBtnClick() {
     const data = await getTrendItems(1);
     renderFilms(data.results);
     refs.spinner.classList.add('spinner-hidden');
-    refs.searchContainer.classList.remove('header-input-hidden');
+    refs.searchContainer.classList.remove('home-search-div-hidden');
     refs.overlay.classList.replace('overlay-library', 'overlay');
     refs.myLibraryBtn.classList.remove('current');
     refs.homeBtn.classList.add('current');

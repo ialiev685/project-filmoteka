@@ -1,37 +1,33 @@
 <header class="js-header overlay">
-  <div class="container">
-    <div class="navigation">
-      <span class="logo js-logo">
-        <img src="./images/header/header-logo.svg" alt="logo" />
-        <a class="logo-name" href="#">Filmoteka</a>
-      </span>
-      <div class="group-buttons">
-        <button type="button" class="header-button js-header-btn current">home</button>
-        <button type="button" class="header-button js-my-library-btn">my library</button>
-      </div>
-    </div>
-    <div class="js-library-btns library-btns-hidden library-btn-container">
-      <button type="button" class="header-button-low js-head-watched">Watched</button>
-      <button type="button" class="header-button-low js-head-queue">Queue</button>
-    </div>
+	<div class="container">
+		<div class="navigation">
+			<span class="logo js-logo-name">
+				<img src="./images/header/header-logo.svg" alt="logo" />
+				<button type="button" class="logo-name js-logo-name">Filmoteka</button>
+			</span>
+			<!-- <a class="logo-name" href="#">Filmoteka</a> -->
+			<div class="group-buttons">
+				<button type="button" class="header-button js-header-btn current">home</button>
+				<button type="button" class="header-button js-my-library-btn">my library</button>
+			</div>
+		</div>
+		<div class="js-library-btns library-btns-hidden library-btn-container">
+			<button type="button" class="header-button-low js-head-watched">Watched</button>
+			<button type="button" class="header-button-low js-head-queue">Queue</button>
+		</div>
 
-    <div class="home-search-div">
-      <input
-        type="text"
-        placeholder="Movie search / Поиск фильмов"
-        class="header-input js-header-input"
-        autocomplete="off"
-        name="submit"
-      />
-      <button type="submit" class="search-button">
-        <span class="magnifier-logo">
-          <img src="../src/images/header/search.svg" alt="magnifier-logo" />
-        </span>
-      </button>
-      <p class="header-message is-hidden">
-        The search result is not successful. Please, enter the correct movie name.
-      </p>
-    </div>
-    <include src="./partials/swith-theme.html"></include>
-  </div>
+		<div class="home-search-div">
+			<input type="text" placeholder="Movie search / Поиск фильмов" class="header-input js-header-input"
+				autocomplete="off" name="submit" />
+			<button type="submit" class="search-button">
+				<span class="magnifier-logo">
+					<img src="../src/images/header/search.svg" alt="magnifier-logo" />
+				</span>
+			</button>
+			<p class="header-message is-hidden">
+				The search result is not successful. Please, enter the correct movie name.
+			</p>
+		</div>
+		<include src="./partials/swith-theme.html"></include>
+	</div>
 </header>
