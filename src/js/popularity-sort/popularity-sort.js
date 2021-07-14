@@ -74,4 +74,4 @@ export function forWriteStorageClick() {
 
 if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
       serverRequestMoviesWeek();
-}
+};
