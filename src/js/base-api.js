@@ -13,8 +13,8 @@ function getTrendItems(page) {
   }
 }
 
+export { getTrendItems, BASE_URL, KEY };
 
-export { getTrendItems };
 
 //  *для теста, если кто будет работать с этим*
 

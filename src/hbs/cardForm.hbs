@@ -1,12 +1,14 @@
 {{#each this}}
-  <li class='film-card'>
+  <li class='film-card' data-cardId = {{id}}>
     <div class='overlay-wrap'>
+
       <img src='https://image.tmdb.org/t/p/w300/{{poster_path}}' alt='{{title}}' id='{{id}}' class='film-image' />
-      <div class='card-overlay'>
+      <div class='card-overlay' data-value={{id}}>
+
         <div>
-          <button type='button' class='overlay-btn'>add</button>
-          <button type='button' class='overlay-btn'>watch</button>
-          <button type='button' class='overlay-btn'>delete</button>
+          <button type='button' class='overlay-btn js-overlay-about' data-overlayid='{{id}}'>about</button>
+          <button type='button' class='overlay-btn js-overlay-watched' data-overlayid='{{id}}'>add to watched</button>
+          <button type='button' class='overlay-btn js-overlay-queue' data-overlayid='{{id}}'>add to queue</button>
         </div>
       </div>
     </div>
@@ -18,11 +20,12 @@
       <div class='data-container'>
         <p class='data-list name-genres'>
         </p>
+        <p class='data-list line'> |
+        </p>
         <p class='data-list year-list'>
         </p>
         <div class='data-vote is-hidden'>
-          <p class='vote-average'>
-            {{vote_average}}
+          <p class='vote-average'>            
           </p>
         </div>
       </div>

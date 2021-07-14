@@ -15,6 +15,13 @@ body {
 .js-header {
   position: relative;
 }
+body.dark-theme {
+  background-color: var(--color-bg-dark);
+}
+
+body.light-theme {
+  background-color: var(--color-bg-ligth);
+}
 
 .container {
   width: 320px;
@@ -30,4 +37,8 @@ body {
     width: 1024px;
     padding: 0 71px;
   }
+}
+
+.link-no-style {
+  text-decoration: none;
 }
