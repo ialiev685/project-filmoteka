@@ -74,6 +74,4 @@ export function forWriteStorageClick() {
 
 if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
       serverRequestMoviesWeek();
-    } else if (localStorage.getItem('popularity') === PopularitySort.DAY) {
-    getMarcup();
-    }
+}

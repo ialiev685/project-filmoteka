@@ -6,7 +6,7 @@ import { refs } from './refs.js';
 const listFilm = document.querySelector(".films-list");
 
 async function getMarcup(page) {
-
+      
       const data = await getTrendItems(page);
       const result = cardForm(data.results);
 
