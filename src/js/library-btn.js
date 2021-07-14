@@ -1,11 +1,12 @@
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';
 import { getFromLocalStorageWatched } from './add-to-watched-btn.js';
+import {onClickAppearVote} from './appear-votes.js';
+
 
 refs.myLibraryBtn.addEventListener('click', openLibrary);
 refs.watchedBtn.addEventListener('click', onWatchedBtn);
 refs.queueBtn.addEventListener('click', onQueueBtn);
-
 
 
 function openLibrary() {
@@ -18,6 +19,9 @@ function openLibrary() {
   refs.navContainer.style.marginBottom = '49px';
   refs.filmList.innerHTML = '';
   renderFilms(getFromLocalStorageWatched());
+
+ onClickAppearVote();
+
 }
 
 
@@ -30,3 +34,4 @@ function onQueueBtn() {
   refs.watchedBtn.classList.remove('current-btn');
   refs.queueBtn.classList.add('current-btn');
 }
+

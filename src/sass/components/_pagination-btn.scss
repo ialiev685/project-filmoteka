@@ -10,18 +10,21 @@
   border-radius: 5px;
   background-color: transparent;
 
-  
-
   &.active {
     color: var(--color-white);
     background-color: var(--color-accent);
   }
 }
 
-#pagination{
-justify-content: center;
-display: flex;
-align-items: center;
+.pagination {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 60px 0 40px 0;
+
+  @media (min-width: $tablet) {
+	  margin: 70px 0 60px 0;
+  }
 }
 
 #next-arrow {
@@ -30,4 +33,27 @@ align-items: center;
 
 #back-arrow {
   margin-right: 3px;
+}
+
+.dark-theme .pagination-btn {
+  color: var(--color-text-inverse);
+}
+
+.dark-theme .pagination {
+  color: var(--color-text-inverse);
+}
+
+.light-theme .arrow-rect {
+  fill: var(--color-bg-ligth);
+}
+
+.dark-theme .arrow-rect {
+  fill: var(--color-bg-dark);
+}
+.dark-theme .arrow-path {
+  stroke: var(--color-text-inverse);
+}
+
+.light-theme .arrow-path {
+  stroke: var(--color-text-primary);
 }

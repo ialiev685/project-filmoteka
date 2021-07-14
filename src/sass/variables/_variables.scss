@@ -1,14 +1,24 @@
 :root {
   //палитра
   --color-white: #ffffff;
+  --color-white-2: #f7f7f7;
   --color-orange: #ff6b01;
+  --color-brown: #2d2925;
+  --color-black: #000000;
+  --color-brown-2: #1d1713;
   --buttons-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   --color-card-overlay: rgba(17, 15, 15, 0.8);
 
   //переменные
   --color-text-inverse: var(--color-white);
+
+  --color-text-primary: var(--color-black);
   --color-accent: #ff6b08;
   --accent-color: var(--color-orange);
+  --color-bg-dark: var(--color-brown);
+  --color-bg-ligth: var(--color-white);
+  --color-bg-dark-footer: var(--color-brown-2);
+  --color-bg-ligth-footer: var(--color-white-2);
   --duration-and-timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
