@@ -1,5 +1,9 @@
 import movie from '../hbs/film-modal.hbs';
 import { refs } from './refs.js';
+import { renderModalFilms } from './renderModalFilm.js';
+import { openModal } from './modal-open.js';
+
+
 
 const Movie = {   // Данные для Local Storage //
   WATCHED: 'watched',
@@ -7,41 +11,74 @@ const Movie = {   // Данные для Local Storage //
 };
 
 
-refs.filmList.addEventListener('click', onMovieClick);
+// async function hgjgjg() {
 
-async function onMovieClick(e) {
-    
-    if (e.target.classList.value !== 'card-overlay') {
-        return
-    };
-    const movieId = e.target.dataset.value;
-    const article = await fetchFilm(movieId);
-    await appendArticlesMarkup(article);
+//     await openModal();
 
-    const closeButton = document.querySelector('[data-action="close-modal"]');
-    const backdrop = document.querySelector('.backdrop');
+//     const buttonWatched = document.querySelector('.js-watched');
+//     const buttonQueue = document.querySelector('.js-queue');
+//     console.log(buttonWatched);
+//     console.log(buttonQueue);
+// }
+
+// hgjgjg();
+// openModal(checkOverlayClick);
+refs.filmList.addEventListener('click', onOverlayClick);
+// console.log(refs.filmList);
+
+async function onOverlayClick(e) {
+    if (!e.target.classList.contains('card-overlay') ) {
+    return;
+    }
+    const id = openModal(e);
+    await renderModalFilms(id);
     const buttonWatched = document.querySelector('.js-watched');
     const buttonQueue = document.querySelector('.js-queue');
+    // console.log(buttonWatched);
+    // console.log(buttonQueue);
+    clickButton(buttonWatched, buttonQueue, id);
 
-    
-    clickButton(buttonWatched, buttonQueue, movieId);
-    toggleClass(backdrop);
-    closeModal(closeButton, backdrop)
-};
-   
+    // const btns = openModal(e);
 
-function fetchFilm(movieId) {
-    const KEY = '222d2b89e8701088edcf9049fa569980';
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`;
+    // console.log(btns);
+}
+// async function onMovieClick(e) {
+//     openModal(e);
 
-    return fetch(url)
-      .then(response => response.json());
-};
+//     // if (e.target.classList.value !== 'card-overlay') {
+//     //     return
+//     // };
+//     // const movieId = e.target.dataset.value;
+//     // console.log(movieId);
+//     // renderModalFilms(movieId)
+//     // const article = await fetchFilm(movieId);
+//     // await appendArticlesMarkup(article);
 
-function appendArticlesMarkup(article) {
-   const newFilmMarkup= addButtonText(article);
-    refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
-};
+//     // const closeButton = document.querySelector('[data-action="close-modal"]');
+//     // const backdrop = document.querySelector('.backdrop');
+//     // const buttonWatched = document.querySelector('.js-watched');
+//     // const buttonQueue = document.querySelector('.js-queue');
+//     // console.log(buttonWatched);
+
+
+//     // clickButton(buttonWatched, buttonQueue, movieId);
+//     // toggleClass(backdrop);
+//     // closeModal(closeButton, backdrop)
+// };
+
+
+// function fetchFilm(movieId) {
+//     const KEY = '222d2b89e8701088edcf9049fa569980';
+//     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`;
+
+//     return fetch(url)
+//       .then(response => response.json());
+// };
+
+// function appendArticlesMarkup(article) {
+//    const newFilmMarkup= addButtonText(article);
+//     refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
+// };
 
 function addButtonText(article) {
     let newDataObject = { ...article };
@@ -50,8 +87,9 @@ function addButtonText(article) {
     newDataObject.queueBtnText = addQueueBtnText;
     newDataObject.watchedBtnText = addWatchedBtnText;
     return newDataObject;
-    
+
 }
+
 function selectButtonText(data, article) {
     let buttonText = "add to";
     if (localStorage.getItem(data)) {
@@ -60,26 +98,27 @@ function selectButtonText(data, article) {
 
             localStorageData.map(elem => {
                 if (String(article.id)===elem) {
-                    buttonText = "remove from" 
+                    buttonText = "remove from"
                 };
             })
         };
     };
-    return buttonText
+    return buttonText;
 };
 
-function toggleClass(backdrop) {
-    
-    backdrop.classList.toggle('is-hidden') 
-};
+// function toggleClass(backdrop) {
+
+//     backdrop.classList.toggle('is-hidden')
+// };
 
 function clickButton(buttonWatched, buttonQueue, movieId) {
+    // console.log(buttonWatched);
     buttonWatched.addEventListener('click', (e) => {
         const button = 'watched';
         switchBtnText(button, e);
         writeDataToStorage(movieId, Movie.WATCHED)
     });
-        
+
     buttonQueue.addEventListener('click', (e) => {
         const button = 'queue';
         switchBtnText(button, e);
@@ -90,7 +129,7 @@ function clickButton(buttonWatched, buttonQueue, movieId) {
 
 function switchBtnText(button,e) {
     if (e.target.innerHTML === `add to ${button}`) {
-           
+
             e.target.innerHTML = `remove from ${button}`;
         } else {
             e.target.innerHTML = `add to ${button}`
@@ -116,30 +155,30 @@ function writeDataToStorage(movieId, storageData) {
     }
 };
 
-function closeModal(closeButton, backdrop) {
-    
-    closeButton.addEventListener('click', onButtonClick);
-    backdrop.addEventListener('click', onBackdropClick);
-    window.addEventListener('keydown', onEscKeyPress);
-    
-    function onButtonClick() {
-     
-        toggleClass(backdrop);
-        function removeMovie() {
-            backdrop.remove();
-        };
-        setTimeout(removeMovie, 500);
-        
-        window.removeEventListener('keydown', onEscKeyPress);
-        backdrop.removeEventListener('click', onBackdropClick);
-    }
-    function onEscKeyPress(evt) {
-        if (evt.code === 'Escape') {
-            onButtonClick()}
-    };
-    function onBackdropClick(evt) {
-        if (evt.currentTarget === evt.target) {
-            onButtonClick()}
-    };
-};
+// function closeModal(closeButton, backdrop) {
+
+//     closeButton.addEventListener('click', onButtonClick);
+//     backdrop.addEventListener('click', onBackdropClick);
+//     window.addEventListener('keydown', onEscKeyPress);
+
+//     function onButtonClick() {
+
+//         toggleClass(backdrop);
+//         function removeMovie() {
+//             backdrop.remove();
+//         };
+//         setTimeout(removeMovie, 500);
+
+//         window.removeEventListener('keydown', onEscKeyPress);
+//         backdrop.removeEventListener('click', onBackdropClick);
+//     }
+//     function onEscKeyPress(evt) {
+//         if (evt.code === 'Escape') {
+//             onButtonClick()}
+//     };
+//     function onBackdropClick(evt) {
+//         if (evt.currentTarget === evt.target) {
+//             onButtonClick()}
+//     };
+// };
 
