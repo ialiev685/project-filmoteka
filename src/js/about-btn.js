@@ -1,35 +1,16 @@
 import { refs } from './refs.js';
-import { onBackdropClick, OnCloseModalByEscape } from './modal-close.js';
 import { renderModalFilms } from './renderModalFilm.js';
 
-import { openModal, checkAboutBtnClick, open } from './modal-open.js';
-// openModal(checkAboutBtnClick);
+import { openModal } from './modal-open.js';
 
-// openModal('js-overlay-about');
 refs.filmList.addEventListener('click', onAboutClick);
 function onAboutClick(e) {
      if (!e.target.classList.contains('js-overlay-about')) {
          return;
-
     }
   const id = openModal(e);
   renderModalFilms(id);
 }
-// refs.filmList.addEventListener('click', e => {
-
-//   const id = e.target.dataset.overlayid;
-
-//   if (!e.target.classList.contains('js-overlay-about')) {
-//     return;
-//   }
-
-//   window.addEventListener('keydown', OnCloseModalByEscape);
-
-//   refs.filmContainer.classList.remove('is-hidden');
-
-//   renderModalFilms(id);
-//   onBackdropClick(refs.filmContainer);
-// });
 
 
 
