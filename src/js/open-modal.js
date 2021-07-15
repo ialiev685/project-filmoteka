@@ -1,12 +1,17 @@
-import movie from '../hbs/film-modal.hbs';
 import { refs } from './refs.js';
+
 import { checkHasFilmModalImage } from './is-image.js';
+
+import { renderModalFilms } from './renderModalFilm.js';
+import { openModal } from './modal-open.js';
+
 
 const Movie = {   // Данные для Local Storage //
   WATCHED: 'watched',
   QUEUE: 'queue',
 };
 
+refs.filmList.addEventListener('click', onOverlayClick);
 
 refs.filmList.addEventListener('click', onMovieClick);
 
@@ -23,8 +28,11 @@ async function onMovieClick(e) {
 
     const closeButton = document.querySelector('[data-action="close-modal"]');
     const backdrop = document.querySelector('.backdrop');
+
     const buttonWatched = document.querySelector('.js-watched');
     const buttonQueue = document.querySelector('.js-queue');
+    clickButton(buttonWatched, buttonQueue, id);
+
 
 
     clickButton(buttonWatched, buttonQueue, movieId);
@@ -46,6 +54,7 @@ function appendArticlesMarkup(article) {
     refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
 };
 
+
 function addButtonText(article) {
     let newDataObject = { ...article };
    const addQueueBtnText= selectButtonText(Movie.QUEUE, article);
@@ -55,6 +64,7 @@ function addButtonText(article) {
     return newDataObject;
 
 }
+
 function selectButtonText(data, article) {
     let buttonText = "add to";
     if (localStorage.getItem(data)) {
@@ -68,12 +78,14 @@ function selectButtonText(data, article) {
             })
         };
     };
+
     return buttonText
 };
 
 function toggleClass(backdrop) {
 
     backdrop.classList.toggle('is-hidden')
+
 };
 
 function clickButton(buttonWatched, buttonQueue, movieId) {
@@ -119,6 +131,7 @@ function writeDataToStorage(movieId, storageData) {
     }
 };
 
+
 function closeModal(closeButton, backdrop) {
 
     closeButton.addEventListener('click', onButtonClick);
@@ -145,4 +158,5 @@ function closeModal(closeButton, backdrop) {
             onButtonClick()}
     };
 };
+
 

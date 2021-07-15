@@ -12,7 +12,7 @@ function getTrendItems(page) {
     // поидее здесь должна быть нотификация, что что-то пошло не так и типо перезагрузите страницу
   }
 }
-export { getTrendItems };
+export { getTrendItems, BASE_URL, KEY };
 
 //  *для теста, если кто будет работать с этим*
 
