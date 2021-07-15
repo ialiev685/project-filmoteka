@@ -6,9 +6,9 @@
       <div class='card-overlay' data-value={{id}}>
 
         <div>
-          <button type='button' class='overlay-btn'>add</button>
-          <button type='button' class='overlay-btn'>watch</button>
-          <button type='button' class='overlay-btn'>delete</button>
+          <button type='button' class='overlay-btn  js-queue' data-value='{{id}}'>{{queueBtnText}} queue</button>
+          <button type='button' class='overlay-btn  js-watched' data-value='{{id}}'>{{watchedBtnText}} watched</button>
+          <button type='button' class='overlay-btn js-delete' data-value='{{id}}'>delete</button>
         </div>
       </div>
     </div>
