@@ -1,8 +1,6 @@
 import MoviesApiService from "./fetchMovie.js";
 import { refs } from "./refs.js";
-
 import { renderFilms } from "./renderFilms.js";
-
 
 const moviesApiService = new MoviesApiService();
 

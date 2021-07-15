@@ -12,5 +12,4 @@ export function renderFilms(array) {
     getReleaseYear(array);
     getVote(array);
     checkHasFilmImage(array);
-
-}
+};

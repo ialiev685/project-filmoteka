@@ -1,11 +1,12 @@
 import { getTrendItems } from "../js/base-api.js";
 import { getMarcup } from "../js/start-site.js";
 import { refs } from "./refs.js";
+import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
+checkAndSetPopulation();
 
 let page = 1;
 async function grtTotalPages() {
-  const valueSort = localStorage.getItem('popularity');
-  const data = await getTrendItems(page, valueSort);
+  const data = await getTrendItems(page);
   return data.total_pages;
 }
 

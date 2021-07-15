@@ -2,13 +2,13 @@ import { getTrendItems } from './base-api.js'; /* -- 'page' на будущее 
 import { renderPagination } from './pagination.js';
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';
-
 // import { renderFilms } from './renderFilms.js';
+import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
+checkAndSetPopulation();
 
 async function getMarcup(page) {
-  const valueSort = localStorage.getItem('popularity');
 
-  const data = await getTrendItems(page, valueSort);
+  const data = await getTrendItems(page);
   renderFilms(data.results);
 }
 refs.spinner.classList.add('spinner-hidden');

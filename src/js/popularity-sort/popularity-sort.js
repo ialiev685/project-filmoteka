@@ -66,18 +66,19 @@ function removeSortInput() {
 };
 
 //--------------запись в localStorage:
+checkAndSetPopulation();
 
-if (localStorage.getItem('popularity') === null) {
-    localStorage.setItem('popularity', PopularitySort.DAY);
+ function checkAndSetPopulation() {
+    if (localStorage.getItem('popularity') === null) {
+        localStorage.setItem('popularity', PopularitySort.DAY);
+    } else if (localStorage.getItem('popularity') === PopularitySort.DAY) {
+        sortValue.textContent = 'за день';
+    } else if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
+        sortValue.textContent = 'за неделю';
+    };
 }
-else if (localStorage.getItem('popularity') === PopularitySort.DAY) {
-    sortValue.textContent = 'за день';
-}
-else if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
-    sortValue.textContent = 'за неделю';
-};
 
-export function forWriteStorageClick() {
+function forWriteStorageClick() {
     if (sortValue.textContent === 'за день') {
         localStorage.setItem('popularity', PopularitySort.DAY);
 
@@ -90,3 +91,4 @@ export function forWriteStorageClick() {
 // if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
 //     //   serverRequestMoviesWeek();
 // };
+export { checkAndSetPopulation };

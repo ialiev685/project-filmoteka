@@ -1,8 +1,12 @@
+
+
 const KEY = '222d2b89e8701088edcf9049fa569980';
 
-function getTrendItems(page, population) {
+function getTrendItems(page) {
   
-  const BASE_URL = `https://api.themoviedb.org/3/trending/movie/${population}?api_key=`;
+  const valueSort = localStorage.getItem('popularity');
+  console.log(valueSort);
+  const BASE_URL = `https://api.themoviedb.org/3/trending/movie/${valueSort}?api_key=`;
   try {
     const url = `${BASE_URL}${KEY}&page=${page}`;
 

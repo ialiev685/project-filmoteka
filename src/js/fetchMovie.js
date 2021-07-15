@@ -1,7 +1,9 @@
-
 import { refs } from './refs.js';
 import { KEY } from './base-api.js';
-  
+import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
+checkAndSetPopulation();
+// const valueSort = localStorage.getItem('popularity');
+
 const URL_MOVIE_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-US&include_adult=false`;
 
 export default class MovieApiService {
