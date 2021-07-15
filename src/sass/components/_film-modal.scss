@@ -1,12 +1,13 @@
 .backdrop {
-
   z-index: 6;
   position: fixed;
 
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%; //changed
+  height: 100%; //changed
+  overflow: scroll;
+
   background-color: rgba(0, 0, 0, 0.6);
 
   opacity: 1;
@@ -26,24 +27,25 @@
 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -32%) scale(1);
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
     background-color: #fff;
 
-
     @media screen and (min-width: $tablet) {
       width: 618px;
+      // width: 620px; //менял
 
       padding: 42px 29px 40px 29px;
       display: flex;
       justify-content: center;
+      transform: translate(-50%, -50%) scale(1);
     }
-
 
     @media screen and (min-width: $desktop) {
       width: 882px;
 
       padding: 50px 30px 40px 30px;
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 }
@@ -58,7 +60,6 @@
     margin-right: 32px;
   }
   @media screen and (min-width: $desktop) {
-
     width: 396px;
     margin-right: 25px;
   }
@@ -71,7 +72,6 @@
       width: 264px;
     }
     @media screen and (min-width: $desktop) {
-
       width: 396px;
     }
   }
@@ -87,7 +87,6 @@
     width: 264px;
   }
   @media screen and (min-width: $desktop) {
-
     width: 396px;
   }
 
@@ -102,7 +101,6 @@
       margin-top: 0;
     }
     @media screen and (min-width: $desktop) {
-
       margin-bottom: 15px;
       font-size: 30px;
       line-height: 1.17;
@@ -114,9 +112,7 @@
     color: #8c8c8c;
     display: flex;
 
-
     @media screen and (min-width: $desktop) {
-
       margin-bottom: 15px;
     }
     .modal__flm-rating,
@@ -130,7 +126,6 @@
       border-radius: 5px;
 
       @media screen and (min-width: $desktop) {
-
         margin-left: 85px;
       }
     }
@@ -141,7 +136,6 @@
       color: #000;
 
       @media screen and (min-width: $desktop) {
-
         margin-left: 97px;
       }
     }
@@ -155,7 +149,6 @@
       margin-left: 39px;
 
       @media screen and (min-width: $desktop) {
-
         margin-left: 83px;
       }
     }
@@ -182,9 +175,11 @@
   color: #000000;
 }
 .modal__button {
-  padding: 14px 10px 12px 10px;
+  padding: 0;
 
   width: 111px;
+  height: 44px;
+  font-weight: 500; //added
   font-size: 12px;
   line-height: 1.33;
   text-transform: uppercase;
@@ -200,17 +195,14 @@
   }
 
   @media screen and (min-width: $tablet) {
-
     width: 123px;
-    height: 56px;
+    height: 44px; //менял
     padding: 0;
   }
-
 
   @media screen and (min-width: $desktop) {
     width: 136px;
     padding: 14px 10px 12px 10px;
-
   }
 }
 .modal__button.watched {
@@ -226,7 +218,6 @@
   & :first-child {
     margin-left: 76px;
     @media screen and (min-width: $desktop) {
-
       margin-left: 120px;
     }
   }
