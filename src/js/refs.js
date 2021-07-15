@@ -25,5 +25,8 @@ export const refs = {
   paginListStart: document.querySelector(".pagination-start"),
   paginListSearch: document.querySelector(".pagination-search"),
 
+  
+  authBtn: document.querySelector('.auth-btn'),  
+
 };
 
