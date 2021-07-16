@@ -7,7 +7,12 @@ refs.logo.addEventListener('click', onLogoClick);
 
 async function onLogoClick(e) {
   e.preventDefault();
+  refs.watchedFilms.innerHTML = '';
   refs.filmList.innerHTML = '';
+  refs.headerInput.value = '';
+   refs.myLibraryBtn.classList.remove('current');
+
+  refs.homeBtn.classList.add('current');
   if (
     !refs.libraryBtns.classList.contains('library-btns-hidden') ||
     refs.searchContainer.classList.contains('header-input-hidden')

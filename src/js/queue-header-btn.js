@@ -38,16 +38,15 @@ refs.queueBtn.addEventListener('click', () => {
     const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
     const dataForRenderQ = JSON.parse(dataFromLocalQ);
     if (dataFromLocalQ) {
-
         renderQueueFilms(dataForRenderQ);
-    }
+    } else refs.watchedFilms.innerHTML = '';
 });
 
 
 function renderQueueFilms(films) {
     // openLibrary();
 refs.watchedFilms.innerHTML = '';
-    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
 
   getGenres(films);
 //   console.log(films);

@@ -18,6 +18,7 @@ async function onHomeBtnClick() {
   refs.myLibraryBtn.classList.remove('current');
   refs.homeBtn.classList.add('current');
   refs.queueBtn.classList.remove('current-btn');
+  refs.headerInput.value = '';
 
   // onClickDisappearVote();
 }

@@ -31,7 +31,7 @@ refs.myLibraryBtn.addEventListener('click', () => {
     const dataForRender = JSON.parse(dataFromLocal);
     if (dataForRender) {
         renderWatchedFilms(dataForRender);
-    }
+    } else refs.watchedFilms.innerHTML = '';
 });
 
 refs.watchedBtn.addEventListener('click', () => {
@@ -39,7 +39,7 @@ refs.watchedBtn.addEventListener('click', () => {
     const dataForRender = JSON.parse(dataFromLocal);
     if (dataForRender) {
         renderWatchedFilms(dataForRender);
-    }
+    } else refs.watchedFilms.innerHTML = '';
 });
 
 
