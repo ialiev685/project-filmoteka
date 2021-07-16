@@ -2,10 +2,11 @@ const KEY = '222d2b89e8701088edcf9049fa569980';
 
 function getTrendItems(page) {
   const valueSort = localStorage.getItem('popularity');
+  const currentLang = localStorage.getItem('language');
 
   const BASE_URL = `https://api.themoviedb.org/3/trending/movie/${valueSort}?api_key=`;
   try {
-    const url = `${BASE_URL}${KEY}&page=${page}`;
+    const url = `${BASE_URL}${KEY}&page=${page}&language=${currentLang}&append_to_response=images&include_image_language=${currentLang}`;
 
     const result = fetch(url).then(response => response.json());
     return result;

@@ -30,6 +30,9 @@ export const refs = {
   footerModal: document.querySelector('.js-footer-modal'),
 
   switchThemeCheckbox: document.querySelector('.switch-theme'),
+  switchLangCheckbox: document.querySelector('.switch-lang'),
+  signLangEng: document.querySelector('.sign-eng'),
+  signLangRus: document.querySelector('.sign-rus'),
 
   bodyEl: document.body,
   paginListStart: document.querySelector(".pagination-start"),

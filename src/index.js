@@ -32,5 +32,6 @@ import './js/open-modal';
 
 
 import './js/switchTheme.js';
+import './js/switch-language.js';
 
 

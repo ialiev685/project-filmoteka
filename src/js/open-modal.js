@@ -27,7 +27,8 @@ async function onMovieClick(e) {
 
 function fetchFilm(movieId) {
   const KEY = '222d2b89e8701088edcf9049fa569980';
-  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`;
+  const currentLang = localStorage.getItem('language');
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=${currentLang}&append_to_response=images&include_image_language=${currentLang}`;
 
   return fetch(url).then(response => response.json());
 }

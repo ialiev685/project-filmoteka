@@ -6,13 +6,15 @@
         <a class="logo-name" href="#">Filmoteka</a>
       </span>
       <div class="group-buttons">
-        <button type="button" class="header-button js-header-btn current">home</button>
-        <button type="button" class="header-button js-my-library-btn">my library</button>
+        <button type="button" class="header-button js-header-btn lang-home current">home</button>
+        <button type="button" class="header-button js-my-library-btn lang-library">
+          my library
+        </button>
       </div>
     </div>
     <div class="js-library-btns library-btns-hidden library-btn-container">
-      <button type="button" class="header-button-low js-head-watched">Watched</button>
-      <button type="button" class="header-button-low js-head-queue">Queue</button>
+      <button type="button" class="header-button-low js-head-watched lang-watch">Watched</button>
+      <button type="button" class="header-button-low js-head-queue lang-queue">Queue</button>
     </div>
 
     <div class="home-search-div">
@@ -29,7 +31,7 @@
         </span>
       </button>
 
-      <p class="header-message is-hidden">
+      <p class="header-message lang-message is-hidden">
         The search result is not successful. Please, enter the correct movie name.
       </p>
     </div>
@@ -37,7 +39,7 @@
   </div>
 
   <div class="textarea-demo-left-item">
-    <div class="textarea-demo-left-item-left">Популярные</div>
+    <div class="textarea-demo-left-item-left lang-popular">Популярные</div>
     <div class="textarea-demo-left-item-right">
       <div id="textarea-demo-height" class="dropdown">
         <div class="dropdown-value">за день</div>
@@ -48,5 +50,4 @@
       </div>
     </div>
   </div>
-
 </header>

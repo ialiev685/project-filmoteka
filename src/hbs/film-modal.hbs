@@ -24,14 +24,14 @@
         Original Title
         <span class='modal-flm-title-data'>{{original_title}}</span>
       </p>
-      <ul class='modal__flm-data modal__genres'>Genre
+      <ul class='modal__flm-data modal__genres lang-genre'>Genre
         {{#each genres}}
           <li class='modal__genre'>{{name}}</li>
         {{/each}}
       </ul>
       <h3 class='modal__flm-about'>About</h3>
       <p class='modal__flm-description'>{{overview}}</p>
-      <button class='modal__button watched js-watched'>{{watchedBtnText}} watched</button>
+      <button class='modal__button watched js-watched lang-add-watched'>{{watchedBtnText}} watched</button>
       <button class='modal__button queue js-queue'>{{queueBtnText}} queue</button>
     </div>
     <button type='button' class='modal__close-button' data-action='close-modal'></button>

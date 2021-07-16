@@ -1,0 +1,39 @@
+{
+  "home": {
+    "en": "home",
+    "ru": "домой"
+  },
+  "library": {
+    "en": "my library",
+    "ru": "моя библиотека"
+  },
+  "watch": {
+    "en": "watched",
+    "ru": "просмотренные"
+  },
+  "queue": {
+    "en": "queue",
+    "ru": "в очереди"
+  },
+  "message": {
+    "en": "The search result is not successful. Please, enter the correct movie name.",
+    "ru": "Результат поиска был неуспешным. Пожалуйста, введите правильное название фильма."
+  },
+  "popular": {
+    "en": "Popular",
+    "ru": "Популярные"
+  },
+  "rights": {
+    "en": "2021 | All Rights Reserved |",
+    "ru": "2021 | Все Права Защищены |"
+  },
+  "develop": {
+    "en": "Developed with",
+    "ru": "Разработано с"
+  },
+  "students": {
+    "en": "GoIT Students",
+    "ru": "cтудентами GoIT"
+  },
+}
+
