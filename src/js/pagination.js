@@ -1,10 +1,10 @@
-import { getTrendItems } from '../js/base-api.js';
+// import { getTrendItems } from '../js/base-api.js';
 import { getMarcup } from '../js/start-site.js';
 import { refs } from './refs.js';
 import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
 import MoviesApiService from './fetchMovie.js';
 import { renderFilms } from './renderFilms.js';
-import { renderFilmsCards } from './movieSearch.js';
+// import { renderFilmsCards } from './movieSearch.js';
 const moviesApiService = new MoviesApiService();
 
 checkAndSetPopulation();
@@ -66,7 +66,7 @@ async function nextRenderMarcup(page) {
 
   if (dataSearch === 'empty') {
     getMarcup(page);
-  } else if (dataSearch !== 'empty' && dataSearch !== undefined) {
+  } else if (dataSearch !== 'empty') {
     moviesApiService.query = dataSearch;
     const value = dataSearch;
     const data = await moviesApiService.fetchMovie(page);

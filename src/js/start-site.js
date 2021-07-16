@@ -1,5 +1,5 @@
 import { getTrendItems } from './base-api.js'; /* -- 'page' на будущее для пагинации */
-import { renderPagination } from './pagination.js';
+
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';
 import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';

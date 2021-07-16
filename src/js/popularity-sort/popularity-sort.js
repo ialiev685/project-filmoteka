@@ -1,6 +1,6 @@
 import { refs } from '../refs.js';
 // import { serverRequestMoviesDay, serverRequestMoviesWeek } from './render-popularity-sort.js';
-import { getMarcup } from '../start-site.js';
+// import { getMarcup } from '../start-site.js';
 import { getTrendItems } from '../base-api.js';
 
 import { renderFilms } from '../renderFilms.js';
