@@ -16,4 +16,4 @@ export function renderFilms(array, valueSeatch = 'empty') {
   getVote(array.results);
   checkHasFilmImage(array.results);
   sortFilms(array.results);
-}
+};

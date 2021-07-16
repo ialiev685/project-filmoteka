@@ -17,7 +17,7 @@ export function getGenres(data) {
     return genreName.name;    
   });
   })
-  
+
   const genresListName = document.querySelectorAll('.name-genres');
   
   [...genresListName].forEach((elem, index) => {  
