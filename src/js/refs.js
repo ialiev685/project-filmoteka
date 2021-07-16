@@ -34,5 +34,7 @@ export const refs = {
   bodyEl: document.body,
   paginListStart: document.querySelector(".pagination-start"),
   paginListSearch: document.querySelector(".pagination-search"),
+
+   watchedFilms: document.querySelector('.js-watched-films'),
 };
 

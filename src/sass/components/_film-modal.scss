@@ -175,10 +175,13 @@
   color: #000000;
 }
 .modal__button {
+  text-align: center;
   padding: 0;
+  // padding: 14px 10px 12px 10px;
 
   width: 111px;
   height: 44px;
+
   font-weight: 500; //added
   font-size: 12px;
   line-height: 1.33;
@@ -196,13 +199,14 @@
 
   @media screen and (min-width: $tablet) {
     width: 123px;
-    height: 44px; //менял
+    // height: 44px; //менял
     padding: 0;
   }
 
   @media screen and (min-width: $desktop) {
     width: 136px;
-    padding: 14px 10px 12px 10px;
+
+    // padding: 14px 10px 12px 10px;
   }
 }
 .modal__button.watched {
