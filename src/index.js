@@ -33,4 +33,6 @@ import './js/open-modal';
 
 import './js/switchTheme.js';
 
+import './js/sort-films/sortRenderFilms.js';
+import './js/sort-films/sortFilmsBtn.js';
 

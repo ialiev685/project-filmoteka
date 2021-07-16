@@ -34,5 +34,10 @@ export const refs = {
   bodyEl: document.body,
   paginListStart: document.querySelector(".pagination-start"),
   paginListSearch: document.querySelector(".pagination-search"),
+
+  sortFilmsBtnGenre: document.getElementById('genre'),
+  sortFilmsBtnRating: document.getElementById('rating'),
+  sortFilmsBtnYear: document.getElementById('year'),
+    sortFilmsBox: document.querySelector('.sort-films-box'),
 };
 
