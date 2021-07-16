@@ -2,6 +2,7 @@ import { refs } from './refs.js';
 import ButtonAction from './button-action.js';
 import movie from '../hbs/film-modal.hbs';
 import { checkHasFilmModalImage } from './is-image.js';
+import { onClickDisappearVote } from './appear-votes.js';
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',

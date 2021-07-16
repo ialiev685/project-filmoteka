@@ -13,6 +13,7 @@ import { getReleaseYear } from './years.js';
 // import { checkHasFilmImage } from './is-image.js';
 import { getVote } from './vote-avarage.js';
 import { openLibrary } from './library-btn.js';
+import { onClickAppearVote } from './appear-votes.js';
 
 
 const Movie = {
@@ -65,4 +66,5 @@ function renderWatchedFilms(films) {
     // });
     getReleaseYear(films);
     getVote(films);
+    onClickAppearVote();
 }

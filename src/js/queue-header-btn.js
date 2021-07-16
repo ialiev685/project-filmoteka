@@ -15,6 +15,7 @@ import { getReleaseYear } from './years.js';
 import {getVote} from './vote-avarage.js';
 import { openLibrary } from './library-btn.js';
 // import { getReleaseYear } from './years.js';
+import { onClickAppearVote } from './appear-votes.js';
 
 const Movie = {
   // Данные для Local Storage //
@@ -63,6 +64,7 @@ refs.watchedFilms.innerHTML = '';
 //   });
     getReleaseYear(films);
     getVote(films);
+    onClickAppearVote();
 
 }
 

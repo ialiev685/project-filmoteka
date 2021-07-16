@@ -1,6 +1,7 @@
 import { refs } from './refs.js';
 import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
+// import { }
 
 refs.logo.addEventListener('click', onLogoClick);
 
@@ -16,6 +17,7 @@ async function onLogoClick(e) {
   }
   refs.spinner.classList.remove('spinner-hidden');
   const data = await getTrendItems(1);
+  console.log(data);
   renderFilms(data);
   refs.spinner.classList.add('spinner-hidden');
 }
