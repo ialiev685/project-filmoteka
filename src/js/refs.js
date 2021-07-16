@@ -18,6 +18,13 @@ export const refs = {
   navContainer: document.querySelector('.navigation'),
 
   warningString: document.querySelector('.header-message'),
+
+  boxPopularSort: document.querySelector('.textarea-demo-left-item'),
+  dropdownPopularSort: document.querySelector('#textarea-demo-height'),
+  dropdownListPopularSortDay: document.querySelector('#day'),
+  dropdownListPopularSortWeek: document.querySelector('#week'),
+  dropdownPopularSortValue: document.querySelector('.dropdown-value'),
+
   filmContainer: document.querySelector('.backdrop'),
 
   footerModal: document.querySelector('.js-footer-modal'),
@@ -27,6 +34,5 @@ export const refs = {
   bodyEl: document.body,
   paginListStart: document.querySelector(".pagination-start"),
   paginListSearch: document.querySelector(".pagination-search"),
-
 };
 

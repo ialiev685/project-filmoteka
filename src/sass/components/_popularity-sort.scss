@@ -1,0 +1,99 @@
+.textarea-demo-left-item {
+  height: 40px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 45px;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+.textarea-demo-left-item-left,
+.textarea-demo-left-item-right {
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 1.143;
+}
+.textarea-demo-left-item-left {
+  margin-right: 10px;
+}
+.textarea-demo-left-item-right > .dropdown {
+  min-width: 120px;
+}
+.dropdown {
+  border: 1px solid var(--color-card-overlay);
+  background: var(--color-white);
+  border-radius: 6px;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.dropdown:hover {
+  border-color: var(--color-orange);
+}
+.dropdown:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(50% - 3px);
+  right: 15px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: var(--color-card-overlay) transparent transparent transparent;
+  transition: border-color 0.3s;
+}
+.dropdown:hover:before {
+  border-color: var(--color-orange) transparent transparent transparent;
+}
+.dropdown-value {
+  color: var(--color-card-overlay);
+  padding: 4px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.dropdown:hover .dropdown-value {
+  color: var(--color-orange);
+}
+.dropdown-list {
+  width: 100%;
+  min-height: 52px;
+
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: opacity 0.3s, visibility 0.3s, top 0.2s;
+  top: 24px;
+  background: #fff;
+  color: var(--color-orange);
+  box-shadow: 0 16px 29px -10px var(--control-boxshadow-color),
+    0 12px 50px -5px var(--control-boxshadow-color);
+  z-index: 9999;
+  border-radius: 6px;
+  border: 1px solid var(--color-orange);
+}
+.active.dropdown .dropdown-list {
+  opacity: 1;
+  visibility: visible;
+}
+.dropdown-list > div {
+  height: 25px;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 4px;
+  line-height: 25px;
+  padding: 0px 7px;
+}
+.dropdown-list > div:hover {
+  background: var(--color-orange);
+  color: var(--color-white);
+}

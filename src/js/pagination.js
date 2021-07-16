@@ -1,25 +1,26 @@
-import { getTrendItems } from "../js/base-api.js";
-import { getMarcup } from "../js/start-site.js";
-import { refs } from "./refs.js";
+// import { getTrendItems } from '../js/base-api.js';
+import { getMarcup } from '../js/start-site.js';
+import { refs } from './refs.js';
+import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
+import MoviesApiService from './fetchMovie.js';
+import { renderFilms } from './renderFilms.js';
+// import { renderFilmsCards } from './movieSearch.js';
+const moviesApiService = new MoviesApiService();
+
+checkAndSetPopulation();
 
 let page = 1;
-async function grtTotalPages() {
-  const data = await getTrendItems(page);
-  return data.total_pages;
-}
+let dataSearch = '';
 
-async function renderPagination() {
-  let pagesTotalStartSite = await grtTotalPages();
-
-  const numbers = Array(pagesTotalStartSite)
+function renderPagination(total_pages, curPage, searchValue) {
+  dataSearch = searchValue;
+  page = curPage;
+  const numbers = Array(total_pages)
     .fill(0)
     .map((el, i) => i + 1);
 
   const elements = numbers.map(
-    (el) =>
-      `<button class="pagination-btn ${
-        el === page ? "active" : ""
-      }">${el}</button>`
+    el => `<button class="pagination-btn ${el === page ? 'active' : ''}">${el}</button>`,
   );
 
   const backArrow = `<svg width="40" height="40" fill="none" class='arrow' id="back-arrow">
@@ -48,34 +49,41 @@ async function renderPagination() {
   const slicedElements = elements.slice(start, end);
 
   refs.paginListStart.innerHTML =
-    (page === 1 ? "" : backArrow) +
-    (startCondition ? elements[0] + "&#8943" : "") +
-    slicedElements.join("") +
-    (endConditionArrow ? "&#8943" : "") +
-    (endCondition ? elements[elements.length - 1] : "") +
-    (page === elements.length ? "" : nextArrow);
+    (page === 1 ? '' : backArrow) +
+    (startCondition ? elements[0] + '&#8943' : '') +
+    slicedElements.join('') +
+    (endConditionArrow ? '&#8943' : '') +
+    (endCondition ? elements[elements.length - 1] : '') +
+    (page === elements.length ? '' : nextArrow);
   nextArrow;
 }
-renderPagination();
+// renderPagination();
 
-refs.paginListStart.addEventListener("click", listener, false);
+refs.paginListStart.addEventListener('click', listener, false);
 
-function nextRenderMarcup(page) {
-  refs.filmList.innerHTML = "";
-  // refs.paginListStart.innerHTML = "Загружаю..."; или что-то еще сюда прикрутить
-  getMarcup(page);
+async function nextRenderMarcup(page) {
+  refs.filmList.innerHTML = '';
+
+  if (dataSearch === 'empty') {
+    getMarcup(page);
+  } else if (dataSearch !== 'empty') {
+    moviesApiService.query = dataSearch;
+    const value = dataSearch;
+    const data = await moviesApiService.fetchMovie(page);
+    renderFilms(data, value);
+  }
 }
 
 function incremRenderMarcup() {
   page += 1;
   nextRenderMarcup(page);
-  renderPagination();
+  // renderPagination();
 }
 
 function decremRenderMarcup() {
   page -= 1;
   nextRenderMarcup(page);
-  renderPagination();
+  // renderPagination();
 }
 
 function listener(ev) {
@@ -84,15 +92,15 @@ function listener(ev) {
   }
 
   const btns = [...ev.currentTarget.children];
-  btns.forEach((btn) => btn.classList.remove("active"));
-  ev.target.classList.add("active");
+  btns.forEach(btn => btn.classList.remove('active'));
+  ev.target.classList.add('active');
 
-  if (ev.target.parentElement.id === "next-arrow") {
+  if (ev.target.parentElement.id === 'next-arrow') {
     incremRenderMarcup();
     return;
   }
 
-  if (ev.target.parentElement.id === "back-arrow") {
+  if (ev.target.parentElement.id === 'back-arrow') {
     decremRenderMarcup();
     return;
   }
@@ -102,3 +110,5 @@ function listener(ev) {
 
   renderPagination();
 }
+
+export { renderPagination };
