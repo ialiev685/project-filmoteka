@@ -17,14 +17,9 @@ async function onMovieClick(e) {
     const movieId = e.target.dataset.value;
     const article = await fetchFilm(movieId);
     await appendArticlesMarkup(article);
-
     const closeButton = document.querySelector('[data-action="close-modal"]');
     const backdrop = document.querySelector('.backdrop');
-    const buttonWatched = document.querySelector('.js-watched');
-    const buttonQueue = document.querySelector('.js-queue');
-
     
-    btnSwitch.clickButtonMobile(buttonWatched, buttonQueue, movieId);
     toggleClass(backdrop);
     closeModal(closeButton, backdrop)
 };
@@ -41,6 +36,10 @@ function fetchFilm(movieId) {
 function appendArticlesMarkup(article) {
    const newFilmMarkup= btnSwitch.addButtonText(article);
     refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
+    const buttonWatched = document.querySelector('.js-watched');
+    const buttonQueue = document.querySelector('.js-queue');
+
+    btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);;
 };
 
 function toggleClass(backdrop) {

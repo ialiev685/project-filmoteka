@@ -13,13 +13,9 @@ const btnSwitch = new ButtonAction({
 
 export function renderFilms(array) {
     const newArr = array.slice();
-    const newFilmMarkup = newArr.map((elem) => { return btnSwitch.addButtonText(elem) });
-    refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmMarkup));
-    const queueList = document.querySelectorAll('.js-queue');
-    const watchedList = document.querySelectorAll('.js-watched');
-    const deleteList = document.querySelectorAll('.js-delete');
-   
-    btnSwitch.clickButtonOverlay(queueList,watchedList,deleteList);
+    const newFilmsMarkup = newArr.map((elem) => { return btnSwitch.addButtonText(elem) });
+    refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmsMarkup));
+    btnSwitch.clickButtonOverlay(newFilmsMarkup);
     getGenres(array);
     getReleaseYear(array);
     getVote(array);
