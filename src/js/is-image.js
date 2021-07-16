@@ -12,7 +12,6 @@ export function checkHasFilmImage(data) {
 
 export function checkHasFilmModalImage(film) {
   const filmModalImg = document.querySelector('.js-modal-film-image');
-  console.log(film);
   if (film.poster_path === null) {
     filmModalImg.src = defaultImage;
   }
