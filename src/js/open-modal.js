@@ -3,6 +3,7 @@ import ButtonAction from './button-action.js';
 import movie from '../hbs/film-modal.hbs';
 import { checkHasFilmModalImage } from './is-image.js';
 import { onClickDisappearVote } from './appear-votes.js';
+import { putRoundedPopularity } from './put-rounded-pop';
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
@@ -10,6 +11,7 @@ const btnSwitch = new ButtonAction({
 });
 
 refs.filmList.addEventListener('click', onMovieClick);
+refs.watchedFilms.addEventListener('click', onMovieClick);
 
 async function onMovieClick(e) {
   if (e.target.classList.value !== 'card-overlay') {
@@ -18,7 +20,8 @@ async function onMovieClick(e) {
   const movieId = e.target.dataset.value;
   const article = await fetchFilm(movieId);
   appendArticlesMarkup(article);
-  checkHasFilmModalImage(article);
+
+
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');
 
@@ -36,6 +39,8 @@ function fetchFilm(movieId) {
 function appendArticlesMarkup(article) {
   const newFilmMarkup = btnSwitch.addButtonText(article);
   refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
+  putRoundedPopularity(article.popularity);
+  checkHasFilmModalImage(article);
   const buttonWatched = document.querySelector('.js-watched');
   const buttonQueue = document.querySelector('.js-queue');
 
