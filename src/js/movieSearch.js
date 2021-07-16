@@ -34,7 +34,7 @@ async function onMovieSearchClick(page) {
         // refs.paginListStart.style.display = 'none';
         // let pagesTotalSearch = fatch.total_pages;
         // renderPaginationSearch(pagesTotalSearch, page);
-        refs.paginListSearch.style.display = 'none';
+        // refs.paginListSearch.style.display = 'none';
       }
     }
   } catch (error) {
@@ -139,9 +139,9 @@ function showWarningString() {
 //   onMovieSearchClick(page);
 // }
 
-// function getPage() {
-//   return page;
-// }
+function getPage() {
+  return page;
+}
 
 function BoxPopularSortRemove() {
   refs.boxPopularSort.classList.add('is-hidden');
