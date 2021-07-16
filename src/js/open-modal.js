@@ -1,4 +1,3 @@
-import movie from '../hbs/film-modal.hbs';
 import { refs } from './refs.js';
 import ButtonAction from './button-action.js';
 

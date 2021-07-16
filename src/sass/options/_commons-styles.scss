@@ -12,6 +12,9 @@ body {
   font-family: Roboto;
 }
 
+.js-header {
+  position: relative;
+}
 body.dark-theme {
   background-color: var(--color-bg-dark);
 }
