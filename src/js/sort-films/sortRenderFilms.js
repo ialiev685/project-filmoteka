@@ -13,13 +13,16 @@ function sortFilms(arr) {
     const arrayGenres = document.querySelectorAll('.name-genres');
     const arrayYear = document.querySelectorAll('.year-list');
     const arrayRating = document.querySelectorAll('.vote-average');
-    
+
+    function s() {
+        const s = arr
+    return s
+    }
     // const dataFilms = {
     //     genres: [],
     //     year: [],
     //     rating: [],
     // };
-
 
 //    const startArray = [...arrayGenres].map((el) => {
 //        dataFilms.genres.push(el.innerHTML);
@@ -27,33 +30,30 @@ function sortFilms(arr) {
 //     });
     
 
-   // -------------------------------
-    
-    console.dir(arrayGenres);
-
-    arr.forEach(obj => {
-            // console.log(obj);
-        arrayGenres.forEach(stringGenres => {
-            // console.dir(stringGenres.innerText);
-            // obj.genre_ids = stringGenres.innerText;
-        });
-        // arrayYear.forEach((years) => {
-        //     obj.release_date = years.innerText;
-        // });
+   // ---------Изменяю массыв объектов карточек на нормальные года и жанры:
+arr.map((obj, idx) => {
+    obj.genre_ids = [...arrayGenres][idx].innerText;
+    obj.release_date = [...arrayYear][idx].innerText;
     });
 
-
-
-    // function sortGenresFilmsDown() {
-    //     arr.sort((a, b) => {
-    //        a.genre_ids - b.genre_ids
-    //     })
-    //     return
-    // };
+    // -------функции сортировки:
+function sortGenresFilmsDown() {
+    arr.sort((a, b) => {
+    if(a.genre_ids < b.genre_ids) { return -1; }
+    if(a.genre_ids > b.genre_ids) { return 1; }
+    return 0;
+    })
+};
     
-    // function sortGenresFilmsUp() {
-    //     return dataFilms.genres.reverse();
-    // };
+    // console.log(arr);
+    
+function sortGenresFilmsUp() {
+    arr.sort((a, b) => {
+    if(a.genre_ids < b.genre_ids) { return 1; }
+    if(a.genre_ids > b.genre_ids) { return -1; }
+    return 0;
+    })
+};
 
     
 
@@ -80,8 +80,8 @@ function sortFilms(arr) {
         if (!btnGenre.classList.contains('sort-films-btn-down') && !btnGenre.classList.contains('sort-films-btn-up')) {
             btnGenre.classList.add('sort-films-btn-down');
             
-            sortGenresFilmsDown()
-            // console.log(arr);
+            sortGenresFilmsDown();
+            console.log(arr);
             // renderModifiedFilms(arr)
           
             
@@ -93,16 +93,18 @@ function sortFilms(arr) {
             btnGenre.classList.add('sort-films-btn-up');
             btnGenre.classList.remove('sort-films-btn-down');
 
-            
-            renderModifiedFilms(newArrayFilms);
+            sortGenresFilmsUp();
+            console.log(arr);
+            // renderModifiedFilms(arr);
             
             return
         }
         if (btnGenre.classList.contains('sort-films-btn-up')) {
             btnGenre.classList.remove('sort-films-btn-up');
 
-            
-            renderModifiedFilms(newArrayFilms);
+            s()
+            console.log(s());
+            // renderModifiedFilms(s);
             
             return
         }
