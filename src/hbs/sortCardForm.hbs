@@ -1,0 +1,48 @@
+{{#each this}}
+  <li class='film-card' data-cardId={{id}}>
+    <div class='overlay-wrap'>
+
+      <img
+        src='https://image.tmdb.org/t/p/w300/{{poster_path}}'
+        alt='{{title}}'
+        id='{{id}}'
+        class='film-image js-film-image'
+      />
+      <div class='card-overlay' data-value={{id}}>
+
+        <div>
+          <button
+            type='button'
+            class='overlay-btn js-overlay-about'
+            data-overlayid='{{id}}'
+          >about</button>
+          <button type='button' class='overlay-btn js-overlay-watched' data-overlayid='{{id}}'>add
+            to watched</button>
+          <button type='button' class='overlay-btn js-overlay-queue' data-overlayid='{{id}}'>add to
+            queue</button>
+        </div>
+      </div>
+    </div>
+
+    <div class='data-card'>
+      <h1 class='film-title'>
+        {{title}}
+      </h1>
+      <div class='data-container'>
+        <p class='data-list name-genres'>
+            {{genre_ids}}
+        </p>
+        <p class='data-list line'>
+          |
+        </p>
+        <p class='data-list year-list'>
+            {{release_date}}
+        </p>
+        <div class='data-vote is-hidden'>
+          <p class='vote-average'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
+{{/each}}

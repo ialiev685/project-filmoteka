@@ -1,6 +1,7 @@
 import MoviesApiService from './fetchMovie.js';
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';
+import { sortBtnRemove } from './sortRenderFilms.js';
 
 const moviesApiService = new MoviesApiService();
 
@@ -11,7 +12,12 @@ refs.headerInput.addEventListener('input', DeleteWarningString);
 
 let page = 1;
 async function onMovieSearchClick(page) {
+
+  sortBtnRemove();
+  
+=======
   refs.hintEl.classList.add('is-hidden');
+
   try {
     if (moviesApiService.searchQuery !== refs.headerInput.value) {
       page = 1;

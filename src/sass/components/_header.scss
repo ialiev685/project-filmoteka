@@ -118,6 +118,10 @@
   font-size: 14px;
   line-height: 1.143;
   margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 .header-message.is-hidden {

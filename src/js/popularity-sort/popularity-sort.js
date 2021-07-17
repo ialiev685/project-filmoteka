@@ -2,7 +2,7 @@ import { refs } from '../refs.js';
 // import { serverRequestMoviesDay, serverRequestMoviesWeek } from './render-popularity-sort.js';
 // import { getMarcup } from '../start-site.js';
 import { getTrendItems } from '../base-api.js';
-
+import { sortBtnRemove } from '../sortRenderFilms.js';
 import { renderFilms } from '../renderFilms.js';
 
 const sortInput = refs.dropdownPopularSort;
@@ -36,7 +36,7 @@ async function onSortDayClick() {
   sortValue.textContent = 'за день';
 
   forWriteStorageClick();
-
+  sortBtnRemove();
   const films = await getTrendItems(1);
 
   renderFilms(films);
@@ -48,7 +48,7 @@ async function onSortWeekClick() {
   sortValue.textContent = 'за неделю';
 
   forWriteStorageClick();
-
+  sortBtnRemove();
   const films = await getTrendItems(1);
 
   renderFilms(films);

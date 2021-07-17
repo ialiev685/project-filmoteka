@@ -1,0 +1,125 @@
+.sort-films-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: -80px;
+
+  @media screen and (max-width: $tablet - 1) {
+    // height: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &.is-hidden {
+    display: none;
+  }
+}
+.sort-films-text {
+  display: inline-block;
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 1.143;
+  margin: 0;
+  margin-right: 5px;
+  @media screen and (max-width: $tablet - 1) {
+    min-width: 60px;
+    display: none;
+  }
+}
+.sort-films-list {
+  display: flex;
+  justify-content: center;
+
+  // @media screen and (max-width: $tablet - 1) {
+  // flex-wrap: wrap;
+  // min-width: 160px;
+  // margin: -3px;
+  // }
+}
+
+.sort-films-item {
+  width: calc((100% - 4 * 3px) / 2);
+  margin: 3px;
+  min-width: 80px;
+  // @media screen and (max-width: $tablet - 1) {
+  //   min-width: 40px;
+  // }
+  &:not(:last-child) {
+    margin-right: 3px;
+  }
+}
+
+.sort-films-btn {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.143;
+  text-align: left;
+  color: var(--color-white);
+  background-color: var(--color-sort-btn);
+  border: 2px solid var(--color-sort-btn);
+  border-radius: 6px;
+  cursor: pointer;
+  padding-left: 2px;
+  &:active {
+    background-color: var(--color-sort-clear-btn);
+    border-color: var(--color-sort-clear-btn);
+    color: var(--color-black);
+  }
+  &:before {
+    content: '\2261';
+    display: block;
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 3px;
+    top: 2px;
+    font-weight: 700;
+    color: var(--color-card-overlay);
+    transition: border-color 0.3s;
+  }
+  &-down:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 2px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: var(--color-card-overlay) transparent transparent transparent;
+    transition: border-color 0.3s;
+  }
+  &-up:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 2px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: var(--color-card-overlay) transparent transparent transparent;
+    transition: border-color 0.3s;
+    transform: rotate(180deg);
+  }
+}
+
+.clear-btn {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.143;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--color-sort-clear-btn);
+  border: 2px solid var(--color-sort-clear-btn);
+  color: var(--color-black);
+  &:active {
+    background-color: var(--color-sort-clear-btn-active);
+    border: 2px solid var(--color-sort-clear-btn-active);
+    color: var(--color-card-overlay);
+  }
+}

@@ -30,6 +30,8 @@ import './js/open-modal';
 
 import './js/switchTheme.js';
 
+import './js/sortRenderFilms.js';
+
 
 import './js/hintSearch.js';
 
