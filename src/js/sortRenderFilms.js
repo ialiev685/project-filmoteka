@@ -1,16 +1,16 @@
 import { refs } from './refs.js';
 import sortCardForm from '../hbs/sortCardForm.hbs';
+import { checkHasFilmImage } from './is-image.js';
 
-    const btnGenre = refs.sortFilmsBtnGenre;
-    const btnRating = refs.sortFilmsBtnRating;
-    const btnYear = refs.sortFilmsBtnYear;
+const btnGenre = refs.sortFilmsBtnGenre;
+const btnRating = refs.sortFilmsBtnRating;
+const btnYear = refs.sortFilmsBtnYear;
 
 function sortFilms(arr) {
     
     // ------------Логика массивов:
     const arrayGenres = document.querySelectorAll('.name-genres');
     const arrayYear = document.querySelectorAll('.year-list');
-    const arrayRating = document.querySelectorAll('.vote-average');
 
     // ------------Создаю дополнительный ключ index:
     arr.map((el, idx) => el.index = idx);
@@ -83,11 +83,11 @@ function sortFilms(arr) {
     btnRating.addEventListener('click', onSortRatingClick);
     btnYear.addEventListener('click', onSortYearClick);
     
-    // if (refs.myLibraryBtn.classList.contains('current')) {
-    //     refs.sortFilmsBox.classList.add('is-hidden');
-    // } else if (!refs.myLibraryBtn.classList.contains('current')) {
-    //     refs.sortFilmsBox.classList.remove('is-hidden');
-    // };
+    if (refs.myLibraryBtn.classList.contains('current')) {
+        refs.sortFilmsBox.classList.add('is-hidden');
+    } else if (!refs.myLibraryBtn.classList.contains('current')) {
+        refs.sortFilmsBox.classList.remove('is-hidden');
+    };
     
     function onSortGenreClick() {
         
@@ -187,6 +187,7 @@ function sortFilms(arr) {
     function renderModifiedFilms(array) {
         refs.filmList.innerHTML = '';
         refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
+        checkHasFilmImage(array);
     };
 };
    

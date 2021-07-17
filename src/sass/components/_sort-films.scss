@@ -9,7 +9,7 @@
     left: 50%;
     transform: translateX(-50%);
   }
-  .is-hidden {
+  &.is-hidden {
     display: none;
   }
 }
