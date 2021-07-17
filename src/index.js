@@ -3,8 +3,8 @@ import './sass/main.scss';
 
 import './js/home-btn.js';
 import './js/library-btn.js';
-// import './js/watched-header-btn.js';
-// import './js/queue-header-btn.js';
+import './js/watched-header-btn.js';
+import './js/queue-header-btn.js';
 import './js/logoClick.js';
 
 import './js/start-site.js';
@@ -20,6 +20,7 @@ import './js/scroll-to-top.js';
 // import './js/put-rounded-pop.js'
 // import './js/apiAboutFilm.js';
 import './js/modalTeam.js';
+
 
 
 import './js/popularity-sort/popularity-sort.js';

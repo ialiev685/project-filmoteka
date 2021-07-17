@@ -32,9 +32,11 @@ export const refs = {
   switchThemeCheckbox: document.querySelector('.switch-theme'),
 
   bodyEl: document.body,
-  paginListStart: document.querySelector(".pagination-start"),
-  paginListSearch: document.querySelector(".pagination-search"),
+  paginListStart: document.querySelector('.pagination-start'),
+  paginListSearch: document.querySelector('.pagination-search'),
 
-  authBtn: document.querySelector('.auth-btn'),  
+  authBtn: document.querySelector('.auth-btn'),
+  // paginationBox: document.querySelector('.pagination'),
+
+  watchedFilms: document.querySelector('.js-watched-films'),
 };
-
