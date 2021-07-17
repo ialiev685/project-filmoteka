@@ -12,15 +12,14 @@
 
         <div>
           <button
-           type='button' 
-           class='overlay-btn js-queue' 
-           data-value='{{id}}'>{{queueBtnText}} queue</button>
-          <button
             type='button'
-            class='overlay-btn js-watched'
-            data-value='{{id}}'
-          >{{watchedBtnText}} watched</button>
-          <button type='button' class='overlay-btn js-about' data-value='{{id}}'>about</button>
+            class='overlay-btn js-overlay-about'
+            data-overlayid='{{id}}'
+          >about</button>
+          <button type='button' class='overlay-btn js-overlay-watched' data-overlayid='{{id}}'>add
+            to watched</button>
+          <button type='button' class='overlay-btn js-overlay-queue' data-overlayid='{{id}}'>add to
+            queue</button>
         </div>
       </div>
     </div>
@@ -31,11 +30,13 @@
       </h1>
       <div class='data-container'>
         <p class='data-list name-genres'>
+            {{genre_ids}}
         </p>
         <p class='data-list line'>
           |
         </p>
         <p class='data-list year-list'>
+            {{release_date}}
         </p>
         <div class='data-vote is-hidden'>
           <p class='vote-average'>
