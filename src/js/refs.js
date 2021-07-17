@@ -35,8 +35,15 @@ export const refs = {
   paginListStart: document.querySelector('.pagination-start'),
   paginListSearch: document.querySelector('.pagination-search'),
 
-  authBtn: document.querySelector('.auth-btn'),
   // paginationBox: document.querySelector('.pagination'),
 
   watchedFilms: document.querySelector('.js-watched-films'),
-};
+  hintEl: document.querySelector('.search-hint'),
+  rowTableEl: document.querySelector('.search-hint-table .row-table'),
+
+
+  authBtn: document.querySelector('.auth-btn'),
+  // paginationBox: document.querySelector('.pagination'),
+
+  
+

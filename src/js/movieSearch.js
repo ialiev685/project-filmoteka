@@ -11,6 +11,7 @@ refs.headerInput.addEventListener('input', DeleteWarningString);
 
 let page = 1;
 async function onMovieSearchClick(page) {
+  refs.hintEl.classList.add('is-hidden');
   try {
     if (moviesApiService.searchQuery !== refs.headerInput.value) {
       page = 1;
