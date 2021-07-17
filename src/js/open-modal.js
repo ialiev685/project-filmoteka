@@ -46,7 +46,7 @@ function appendArticlesMarkup(article) {
   checkHasFilmModalImage(article);
   const buttonWatched = document.querySelector('.js-watched');
   const buttonQueue = document.querySelector('.js-queue');
-  console.log(buttonWatched);
+  // console.log(buttonWatched);
 
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
 }

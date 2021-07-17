@@ -15,6 +15,7 @@ import { getVote } from './vote-avarage.js';
 import { openLibrary } from './library-btn.js';
 import { onClickAppearVote } from './appear-votes.js';
 import ButtonAction from './button-action.js';
+import { onFilmLibClick } from './onFilmLibClick.js';
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
@@ -43,6 +44,17 @@ refs.watchedBtn.addEventListener('click', () => {
   const dataForRender = JSON.parse(dataFromLocal);
   if (dataForRender) {
     renderWatchedFilms(dataForRender);
+    // const filmLib = document.querySelectorAll('.film-card');
+    // console.log(filmLib);
+    // [...filmLib].forEach((el) => {
+    //   el.addEventListener('click', (e) => {
+
+    //     if (e.target.classList.contains('js-queue') || e.target.classList.contains('js-watched')) {
+    //       e.currentTarget.style.display = 'none';
+    //     }
+    //   });
+    // });
+    onFilmLibClick();
   } else refs.watchedFilms.innerHTML = '';
 });
 
@@ -57,21 +69,7 @@ function renderWatchedFilms(films) {
 
   btnSwitch.clickButtonOverlay(newFilmsMarkup);
 
-//   console.log(films);
   getGenres(films);
-  // films.forEach(el => {
-  //     const genres = el.genres.map((elem) => {
-  //         return elem.name;
-  //     });
-  //     const arrayOfGenres = document.querySelectorAll('.name-genres');
-  //     if (arrayOfGenres) {
-
-  //         [...arrayOfGenres].forEach((el) => {
-  //             el.innerHTML = genres.join(', ');
-  //         })
-  //     }
-
-  // });
   getReleaseYear(films);
   getVote(films);
   onClickAppearVote();
