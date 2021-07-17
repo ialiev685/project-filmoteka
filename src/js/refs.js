@@ -39,11 +39,8 @@ export const refs = {
   sortFilmsBtnGenre: document.getElementById('genre'),
   sortFilmsBtnRating: document.getElementById('rating'),
   sortFilmsBtnYear: document.getElementById('year'),
-    sortFilmsBox: document.querySelector('.sort-films-box'),
-};
-
-
-  // paginationBox: document.querySelector('.pagination'),
+  sortFilmsBox: document.querySelector('.sort-films-box'),
+    // paginationBox: document.querySelector('.pagination'),
 
   watchedFilms: document.querySelector('.js-watched-films'),
   hintEl: document.querySelector('.search-hint'),
@@ -52,6 +49,10 @@ export const refs = {
 
   authBtn: document.querySelector('.auth-btn'),
   // paginationBox: document.querySelector('.pagination'),
+};
+
+
+
 
   
-}
+
