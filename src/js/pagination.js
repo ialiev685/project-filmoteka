@@ -1,10 +1,10 @@
-// import { getTrendItems } from '../js/base-api.js';
+
 import { getMarcup } from '../js/start-site.js';
 import { refs } from './refs.js';
 import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
 import MoviesApiService from './fetchMovie.js';
 import { renderFilms } from './renderFilms.js';
-// import { renderFilmsCards } from './movieSearch.js';
+
 const moviesApiService = new MoviesApiService();
 
 checkAndSetPopulation();
@@ -37,9 +37,7 @@ function renderPagination(total_pages, curPage, searchValue) {
   <rect class="arrow-rect" width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" />
   <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"  class='arrow-path'  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-  // выдернул из svg
-  //fill="#F7F7F7"  у rect
-  //stroke="#000" у patch
+  
   const step = 3;
   const startCondition = page - step > 1;
   const endCondition = page + step <= elements.length;
@@ -57,7 +55,6 @@ function renderPagination(total_pages, curPage, searchValue) {
     (page === elements.length ? '' : nextArrow);
   nextArrow;
 }
-// renderPagination();
 
 refs.paginListStart.addEventListener('click', listener, false);
 
@@ -77,13 +74,11 @@ async function nextRenderMarcup(page) {
 function incremRenderMarcup() {
   page += 1;
   nextRenderMarcup(page);
-  // renderPagination();
 }
 
 function decremRenderMarcup() {
   page -= 1;
   nextRenderMarcup(page);
-  // renderPagination();
 }
 
 function listener(ev) {

@@ -1,7 +1,8 @@
 import { refs } from './refs.js';
 import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
-// import { }
+
+import { refs } from "./refs.js";
 
 refs.logo.addEventListener('click', onLogoClick);
 
@@ -26,4 +27,6 @@ async function onLogoClick(e) {
   console.log(data);
   renderFilms(data);
   refs.spinner.classList.add('spinner-hidden');
-}
+//async function onLogoClick() {
+  //window.location.reload();
+//}
