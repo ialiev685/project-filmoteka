@@ -30,9 +30,9 @@
   justify-content: center;
 
   // @media screen and (max-width: $tablet - 1) {
-    // flex-wrap: wrap;
-    // min-width: 160px;
-    // margin: -3px;
+  // flex-wrap: wrap;
+  // min-width: 160px;
+  // margin: -3px;
   // }
 }
 
@@ -65,6 +65,17 @@
     background-color: var(--color-sort-clear-btn);
     border-color: var(--color-sort-clear-btn);
     color: var(--color-black);
+  }
+  &:before {
+    content: '\2261';
+    display: block;
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 3px;
+    top: 2px;
+    font-weight: 700;
+    color: var(--color-card-overlay);
+    transition: border-color 0.3s;
   }
   &-down:before {
     content: '';

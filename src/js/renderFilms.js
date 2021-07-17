@@ -5,7 +5,7 @@ import { getReleaseYear } from './years.js';
 import { checkHasFilmImage } from './is-image.js';
 import { getVote } from './vote-avarage.js';
 import { renderPagination } from './pagination.js';
-import { sortFilms } from './sort-films/sortRenderFilms';
+import { sortFilms } from './sortRenderFilms';
 
 export function renderFilms(array, valueSeatch = 'empty') {
   refs.filmList.innerHTML = '';
