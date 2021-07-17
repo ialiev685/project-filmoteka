@@ -14,15 +14,16 @@ refs.filmList.addEventListener('click', onMovieClick);
 refs.watchedFilms.addEventListener('click', onMovieClick);
 
 async function onMovieClick(e) {
-  if (e.target.classList.value !== 'card-overlay') {
+
+  if (e.target.classList.value !== 'overlay-btn js-about') {
     return;
-  }
+  };
+   
   const movieId = e.target.dataset.value;
   const article = await fetchFilm(movieId);
-  appendArticlesMarkup(article);
 
-  showDialog();
-
+  await appendArticlesMarkup(article);
+  checkHasFilmModalImage(article);
 
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');

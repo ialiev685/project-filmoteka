@@ -7,8 +7,9 @@
   left: 0;
   width: 100%; //changed
   height: 100%; //changed
-  overflow: scroll;
-  // height: 100vh;
+
+  overflow-y: scroll;
+
 
   background-color: rgba(0, 0, 0, 0.6);
 
@@ -190,7 +191,8 @@
   // padding: 14px 10px 12px 10px;
 
   width: 111px;
-  height: 44px;
+
+  height: 54px;
 
   font-weight: 500; //added
   font-size: 12px;
@@ -209,7 +211,9 @@
 
   @media screen and (min-width: $tablet) {
     width: 123px;
-    // height: 44px; //менял
+
+    height: 54px; //менял
+
     padding: 0;
   }
 
