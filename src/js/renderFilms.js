@@ -6,6 +6,7 @@ import { checkHasFilmImage } from './is-image.js';
 import { getVote } from './vote-avarage.js';
 import ButtonAction from './button-action.js';
 import { renderPagination } from './pagination.js';
+import { onClickDisappearVote } from './appear-votes';
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
@@ -24,6 +25,7 @@ export function renderFilms(array, valueSeatch = 'empty') {
   getReleaseYear(array.results);
   getVote(array.results);
   checkHasFilmImage(array.results);
+  // onClickDisappearVote();
 }
 
 // export function renderFilms(array, valueSeatch = 'empty') {
