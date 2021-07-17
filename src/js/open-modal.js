@@ -11,7 +11,7 @@ const btnSwitch = new ButtonAction({
 refs.filmList.addEventListener('click', onMovieClick);
 
 async function onMovieClick(e) {
-  console.log(e.target.classList.value);
+
   if (e.target.classList.value !== 'overlay-btn js-about') {
     return;
   };
