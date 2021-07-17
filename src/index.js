@@ -21,17 +21,13 @@ import './js/scroll-to-top.js';
 // import './js/apiAboutFilm.js';
 import './js/modalTeam.js';
 
-
-
 import './js/popularity-sort/popularity-sort.js';
 import './js/popularity-sort/fatch-popularity-sort.js';
 import './js/popularity-sort/render-popularity-sort';
 
-
 import './js/open-modal';
 // import './js/modal-open.js';
 
-
 import './js/switchTheme.js';
 
-
+import './js/hintSearch.js';
