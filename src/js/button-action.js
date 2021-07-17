@@ -1,3 +1,7 @@
+import {deletedFilm} from './pnotify';
+import {addedFilm} from './pnotify';
+import {removedFilm} from './pnotify';
+
 const Movie = {
   // Данные для Local Storage //
   WATCHED: 'watched',
@@ -38,8 +42,10 @@ export default class ButtonAction {
   switchBtnText(button, e) {
     if (e.target.innerHTML === `add to ${button}`) {
       e.target.innerHTML = `remove from ${button}`;
+      return addedFilm.open();      
     } else {
       e.target.innerHTML = `add to ${button}`;
+      return removedFilm.open();
     }
   }
 
@@ -64,6 +70,7 @@ export default class ButtonAction {
         this.writeDataToStorage(el.id, el, Movie.WATCHED);
         this.writeDataToStorage(el.id, el, Movie.QUEUE, buttonWatched);
       });
+
     });
   }
 
@@ -99,6 +106,7 @@ export default class ButtonAction {
       storageList = JSON.parse(localStorage.getItem(storageData));
 
       if (storageList.length !== 0) {
+
         const data = storageList.find(elem => {
           return movieId === elem.id;
         });
@@ -106,25 +114,26 @@ export default class ButtonAction {
         if (data){
           
           const index = storageList.indexOf(data);
+
           storageList.splice(index, 1);
           localStorage.setItem(storageData, JSON.stringify(storageList));
           
         } else {
-          if (deleteList) {
+          if (deleteList) {                     
             return;
           }
           storageList.push(newFilmMarkup);
           localStorage.setItem(storageData, JSON.stringify(storageList));
         }
       } else {
-        if (deleteList) {
+        if (deleteList) {         
           return;
         }
         storageList.push(newFilmMarkup);
         localStorage.setItem(storageData, JSON.stringify(storageList));
       }
     } else {
-      if (deleteList) {
+      if (deleteList) {        
         return;
       }
       storageList.push(newFilmMarkup);

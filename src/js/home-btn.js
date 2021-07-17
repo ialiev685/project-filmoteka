@@ -2,12 +2,15 @@ import { refs } from './refs.js';
 import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
 import { onClickDisappearVote } from './appear-votes.js';
+import { onBoxPopularitySortAddClick } from './popularity-sort/popularity-sort.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
 async function onHomeBtnClick() {
   refs.libraryBtns.classList.add('library-btns-hidden');
-  refs.filmList.innerHTML = '';
+  // refs.filmList.innerHTML = '';
+  refs.watchedFilms.innerHTML = '';
+
   refs.spinner.classList.remove('spinner-hidden');
   const data = await getTrendItems(1);
   renderFilms(data);
@@ -17,6 +20,9 @@ async function onHomeBtnClick() {
   refs.myLibraryBtn.classList.remove('current');
   refs.homeBtn.classList.add('current');
   refs.queueBtn.classList.remove('current-btn');
-
-  onClickDisappearVote();
+  // refs.paginationBox.classList.remove('is-hidden');
+  
+  refs.headerInput.value = '';
+  onBoxPopularitySortAddClick();
+  // onClickDisappearVote();
 }

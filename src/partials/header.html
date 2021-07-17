@@ -5,6 +5,9 @@
         <img src="./images/header/header-logo.svg" alt="logo" />
         <a class="logo-name" href="#">Filmoteka</a>
       </span>
+      <div class="btn-container">
+        <button type="button" class="header-button auth-btn">sign in</button>
+      </div>
       <div class="group-buttons">
         <button type="button" class="header-button js-header-btn current">home</button>
         <button type="button" class="header-button js-my-library-btn">my library</button>
@@ -23,6 +26,7 @@
         autocomplete="off"
         name="submit"
       />
+      <div class="search-hint is-hidden"></div>
       <button type="submit" class="search-button">
         <span class="magnifier-logo">
           <img src="../src/images/header/search.svg" alt="magnifier-logo" />
@@ -34,19 +38,19 @@
       </p>
     </div>
     <include src="./partials/swith-theme.html"></include>
+    <include src="./partials/sort-films.html"></include>
   </div>
 
   <div class="textarea-demo-left-item">
-    <div class="textarea-demo-left-item-left">Популярные</div>
+    <div class="textarea-demo-left-item-left">Popular</div>
     <div class="textarea-demo-left-item-right">
       <div id="textarea-demo-height" class="dropdown">
-        <div class="dropdown-value">за день</div>
+        <div class="dropdown-value">day</div>
         <div class="dropdown-list">
-          <div id="day">за день</div>
-          <div id="week">за неделю</div>
+          <div id="day">day</div>
+          <div id="week">week</div>
         </div>
       </div>
     </div>
   </div>
-
 </header>

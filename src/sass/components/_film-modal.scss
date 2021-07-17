@@ -1,12 +1,15 @@
 .backdrop {
-  z-index: 6;
+  // z-index: 6;
+  z-index: 50;
   position: fixed;
 
   top: 0;
   left: 0;
   width: 100%; //changed
   height: 100%; //changed
+
   overflow-y: scroll;
+
 
   background-color: rgba(0, 0, 0, 0.6);
 
@@ -22,10 +25,14 @@
   .modal__flm-info {
     width: 280px;
     padding: 48px 20px 41px 20px;
+    height: 100vh;
+    // height: 100%;
 
     position: fixed;
+    overflow: scroll;
 
-    top: 50%;
+    // top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -32%) scale(1);
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -33,9 +40,13 @@
 
     @media screen and (min-width: $tablet) {
       width: 618px;
+      // height: 100%;
+      height: auto;
+
       // width: 620px; //менял
 
-      padding: 42px 29px 40px 29px;
+      // padding: 42px 29px 40px 29px;
+      padding: 42px 12px 40px 29px;
       display: flex;
       justify-content: center;
       transform: translate(-50%, -50%) scale(1);
@@ -53,7 +64,7 @@
 .modal__img-thumb {
   width: 240px;
   height: auto;
-  background-color: #f3f0f0;
+  // background-color: #f3f0f0;
 
   @media screen and (min-width: $tablet) {
     width: 264px;
@@ -65,7 +76,7 @@
   }
   .modal__flm-img {
     width: 240px;
-    height: auto;
+    // height: auto;
     display: block;
 
     @media screen and (min-width: $tablet) {
@@ -175,10 +186,14 @@
   color: #000000;
 }
 .modal__button {
+  text-align: center;
   padding: 0;
+  // padding: 14px 10px 12px 10px;
 
   width: 111px;
+
   height: 54px;
+
   font-weight: 500; //added
   font-size: 12px;
   line-height: 1.33;
@@ -196,13 +211,16 @@
 
   @media screen and (min-width: $tablet) {
     width: 123px;
+
     height: 54px; //менял
+
     padding: 0;
   }
 
   @media screen and (min-width: $desktop) {
     width: 136px;
-    padding: 14px 10px 12px 10px;
+
+    // padding: 14px 10px 12px 10px;
   }
 }
 .modal__button.watched {

@@ -7,10 +7,15 @@ import { getVote } from './vote-avarage.js';
 import ButtonAction from './button-action.js';
 import { renderPagination } from './pagination.js';
 
+import { sortFilms } from './sortRenderFilms';
+
+import { onClickDisappearVote } from './appear-votes';
+
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
   textRemove: 'remove from',
 });
+
 
 export function renderFilms(array, valueSeatch = 'empty') {
   refs.filmList.innerHTML = '';
@@ -24,7 +29,13 @@ export function renderFilms(array, valueSeatch = 'empty') {
   getReleaseYear(array.results);
   getVote(array.results);
   checkHasFilmImage(array.results);
-}
+
+  sortFilms(array.results);
+    // onClickDisappearVote();
+};
+
+
+
 
 // export function renderFilms(array, valueSeatch = 'empty') {
 //   refs.filmList.innerHTML = '';
@@ -35,3 +46,4 @@ export function renderFilms(array, valueSeatch = 'empty') {
 //   getVote(array.results);
 //   checkHasFilmImage(array.results);
 // }
+
