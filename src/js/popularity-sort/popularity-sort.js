@@ -85,7 +85,12 @@ function forWriteStorageClick() {
   return localStorage.getItem('popularity');
 }
 
-// if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
-//     //   serverRequestMoviesWeek();
-// };
-export { checkAndSetPopulation };
+function onBoxPopularitySortRemoveClick() {
+  refs.boxPopularSort.classList.add('is-hidden');
+};
+
+function onBoxPopularitySortAddClick() {
+  refs.boxPopularSort.classList.remove('is-hidden');
+};
+
+export { checkAndSetPopulation, onBoxPopularitySortRemoveClick, onBoxPopularitySortAddClick };
