@@ -31,10 +31,11 @@ export function renderFilms(array, valueSeatch = 'empty') {
   checkHasFilmImage(array.results);
 
   sortFilms(array.results);
+    // onClickDisappearVote();
 };
 
-  // onClickDisappearVote();
-}
+
+
 
 // export function renderFilms(array, valueSeatch = 'empty') {
 //   refs.filmList.innerHTML = '';
