@@ -3,6 +3,7 @@ import { renderFilms } from './renderFilms.js';
 // import { getFromLocalStorageWatched } from './add-to-watched-btn.js';
 import {onClickAppearVote} from './appear-votes.js';
 import { onBoxPopularitySortRemoveClick } from './popularity-sort/popularity-sort.js';
+import { correctionMargin } from './sortRenderFilms.js';
 
 refs.myLibraryBtn.addEventListener('click', openLibrary);
 refs.watchedBtn.addEventListener('click', onWatchedBtn);
@@ -17,6 +18,7 @@ export function openLibrary() {
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
   onBoxPopularitySortRemoveClick();
+  correctionMargin();
   // refs.paginationBox.classList.add('is-hidden');
   // refs.navContainer.style.marginBottom = '49px';
   // refs.watchedFilms.style.marginTop = '49px';

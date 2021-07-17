@@ -3,6 +3,7 @@ import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
 import { onClickDisappearVote } from './appear-votes.js';
 import { onBoxPopularitySortAddClick } from './popularity-sort/popularity-sort.js';
+import { correctionMargin } from './sortRenderFilms.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
@@ -24,5 +25,6 @@ async function onHomeBtnClick() {
   
   refs.headerInput.value = '';
   onBoxPopularitySortAddClick();
+  correctionMargin();
   // onClickDisappearVote();
 }
