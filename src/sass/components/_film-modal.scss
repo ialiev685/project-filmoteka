@@ -29,7 +29,8 @@
     // height: 100%;
 
     position: fixed;
-    overflow: scroll;
+    // overflow: scroll;
+    overflow-y: scroll;
 
     // top: 50%;
     top: 35%;
@@ -40,13 +41,14 @@
 
     @media screen and (min-width: $tablet) {
       width: 618px;
+      top: 50%;
       // height: 100%;
       height: auto;
 
       // width: 620px; //менял
 
-      // padding: 42px 29px 40px 29px;
-      padding: 42px 12px 40px 29px;
+      padding: 42px 29px 40px 29px;
+      // padding: 42px 12px 40px 29px;
       display: flex;
       justify-content: center;
       transform: translate(-50%, -50%) scale(1);

@@ -11,7 +11,7 @@ async function onLogoClick(e) {
   refs.filmList.innerHTML = '';
   refs.headerInput.value = '';
   refs.myLibraryBtn.classList.remove('current');
-  refs.paginationBox.classList.remove('is-hidden');
+  // refs.paginationBox.classList.remove('is-hidden');
 
   refs.homeBtn.classList.add('current');
   if (

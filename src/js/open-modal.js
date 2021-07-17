@@ -13,6 +13,7 @@ const btnSwitch = new ButtonAction({
 refs.filmList.addEventListener('click', onMovieClick);
 refs.watchedFilms.addEventListener('click', onMovieClick);
 
+
 async function onMovieClick(e) {
 
   if (e.target.classList.value !== 'overlay-btn js-about') {
@@ -28,9 +29,10 @@ async function onMovieClick(e) {
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');
 
+
   toggleClass(backdrop);
   closeModal(closeButton, backdrop);
-  // closeDialog();
+
 }
 
 function fetchFilm(movieId) {
@@ -47,7 +49,8 @@ function appendArticlesMarkup(article) {
   checkHasFilmModalImage(article);
   const buttonWatched = document.querySelector('.js-watched');
   const buttonQueue = document.querySelector('.js-queue');
-  console.log(buttonWatched);
+
+  // console.log(buttonWatched);
 
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
 }
