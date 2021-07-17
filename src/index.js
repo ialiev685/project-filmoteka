@@ -34,3 +34,8 @@ import './js/open-modal';
 import './js/switchTheme.js';
 
 
+import './js/auth-api.js';
+import './js/authorization.js';
+
+
+
