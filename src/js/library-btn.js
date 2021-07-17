@@ -16,7 +16,9 @@ export function openLibrary() {
   refs.watchedBtn.classList.add('current-btn');
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
+  // refs.paginationBox.classList.add('is-hidden');
   // refs.navContainer.style.marginBottom = '49px';
+  // refs.watchedFilms.style.marginTop = '49px';
   refs.filmList.innerHTML = '';
   // renderFilms(getFromLocalStorageWatched());
 

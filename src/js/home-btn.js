@@ -9,6 +9,7 @@ async function onHomeBtnClick() {
   refs.libraryBtns.classList.add('library-btns-hidden');
   // refs.filmList.innerHTML = '';
   refs.watchedFilms.innerHTML = '';
+
   refs.spinner.classList.remove('spinner-hidden');
   const data = await getTrendItems(1);
   renderFilms(data);
@@ -18,6 +19,8 @@ async function onHomeBtnClick() {
   refs.myLibraryBtn.classList.remove('current');
   refs.homeBtn.classList.add('current');
   refs.queueBtn.classList.remove('current-btn');
+  // refs.paginationBox.classList.remove('is-hidden');
+
   refs.headerInput.value = '';
 
   // onClickDisappearVote();

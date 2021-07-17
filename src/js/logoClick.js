@@ -10,7 +10,8 @@ async function onLogoClick(e) {
   refs.watchedFilms.innerHTML = '';
   refs.filmList.innerHTML = '';
   refs.headerInput.value = '';
-   refs.myLibraryBtn.classList.remove('current');
+  refs.myLibraryBtn.classList.remove('current');
+  refs.paginationBox.classList.remove('is-hidden');
 
   refs.homeBtn.classList.add('current');
   if (
