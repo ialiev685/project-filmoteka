@@ -15,7 +15,7 @@ async function onMovieSearchClick(page) {
 
   sortBtnRemove();
   
-=======
+
   refs.hintEl.classList.add('is-hidden');
 
   try {
