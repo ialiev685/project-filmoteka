@@ -46,4 +46,4 @@ export const refs = {
   // paginationBox: document.querySelector('.pagination'),
 
   
-
+}
