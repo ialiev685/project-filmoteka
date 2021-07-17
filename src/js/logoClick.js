@@ -25,6 +25,7 @@ async function onLogoClick(e) {
   console.log(data);
   renderFilms(data);
   refs.spinner.classList.add('spinner-hidden');
+}
 //async function onLogoClick() {
   //window.location.reload();
-}
+//}
