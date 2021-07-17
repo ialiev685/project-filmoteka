@@ -11,12 +11,14 @@ const btnSwitch = new ButtonAction({
 refs.filmList.addEventListener('click', onMovieClick);
 
 async function onMovieClick(e) {
-  if (e.target.classList.value !== 'card-overlay') {
+  console.log(e.target.classList.value);
+  if (e.target.classList.value !== 'overlay-btn js-about') {
     return;
-  }
+  };
+   
   const movieId = e.target.dataset.value;
   const article = await fetchFilm(movieId);
-  appendArticlesMarkup(article);
+  await appendArticlesMarkup(article);
   checkHasFilmModalImage(article);
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');

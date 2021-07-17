@@ -14,7 +14,7 @@ export default class ButtonAction {
     if (localStorage.getItem(data)) {
       const localStorageData = JSON.parse(localStorage.getItem(data));
       if (localStorageData.length !== 0) {
-        localStorageData.map(elem => {
+        localStorageData.forEach(elem => {
           if (article.id === elem.id) {
             buttonText = this.textRemove;
           }
@@ -44,11 +44,10 @@ export default class ButtonAction {
   }
 
   clickButtonOverlay(newFilmsMarkup) {
-    newFilmsMarkup.map(el => {
+    newFilmsMarkup.forEach(el => {
       const btn = document.querySelectorAll(`button[data-value="${el.id}"]`);
       const buttonQueue = Array.from(btn)[0];
       const buttonWatched = Array.from(btn)[1];
-      const buttonDelete = Array.from(btn)[2];
 
       buttonQueue.addEventListener('click', e => {
         const button = 'queue';
@@ -65,16 +64,9 @@ export default class ButtonAction {
         this.writeDataToStorage(el.id, el, Movie.WATCHED);
         this.writeDataToStorage(el.id, el, Movie.QUEUE, buttonWatched);
       });
-
-      buttonDelete.addEventListener('click', e => {
-        Array.from(btn)[0].innerHTML = 'add to queue';
-        Array.from(btn)[1].innerHTML = 'add to watched';
-
-        this.writeDataToStorage(el.id, el, Movie.WATCHED, buttonDelete);
-        this.writeDataToStorage(el.id, el, Movie.QUEUE, buttonDelete);
-      });
     });
   }
+
   clickButtonModal(buttonWatched, buttonQueue, movieId, newFilmMarkup) {
     const queueBtnOverlay = document.querySelector(`.js-queue[data-value='${newFilmMarkup.id}']`);
     const watchedBtnOverlay = document.querySelector(
@@ -107,19 +99,16 @@ export default class ButtonAction {
       storageList = JSON.parse(localStorage.getItem(storageData));
 
       if (storageList.length !== 0) {
-        const dfg = storageList.find(elem => {
+        const data = storageList.find(elem => {
           return movieId === elem.id;
         });
 
-        if (
-          storageList.find(elem => {
-            return movieId === elem.id;
-          })
-        ) {
-          const index = storageList.indexOf(dfg);
-
+        if (data){
+          
+          const index = storageList.indexOf(data);
           storageList.splice(index, 1);
           localStorage.setItem(storageData, JSON.stringify(storageList));
+          
         } else {
           if (deleteList) {
             return;
