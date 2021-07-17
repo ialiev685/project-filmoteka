@@ -33,7 +33,7 @@ function onRemoveSortInputClick(e) {
 }
 
 async function onSortDayClick() {
-  sortValue.textContent = 'за день';
+  sortValue.textContent = 'day';
 
   forWriteStorageClick();
   sortBtnRemove();
@@ -45,7 +45,7 @@ async function onSortDayClick() {
 }
 
 async function onSortWeekClick() {
-  sortValue.textContent = 'за неделю';
+  sortValue.textContent = 'week';
 
   forWriteStorageClick();
   sortBtnRemove();
@@ -70,22 +70,27 @@ function checkAndSetPopulation() {
   if (localStorage.getItem('popularity') === null) {
     localStorage.setItem('popularity', PopularitySort.DAY);
   } else if (localStorage.getItem('popularity') === PopularitySort.DAY) {
-    sortValue.textContent = 'за день';
+    sortValue.textContent = 'day';
   } else if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
-    sortValue.textContent = 'за неделю';
+    sortValue.textContent = 'week';
   }
 }
 
 function forWriteStorageClick() {
-  if (sortValue.textContent === 'за день') {
+  if (sortValue.textContent === 'day') {
     localStorage.setItem('popularity', PopularitySort.DAY);
-  } else if (sortValue.textContent === 'за неделю') {
+  } else if (sortValue.textContent === 'week') {
     localStorage.setItem('popularity', PopularitySort.WEEK);
   }
   return localStorage.getItem('popularity');
 }
 
-// if (localStorage.getItem('popularity') === PopularitySort.WEEK) {
-//     //   serverRequestMoviesWeek();
-// };
-export { checkAndSetPopulation };
+function onBoxPopularitySortRemoveClick() {
+  refs.boxPopularSort.classList.add('is-hidden');
+};
+
+function onBoxPopularitySortAddClick() {
+  refs.boxPopularSort.classList.remove('is-hidden');
+};
+
+export { checkAndSetPopulation, onBoxPopularitySortRemoveClick, onBoxPopularitySortAddClick };
