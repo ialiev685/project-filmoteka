@@ -82,12 +82,13 @@ function sortFilms(arr) {
     btnGenre.addEventListener('click', onSortGenreClick);
     btnRating.addEventListener('click', onSortRatingClick);
     btnYear.addEventListener('click', onSortYearClick);
-    
-    if (refs.myLibraryBtn.classList.contains('current')) {
-        refs.sortFilmsBox.classList.add('is-hidden');
-    } else if (!refs.myLibraryBtn.classList.contains('current')) {
-        refs.sortFilmsBox.classList.remove('is-hidden');
-    };
+
+    onRemoveEventListenerSubmitClick();
+    // if (refs.myLibraryBtn.classList.contains('current')) {
+    //     refs.sortFilmsBox.classList.add('is-hidden');
+    // } else if (!refs.myLibraryBtn.classList.contains('current')) {
+    //     refs.sortFilmsBox.classList.remove('is-hidden');
+    // };
     
     function onSortGenreClick() {
         
@@ -189,6 +190,20 @@ function sortFilms(arr) {
         refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
         checkHasFilmImage(array);
     };
+
+    function onRemoveEventListenerSubmitClick() {
+    refs.searchBtn.addEventListener('click', RemoveEventListener);
+    refs.headerInput.addEventListener('keydown', RemoveEventListener);
+    
+        function RemoveEventListener() {
+            btnGenre.removeEventListener('click', onSortGenreClick)
+            btnGenre.removeEventListener('keydown', onSortGenreClick)
+            btnRating.removeEventListener('click', onSortRatingClick)
+            btnRating.removeEventListener('keydown', onSortRatingClick)
+            btnYear.removeEventListener('click', onSortYearClick)
+            btnYear.removeEventListener('keydown', onSortYearClick)
+        };
+    };
 };
    
   function sortBtnRemove() {
@@ -199,6 +214,8 @@ function sortFilms(arr) {
   btnYear.classList.remove('sort-films-btn-down');
   btnYear.classList.remove('sort-films-btn-up');
 };
+
+
 
 export { sortFilms, sortBtnRemove };
 
