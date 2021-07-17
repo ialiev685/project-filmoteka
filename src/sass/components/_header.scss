@@ -56,16 +56,22 @@
   background-color: transparent;
   outline: none;
   border: none;
-  border-bottom: 0.5px solid #fff;
+  border-bottom: 0.5px solid var(--color-white);
   font-size: 14px;
   line-height: 1.143;
   margin-bottom: 22px;
 
-  //   &:focus {
-  //     border-bottom: 0.5px solid var(--accent-color);
-  //   }
-
+  //   Скрыть placeholder у инпута для всех браузеров
   &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  &:focus::-moz-placeholder {
+    color: transparent;
+  }
+  &:focus:-moz-placeholder {
+    color: transparent;
+  }
+  &:focus:-ms-input-placeholder {
     color: transparent;
   }
 
@@ -84,7 +90,14 @@
 
 .home-search-div {
   position: relative;
-  text-align: -webkit-center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-search-div-hidden {
+  display: none;
 }
 
 .search-button {

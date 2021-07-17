@@ -12,7 +12,7 @@ refs.queueBtn.addEventListener('click', onQueueBtn);
 function openLibrary() {
   refs.libraryBtns.classList.remove('library-btns-hidden');
   refs.myLibraryBtn.classList.add('current');
-  refs.searchContainer.classList.add('header-input-hidden');
+  refs.searchContainer.classList.add('home-search-div-hidden');
   refs.watchedBtn.classList.add('current-btn');
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');

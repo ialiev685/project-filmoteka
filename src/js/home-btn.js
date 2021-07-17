@@ -12,7 +12,7 @@ async function onHomeBtnClick() {
   const data = await getTrendItems(1);
   renderFilms(data);
   refs.spinner.classList.add('spinner-hidden');
-  refs.searchContainer.classList.remove('header-input-hidden');
+  refs.searchContainer.classList.remove('home-search-div-hidden');
   refs.overlay.classList.replace('overlay-library', 'overlay');
   refs.myLibraryBtn.classList.remove('current');
   refs.homeBtn.classList.add('current');
