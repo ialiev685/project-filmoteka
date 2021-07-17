@@ -1,5 +1,6 @@
 export const refs = {
   body: document.querySelector('body'),
+  logoNameBtn: document.querySelector('.js-logo-name'),
   homeBtn: document.querySelector('.js-header-btn'),
   myLibraryBtn: document.querySelector('.js-my-library-btn'),
   searchBtn: document.querySelector('.search-button'),
@@ -8,7 +9,7 @@ export const refs = {
   libraryBtns: document.querySelector('.js-library-btns'),
   watchedHeaderBtn: document.querySelector('.js-head-watched'),
   queueHeaderBtn: document.querySelector('.js-head-queue'),
-  logo: document.querySelector('.js-logo'),
+//   logo: document.querySelector('.js-logo'),
   spinner: document.querySelector('.js-spinner'),
   btnToTop: document.getElementById('btn-top'),
   searchContainer: document.querySelector('.home-search-div'),

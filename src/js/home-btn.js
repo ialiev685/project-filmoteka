@@ -4,6 +4,7 @@ import { renderFilms } from './renderFilms.js';
 import { onClickDisappearVote } from './appear-votes.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
+refs.logoNameBtn.addEventListener('click', onHomeBtnClick);
 
 async function onHomeBtnClick() {
   refs.libraryBtns.classList.add('library-btns-hidden');

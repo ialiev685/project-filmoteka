@@ -19,6 +19,11 @@
       text-decoration: none;
       align-items: center;
       text-align: center;
+	  background-color:transparent;
+	  outline: none;
+	  border: none;
+	  padding: 0;
+	  cursor: pointer;
 
       color: var(--color-text-inverse);
     }
