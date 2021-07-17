@@ -1,17 +1,22 @@
-export function getVote(data) {  
-  const votes = data.map(elem => {   
-    let voteValue = String(elem.vote_average);    
+export function getVote(data) {
+  const votes = data.map(elem => {
+    let voteValue = String(elem.vote_average);
     let regExp = '[.]+';
     if(voteValue.match(regExp) == null) {
-    voteValue += '.0';     
-    } return voteValue;    
+    voteValue += '.0';
+    } return voteValue;
   });
- 
+
   const arrayOfVotes = document.querySelectorAll('.vote-average');
+  // const arrayOfBoxVotes = document.querySelectorAll('.data-vote');
+
+  // [...arrayOfBoxVotes].forEach((el) => {
+  //   el.classList.remove('is-hidden');
+  // });
 
  [...arrayOfVotes].forEach((elem, index) => {
- elem.innerText = votes[index]; 
- });   
+ elem.innerText = votes[index];
+ });
 };
 
 
