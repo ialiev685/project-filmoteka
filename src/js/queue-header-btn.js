@@ -1,9 +1,9 @@
 import { refs } from './refs.js';
 import cardMarkup from '../hbs/cardForm.hbs';
-import {getGenres} from './genres.js';
+import { getGenres } from './genres.js';
 import { getReleaseYear } from './years.js';
 // import { checkHasFilmImage } from './is-image.js';
-import {getVote} from './vote-avarage.js';
+import { getVote } from './vote-avarage.js';
 import { openLibrary } from './library-btn.js';
 import { onClickAppearVote } from './appear-votes.js';
 import ButtonAction from './button-action.js';
@@ -21,8 +21,8 @@ const Movie = {
 };
 
 refs.queueBtn.addEventListener('click', () => {
-    const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
-    const dataForRenderQ = JSON.parse(dataFromLocalQ);
+  const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
+  const dataForRenderQ = JSON.parse(dataFromLocalQ);
   if (dataFromLocalQ) {
     renderQueueFilms(dataForRenderQ);
     // const filmLib = document.querySelectorAll('.film-card');
@@ -36,14 +36,12 @@ refs.queueBtn.addEventListener('click', () => {
     //     }
     //   });
     // });
-    } else refs.watchedFilms.innerHTML = '';
+  } else refs.watchedFilms.innerHTML = '';
 });
 
-
 function renderQueueFilms(films) {
-
-refs.watchedFilms.innerHTML = '';
-// refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+  refs.watchedFilms.innerHTML = '';
+  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
   const newFilmsMarkup = films.map(elem => {
     return btnSwitch.addButtonText(elem);
   });
@@ -51,13 +49,7 @@ refs.watchedFilms.innerHTML = '';
 
   btnSwitch.clickButtonOverlay(newFilmsMarkup);
   getGenres(films);
-    getReleaseYear(films);
-    getVote(films);
+  getReleaseYear(films);
+  getVote(films);
   onClickAppearVote();
-
 }
-
-
-
-
-
