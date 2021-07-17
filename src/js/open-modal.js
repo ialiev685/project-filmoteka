@@ -1,93 +1,95 @@
 import { refs } from './refs.js';
-import { renderModalFilms } from './renderModalFilm.js';
-import { openModal } from './modal-open.js';
+import ButtonAction from './button-action.js';
+import movie from '../hbs/film-modal.hbs';
+import { checkHasFilmModalImage } from './is-image.js';
+import { onClickDisappearVote } from './appear-votes.js';
+import { putRoundedPopularity } from './put-rounded-pop';
 
-const Movie = {   // Данные для Local Storage //
-  WATCHED: 'watched',
-  QUEUE: 'queue',
-};
+const btnSwitch = new ButtonAction({
+  textAdd: 'add to',
+  textRemove: 'remove from',
+});
 
-refs.filmList.addEventListener('click', onOverlayClick);
+refs.filmList.addEventListener('click', onMovieClick);
+refs.watchedFilms.addEventListener('click', onMovieClick);
 
-async function onOverlayClick(e) {
-    if (!e.target.classList.contains('card-overlay') ) {
+async function onMovieClick(e) {
+  if (e.target.classList.value !== 'card-overlay') {
     return;
+  }
+  const movieId = e.target.dataset.value;
+  const article = await fetchFilm(movieId);
+  appendArticlesMarkup(article);
+
+  showDialog();
+
+
+  const closeButton = document.querySelector('[data-action="close-modal"]');
+  const backdrop = document.querySelector('.backdrop');
+
+  toggleClass(backdrop);
+  closeModal(closeButton, backdrop);
+  // closeDialog();
+}
+
+function fetchFilm(movieId) {
+  const KEY = '222d2b89e8701088edcf9049fa569980';
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`;
+
+  return fetch(url).then(response => response.json());
+}
+
+function appendArticlesMarkup(article) {
+  const newFilmMarkup = btnSwitch.addButtonText(article);
+  refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
+  putRoundedPopularity(article.popularity);
+  checkHasFilmModalImage(article);
+  const buttonWatched = document.querySelector('.js-watched');
+  const buttonQueue = document.querySelector('.js-queue');
+  console.log(buttonWatched);
+
+  btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
+}
+
+function toggleClass(backdrop) {
+  backdrop.classList.toggle('is-hidden');
+}
+
+function closeModal(closeButton, backdrop, modalFilm) {
+  closeButton.addEventListener('click', onButtonClick);
+  backdrop.addEventListener('click', onBackdropClick);
+  window.addEventListener('keydown', onEscKeyPress);
+  // closeDialog();
+
+  function onButtonClick() {
+    toggleClass(backdrop);
+    function removeMovie() {
+      backdrop.remove();
     }
-    const id = openModal(e);
-    await renderModalFilms(id);
-    const buttonWatched = document.querySelector('.js-watched');
-    const buttonQueue = document.querySelector('.js-queue');
-    clickButton(buttonWatched, buttonQueue, id);
+    setTimeout(removeMovie, 500);
+    closeDialog();
 
-}
-
-function addButtonText(article) {
-    let newDataObject = { ...article };
-   const addQueueBtnText= selectButtonText(Movie.QUEUE, article);
-    const addWatchedBtnText = selectButtonText(Movie.WATCHED, article);
-    newDataObject.queueBtnText = addQueueBtnText;
-    newDataObject.watchedBtnText = addWatchedBtnText;
-    return newDataObject;
-
-}
-
-function selectButtonText(data, article) {
-    let buttonText = "add to";
-    if (localStorage.getItem(data)) {
-        const  localStorageData = JSON.parse(localStorage.getItem(data));
-        if (localStorageData.length !== 0) {
-
-            localStorageData.map(elem => {
-                if (String(article.id)===elem) {
-                    buttonText = "remove from"
-                };
-            })
-        };
-    };
-    return buttonText;
-};
-
-function clickButton(buttonWatched, buttonQueue, movieId) {
-    buttonWatched.addEventListener('click', (e) => {
-        const button = 'watched';
-        switchBtnText(button, e);
-        writeDataToStorage(movieId, Movie.WATCHED)
-    });
-
-    buttonQueue.addEventListener('click', (e) => {
-        const button = 'queue';
-        switchBtnText(button, e);
-        writeDataToStorage(movieId, Movie.QUEUE)
-    });
-
-};
-
-function switchBtnText(button,e) {
-    if (e.target.innerHTML === `add to ${button}`) {
-
-            e.target.innerHTML = `remove from ${button}`;
-        } else {
-            e.target.innerHTML = `add to ${button}`
-        }
-}
-
-function writeDataToStorage(movieId, storageData) {
-  let storageList = [];
-        if (localStorage.getItem(storageData)) {
-        storageList = JSON.parse(localStorage.getItem(storageData));
-        if (!storageList.includes(movieId)) {
-            storageList.push(movieId);
-            localStorage.setItem(storageData, JSON.stringify(storageList));
-
-        } else {
-            const index = storageList.indexOf(movieId);
-            storageList.splice(index, 1);
-            localStorage.setItem(storageData, JSON.stringify(storageList));
-        }
-    } else {
-        storageList.push(movieId);
-        localStorage.setItem(storageData, JSON.stringify(storageList))
+    window.removeEventListener('keydown', onEscKeyPress);
+    backdrop.removeEventListener('click', onBackdropClick);
+  }
+  function onEscKeyPress(evt) {
+    if (evt.code === 'Escape') {
+      onButtonClick();
     }
-};
+    closeDialog();
+  }
+  function onBackdropClick(evt) {
+    if (evt.currentTarget === evt.target) {
+      onButtonClick();
+      closeDialog();
+    }
+  }
+}
 
+function showDialog() {
+  document.getElementsByTagName("body")[0].style.overflow = 'hidden';
+}
 
+function closeDialog() {
+    document.getElementsByTagName("body")[0].style.overflow = 'scroll';
+}

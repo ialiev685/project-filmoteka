@@ -1,32 +1,39 @@
-{{!-- <div class="backdrop is-hidden"> --}}
-    <article class="modal__flm-info">
-        <div class="modal__img-thumb">
-            <img class="modal__flm-img" src="https://image.tmdb.org/t/p/w400/{{poster_path}}" alt="{{title}}"
-                data-id="{{id}}" />
-        </div>
-        <div class="modal__info-container">
-            <h2 class="modal__flm-title">{{title}}</h2>
-            <p class="modal__flm-data">
-                Vote / Votes
-                <span class="modal__flm-rating">{{vote_average}}</span> /
-                <span class="modal__flm-vote">{{vote_count}}</span>
-            </p>
-            <p class="modal__flm-data">
-                Popularity <span class="modal-flm-popularity">{{popularity}}</span>
-            </p>
-            <p class="modal__flm-data">
-                Original Title <span class="modal-flm-title-data">{{original_title}}</span>
-            </p>
-            <ul class="modal__flm-data modal__genres">Genre
-                {{#each genres}}
-                <li class="modal__genre">{{name}}</li>
-                {{/each}}
-            </ul>
-            <h3 class="modal__flm-about">About</h3>
-            <p class="modal__flm-description">{{overview}}</p>
-            <button class="modal__button watched js-watched">{{watchedBtnText}} watched</button>
-            <button class="modal__button queue js-queue">{{queueBtnText}} queue</button>
-        </div>
-        <button type="button" class="modal__close-button" data-action="close-modal"></button>
-    </article>
-{{!-- </div> --}}
+<div class='backdrop is-hidden'>
+  <article class='modal__flm-info'>
+    <div class='modal__img-thumb'>
+      <img
+        class='modal__flm-img js-modal-film-image'
+        src='https://image.tmdb.org/t/p/w400/{{poster_path}}'
+        alt='{{title}}'
+        data-id='{{id}}'
+      />
+    </div>
+    <div class='modal__info-container'>
+      <h2 class='modal__flm-title'>{{title}}</h2>
+      <p class='modal__flm-data'>
+        Vote / Votes
+        <span class='modal__flm-rating'>{{vote_average}}</span>
+        /
+        <span class='modal__flm-vote'>{{vote_count}}</span>
+      </p>
+      <p class='modal__flm-data'>
+        Popularity
+        <span class='modal-flm-popularity'>{{popularity}}</span>
+      </p>
+      <p class='modal__flm-data'>
+        Original Title
+        <span class='modal-flm-title-data'>{{original_title}}</span>
+      </p>
+      <ul class='modal__flm-data modal__genres'>Genre
+        {{#each genres}}
+          <li class='modal__genre'>{{name}}</li>
+        {{/each}}
+      </ul>
+      <h3 class='modal__flm-about'>About</h3>
+      <p class='modal__flm-description'>{{overview}}</p>
+      <button class='modal__button watched js-watched'>{{watchedBtnText}} watched</button>
+      <button class='modal__button queue js-queue'>{{queueBtnText}} queue</button>
+    </div>
+    <button type='button' class='modal__close-button' data-action='close-modal'></button>
+  </article>
+</div>

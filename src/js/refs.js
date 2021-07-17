@@ -32,6 +32,7 @@ export const refs = {
   switchThemeCheckbox: document.querySelector('.switch-theme'),
 
   bodyEl: document.body,
+
   paginListStart: document.querySelector(".pagination-start"),
   paginListSearch: document.querySelector(".pagination-search"),
 
@@ -41,3 +42,16 @@ export const refs = {
     sortFilmsBox: document.querySelector('.sort-films-box'),
 };
 
+
+  // paginationBox: document.querySelector('.pagination'),
+
+  watchedFilms: document.querySelector('.js-watched-films'),
+  hintEl: document.querySelector('.search-hint'),
+  rowTableEl: document.querySelector('.search-hint-table .row-table'),
+
+
+  authBtn: document.querySelector('.auth-btn'),
+  // paginationBox: document.querySelector('.pagination'),
+
+  
+}
