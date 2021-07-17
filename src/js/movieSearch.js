@@ -30,10 +30,6 @@ async function onMovieSearchClick(page) {
       if (fatch.results !== undefined) {
         const valueSeatch = refs.headerInput.value.trim();
         renderFilmsCards(fatch, valueSeatch);
-
-        // refs.paginListStart.style.display = 'none';
-        // let pagesTotalSearch = fatch.total_pages;
-        // renderPaginationSearch(pagesTotalSearch, page);
       }
     }
   } catch (error) {
@@ -64,79 +60,6 @@ function DeleteWarningString() {
 function showWarningString() {
   refs.warningString.classList.remove('is-hidden');
 }
-
-// function renderPaginationSearch(pagesTotalSearch, page) {
-//   const numbers = Array(pagesTotalSearch)
-//     .fill(0)
-//     .map((el, i) => i + 1);
-
-//   const elements = numbers.map(
-//     el => `<button class="pagination-btn ${el === page ? 'active' : ''}">${el}</button>`,
-//   );
-
-//   const backArrow = `<svg width="40" height="40" fill="none" class='arrow' id="back-arrow">
-//       <rect width="40" height="40" rx="5" class="arrow-rect" />
-//       <path
-//         d="M24.667 20h-9.334M20 24.667L15.333 20 20 15.334"
-//      class='arrow-path'
-//         stroke-width="1.333"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
-//       />
-//     </svg>`;
-//   const nextArrow = `<svg width="40" height="40" fill="none" class='arrow' id="next-arrow">
-//   <rect class="arrow-rect" width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" />
-//   <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"  class='arrow-path'  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-// </svg>`;
-//   // выдернул из svg
-//   //fill="#F7F7F7"  у rect
-//   //stroke="#000" у patch
-//   const step = 3;
-//   const startCondition = page - step > 1;
-//   const endCondition = page + step <= elements.length;
-//   const endConditionArrow = page + step < elements.length;
-//   const start = startCondition ? page - step : 0;
-//   const end = page + step - 1;
-//   const slicedElements = elements.slice(start, end);
-
-//   refs.paginListSearch.innerHTML =
-//     (page === 1 ? '' : backArrow) +
-//     (startCondition ? elements[0] + '&#8943' : '') +
-//     slicedElements.join('') +
-//     (endConditionArrow ? '&#8943' : '') +
-//     (endCondition ? elements[elements.length - 1] : '') +
-//     (page === elements.length ? '' : nextArrow);
-//   nextArrow;
-// }
-
-// refs.paginListSearch.addEventListener('click', ev => {
-//   if (ev.target === ev.currentTarget || ev.target.textContent === `${page}`) {
-//     return;
-//   }
-
-//   if (ev.target.parentElement.id === 'next-arrow') {
-//     incremRenderMarcupSearch();
-//     return;
-//   }
-
-//   if (ev.target.parentElement.id === 'back-arrow') {
-//     decremRenderMarcupSearch();
-//     return;
-//   }
-
-//   page = Number(ev.target.textContent);
-//   onMovieSearchClick(page);
-// });
-
-// function incremRenderMarcupSearch() {
-//   page += 1;
-//   onMovieSearchClick(page);
-// }
-
-// function decremRenderMarcupSearch() {
-//   page -= 1;
-//   onMovieSearchClick(page);
-// }
 
 function getPage() {
   return page;
