@@ -16,6 +16,12 @@ import {getVote} from './vote-avarage.js';
 import { openLibrary } from './library-btn.js';
 // import { getReleaseYear } from './years.js';
 import { onClickAppearVote } from './appear-votes.js';
+import ButtonAction from './button-action.js';
+
+const btnSwitch = new ButtonAction({
+  textAdd: 'add to',
+  textRemove: 'remove from',
+});
 
 const Movie = {
   // Данные для Local Storage //
@@ -46,7 +52,13 @@ refs.queueBtn.addEventListener('click', () => {
 function renderQueueFilms(films) {
     // openLibrary();
 refs.watchedFilms.innerHTML = '';
-refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+// refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+  const newFilmsMarkup = films.map(elem => {
+    return btnSwitch.addButtonText(elem);
+  });
+  refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(newFilmsMarkup));
+
+  btnSwitch.clickButtonOverlay(newFilmsMarkup);
 
   getGenres(films);
 //   console.log(films);

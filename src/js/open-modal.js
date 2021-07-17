@@ -20,8 +20,7 @@ async function onMovieClick(e) {
   const movieId = e.target.dataset.value;
   const article = await fetchFilm(movieId);
   appendArticlesMarkup(article);
-  // const modalFilm = document.getElementById("modalFilm");
-  // console.log(modalFilm);
+
   showDialog();
 
 
@@ -47,6 +46,7 @@ function appendArticlesMarkup(article) {
   checkHasFilmModalImage(article);
   const buttonWatched = document.querySelector('.js-watched');
   const buttonQueue = document.querySelector('.js-queue');
+  console.log(buttonWatched);
 
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
 }

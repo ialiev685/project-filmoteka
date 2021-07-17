@@ -8,13 +8,18 @@
 // })
 import { refs } from './refs.js';
 import cardMarkup from '../hbs/cardForm.hbs';
-import {getGenres} from './genres.js';
+import { getGenres } from './genres.js';
 import { getReleaseYear } from './years.js';
 // import { checkHasFilmImage } from './is-image.js';
 import { getVote } from './vote-avarage.js';
 import { openLibrary } from './library-btn.js';
 import { onClickAppearVote } from './appear-votes.js';
+import ButtonAction from './button-action.js';
 
+const btnSwitch = new ButtonAction({
+  textAdd: 'add to',
+  textRemove: 'remove from',
+});
 
 const Movie = {
   // Данные для Local Storage //
@@ -25,46 +30,49 @@ const Movie = {
 // const dataFromLocal = localStorage.getItem(Movie.WATCHED);
 // const dataForRender = JSON.parse(dataFromLocal);
 
-
 refs.myLibraryBtn.addEventListener('click', () => {
-    const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-    const dataForRender = JSON.parse(dataFromLocal);
-    if (dataForRender) {
-        renderWatchedFilms(dataForRender);
-    } else refs.watchedFilms.innerHTML = '';
+  const dataFromLocal = localStorage.getItem(Movie.WATCHED);
+  const dataForRender = JSON.parse(dataFromLocal);
+  if (dataForRender) {
+    renderWatchedFilms(dataForRender);
+  } else refs.watchedFilms.innerHTML = '';
 });
 
 refs.watchedBtn.addEventListener('click', () => {
-    const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-    const dataForRender = JSON.parse(dataFromLocal);
-    if (dataForRender) {
-        renderWatchedFilms(dataForRender);
-    } else refs.watchedFilms.innerHTML = '';
+  const dataFromLocal = localStorage.getItem(Movie.WATCHED);
+  const dataForRender = JSON.parse(dataFromLocal);
+  if (dataForRender) {
+    renderWatchedFilms(dataForRender);
+  } else refs.watchedFilms.innerHTML = '';
 });
 
-
 function renderWatchedFilms(films) {
+  openLibrary();
+  refs.watchedFilms.innerHTML = '';
+  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+  const newFilmsMarkup = films.map(elem => {
+    return btnSwitch.addButtonText(elem);
+  });
+  refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(newFilmsMarkup));
 
-    openLibrary();
-    refs.watchedFilms.innerHTML = '';
-    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
-    getGenres(films);
-      console.log(films);
-    // films.forEach(el => {
-    //     const genres = el.genres.map((elem) => {
-    //         return elem.name;
-    //     });
-    //     const arrayOfGenres = document.querySelectorAll('.name-genres');
-    //     if (arrayOfGenres) {
+  btnSwitch.clickButtonOverlay(newFilmsMarkup);
 
-    //         [...arrayOfGenres].forEach((el) => {
-    //             el.innerHTML = genres.join(', ');
-    //         })
-    //     }
+//   console.log(films);
+  getGenres(films);
+  // films.forEach(el => {
+  //     const genres = el.genres.map((elem) => {
+  //         return elem.name;
+  //     });
+  //     const arrayOfGenres = document.querySelectorAll('.name-genres');
+  //     if (arrayOfGenres) {
 
+  //         [...arrayOfGenres].forEach((el) => {
+  //             el.innerHTML = genres.join(', ');
+  //         })
+  //     }
 
-    // });
-    getReleaseYear(films);
-    getVote(films);
-    onClickAppearVote();
+  // });
+  getReleaseYear(films);
+  getVote(films);
+  onClickAppearVote();
 }
