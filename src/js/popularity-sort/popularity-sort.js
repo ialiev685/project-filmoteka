@@ -38,9 +38,7 @@ async function onSortDayClick() {
   forWriteStorageClick();
   sortBtnRemove();
   const films = await getTrendItems(1);
-
   renderFilms(films);
-
   removeSortInput();
 }
 
@@ -50,9 +48,7 @@ async function onSortWeekClick() {
   forWriteStorageClick();
   sortBtnRemove();
   const films = await getTrendItems(1);
-
   renderFilms(films);
-
   removeSortInput();
 }
 

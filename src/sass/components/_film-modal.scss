@@ -189,13 +189,15 @@
 
 .modal-buttons {
   display: flex;
+
   justify-content: center;
 }
+
 
 .modal__button {
   text-align: center;
   padding: 0;
-  // padding: 14px 10px 12px 10px;
+  padding: 14px 10px 12px 10px;
 
   width: 111px;
 
@@ -221,7 +223,7 @@
 
     height: 54px; //менял
 
-    padding: 0;
+    // padding: 0;
   }
 
   @media screen and (min-width: $desktop) {
