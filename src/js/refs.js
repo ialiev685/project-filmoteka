@@ -16,7 +16,7 @@ export const refs = {
   queueBtn: document.querySelector('.js-head-queue'),
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
-
+  popularData:document.querySelector('.popular-data'),
   warningString: document.querySelector('.header-message'),
 
   boxPopularSort: document.querySelector('.textarea-demo-left-item'),
@@ -24,6 +24,7 @@ export const refs = {
   dropdownListPopularSortDay: document.querySelector('#day'),
   dropdownListPopularSortWeek: document.querySelector('#week'),
   dropdownPopularSortValue: document.querySelector('.dropdown-value'),
+  dropdownValueP: document.querySelectorAll('.dropdown-value-p'),
 
   filmContainer: document.querySelector('.backdrop'),
 
@@ -43,6 +44,7 @@ export const refs = {
   sortFilmsBtnRating: document.getElementById('rating'),
   sortFilmsBtnYear: document.getElementById('year'),
   sortFilmsBox: document.querySelector('.sort-films-box'),
+  sortFilmsText: document.querySelector('.sort-films-text'),
     // paginationBox: document.querySelector('.pagination'),
 
   watchedFilms: document.querySelector('.js-watched-films'),

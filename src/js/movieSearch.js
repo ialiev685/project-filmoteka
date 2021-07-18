@@ -37,6 +37,7 @@ async function onMovieSearchClick(page) {
       if (fatch.results !== undefined) {
         const valueSeatch = refs.headerInput.value.trim();
         renderFilmsCards(fatch, valueSeatch);
+        console.log(fatch)
       }
     }
   } catch (error) {

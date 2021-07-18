@@ -57,7 +57,7 @@ export function renderFilms(array, valueSeatch = 'empty') {
   getVote(array.results);
   checkHasFilmImage(array.results);
 const currentLang = localStorage.getItem('language');
-
+  translateInterface();
   // headerRender();
   sortFilms(array.results);
     // onClickDisappearVote();

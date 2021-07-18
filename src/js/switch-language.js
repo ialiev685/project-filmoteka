@@ -50,10 +50,26 @@ function checkAndSetLanguage() {
 
 }
 
-export function translateInterface(lang, arrayTrans) {
-  for (let key in arrayTrans) {
-    document.querySelector(`.lang-${key}`).textContent = langArray[`${key}`][lang];
-  }
+export function translateInterface() {
+  if (localStorage.getItem('language') === 'ru') {
+    refs.myLibraryBtn.innerHTML = 'Моя библиотека';
+    refs.homeBtn.innerHTML = "На главную";
+    refs.headerInput.placeholder = "Искать фильм";
+    refs.popularData.innerHTML = "Популярные";
+    refs.sortFilmsText.innerHTML = "Фильтр по";
+    refs.sortFilmsBtnGenre.innerHTML = "Жанру";
+    refs.sortFilmsBtnRating.innerHTML = "Рейтингу";
+    refs.sortFilmsBtnYear.innerHTML = "Году";
+  } else {
+    refs.myLibraryBtn.innerHTML = 'My library';
+    refs.homeBtn.innerHTML = "Home";
+    refs.headerInput.placeholder = "Movie search";
+    refs.popularData.innerHTML = "Popular";
+    refs.sortFilmsText.innerHTML = "Sort by";
+    refs.sortFilmsBtnGenre.innerHTML = "Genre";
+    refs.sortFilmsBtnRating.innerHTML = "Rating";
+    refs.sortFilmsBtnYear.innerHTML = "Year";
+  };
 }
 
 moveProperPositionOfToggle();
