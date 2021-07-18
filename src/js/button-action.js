@@ -1,6 +1,7 @@
-import {deletedFilm} from './pnotify';
 import {addedFilm} from './pnotify';
 import {removedFilm} from './pnotify';
+// import {removedFilmRu} from './pnotify';
+// import {addedFilmRu} from './pnotify';
 
 const Movie = {
   // Данные для Local Storage //
@@ -41,11 +42,13 @@ export default class ButtonAction {
 
   switchBtnText(button, e) {
     if (e.target.innerHTML === `add to ${button}`) {
+      addedFilm.open();
       e.target.innerHTML = `remove from ${button}`;
-      return addedFilm.open();      
+      return;      
     } else {
+      removedFilm.open();
       e.target.innerHTML = `add to ${button}`;
-      return removedFilm.open();
+      return;
     }
   }
 
@@ -60,7 +63,7 @@ export default class ButtonAction {
         this.switchBtnText(button, e);
         buttonWatched.innerHTML = 'add to watched';
         this.writeDataToStorage(el.id, el, Movie.QUEUE);
-        this.writeDataToStorage(el.id, el, Movie.WATCHED, buttonQueue);
+        this.writeDataToStorage(el.id, el, Movie.WATCHED, buttonQueue);      
       });
 
       buttonWatched.addEventListener('click', e => {
@@ -69,7 +72,7 @@ export default class ButtonAction {
         buttonQueue.innerHTML = 'add to queue';
         this.writeDataToStorage(el.id, el, Movie.WATCHED);
         this.writeDataToStorage(el.id, el, Movie.QUEUE, buttonWatched);
-      });
+       });
 
     });
   }
@@ -86,7 +89,7 @@ export default class ButtonAction {
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.QUEUE, buttonWatched);
       buttonQueue.innerHTML = 'add to queue';
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
-      queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
+      queueBtnOverlay.innerHTML = buttonQueue.innerHTML;      
     });
 
     buttonQueue.addEventListener('click', e => {
@@ -96,18 +99,17 @@ export default class ButtonAction {
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.WATCHED, buttonWatched);
       buttonWatched.innerHTML = 'add to watched';
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
-      watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
+      watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;     
     });
   }
 
   writeDataToStorage(movieId, newFilmMarkup, storageData, deleteList) {
     let storageList = [];
     if (localStorage.getItem(storageData)) {
-      storageList = JSON.parse(localStorage.getItem(storageData));
+      storageList = JSON.parse(localStorage.getItem(storageData));      
 
-      if (storageList.length !== 0) {
-
-        const data = storageList.find(elem => {
+      if (storageList.length !== 0) {        
+        const data = storageList.find(elem => {         
           return movieId === elem.id;
         });
 
@@ -119,7 +121,7 @@ export default class ButtonAction {
           localStorage.setItem(storageData, JSON.stringify(storageList));
           
         } else {
-          if (deleteList) {                     
+          if (deleteList) {                              
             return;
           }
           storageList.push(newFilmMarkup);
