@@ -230,7 +230,6 @@ function sortFilms(arr) {
     refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
     checkHasFilmImage(array);
   }
-  // Снятие слушателя при нажатии на кнопку HOME:
   function onRemoveEventListenerSubmitClick() {
     refs.searchBtn.addEventListener('click', RemoveEventListener);
     refs.headerInput.addEventListener('keydown', RemoveEventListener);
@@ -255,18 +254,14 @@ function sortFilms(arr) {
   function onRemoveEventListenerPaginationClick() {
     refs.paginListStart.addEventListener('click', removeEventListenerBtnClick);
   }
+  // Снятие слушателя при нажатии на кнопку HOME:
+  function onRemoveEventListenerHomeBtnClick() {
+    refs.homeBtn.addEventListener('click', removeEventListenerBtnClick);
+  }
   function removeEventListenerBtnClick() {
     btnGenre.removeEventListener('click', onSortGenreClick);
     btnRating.removeEventListener('click', onSortRatingClick);
     btnYear.removeEventListener('click', onSortYearClick);
-  }
-  function onRemoveEventListenerHomeBtnClick() {
-    refs.homeBtn.addEventListener('click', removeEventListener);
-    function removeEventListener() {
-      btnGenre.removeEventListener('click', onSortGenreClick);
-      btnRating.removeEventListener('click', onSortRatingClick);
-      btnYear.removeEventListener('click', onSortYearClick);
-    }
   }
 }
 
