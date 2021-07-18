@@ -1,4 +1,3 @@
-
 import { getMarcup } from '../js/start-site.js';
 import { refs } from './refs.js';
 import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
@@ -13,6 +12,8 @@ let page = 1;
 let dataSearch = '';
 
 function renderPagination(total_pages, curPage, searchValue) {
+  console.log('🚀 ~ file: pagination.js ~ line 16 ~ renderPagination ~ total_pages', total_pages);
+
   dataSearch = searchValue;
   page = curPage;
   const numbers = Array(total_pages)
@@ -37,7 +38,7 @@ function renderPagination(total_pages, curPage, searchValue) {
   <rect class="arrow-rect" width="40" height="40" rx="5" transform="matrix(-1 0 0 1 40 0)" />
   <path d="M15.333 20h9.334M20 24.667L24.667 20 20 15.334"  class='arrow-path'  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-  
+
   const step = 3;
   const startCondition = page - step > 1;
   const endCondition = page + step <= elements.length;
@@ -103,7 +104,7 @@ function listener(ev) {
   page = Number(ev.target.textContent);
   nextRenderMarcup(page);
 
-  renderPagination();
+  // renderPagination();
 }
 
 export { renderPagination };

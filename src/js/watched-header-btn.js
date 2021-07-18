@@ -78,7 +78,7 @@ function renderWatchedFilms(films) {
 
   //////
 
-  // btnSwitch.clickButtonOverlay(results);
+  btnSwitch.clickButtonOverlay(results);
 
   //   getGenres(films);
   //   getReleaseYear(films);
@@ -87,37 +87,38 @@ function renderWatchedFilms(films) {
   // }
 
   ////////////////
-
-  function makeRenderDependView(arrFilms) {
-    dataFilms = arrFilms;
-    const countFilms = arrFilms.length;
-
-    // console.log(countFilms);
-
-    const { totalPage, countListFilms } = defineCountFilmsList(countFilms);
-    // console.log('total, countfilms', totalPage, countListFilms);
-
-    const start = page * countListFilms - countListFilms;
-    const end = page * countListFilms;
-    // console.log(start, end);
-    const newArray = arrFilms.slice(start, end);
-    // console.log(newArray);
-    // const objFilms = { totalPage, results: newArray };
-    // console.log(objFilms);
-
-    // return objFilms;
-
-    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(newArray));
-    renderPagination(totalPage, page);
-    btnSwitch.clickButtonOverlay(newArray);
-
-    // getGenres(newArray);
-    // getReleaseYear(newArray);
-    // getVote(newArray);
-    // onClickAppearVote();
-  }
 }
+function makeRenderDependView(arrFilms) {
+  dataFilms = arrFilms;
+  const countFilms = arrFilms.length;
 
+  // console.log(countFilms);
+
+  const { totalPage, countListFilms } = defineCountFilmsList(countFilms);
+  console.log('totalPage в моей функции', totalPage);
+  // console.log('total, countfilms', totalPage, countListFilms);
+
+  const start = page * countListFilms - countListFilms;
+  const end = page * countListFilms;
+  // console.log(start, end);
+  const newArray = arrFilms.slice(start, end);
+  // console.log(newArray);
+  // const objFilms = { totalPage, results: newArray };
+  // console.log(objFilms);
+
+  // return objFilms;
+
+  refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(newArray));
+  console.log('номер страницы', page);
+
+  renderPagination(totalPage, page);
+  btnSwitch.clickButtonOverlay(newArray);
+
+  getGenres(newArray);
+  getReleaseYear(newArray);
+  getVote(newArray);
+  onClickAppearVote();
+}
 function defineCountFilmsList(countFilms) {
   let countListFilms = null;
   const sizeView = document.documentElement.clientWidth;
@@ -135,6 +136,8 @@ function defineCountFilmsList(countFilms) {
 }
 
 function renderPagination(total_pages, curPage) {
+  console.log(' total_pages в рендере', total_pages);
+
   page = curPage;
   const numbers = Array(total_pages)
     .fill(0)
@@ -182,7 +185,6 @@ refs.paginListSearch.addEventListener('click', listener, false);
 function nextRenderMarcup(page) {
   refs.watchedFilms.innerHTML = '';
 
-  console.log(dataFilms);
   makeRenderDependView(dataFilms);
   // if (dataSearch === 'empty') {
   //   getMarcup(page);
@@ -227,5 +229,5 @@ function listener(ev) {
   page = Number(ev.target.textContent);
   nextRenderMarcup(page);
 
-  renderPagination();
+  // renderPagination();
 }
