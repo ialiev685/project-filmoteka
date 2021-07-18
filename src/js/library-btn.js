@@ -1,19 +1,21 @@
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';
 // import { getFromLocalStorageWatched } from './add-to-watched-btn.js';
-import {onClickAppearVote} from './appear-votes.js';
+import { onClickAppearVote } from './appear-votes.js';
 import { onBoxPopularitySortRemoveClick } from './popularity-sort/popularity-sort.js';
 
 refs.myLibraryBtn.addEventListener('click', openLibrary);
 refs.watchedBtn.addEventListener('click', onWatchedBtn);
 refs.queueBtn.addEventListener('click', onQueueBtn);
 
-
 export function openLibrary() {
+  refs.paginListStart.style.display = 'none'; //тест
+
   refs.libraryBtns.classList.remove('library-btns-hidden');
   refs.myLibraryBtn.classList.add('current');
   refs.searchContainer.classList.add('header-input-hidden');
   refs.watchedBtn.classList.add('current-btn');
+
   refs.overlay.classList.replace('overlay', 'overlay-library');
   refs.homeBtn.classList.remove('current');
   onBoxPopularitySortRemoveClick();
@@ -23,10 +25,8 @@ export function openLibrary() {
   refs.filmList.innerHTML = '';
   // renderFilms(getFromLocalStorageWatched());
 
- onClickAppearVote();
-
+  onClickAppearVote();
 }
-
 
 function onWatchedBtn() {
   refs.watchedBtn.classList.add('current-btn');
