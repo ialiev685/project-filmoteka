@@ -10,7 +10,6 @@
 
   overflow-y: scroll;
 
-
   background-color: rgba(0, 0, 0, 0.6);
 
   opacity: 1;
@@ -187,6 +186,12 @@
   line-height: 1.67;
   color: #000000;
 }
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .modal__button {
   text-align: center;
   padding: 0;
@@ -224,6 +229,14 @@
 
     // padding: 14px 10px 12px 10px;
   }
+}
+
+.modal__button.trailer {
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  // text-align: center;
 }
 .modal__button.watched {
   margin-right: 15px;

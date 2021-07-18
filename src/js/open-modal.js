@@ -1,9 +1,12 @@
+import * as basicLightbox from 'basiclightbox';
+
 import { refs } from './refs.js';
 import ButtonAction from './button-action.js';
 import movie from '../hbs/film-modal.hbs';
 import { checkHasFilmModalImage } from './is-image.js';
 import { onClickDisappearVote } from './appear-votes.js';
 import { putRoundedPopularity } from './put-rounded-pop';
+import { fetchFilmTrailer } from './open-trailer.js';
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
@@ -13,26 +16,34 @@ const btnSwitch = new ButtonAction({
 refs.filmList.addEventListener('click', onMovieClick);
 refs.watchedFilms.addEventListener('click', onMovieClick);
 
-
 async function onMovieClick(e) {
-
   if (e.target.classList.value !== 'overlay-btn js-about') {
     return;
-  };
-   
+  }
+
   const movieId = e.target.dataset.value;
   const article = await fetchFilm(movieId);
 
   await appendArticlesMarkup(article);
   checkHasFilmModalImage(article);
 
+  const trailerBtn = document.querySelector('.js-trailer');
+  const filmModalBox = document.querySelector('.modal__flm-info');
+  console.log(filmModalBox);
+  trailerBtn.addEventListener('click', (e) => {
+    if (e.target.classList.contains('js-trailer')) {
+
+      onTrailerBtnClick(article.id, filmModalBox);
+    };
+
+  });
+  // inst.close();
+
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');
 
-
   toggleClass(backdrop);
   closeModal(closeButton, backdrop);
-
 }
 
 function fetchFilm(movieId) {
@@ -50,9 +61,40 @@ function appendArticlesMarkup(article) {
   const buttonWatched = document.querySelector('.js-watched');
   const buttonQueue = document.querySelector('.js-queue');
 
+  // const trailerBtn = document.querySelector('.js-trailer');
+  // console.log(trailerBtn);
+
+  // // trailerBtn.addEventListener('click', onTrailerBtnClick(article.id));
   // console.log(buttonWatched);
 
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
+}
+
+async function onTrailerBtnClick(movieId, filmBox) {
+  const trailer = await fetchFilmTrailer(movieId);
+  console.log(trailer);
+  const instance = basicLightbox.create(`
+  <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+`
+,
+  {
+      onShow: instance => {
+        filmBox.addEventListener('keydown', function onEscClick(e) {
+          if (e.code === 'Escape') {
+            instance.close();
+            filmBox.removeEventListener('keydown', onEscClick);
+          }
+        });
+      },
+    },
+  );
+
+  instance.show();
+
 }
 
 function toggleClass(backdrop) {
@@ -91,9 +133,9 @@ function closeModal(closeButton, backdrop, modalFilm) {
 }
 
 function showDialog() {
-  document.getElementsByTagName("body")[0].style.overflow = 'hidden';
+  document.getElementsByTagName('body')[0].style.overflow = 'hidden';
 }
 
 function closeDialog() {
-    document.getElementsByTagName("body")[0].style.overflow = 'scroll';
+  document.getElementsByTagName('body')[0].style.overflow = 'scroll';
 }
