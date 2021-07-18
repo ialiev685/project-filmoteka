@@ -12,8 +12,11 @@ const Language = {
 refs.switchLangCheckbox.addEventListener('change', e => {
   changeSignColor(e);
   const lang = switchLanguage(e);
+  translateInterface(lang);
+  if (refs.myLibraryBtn.classList.contains('current')) {
+    return
+  }
   onChangeLang();
-    translateInterface(lang);
     
 });
 
@@ -60,6 +63,8 @@ export function translateInterface() {
     refs.sortFilmsBtnGenre.innerHTML = "Жанру";
     refs.sortFilmsBtnRating.innerHTML = "Рейтингу";
     refs.sortFilmsBtnYear.innerHTML = "Году";
+    refs.watchedHeaderBtn.innerHTML = "Просмотренные";
+    refs.queueHeaderBtn.innerHTML = "Очередь";
   } else {
     refs.myLibraryBtn.innerHTML = 'My library';
     refs.homeBtn.innerHTML = "Home";
@@ -69,6 +74,8 @@ export function translateInterface() {
     refs.sortFilmsBtnGenre.innerHTML = "Genre";
     refs.sortFilmsBtnRating.innerHTML = "Rating";
     refs.sortFilmsBtnYear.innerHTML = "Year";
+    refs.watchedHeaderBtn.innerHTML = "Watched";
+    refs.queueHeaderBtn.innerHTML = "Queue";
   };
 }
 
