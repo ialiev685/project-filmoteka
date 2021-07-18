@@ -60,3 +60,11 @@
 .light-theme .arrow-path {
   stroke: var(--color-text-primary);
 }
+
+.pagination-library.is-hidden {
+  display: none;
+}
+
+.pagination-start.is-hidden {
+  display: none;
+}

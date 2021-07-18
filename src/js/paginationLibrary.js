@@ -43,7 +43,7 @@ function renderPagination(total_pages, curPage, { prop, films }) {
   const end = page + step - 1;
   const slicedElements = elements.slice(start, end);
 
-  refs.paginListSearch.innerHTML =
+  refs.paginListLibrary.innerHTML =
     (page === 1 ? '' : backArrow) +
     (startCondition ? elements[0] + '&#8943' : '') +
     slicedElements.join('') +
@@ -53,7 +53,7 @@ function renderPagination(total_pages, curPage, { prop, films }) {
   nextArrow;
 }
 
-refs.paginListSearch.addEventListener('click', listener, false);
+refs.paginListLibrary.addEventListener('click', listener, false);
 
 function nextRenderMarcup(page) {
   refs.watchedFilms.innerHTML = '';

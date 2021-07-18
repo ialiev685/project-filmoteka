@@ -9,7 +9,8 @@ refs.watchedBtn.addEventListener('click', onWatchedBtn);
 refs.queueBtn.addEventListener('click', onQueueBtn);
 
 export function openLibrary() {
-  refs.paginListStart.style.display = 'none'; //тест
+  refs.paginListStart.classList.add('is-hidden'); //тест
+  refs.paginListLibrary.classList.remove('is-hidden'); //тест
 
   refs.libraryBtns.classList.remove('library-btns-hidden');
   refs.myLibraryBtn.classList.add('current');
