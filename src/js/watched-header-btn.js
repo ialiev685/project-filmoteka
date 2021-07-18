@@ -39,6 +39,7 @@ refs.myLibraryBtn.addEventListener('click', () => {
   const dataForRender = JSON.parse(dataFromLocal);
   if (dataForRender) {
     renderWatchedFilms(dataForRender, page);
+    onFilmLibClick();
   } else refs.watchedFilms.innerHTML = '';
 });
 
