@@ -1,10 +1,15 @@
 import { renderWatchedFilms } from './watched-header-btn.js';
+import { renderQueueFilms } from './queue-header-btn.js';
 import { refs } from './refs.js';
 
 let page = 1;
 let dataFilms = null;
+let type = null;
 
-function renderPagination(total_pages, curPage, films) {
+function renderPagination(total_pages, curPage, { prop, films }) {
+  type = prop;
+  console.log(' type', type);
+
   dataFilms = films;
   page = curPage;
   const numbers = Array(total_pages)
@@ -53,15 +58,10 @@ refs.paginListSearch.addEventListener('click', listener, false);
 function nextRenderMarcup(page) {
   refs.watchedFilms.innerHTML = '';
 
-  renderWatchedFilms(dataFilms, page);
-  // if (dataSearch === 'empty') {
-  //   getMarcup(page);
-  // } else if (dataSearch !== 'empty') {
-  //   moviesApiService.query = dataSearch;
-  //   const value = dataSearch;
-  //   const data = await moviesApiService.fetchMovie(page);
-  //   renderFilms(data, value);
-  // }
+  // на самом деле нет разницы какую функцию запускать, они индентичны.
+  if (type === 'watched') renderWatchedFilms(dataFilms, page);
+
+  if (type === 'queue') renderQueueFilms(dataFilms, page);
 }
 
 function incremRenderMarcup() {

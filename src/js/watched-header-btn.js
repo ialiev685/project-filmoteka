@@ -30,8 +30,6 @@ const Movie = {
 };
 
 let page = 1;
-// console.log('🚀 ~ file: watched-header-btn.js ~ line 33 ~ page', page);
-let dataFilms = null;
 
 // const dataFromLocal = localStorage.getItem(Movie.WATCHED);
 // const dataForRender = JSON.parse(dataFromLocal);
@@ -64,24 +62,21 @@ refs.watchedBtn.addEventListener('click', () => {
 });
 
 function renderWatchedFilms(films, page) {
-  // let curPage = page;
-  // console.log('🚀 ~ file: watched-header-btn.js ~ line 33 ~ page', curPage);
-
   openLibrary();
   refs.watchedFilms.innerHTML = '';
-  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+
   const newFilmsMarkup = films.map(elem => {
     return btnSwitch.addButtonText(elem);
   });
 
-  //////
-  // const { totalPage, results } = makeRenderDependView(newFilmsMarkup);
+  ////// тест
+
   const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
   refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
 
-  renderPagination(totalPage, page, films);
+  renderPagination(totalPage, page, { prop: 'watched', films });
 
-  //////
+  ////// тест
 
   btnSwitch.clickButtonOverlay(procMarkup);
 
@@ -90,6 +85,8 @@ function renderWatchedFilms(films, page) {
   getVote(procMarkup);
   onClickAppearVote();
 }
+
+///// тест
 
 function makeRenderDependView(arrFilms, page) {
   const countFilms = arrFilms.length;
