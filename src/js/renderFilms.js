@@ -40,6 +40,7 @@ export function renderFilms(array, valueSeatch = 'empty') {
     });
     refs.filmList.insertAdjacentHTML('beforeend', cardFormRus(newFilmsMarkup));
     btnSwitchRus.clickButtonOverlay(newFilmsMarkup);
+    sortFilms(newFilmsMarkup);
     console.log(newFilmsMarkup)
     console.log('dfghj')
   } else {
@@ -47,7 +48,8 @@ export function renderFilms(array, valueSeatch = 'empty') {
     return btnSwitch.addButtonText(elem);
   });
       refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmsMarkup));
-      btnSwitch.clickButtonOverlay(newFilmsMarkup);
+    btnSwitch.clickButtonOverlay(newFilmsMarkup);
+    sortFilms(newFilmsMarkup);
     };
   
   renderPagination(array.total_pages, array.page, valueSeatch); // передаем пагинацию
@@ -56,10 +58,9 @@ export function renderFilms(array, valueSeatch = 'empty') {
   getReleaseYear(array.results);
   getVote(array.results);
   checkHasFilmImage(array.results);
-const currentLang = localStorage.getItem('language');
   translateInterface();
   // headerRender();
-  sortFilms(array.results);
+  
     // onClickDisappearVote();
 };
 

@@ -1,13 +1,32 @@
 import { refs } from './refs.js';
 import sortCardForm from '../hbs/sortCardForm.hbs';
 import { checkHasFilmImage } from './is-image.js';
+import cardFormRus from '../hbs/cardFormRus.hbs';
+import cardForm from '../hbs/cardForm.hbs';
+import ButtonAction from './button-action.js';
+
+const btnSwitch = new ButtonAction({
+  textQueue: 'queue',
+  textWatched:'watched',
+  textAdd: 'add to',
+  textRemove: 'remove from',
+});
+
+const btnSwitchRus = new ButtonAction({
+  textQueue: 'очередь',
+  textWatched:'просмотрено',
+  textAdd: 'в',
+  textRemove: 'из',
+});
+
+
 
 const btnGenre = refs.sortFilmsBtnGenre;
 const btnRating = refs.sortFilmsBtnRating;
 const btnYear = refs.sortFilmsBtnYear;
 
 function sortFilms(arr) {
-    
+    console.log(arr)
     // ------------Логика массивов:
     const arrayGenres = document.querySelectorAll('.name-genres');
     const arrayYear = document.querySelectorAll('.year-list');
@@ -187,7 +206,16 @@ function sortFilms(arr) {
 
     function renderModifiedFilms(array) {
         refs.filmList.innerHTML = '';
-        refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
+        if(array.find(elem => {
+            console.log(/[а-я]/i.test(elem.title))
+          return /[а-я]/i.test(elem.title)===true;
+        })) {
+            refs.filmList.insertAdjacentHTML('beforeend', cardFormRus(array));
+            btnSwitchRus.clickButtonOverlay(array);
+        } else {
+            refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
+            btnSwitch.clickButtonOverlay(array);
+        }
         checkHasFilmImage(array);
     };
 
