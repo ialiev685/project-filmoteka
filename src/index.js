@@ -32,12 +32,8 @@ import './js/switchTheme.js';
 
 import './js/sortRenderFilms.js';
 
-
 import './js/hintSearch.js';
-
 
 import './js/auth-api.js';
 import './js/authorization.js';
-
-
-
+import './js/paginationLibrary.js';

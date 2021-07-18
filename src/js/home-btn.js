@@ -3,10 +3,14 @@ import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
 import { onClickDisappearVote } from './appear-votes.js';
 import { onBoxPopularitySortAddClick } from './popularity-sort/popularity-sort.js';
+import { correctionMargin } from './sortRenderFilms.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
 async function onHomeBtnClick() {
+  refs.paginListLibrary.classList.add('is-hidden'); //тест
+  refs.paginListStart.classList.remove('is-hidden'); //тест
+
   refs.libraryBtns.classList.add('library-btns-hidden');
   // refs.filmList.innerHTML = '';
   refs.watchedFilms.innerHTML = '';
@@ -21,8 +25,9 @@ async function onHomeBtnClick() {
   refs.homeBtn.classList.add('current');
   refs.queueBtn.classList.remove('current-btn');
   // refs.paginationBox.classList.remove('is-hidden');
-  
+
   refs.headerInput.value = '';
   onBoxPopularitySortAddClick();
+  correctionMargin();
   // onClickDisappearVote();
 }

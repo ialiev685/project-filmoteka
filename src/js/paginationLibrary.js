@@ -1,18 +1,16 @@
-import { getMarcup } from '../js/start-site.js';
+import { renderWatchedFilms } from './watched-header-btn.js';
+import { renderQueueFilms } from './queue-header-btn.js';
 import { refs } from './refs.js';
-import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
-import MoviesApiService from './fetchMovie.js';
-import { renderFilms } from './renderFilms.js';
-
-const moviesApiService = new MoviesApiService();
-
-checkAndSetPopulation();
 
 let page = 1;
-let dataSearch = '';
+let dataFilms = null;
+let type = null;
 
-function renderPagination(total_pages, curPage, searchValue) {
-  dataSearch = searchValue;
+function renderPagination(total_pages, curPage, { prop, films }) {
+  type = prop;
+  console.log(' type', type);
+
+  dataFilms = films;
   page = curPage;
   const numbers = Array(total_pages)
     .fill(0)
@@ -45,7 +43,7 @@ function renderPagination(total_pages, curPage, searchValue) {
   const end = page + step - 1;
   const slicedElements = elements.slice(start, end);
 
-  refs.paginListStart.innerHTML =
+  refs.paginListLibrary.innerHTML =
     (page === 1 ? '' : backArrow) +
     (startCondition ? elements[0] + '&#8943' : '') +
     slicedElements.join('') +
@@ -55,19 +53,15 @@ function renderPagination(total_pages, curPage, searchValue) {
   nextArrow;
 }
 
-refs.paginListStart.addEventListener('click', listener, false);
+refs.paginListLibrary.addEventListener('click', listener, false);
 
-async function nextRenderMarcup(page) {
-  refs.filmList.innerHTML = '';
+function nextRenderMarcup(page) {
+  refs.watchedFilms.innerHTML = '';
 
-  if (dataSearch === 'empty') {
-    getMarcup(page);
-  } else if (dataSearch !== 'empty') {
-    moviesApiService.query = dataSearch;
-    const value = dataSearch;
-    const data = await moviesApiService.fetchMovie(page);
-    renderFilms(data, value);
-  }
+  // на самом деле нет разницы какую функцию запускать, они индентичны.
+  if (type === 'watched') renderWatchedFilms(dataFilms, page);
+
+  if (type === 'queue') renderQueueFilms(dataFilms, page);
 }
 
 function incremRenderMarcup() {
@@ -90,6 +84,7 @@ function listener(ev) {
   ev.target.classList.add('active');
 
   if (ev.target.parentElement.id === 'next-arrow') {
+    console.dir(ev.target);
     incremRenderMarcup();
     return;
   }
