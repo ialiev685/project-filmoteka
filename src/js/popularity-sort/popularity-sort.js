@@ -71,7 +71,7 @@ function checkAndSetPopulation() {
     sortValue.textContent = 'week';
   }
 }
-console.dir(sortValue);
+
 function forWriteStorageClick() {
   if (sortValue.textContent === 'day') {
     localStorage.setItem('popularity', PopularitySort.DAY);
