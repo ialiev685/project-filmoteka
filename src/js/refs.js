@@ -16,7 +16,7 @@ export const refs = {
   queueBtn: document.querySelector('.js-head-queue'),
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
-  popularData:document.querySelector('.popular-data'),
+  popularData: document.querySelector('.popular-data'),
   warningString: document.querySelector('.header-message'),
 
   boxPopularSort: document.querySelector('.textarea-demo-left-item'),
@@ -37,27 +37,18 @@ export const refs = {
   signLangRus: document.querySelector('.sign-rus'),
   bodyEl: document.body,
 
-  paginListStart: document.querySelector(".pagination-start"),
-  paginListSearch: document.querySelector(".pagination-search"),
+  paginListStart: document.querySelector('.pagination-start'),
+  paginListLibrary: document.querySelector('.pagination-library'),
 
   sortFilmsBtnGenre: document.getElementById('genre'),
   sortFilmsBtnRating: document.getElementById('rating'),
   sortFilmsBtnYear: document.getElementById('year'),
   sortFilmsBox: document.querySelector('.sort-films-box'),
   sortFilmsText: document.querySelector('.sort-films-text'),
-    // paginationBox: document.querySelector('.pagination'),
 
   watchedFilms: document.querySelector('.js-watched-films'),
   hintEl: document.querySelector('.search-hint'),
   rowTableEl: document.querySelector('.search-hint-table .row-table'),
 
-
   authBtn: document.querySelector('.auth-btn'),
-  // paginationBox: document.querySelector('.pagination'),
 };
-
-
-
-
-  
-

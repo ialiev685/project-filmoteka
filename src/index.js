@@ -26,21 +26,18 @@ import './js/popularity-sort/fatch-popularity-sort.js';
 import './js/popularity-sort/render-popularity-sort';
 
 import './js/open-modal';
-// import './js/modal-open.js';
+// import './js/open-modal.js';
 
 import './js/switchTheme.js';
 
 import './js/sortRenderFilms.js';
 
-
 import './js/hintSearch.js';
-
 
 import './js/auth-api.js';
 import './js/authorization.js';
 
-
 import './js/switch-language.js';
 
-
 import './js/render-header.js';
+import './js/paginationLibrary.js';

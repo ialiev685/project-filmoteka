@@ -19,4 +19,17 @@ export function getVote(data) {
  });
 };
 
+export function getVoteModal(film) {
+
+    let voteValue = String(film.vote_average);
+    let regExp = '[.]+';
+    if(voteValue.match(regExp) == null) {
+    voteValue += '.0';
+  };
+
+  const filmModalVote = document.querySelector('.modal__flm-rating');
+    filmModalVote.innerText = voteValue;
+
+};
+
 

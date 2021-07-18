@@ -3,8 +3,8 @@
     <div class="navigation">
       <span class="logo js-logo">
         <img src="./images/header/header-logo.svg" alt="logo" />
-        <a class="logo-name" href="#">Filmoteka</a>
-        //<a class="logo-name" onclick="window.location.href=this">Filmoteka</a>
+        <!-- <a class="logo-name" href="#">Filmoteka</a> -->
+        <a class="logo-name" onclick="window.location.href=this">Filmoteka</a>
       </span>
       <div class="btn-container">
         <button type="button" class="header-button auth-btn">sign in</button>
@@ -48,19 +48,6 @@
     <include src="./partials/switch-language.html"></include>
     <include src="./partials/swith-theme.html"></include>
     <include src="./partials/sort-films.html"></include>
-    <div class="textarea-demo-left-item">
-      <div class="textarea-demo-left-item-left">
-        <p class="popular-data">Popular</p>
-      </div>
-      <div class="textarea-demo-left-item-right">
-        <div id="textarea-demo-height" class="dropdown">
-          <div class="dropdown-value">day</div>
-          <div class="dropdown-list">
-            <div id="day">day</div>
-            <div id="week">week</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
+  <include src="./partials/popularity-sort.html"></include>
 </header>
