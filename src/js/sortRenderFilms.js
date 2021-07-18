@@ -91,7 +91,8 @@ function sortFilms(arr) {
     // };
     onRemoveEventListenerDayClick();
     onRemoveEventListenerWeekClick();
-
+    onRemoveEventListenerPaginationClick();
+    
     function onSortGenreClick() {
         
         if (!btnGenre.classList.contains('sort-films-btn-down') && !btnGenre.classList.contains('sort-films-btn-up')) {
@@ -213,10 +214,10 @@ function sortFilms(arr) {
     function onRemoveEventListenerWeekClick() {
         refs.dropdownListPopularSortWeek.addEventListener('click', removeEventListenerBtnClick);
     };
-    // Снятие слушателя при нажатии на иконку Filmoteka:
-    function onRemoveEventListenerIconClick() {
-        
-    }
+    // Снятие слушателя при нажатии на кнопки пагинации:
+    function onRemoveEventListenerPaginationClick() {
+        refs.paginListStart.addEventListener('click', removeEventListenerBtnClick);
+    };
     function removeEventListenerBtnClick() {
         btnGenre.removeEventListener('click', onSortGenreClick);
         btnRating.removeEventListener('click', onSortRatingClick);
