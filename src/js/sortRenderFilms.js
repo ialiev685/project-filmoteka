@@ -89,7 +89,9 @@ function sortFilms(arr) {
     // } else if (!refs.myLibraryBtn.classList.contains('current')) {
     //     refs.sortFilmsBox.classList.remove('is-hidden');
     // };
-    
+    onRemoveEventListenerDayClick();
+    onRemoveEventListenerWeekClick();
+
     function onSortGenreClick() {
         
         if (!btnGenre.classList.contains('sort-films-btn-down') && !btnGenre.classList.contains('sort-films-btn-up')) {
@@ -190,7 +192,7 @@ function sortFilms(arr) {
         refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
         checkHasFilmImage(array);
     };
-
+    // Снятие слушателя при нажатии на кнопку HOME:
     function onRemoveEventListenerSubmitClick() {
     refs.searchBtn.addEventListener('click', RemoveEventListener);
     refs.headerInput.addEventListener('keydown', RemoveEventListener);
@@ -204,6 +206,22 @@ function sortFilms(arr) {
             btnYear.removeEventListener('keydown', onSortYearClick)
         };
     };
+    // Снятие слушателя при нажатии на кнопки day и week:
+    function onRemoveEventListenerDayClick() {
+        refs.dropdownListPopularSortDay.addEventListener('click', removeEventListenerBtnClick);
+    };
+    function onRemoveEventListenerWeekClick() {
+        refs.dropdownListPopularSortWeek.addEventListener('click', removeEventListenerBtnClick);
+    };
+    // Снятие слушателя при нажатии на иконку Filmoteka:
+    function onRemoveEventListenerIconClick() {
+        
+    }
+    function removeEventListenerBtnClick() {
+        btnGenre.removeEventListener('click', onSortGenreClick);
+        btnRating.removeEventListener('click', onSortRatingClick);
+        btnYear.removeEventListener('click', onSortYearClick);
+    };
 };
    
   function sortBtnRemove() {
@@ -214,8 +232,6 @@ function sortFilms(arr) {
   btnYear.classList.remove('sort-films-btn-down');
   btnYear.classList.remove('sort-films-btn-up');
 };
-
-
 
 export { sortFilms, sortBtnRemove };
 
