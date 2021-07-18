@@ -30,12 +30,13 @@ async function onMovieClick(e) {
   const trailerBtn = document.querySelector('.js-trailer');
   const filmModalBox = document.querySelector('.modal__flm-info');
   console.log(filmModalBox);
-  trailerBtn.addEventListener('click', (e) => {
+  trailerBtn.addEventListener('click', e => {
     if (e.target.classList.contains('js-trailer')) {
-
       onTrailerBtnClick(article.id, filmModalBox);
-    };
+      filmModalBox.setAttribute(data-backdrop, "static");
+      filmModalBox.setAttribute(data-keyboard, "false");
 
+    }
   });
   // inst.close();
 
@@ -73,28 +74,42 @@ function appendArticlesMarkup(article) {
 async function onTrailerBtnClick(movieId, filmBox) {
   const trailer = await fetchFilmTrailer(movieId);
   console.log(trailer);
-  const instance = basicLightbox.create(`
-  <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
+  const instance = basicLightbox.create(
+    `
+  <div id="modal_id" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
     </iframe>
-`
-,
-  {
+  </div>
+`,
+    {
       onShow: instance => {
+        // instance
+        //   .element()
+        //   .querySelector('#modal_id')
+        //   .addEventListener('keydown', function onEscClick(e) {
+        //     if (e.code === 'Escape') {
+        //       instance.close();
+        //       instance
+        //         .element()
+        //         .querySelector('#modal_id').hidden = 1;
+        //       document.removeEventListener('keydown', onEscClick);
+        //     }
+        //   });
         filmBox.addEventListener('keydown', function onEscClick(e) {
           if (e.code === 'Escape') {
             instance.close();
             filmBox.removeEventListener('keydown', onEscClick);
           }
         });
+
       },
     },
   );
 
   instance.show();
-
 }
 
 function toggleClass(backdrop) {
