@@ -16,6 +16,7 @@ import { openLibrary } from './library-btn.js';
 import { onClickAppearVote } from './appear-votes.js';
 import ButtonAction from './button-action.js';
 import { onFilmLibClick } from './onFilmLibClick.js';
+import { renderPagination } from './paginationLibrary.js';
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
@@ -28,6 +29,8 @@ const Movie = {
   QUEUE: 'queue',
 };
 
+let page = 1;
+
 // const dataFromLocal = localStorage.getItem(Movie.WATCHED);
 // const dataForRender = JSON.parse(dataFromLocal);
 
@@ -35,7 +38,7 @@ refs.myLibraryBtn.addEventListener('click', () => {
   const dataFromLocal = localStorage.getItem(Movie.WATCHED);
   const dataForRender = JSON.parse(dataFromLocal);
   if (dataForRender) {
-    renderWatchedFilms(dataForRender);
+    renderWatchedFilms(dataForRender, page);
   } else refs.watchedFilms.innerHTML = '';
 });
 
@@ -43,7 +46,7 @@ refs.watchedBtn.addEventListener('click', () => {
   const dataFromLocal = localStorage.getItem(Movie.WATCHED);
   const dataForRender = JSON.parse(dataFromLocal);
   if (dataForRender) {
-    renderWatchedFilms(dataForRender);
+    renderWatchedFilms(dataForRender, page);
     // const filmLib = document.querySelectorAll('.film-card');
     // console.log(filmLib);
     // [...filmLib].forEach((el) => {
@@ -58,19 +61,60 @@ refs.watchedBtn.addEventListener('click', () => {
   } else refs.watchedFilms.innerHTML = '';
 });
 
-function renderWatchedFilms(films) {
+function renderWatchedFilms(films, page) {
   openLibrary();
   refs.watchedFilms.innerHTML = '';
-  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+
   const newFilmsMarkup = films.map(elem => {
     return btnSwitch.addButtonText(elem);
   });
-  refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(newFilmsMarkup));
 
-  btnSwitch.clickButtonOverlay(newFilmsMarkup);
+  ////// тест
 
-  getGenres(films);
-  getReleaseYear(films);
-  getVote(films);
+  const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
+  refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
+
+  renderPagination(totalPage, page, { prop: 'watched', films });
+
+  ////// тест
+
+  btnSwitch.clickButtonOverlay(procMarkup);
+
+  getGenres(procMarkup);
+  getReleaseYear(procMarkup);
+  getVote(procMarkup);
   onClickAppearVote();
 }
+
+///// тест
+
+function makeRenderDependView(arrFilms, page) {
+  const countFilms = arrFilms.length;
+
+  const { totalPage, countListFilms } = defineCountFilmsList(countFilms);
+
+  const start = page * countListFilms - countListFilms;
+  const end = page * countListFilms;
+
+  const procMarkup = arrFilms.slice(start, end);
+
+  return { totalPage, procMarkup };
+}
+
+function defineCountFilmsList(countFilms) {
+  let countListFilms = null;
+  const sizeView = document.documentElement.clientWidth;
+  if (sizeView < 768) {
+    countListFilms = 4;
+  } else if (sizeView >= 768 && sizeView < 1024) {
+    countListFilms = 8;
+  } else if (sizeView >= 1024) {
+    countListFilms = 9;
+  }
+
+  const totalPage = Math.ceil(countFilms / countListFilms);
+
+  return { totalPage, countListFilms };
+}
+
+export { renderWatchedFilms };
