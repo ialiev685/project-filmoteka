@@ -3,7 +3,6 @@ import langArray from '../json/lang.json';
 import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
 
-
 const Language = {
   EN: 'en',
   RU: 'ru',
@@ -14,15 +13,14 @@ refs.switchLangCheckbox.addEventListener('change', e => {
   const lang = switchLanguage(e);
   translateInterface(lang);
   if (refs.myLibraryBtn.classList.contains('current')) {
-    return
+    return;
   }
   onChangeLang();
-    
 });
 
 async function onChangeLang() {
   const films = await getTrendItems(1);
-
+  console.log('сработало');
   renderFilms(films);
 }
 
@@ -35,7 +33,7 @@ export function switchLanguage(evt) {
 function changeSignColor(evt) {
   if (evt.target.checked) {
     refs.signLangEng.classList.remove('is-active-lang');
-    refs.signLangRus.classList.add('is-active-lang'); 
+    refs.signLangRus.classList.add('is-active-lang');
   } else {
     refs.signLangEng.classList.add('is-active-lang');
     refs.signLangRus.classList.remove('is-active-lang');
@@ -50,33 +48,32 @@ function checkAndSetLanguage() {
   } else {
     localStorage.getItem('language');
   }
-
 }
 
 export function translateInterface() {
   if (localStorage.getItem('language') === 'ru') {
     refs.myLibraryBtn.innerHTML = 'Моя библиотека';
-    refs.homeBtn.innerHTML = "На главную";
-    refs.headerInput.placeholder = "Искать фильм";
-    refs.popularData.innerHTML = "Популярные";
-    refs.sortFilmsText.innerHTML = "Фильтр по";
-    refs.sortFilmsBtnGenre.innerHTML = "Жанру";
-    refs.sortFilmsBtnRating.innerHTML = "Рейтингу";
-    refs.sortFilmsBtnYear.innerHTML = "Году";
-    refs.watchedHeaderBtn.innerHTML = "Просмотренные";
-    refs.queueHeaderBtn.innerHTML = "Очередь";
+    refs.homeBtn.innerHTML = 'На главную';
+    refs.headerInput.placeholder = 'Искать фильм';
+    refs.popularData.innerHTML = 'Популярные';
+    refs.sortFilmsText.innerHTML = 'Фильтр по';
+    refs.sortFilmsBtnGenre.innerHTML = 'Жанру';
+    refs.sortFilmsBtnRating.innerHTML = 'Рейтингу';
+    refs.sortFilmsBtnYear.innerHTML = 'Году';
+    refs.watchedHeaderBtn.innerHTML = 'Просмотренные';
+    refs.queueHeaderBtn.innerHTML = 'Очередь';
   } else {
     refs.myLibraryBtn.innerHTML = 'My library';
-    refs.homeBtn.innerHTML = "Home";
-    refs.headerInput.placeholder = "Movie search";
-    refs.popularData.innerHTML = "Popular";
-    refs.sortFilmsText.innerHTML = "Sort by";
-    refs.sortFilmsBtnGenre.innerHTML = "Genre";
-    refs.sortFilmsBtnRating.innerHTML = "Rating";
-    refs.sortFilmsBtnYear.innerHTML = "Year";
-    refs.watchedHeaderBtn.innerHTML = "Watched";
-    refs.queueHeaderBtn.innerHTML = "Queue";
-  };
+    refs.homeBtn.innerHTML = 'Home';
+    refs.headerInput.placeholder = 'Movie search';
+    refs.popularData.innerHTML = 'Popular';
+    refs.sortFilmsText.innerHTML = 'Sort by';
+    refs.sortFilmsBtnGenre.innerHTML = 'Genre';
+    refs.sortFilmsBtnRating.innerHTML = 'Rating';
+    refs.sortFilmsBtnYear.innerHTML = 'Year';
+    refs.watchedHeaderBtn.innerHTML = 'Watched';
+    refs.queueHeaderBtn.innerHTML = 'Queue';
+  }
 }
 
 moveProperPositionOfToggle();
@@ -88,4 +85,4 @@ function moveProperPositionOfToggle() {
   } else {
     refs.signLangEng.classList.add('is-active-lang');
   }
-};
+}
