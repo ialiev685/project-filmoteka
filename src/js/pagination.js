@@ -12,8 +12,6 @@ let page = 1;
 let dataSearch = '';
 
 function renderPagination(total_pages, curPage, searchValue) {
-  console.log('🚀 ~ file: pagination.js ~ line 16 ~ renderPagination ~ total_pages', total_pages);
-
   dataSearch = searchValue;
   page = curPage;
   const numbers = Array(total_pages)
