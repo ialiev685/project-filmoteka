@@ -25,8 +25,8 @@
   min-width: 120px;
 }
 .dropdown {
-  border: 1px solid var(--color-card-overlay);
-  background: var(--color-white);
+  border: 1px solid var(--color-sort-btn);
+  background: var(--color-sort-btn);
   border-radius: 6px;
   height: 25px;
   position: relative;
@@ -38,7 +38,7 @@
   user-select: none;
 }
 .dropdown:hover {
-  border-color: var(--color-orange);
+  border-color: var(--color-sort-clear-btn);
 }
 .dropdown:before {
   content: '';
@@ -54,16 +54,16 @@
   transition: border-color 0.3s;
 }
 .dropdown:hover:before {
-  border-color: var(--color-orange) transparent transparent transparent;
+  border-color: var(--color-sort-clear-btn) transparent transparent transparent;
 }
 .dropdown-value {
-  color: var(--color-card-overlay);
+  color: var(--color-white);
   padding: 4px;
   font-weight: 500;
   transition: color 0.3s;
 }
 .dropdown:hover .dropdown-value {
-  color: var(--color-orange);
+  color: var(--color-brown);
 }
 .dropdown-list {
   width: 100%;
@@ -74,13 +74,13 @@
   position: absolute;
   transition: opacity 0.3s, visibility 0.3s, top 0.2s;
   top: 24px;
-  background: #fff;
-  color: var(--color-orange);
+  background: var(--color-sort-btn);
+  color: var(--color-white);
   box-shadow: 0 16px 29px -10px var(--control-boxshadow-color),
     0 12px 50px -5px var(--control-boxshadow-color);
   z-index: 9999;
   border-radius: 6px;
-  border: 1px solid var(--color-orange);
+  border: 1px solid var(--color-sort-clear-btn);
 }
 .active.dropdown .dropdown-list {
   opacity: 1;
@@ -94,6 +94,6 @@
   padding: 0px 7px;
 }
 .dropdown-list > div:hover {
-  background: var(--color-orange);
-  color: var(--color-white);
+  background: var(--color-sort-clear-btn);
+  color: var(--color-black);
 }
