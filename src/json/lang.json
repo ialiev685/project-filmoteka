@@ -1,0 +1,16 @@
+{"en":
+  {
+    "home": "home",
+    "library":"my library",
+    "watched": "watched",
+    "queue":"queue",
+    "message": "The search result is not successful. Please, enter the correct movie name.",
+    "popular": "Popular",
+    "Sort by": "Sort by",
+    "Genre": "Genre",
+    "Rating":"Rating",
+    "Year": "Year",
+    "day": "day",
+    "week": "week"
+  }
+}

@@ -5,10 +5,15 @@ export function getGenres(data) {
     return elem.genre_ids;
   });
 
-  const apiGenres = genresList.genres;
+  let apiGenres;
   const apiGenresfilter = arrayGenres.map((elem) => {
 
-  return elem.map((el) => {
+    return elem.map((el) => {
+      if (localStorage.getItem('language') === 'ru') {
+        apiGenres = genresList.genresRus;
+      } else {
+        apiGenres = genresList.genres;
+      }
     const genreName = apiGenres.find((element) => {
       if(element.id === el) {
         return element;

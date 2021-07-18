@@ -4,10 +4,20 @@ import movie from '../hbs/film-modal.hbs';
 import { checkHasFilmModalImage } from './is-image.js';
 import { onClickDisappearVote } from './appear-votes.js';
 import { putRoundedPopularity } from './put-rounded-pop';
+import movieRus from '../hbs/film-modal-rus.hbs';
 
 const btnSwitch = new ButtonAction({
+  textQueue: 'queue',
+  textWatched:'watched',
   textAdd: 'add to',
   textRemove: 'remove from',
+});
+
+const btnSwitchRus = new ButtonAction({
+  textQueue: 'очередь',
+  textWatched:'просмотрено',
+  textAdd: 'в',
+  textRemove: 'из',
 });
 
 refs.filmList.addEventListener('click', onMovieClick);
@@ -37,22 +47,34 @@ async function onMovieClick(e) {
 
 function fetchFilm(movieId) {
   const KEY = '222d2b89e8701088edcf9049fa569980';
-  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`;
+  const currentLang = localStorage.getItem('language');
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=${currentLang}&append_to_response=images&include_image_language=${currentLang}`;
 
   return fetch(url).then(response => response.json());
 }
 
 function appendArticlesMarkup(article) {
-  const newFilmMarkup = btnSwitch.addButtonText(article);
-  refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
+  if (localStorage.getItem('language') === 'ru') {
+    const newFilmMarkup = btnSwitchRus.addButtonText(article);
+    refs.body.insertAdjacentHTML('afterbegin', movieRus(newFilmMarkup));
+    const buttonWatched = document.querySelector('.js-watched');
+    const buttonQueue = document.querySelector('.js-queue');
+    btnSwitchRus.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
+  } else {
+    const newFilmMarkup = btnSwitch.addButtonText(article);
+    refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
+    const buttonWatched = document.querySelector('.js-watched');
+    const buttonQueue = document.querySelector('.js-queue');
+    btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
+  };
+
   putRoundedPopularity(article.popularity);
   checkHasFilmModalImage(article);
-  const buttonWatched = document.querySelector('.js-watched');
-  const buttonQueue = document.querySelector('.js-queue');
+  
 
   // console.log(buttonWatched);
 
-  btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
+  
 }
 
 function toggleClass(backdrop) {

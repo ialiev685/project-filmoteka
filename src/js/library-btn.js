@@ -10,6 +10,7 @@ refs.queueBtn.addEventListener('click', onQueueBtn);
 
 
 export function openLibrary() {
+  refs.wrapperLangCheckbox.classList.add('is-hidden');
   refs.libraryBtns.classList.remove('library-btns-hidden');
   refs.myLibraryBtn.classList.add('current');
   refs.searchContainer.classList.add('header-input-hidden');

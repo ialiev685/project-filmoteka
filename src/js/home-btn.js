@@ -10,7 +10,7 @@ async function onHomeBtnClick() {
   refs.libraryBtns.classList.add('library-btns-hidden');
   // refs.filmList.innerHTML = '';
   refs.watchedFilms.innerHTML = '';
-
+  refs.wrapperLangCheckbox.classList.remove('is-hidden');
   refs.spinner.classList.remove('spinner-hidden');
   const data = await getTrendItems(1);
   renderFilms(data);

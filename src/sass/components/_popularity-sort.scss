@@ -3,9 +3,16 @@
   position: absolute;
   display: flex;
   align-items: center;
-  left: 50%;
+  top: 142px;
+  left: 112px;
   transform: translateX(-50%);
-  bottom: 45px;
+  @media screen and (min-width: $tablet) {
+    top: 112px;
+    left: 120px;
+  }
+  @media screen and (min-width: $desktop) {
+    left: 160px;
+  }
 
   &.is-hidden {
     opacity: 0;

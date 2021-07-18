@@ -3,7 +3,7 @@
     <div class="navigation">
       <span class="logo js-logo">
         <img src="./images/header/header-logo.svg" alt="logo" />
-           <a class="logo-name" href="#">Filmoteka</a>
+        <a class="logo-name" href="#">Filmoteka</a>
         //<a class="logo-name" onclick="window.location.href=this">Filmoteka</a>
       </span>
       <div class="btn-container">
@@ -38,18 +38,25 @@
         The search result is not successful. Please, enter the correct movie name.
       </p>
     </div>
+    <!-- <div class="wrapper-lang-checkbox">
+      <p class="sign sign-eng">en</p>
+      <div class="switch_box-1 box_1">
+        <input type="checkbox" class="switch-lang" />
+      </div>
+      <p class="sign sign-rus">ru</p>
+    </div> -->
+    <include src="./partials/switch-language.html"></include>
     <include src="./partials/swith-theme.html"></include>
     <include src="./partials/sort-films.html"></include>
-  </div>
-
-  <div class="textarea-demo-left-item">
-    <div class="textarea-demo-left-item-left">Popular</div>
-    <div class="textarea-demo-left-item-right">
-      <div id="textarea-demo-height" class="dropdown">
-        <div class="dropdown-value">day</div>
-        <div class="dropdown-list">
-          <div id="day">day</div>
-          <div id="week">week</div>
+    <div class="textarea-demo-left-item">
+      <div class="textarea-demo-left-item-left">Popular</div>
+      <div class="textarea-demo-left-item-right">
+        <div id="textarea-demo-height" class="dropdown">
+          <div class="dropdown-value">day</div>
+          <div class="dropdown-list">
+            <div id="day">day</div>
+            <div id="week">week</div>
+          </div>
         </div>
       </div>
     </div>
