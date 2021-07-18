@@ -289,3 +289,16 @@
     background-color: rgba(0, 0, 0, 0.2);
   }
 }
+
+.basicLightbox .video-trailer {
+  width: 280px;
+  height: 157px;
+  @media screen and (min-width: $tablet) {
+    width: 618px;
+    height: 346px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 882px;
+    height: 494px;
+  }
+}

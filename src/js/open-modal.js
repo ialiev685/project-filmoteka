@@ -30,21 +30,13 @@ async function onMovieClick(e) {
   checkHasFilmModalImage(article);
 
   const trailerBtn = document.querySelector('.js-trailer');
-  // const filmModalBox = document.querySelector('.modal__flm-info');
-  // const filmModalBox = document.querySelector('.backdrop');
-
   trailerBtn.addEventListener('click', (e) => {
 
     if (e.target.classList.contains('js-trailer')) {
-      // onTrailerBtnClick(article.id);
-      onTrailerBtnClick(article.id);
-      // filmModalBox.setAttribute("tabindex", '-1');
-      // filmModalBox.setAttribute("data-backdrop", "static");
-      // filmModalBox.setAttribute("data-keyboard", "false");
-
+        onTrailerBtnClick(article.id);
     }
   });
-  // inst.close();
+
 
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');
@@ -79,57 +71,6 @@ function appendArticlesMarkup(article) {
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
 }
 
-// async function onTrailerBtnClick(movieId) {
-//   //  const filmTrailerBox = document.querySelector('.basicLightbox');
-//   // console.log(filmTrailerBox);
-//   const trailer = await fetchFilmTrailer(movieId);
-//   console.log(trailer);
-//   // window.removeEventListener('keydown', onEscKeyPress);
-//   const instance = basicLightbox.create(
-//     `
-//     <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
-//         title="YouTube video player" frameborder="0"
-//         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//         allowfullscreen>
-//     </iframe>
-// `,
-//     {
-//       onShow: instance => {
-//         // instance
-//         //   .element()
-//         //   .querySelector('#modal_id')
-//         //   .addEventListener('keydown', function onEscClick(e) {
-//         //     if (e.code === 'Escape') {
-//         //       instance.close();
-//         //       instance
-//         //         .element()
-//         //         .querySelector('#modal_id').hidden = 1;
-//         //       document.removeEventListener('keydown', onEscClick);
-//         //     }
-//         //   });
-//     //     filmBox.addEventListener('keydown', function onEscClick(e) {
-//     //       if (e.code === 'Escape') {
-//     //         instance.close();
-//     //         filmBox.removeEventListener('keydown', onEscClick);
-//     //       }
-//     //     });
-
-//     //   },
-//     // },
-//         window.addEventListener('keydown', function onEscClick(e) {
-//           console.log(e);
-//           if (e.code === 'Escape') {
-//             instance.close();
-//             window.removeEventListener('keydown', onEscClick);
-//           }
-//         });
-
-//       },
-//     },
-//   );
-
-//   instance.show();
-// }
 
 function toggleClass(backdrop) {
   backdrop.classList.toggle('is-hidden');
@@ -140,7 +81,7 @@ function closeModal(closeButton, backdrop, modalFilm) {
   backdrop.addEventListener('click', onBackdropClick);
 
   window.addEventListener('keydown', onEscKeyPress);
-  // closeDialog();
+
 
   function onButtonClick() {
     toggleClass(backdrop);

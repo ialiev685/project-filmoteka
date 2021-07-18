@@ -14,7 +14,7 @@ async function onTrailerBtnClick(movieId) {
   console.log(trailer);
   const instance = basicLightbox.create(
     `
-    <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
+    <iframe class="video-trailer" src="https://www.youtube.com/embed/${trailer.results[0].key}"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
