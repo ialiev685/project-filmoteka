@@ -16,14 +16,15 @@ const btnSwitch = new ButtonAction({
   textRemove: 'remove from',
 });
 
-
 export function renderFilms(array, valueSeatch = 'empty') {
   refs.filmList.innerHTML = '';
   const newFilmsMarkup = array.results.map(elem => {
     return btnSwitch.addButtonText(elem);
   });
   refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmsMarkup));
+
   renderPagination(array.total_pages, array.page, valueSeatch); // передаем пагинацию
+
   btnSwitch.clickButtonOverlay(newFilmsMarkup);
   getGenres(array.results);
   getReleaseYear(array.results);
@@ -31,19 +32,5 @@ export function renderFilms(array, valueSeatch = 'empty') {
   checkHasFilmImage(array.results);
 
   sortFilms(array.results);
-    // onClickDisappearVote();
-};
-
-
-
-
-// export function renderFilms(array, valueSeatch = 'empty') {
-//   refs.filmList.innerHTML = '';
-//   refs.filmList.insertAdjacentHTML('beforeend', cardForm(array.results));
-//   renderPagination(array.total_pages, array.page, valueSeatch); // передаем пагинацию
-//   getGenres(array.results);
-//   getReleaseYear(array.results);
-//   getVote(array.results);
-//   checkHasFilmImage(array.results);
-// }
-
+  // onClickDisappearVote();
+}

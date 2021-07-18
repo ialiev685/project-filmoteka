@@ -5,12 +5,15 @@
   bottom: -80px;
 
   @media screen and (max-width: $tablet - 1) {
-    // height: 50px;
     left: 50%;
     transform: translateX(-50%);
   }
   &.is-hidden {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+  &.box-position {
+    bottom: -55px;
   }
 }
 .sort-films-text {
@@ -28,21 +31,12 @@
 .sort-films-list {
   display: flex;
   justify-content: center;
-
-  // @media screen and (max-width: $tablet - 1) {
-  // flex-wrap: wrap;
-  // min-width: 160px;
-  // margin: -3px;
-  // }
 }
 
 .sort-films-item {
   width: calc((100% - 4 * 3px) / 2);
   margin: 3px;
   min-width: 80px;
-  // @media screen and (max-width: $tablet - 1) {
-  //   min-width: 40px;
-  // }
   &:not(:last-child) {
     margin-right: 3px;
   }

@@ -1,4 +1,4 @@
-import { getTrendItems } from './base-api.js'; /* -- 'page' на будущее для пагинации */
+import { getTrendItems } from './base-api.js';
 
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';

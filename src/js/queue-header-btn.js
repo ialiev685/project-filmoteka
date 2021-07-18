@@ -1,11 +1,3 @@
-// import { refs } from './refs.js';
-// import { getFromLocalStorageWatched } from './add-to-watched-btn.js';
-// import { renderFilms } from './renderFilms.js';
-
-// refs.watchedHeaderBtn.addEventListener('click', () => {
-//     refs.filmList.innerHTML = '';
-//     renderFilms(getFromLocalStorageWatched());
-// })
 import { refs } from './refs.js';
 import cardMarkup from '../hbs/cardForm.hbs';
 import { getGenres } from './genres.js';
@@ -31,41 +23,28 @@ const Movie = {
 
 let page = 1;
 
-// const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-// const dataForRender = JSON.parse(dataFromLocal);
-
-refs.myLibraryBtn.addEventListener('click', () => {
-  const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-  const dataForRender = JSON.parse(dataFromLocal);
-  if (dataForRender) {
-    renderWatchedFilms(dataForRender, page);
-    onFilmLibClick();
-  } else refs.watchedFilms.innerHTML = '';
-});
-
-refs.watchedBtn.addEventListener('click', () => {
-  const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-  const dataForRender = JSON.parse(dataFromLocal);
-  if (dataForRender) {
-    renderWatchedFilms(dataForRender, page);
+refs.queueBtn.addEventListener('click', () => {
+  const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
+  const dataForRenderQ = JSON.parse(dataFromLocalQ);
+  if (dataFromLocalQ) {
+    renderQueueFilms(dataForRenderQ, page);
     // const filmLib = document.querySelectorAll('.film-card');
-    // console.log(filmLib);
+    // // console.log(filmLib);
+    onFilmLibClick();
     // [...filmLib].forEach((el) => {
     //   el.addEventListener('click', (e) => {
 
-    //     if (e.target.classList.contains('js-queue') || e.target.classList.contains('js-watched')) {
+    //     if (e.target.classList.contains('js-watched') || e.target.classList.contains('js-queue')) {
     //       e.currentTarget.style.display = 'none';
     //     }
     //   });
     // });
-    onFilmLibClick();
   } else refs.watchedFilms.innerHTML = '';
 });
 
-function renderWatchedFilms(films, page) {
-  openLibrary();
+function renderQueueFilms(films, page) {
   refs.watchedFilms.innerHTML = '';
-
+  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
   const newFilmsMarkup = films.map(elem => {
     return btnSwitch.addButtonText(elem);
   });
@@ -75,12 +54,11 @@ function renderWatchedFilms(films, page) {
   const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
   refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
 
-  renderPagination(totalPage, page, { prop: 'watched', films });
+  renderPagination(totalPage, page, { prop: 'queue', films });
 
   ////// тест
 
   btnSwitch.clickButtonOverlay(procMarkup);
-
   getGenres(procMarkup);
   getReleaseYear(procMarkup);
   getVote(procMarkup);
@@ -118,4 +96,4 @@ function defineCountFilmsList(countFilms) {
   return { totalPage, countListFilms };
 }
 
-export { renderWatchedFilms };
+export { renderQueueFilms };
