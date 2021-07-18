@@ -1,22 +1,45 @@
-// import * as basicLightbox from 'basiclightbox';
+import * as basicLightbox from 'basiclightbox';
+import { KEY } from './base-api.js';
 
-
-// // const trailerBtn = document.querySelector('.js-trailer');
-
-export function fetchFilmTrailer(movieId) {
-  const KEY = '222d2b89e8701088edcf9049fa569980';
+function fetchFilmTrailer(movieId) {
+  // const KEY = '222d2b89e8701088edcf9049fa569980';
   const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${KEY}&language=en-US`;
 
   return fetch(url).then(response => response.json());
 }
 
+async function onTrailerBtnClick(movieId) {
+
+  const trailer = await fetchFilmTrailer(movieId);
+  console.log(trailer);
+  const instance = basicLightbox.create(
+    `
+    <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+`,
+    {
+      onShow: instance => {
+        window.addEventListener('keydown', function onEscClick(e) {
+          console.log(e);
+          if (e.code === 'Escape') {
+            instance.close();
+            window.removeEventListener('keydown', onEscClick);
+          }
+        });
+
+      },
+    },
+  );
+
+  instance.show();
+};
+export { onTrailerBtnClick };
 
 
 
-// const instance = basicLightbox.create(`
-//     <video controls>
-//         <source src="assets/videos/video.mp4" type="video/mp4">
-//     </video>
-// `)
 
-// instance.show();
+
+

@@ -1,12 +1,13 @@
-import * as basicLightbox from 'basiclightbox';
+// import * as basicLightbox from 'basiclightbox';
 
 import { refs } from './refs.js';
 import ButtonAction from './button-action.js';
 import movie from '../hbs/film-modal.hbs';
 import { checkHasFilmModalImage } from './is-image.js';
-import { onClickDisappearVote } from './appear-votes.js';
+// import { onClickDisappearVote } from './appear-votes.js';
 import { putRoundedPopularity } from './put-rounded-pop';
-import { fetchFilmTrailer } from './open-trailer.js';
+import { onTrailerBtnClick } from './open-trailer.js';
+
 
 const btnSwitch = new ButtonAction({
   textAdd: 'add to',
@@ -25,16 +26,21 @@ async function onMovieClick(e) {
   const article = await fetchFilm(movieId);
 
   await appendArticlesMarkup(article);
+  showDialog();
   checkHasFilmModalImage(article);
 
   const trailerBtn = document.querySelector('.js-trailer');
-  const filmModalBox = document.querySelector('.modal__flm-info');
-  console.log(filmModalBox);
-  trailerBtn.addEventListener('click', e => {
+  // const filmModalBox = document.querySelector('.modal__flm-info');
+  // const filmModalBox = document.querySelector('.backdrop');
+
+  trailerBtn.addEventListener('click', (e) => {
+
     if (e.target.classList.contains('js-trailer')) {
-      onTrailerBtnClick(article.id, filmModalBox);
-      filmModalBox.setAttribute(data-backdrop, "static");
-      filmModalBox.setAttribute(data-keyboard, "false");
+      // onTrailerBtnClick(article.id);
+      onTrailerBtnClick(article.id);
+      // filmModalBox.setAttribute("tabindex", '-1');
+      // filmModalBox.setAttribute("data-backdrop", "static");
+      // filmModalBox.setAttribute("data-keyboard", "false");
 
     }
   });
@@ -42,9 +48,11 @@ async function onMovieClick(e) {
 
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');
-
-  toggleClass(backdrop);
-  closeModal(closeButton, backdrop);
+  const filmModalBox = document.querySelector('.basicLightbox ');
+  if (filmModalBox === null) {
+    closeModal(closeButton, backdrop);
+    toggleClass(backdrop);
+  }
 }
 
 function fetchFilm(movieId) {
@@ -71,46 +79,57 @@ function appendArticlesMarkup(article) {
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
 }
 
-async function onTrailerBtnClick(movieId, filmBox) {
-  const trailer = await fetchFilmTrailer(movieId);
-  console.log(trailer);
-  const instance = basicLightbox.create(
-    `
-  <div id="modal_id" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-  </div>
-`,
-    {
-      onShow: instance => {
-        // instance
-        //   .element()
-        //   .querySelector('#modal_id')
-        //   .addEventListener('keydown', function onEscClick(e) {
-        //     if (e.code === 'Escape') {
-        //       instance.close();
-        //       instance
-        //         .element()
-        //         .querySelector('#modal_id').hidden = 1;
-        //       document.removeEventListener('keydown', onEscClick);
-        //     }
-        //   });
-        filmBox.addEventListener('keydown', function onEscClick(e) {
-          if (e.code === 'Escape') {
-            instance.close();
-            filmBox.removeEventListener('keydown', onEscClick);
-          }
-        });
+// async function onTrailerBtnClick(movieId) {
+//   //  const filmTrailerBox = document.querySelector('.basicLightbox');
+//   // console.log(filmTrailerBox);
+//   const trailer = await fetchFilmTrailer(movieId);
+//   console.log(trailer);
+//   // window.removeEventListener('keydown', onEscKeyPress);
+//   const instance = basicLightbox.create(
+//     `
+//     <iframe class="video-clip" width="790" height="444" src="https://www.youtube.com/embed/${trailer.results[0].key}"
+//         title="YouTube video player" frameborder="0"
+//         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//         allowfullscreen>
+//     </iframe>
+// `,
+//     {
+//       onShow: instance => {
+//         // instance
+//         //   .element()
+//         //   .querySelector('#modal_id')
+//         //   .addEventListener('keydown', function onEscClick(e) {
+//         //     if (e.code === 'Escape') {
+//         //       instance.close();
+//         //       instance
+//         //         .element()
+//         //         .querySelector('#modal_id').hidden = 1;
+//         //       document.removeEventListener('keydown', onEscClick);
+//         //     }
+//         //   });
+//     //     filmBox.addEventListener('keydown', function onEscClick(e) {
+//     //       if (e.code === 'Escape') {
+//     //         instance.close();
+//     //         filmBox.removeEventListener('keydown', onEscClick);
+//     //       }
+//     //     });
 
-      },
-    },
-  );
+//     //   },
+//     // },
+//         window.addEventListener('keydown', function onEscClick(e) {
+//           console.log(e);
+//           if (e.code === 'Escape') {
+//             instance.close();
+//             window.removeEventListener('keydown', onEscClick);
+//           }
+//         });
 
-  instance.show();
-}
+//       },
+//     },
+//   );
+
+//   instance.show();
+// }
 
 function toggleClass(backdrop) {
   backdrop.classList.toggle('is-hidden');
@@ -119,6 +138,7 @@ function toggleClass(backdrop) {
 function closeModal(closeButton, backdrop, modalFilm) {
   closeButton.addEventListener('click', onButtonClick);
   backdrop.addEventListener('click', onBackdropClick);
+
   window.addEventListener('keydown', onEscKeyPress);
   // closeDialog();
 
@@ -133,12 +153,14 @@ function closeModal(closeButton, backdrop, modalFilm) {
     window.removeEventListener('keydown', onEscKeyPress);
     backdrop.removeEventListener('click', onBackdropClick);
   }
+
   function onEscKeyPress(evt) {
     if (evt.code === 'Escape') {
       onButtonClick();
     }
     closeDialog();
   }
+
   function onBackdropClick(evt) {
     if (evt.currentTarget === evt.target) {
       onButtonClick();
