@@ -26,7 +26,7 @@ import './js/popularity-sort/fatch-popularity-sort.js';
 import './js/popularity-sort/render-popularity-sort';
 
 import './js/open-modal';
-// import './js/modal-open.js';
+// import './js/open-modal.js';
 
 import './js/switchTheme.js';
 
