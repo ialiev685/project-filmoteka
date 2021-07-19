@@ -22,8 +22,8 @@ import './js/scroll-to-top.js';
 import './js/modalTeam.js';
 
 import './js/popularity-sort/popularity-sort.js';
-import './js/popularity-sort/fatch-popularity-sort.js';
-import './js/popularity-sort/render-popularity-sort';
+// import './js/popularity-sort/fatch-popularity-sort.js';
+// import './js/popularity-sort/render-popularity-sort';
 
 import './js/open-modal';
 // import './js/open-modal.js';
