@@ -12,13 +12,21 @@
 
 .switch_box {
   position: absolute;
-  top: 47px;
-  right: 130px;
-  transform: translateY(-100%);
+  // top: 47px;
+  // right: 130px;
+  // transform: translateY(-100%);
+
+  // @media screen and (min-width: $tablet) {
+  //   right: 94px;
+  //   top: 225px;
+  top: 10px;
+  right: 100px;
+  // right: 20px;
 
   @media screen and (min-width: $tablet) {
-    right: 94px;
     top: 225px;
+    right: 75px;
+    transform: translateY(-100%);
   }
 
   @media screen and (min-width: $desktop) {

@@ -1,23 +1,13 @@
 import { refs } from './refs.js';
-import sortCardForm from '../hbs/sortCardForm.hbs';
+// import sortCardForm from '../hbs/sortCardForm.hbs';
 import { checkHasFilmImage } from './is-image.js';
-import cardFormRus from '../hbs/cardFormRus.hbs';
 import cardForm from '../hbs/cardForm.hbs';
 import ButtonAction from './button-action.js';
-
 const btnSwitch = new ButtonAction({
-  textQueue: 'queue',
-  textWatched: 'watched',
   textAdd: 'add to',
   textRemove: 'remove from',
 });
 
-const btnSwitchRus = new ButtonAction({
-  textQueue: 'очередь',
-  textWatched: 'просмотрено',
-  textAdd: 'в',
-  textRemove: 'из',
-});
 
 const btnGenre = refs.sortFilmsBtnGenre;
 const btnRating = refs.sortFilmsBtnRating;
@@ -28,22 +18,24 @@ function sortFilms(arr) {
   const arrayGenres = document.querySelectorAll('.name-genres');
   const arrayYear = document.querySelectorAll('.year-list');
 
-  // ------------Создаю дополнительный ключ index:
+  // ------------Создаю дополнительные ключи индекса, года и жанра:
   arr.map((el, idx) => (el.index = idx));
+  arr.map((el, idx) => (el.genre = idx));
+  arr.map((el, idx) => (el.year = idx));
 
   // ---------Изменяю массыв объектов карточек на нормальные года и жанры:
   arr.map((obj, idx) => {
-    obj.genre_ids = [...arrayGenres][idx].innerText;
-    obj.release_date = [...arrayYear][idx].innerText;
+    obj.genre = [...arrayGenres][idx].innerText;
+    obj.year = [...arrayYear][idx].innerText;
   });
 
   // -------функции сортировки:
   function sortGenresFilmsDown() {
     arr.sort((a, b) => {
-      if (a.genre_ids < b.genre_ids) {
+      if (a.genre < b.genre) {
         return -1;
       }
-      if (a.genre_ids > b.genre_ids) {
+      if (a.genre > b.genre) {
         return 1;
       }
       return 0;
@@ -52,10 +44,10 @@ function sortFilms(arr) {
 
   function sortGenresFilmsUp() {
     arr.sort((a, b) => {
-      if (a.genre_ids < b.genre_ids) {
+      if (a.genre < b.genre) {
         return 1;
       }
-      if (a.genre_ids > b.genre_ids) {
+      if (a.genre > b.genre) {
         return -1;
       }
       return 0;
@@ -64,10 +56,10 @@ function sortFilms(arr) {
 
   function sortYearFilmsDown() {
     arr.sort((a, b) => {
-      if (a.release_date < b.release_date) {
+      if (a.year < b.year) {
         return -1;
       }
-      if (a.release_date > b.release_date) {
+      if (a.year > b.year) {
         return 1;
       }
       return 0;
@@ -76,10 +68,10 @@ function sortFilms(arr) {
 
   function sortYearFilmsUp() {
     arr.sort((a, b) => {
-      if (a.release_date < b.release_date) {
+      if (a.year < b.year) {
         return 1;
       }
-      if (a.release_date > b.release_date) {
+      if (a.year > b.year) {
         return -1;
       }
       return 0;
@@ -128,11 +120,6 @@ function sortFilms(arr) {
   btnYear.addEventListener('click', onSortYearClick);
 
   onRemoveEventListenerSubmitClick();
-  // if (refs.myLibraryBtn.classList.contains('current')) {
-  //     refs.sortFilmsBox.classList.add('is-hidden');
-  // } else if (!refs.myLibraryBtn.classList.contains('current')) {
-  //     refs.sortFilmsBox.classList.remove('is-hidden');
-  // };
   onRemoveEventListenerDayClick();
   onRemoveEventListenerWeekClick();
   onRemoveEventListenerPaginationClick();
@@ -244,19 +231,26 @@ function sortFilms(arr) {
 
   function renderModifiedFilms(array) {
     refs.filmList.innerHTML = '';
-    refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
-    if (
-      array.find(elem => {
-        console.log(/[а-я]/i.test(elem.title));
-        return /[а-я]/i.test(elem.title) === true;
-      })
-    ) {
-      refs.filmList.insertAdjacentHTML('beforeend', cardFormRus(array));
-      btnSwitchRus.clickButtonOverlay(array);
-    } else {
-      refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
-      btnSwitch.clickButtonOverlay(array);
-    }
+    
+    // refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
+    // if (
+    //   array.find(elem => {
+    //     console.log(/[а-я]/i.test(elem.title));
+    //     return /[а-я]/i.test(elem.title) === true;
+    //   })
+    // ) {
+    //   refs.filmList.insertAdjacentHTML('beforeend', cardFormRus(array));
+    //   btnSwitchRus.clickButtonOverlay(array);
+    // } else {
+    //   refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
+    //   btnSwitch.clickButtonOverlay(array);
+    // }
+    const newFilmsMarkup = array.map(elem => {
+      return btnSwitch.addButtonText(elem);
+    });
+    refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmsMarkup));
+    btnSwitch.clickButtonOverlay(newFilmsMarkup);
+
     checkHasFilmImage(array);
   }
   function onRemoveEventListenerSubmitClick() {
