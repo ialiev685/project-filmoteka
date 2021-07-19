@@ -47,18 +47,25 @@ let page = 1;
 
 refs.myLibraryBtn.addEventListener('click', () => {
   const dataFromLocal = localStorage.getItem(Movie.WATCHED);
+
   const dataForRender = JSON.parse(dataFromLocal);
-  if (dataForRender) {
+
+  if (dataForRender?.length && dataForRender) {
     renderWatchedFilms(dataForRender, page);
-    onFilmLibClick();
-  } else refs.watchedFilms.innerHTML = '';
+    showPaginatiron();
+    onFilmLibClick('watched');
+  } else {
+    refs.watchedFilms.innerHTML = '';
+    hidePagination();
+  }
 });
 
 refs.watchedBtn.addEventListener('click', () => {
   const dataFromLocal = localStorage.getItem(Movie.WATCHED);
   const dataForRender = JSON.parse(dataFromLocal);
-  if (dataForRender) {
+  if (dataForRender?.length && dataForRender) {
     renderWatchedFilms(dataForRender, page);
+    showPaginatiron();
     // const filmLib = document.querySelectorAll('.film-card');
     // console.log(filmLib);
     // [...filmLib].forEach((el) => {
@@ -69,8 +76,11 @@ refs.watchedBtn.addEventListener('click', () => {
     //     }
     //   });
     // });
-    onFilmLibClick();
-  } else refs.watchedFilms.innerHTML = '';
+    onFilmLibClick('watched');
+  } else {
+    refs.watchedFilms.innerHTML = '';
+    hidePagination();
+  }
 });
 
  function renderWatchedFilms(films, page) {
@@ -162,4 +172,14 @@ function defineCountFilmsList(countFilms) {
   return { totalPage, countListFilms };
 }
 
-export { renderWatchedFilms };
+function showPaginatiron() {
+  refs.paginListLibrary.classList.remove('is-hidden');
+  refs.msgEmtpyEl.classList.add('is-hidden');
+}
+
+function hidePagination() {
+  refs.paginListLibrary.classList.add('is-hidden');
+  refs.msgEmtpyEl.classList.remove('is-hidden');
+}
+
+export { renderWatchedFilms, hidePagination };

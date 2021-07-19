@@ -51,4 +51,6 @@ export const refs = {
   rowTableEl: document.querySelector('.search-hint-table .row-table'),
 
   authBtn: document.querySelector('.auth-btn'),
+  msgEmtpyEl: document.querySelector('.msg-empty'),
+
 };
