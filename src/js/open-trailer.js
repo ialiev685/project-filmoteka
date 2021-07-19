@@ -1,36 +1,62 @@
 import * as basicLightbox from 'basiclightbox';
 import { KEY } from './base-api.js';
 import { sortBtnRemove } from './sortRenderFilms.js';
+const lang = localStorage.getItem('language');
 
 function fetchFilmTrailer(movieId) {
-  const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${KEY}&language=en-US`;
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${KEY}&language=${lang}`;
 
   return fetch(url).then(response => response.json());
 }
 
+
 async function onTrailerBtnClick(movieId) {
   const trailer = await fetchFilmTrailer(movieId);
   if (trailer.results.length === 0) {
-    const instance = basicLightbox.create(
-    `
-    <div class="modal">
-        <p class="trailer-info">Trailer not found</p>
-    </div>
-`,
-    {
-      onShow: instance => {
-        window.addEventListener('keydown', function onEscClick(e) {
-          console.log(e);
-          if (e.code === 'Escape') {
-            instance.close();
-            window.removeEventListener('keydown', onEscClick);
-          }
-        });
+    if (lang === 'en') {
 
+      const instance = basicLightbox.create(
+      `
+      <div class="modal">
+          <p class="trailer-info">Trailer not found</p>
+      </div>
+  `,
+      {
+        onShow: instance => {
+          window.addEventListener('keydown', function onEscClick(e) {
+            console.log(e);
+            if (e.code === 'Escape') {
+              instance.close();
+              window.removeEventListener('keydown', onEscClick);
+            }
+          });
+
+        },
       },
-    },
-    );
+      );
       instance.show();
+    } else {
+       const instance = basicLightbox.create(
+      `
+      <div class="modal">
+          <p class="trailer-info">Трейлер не найден</p>
+      </div>
+  `,
+      {
+        onShow: instance => {
+          window.addEventListener('keydown', function onEscClick(e) {
+            console.log(e);
+            if (e.code === 'Escape') {
+              instance.close();
+              window.removeEventListener('keydown', onEscClick);
+            }
+          });
+
+        },
+      },
+      );
+      instance.show();
+    }
   } else {
 
     const instance = basicLightbox.create(
