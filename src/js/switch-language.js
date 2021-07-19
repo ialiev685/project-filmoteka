@@ -6,6 +6,7 @@ import { renderWatchedFilms } from './watched-header-btn.js';
 import { renderQueueFilms } from './queue-header-btn.js';
 import { sortFilms, sortBtnRemove, correctionMargin } from './sortRenderFilms.js'
 
+
 const Language = {
   EN: 'en',
   RU: 'ru',
@@ -40,7 +41,8 @@ refs.switchLangCheckbox.addEventListener('change', e => {
     };
     
     return
-  }
+  };
+  sortBtnRemove();
   onChangeLang();
 });
 
