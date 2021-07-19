@@ -3,6 +3,7 @@ import { refs } from './refs.js';
 import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
 import MoviesApiService from './fetchMovie.js';
 import { renderFilms } from './renderFilms.js';
+import { sortBtnRemove } from './sortRenderFilms.js';
 
 const moviesApiService = new MoviesApiService();
 
@@ -101,7 +102,7 @@ function listener(ev) {
 
   page = Number(ev.target.textContent);
   nextRenderMarcup(page);
-
+  sortBtnRemove();
   // renderPagination();
 }
 
