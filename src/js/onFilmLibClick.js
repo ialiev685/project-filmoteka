@@ -25,7 +25,6 @@ export function onFilmLibClick(active) {
 }
 
 function checkEmptyLibrary() {
-  console.log('пришло');
   if (curLibrary === 'queue') {
     const dataFromLocalQ = JSON.parse(localStorage.getItem(Movie.QUEUE));
 

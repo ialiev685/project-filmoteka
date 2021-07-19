@@ -12,9 +12,7 @@ refs.headerInput.addEventListener('input', DeleteWarningString);
 
 let page = 1;
 async function onMovieSearchClick(page) {
-
   sortBtnRemove();
-  
 
   refs.hintEl.classList.add('is-hidden');
 
@@ -37,7 +35,6 @@ async function onMovieSearchClick(page) {
       if (fatch.results !== undefined) {
         const valueSeatch = refs.headerInput.value.trim();
         renderFilmsCards(fatch, valueSeatch);
-        console.log(fatch)
       }
     }
   } catch (error) {

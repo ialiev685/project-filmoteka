@@ -4,8 +4,7 @@ import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
 import { renderWatchedFilms } from './watched-header-btn.js';
 import { renderQueueFilms } from './queue-header-btn.js';
-import { sortFilms, sortBtnRemove, correctionMargin } from './sortRenderFilms.js'
-
+import { sortFilms, sortBtnRemove, correctionMargin } from './sortRenderFilms.js';
 
 const Language = {
   EN: 'en',
@@ -30,7 +29,7 @@ refs.switchLangCheckbox.addEventListener('change', e => {
       if (dataForRender) {
         renderWatchedFilms(dataForRender, page);
       } else refs.watchedFilms.innerHTML = '';
-    };
+    }
     if (refs.queueHeaderBtn.classList.contains('current-btn')) {
       let page = 1;
       const dataFromLocal = localStorage.getItem(Movie.QUEUE);
@@ -38,17 +37,17 @@ refs.switchLangCheckbox.addEventListener('change', e => {
       if (dataForRender) {
         renderQueueFilms(dataForRender, page);
       } else refs.watchedFilms.innerHTML = '';
-    };
+    }
 
-    return
-  };
+    return;
+  }
   sortBtnRemove();
   onChangeLang();
 });
 
 async function onChangeLang() {
   const films = await getTrendItems(1);
-  console.log('сработало');
+
   renderFilms(films);
 }
 
