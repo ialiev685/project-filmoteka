@@ -27,9 +27,6 @@ async function onMovieClick(e) {
 
   }
 
-
-
-
   const movieId = e.target.dataset.value;
   const article = await fetchFilm(movieId);
 
@@ -41,7 +38,9 @@ async function onMovieClick(e) {
   trailerBtn.addEventListener('click', (e) => {
 
     if (e.target.classList.contains('js-trailer')) {
-        onTrailerBtnClick(article.id);
+
+      onTrailerBtnClick(article.id);
+
     }
   });
 
@@ -66,17 +65,11 @@ function appendArticlesMarkup(article) {
   const newFilmMarkup = btnSwitch.addButtonText(article);
   refs.body.insertAdjacentHTML('afterbegin', movie(newFilmMarkup));
   putRoundedPopularity(article.popularity);
-  console.log(article);
+  // console.log(article);
   getVoteModal(article);
   checkHasFilmModalImage(article);
   const buttonWatched = document.querySelector('.js-watched');
   const buttonQueue = document.querySelector('.js-queue');
-
-  // const trailerBtn = document.querySelector('.js-trailer');
-  // console.log(trailerBtn);
-
-  // // trailerBtn.addEventListener('click', onTrailerBtnClick(article.id));
-  // console.log(buttonWatched);
 
   btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
 }

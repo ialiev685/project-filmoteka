@@ -193,7 +193,6 @@
   justify-content: center;
 }
 
-
 .modal__button {
   text-align: center;
   padding: 0;
@@ -303,4 +302,10 @@
     width: 882px;
     height: 494px;
   }
+}
+
+.basicLightbox .trailer-info {
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: 20px;
 }
