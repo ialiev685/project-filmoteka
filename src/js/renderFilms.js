@@ -26,11 +26,10 @@ export function renderFilms(array, valueSeatch = 'empty') {
   renderPagination(array.total_pages, array.page, valueSeatch); // передаем пагинацию
 
   btnSwitch.clickButtonOverlay(newFilmsMarkup);
-  getGenres(array.results);
-  getReleaseYear(array.results);
-  getVote(array.results);
-  checkHasFilmImage(array.results);
-
-  sortFilms(array.results);
+    getGenres(array.results);
+    getReleaseYear(array.results);
+    getVote(array.results);
+    checkHasFilmImage(array.results);
+    sortFilms(array.results);
   // onClickDisappearVote();
 }

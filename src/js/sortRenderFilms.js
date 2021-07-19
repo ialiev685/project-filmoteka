@@ -1,6 +1,7 @@
 import { refs } from './refs.js';
-import sortCardForm from '../hbs/sortCardForm.hbs';
+// import sortCardForm from '../hbs/sortCardForm.hbs';
 import { checkHasFilmImage } from './is-image.js';
+import cardForm from '../hbs/cardForm.hbs';
 
 const btnGenre = refs.sortFilmsBtnGenre;
 const btnRating = refs.sortFilmsBtnRating;
@@ -13,20 +14,22 @@ function sortFilms(arr) {
 
   // ------------Создаю дополнительный ключ index:
   arr.map((el, idx) => (el.index = idx));
+  arr.map((el, idx) => (el.genre = idx));
+  arr.map((el, idx) => (el.year = idx));
 
   // ---------Изменяю массыв объектов карточек на нормальные года и жанры:
   arr.map((obj, idx) => {
-    obj.genre_ids = [...arrayGenres][idx].innerText;
-    obj.release_date = [...arrayYear][idx].innerText;
+    obj.genre = [...arrayGenres][idx].innerText;
+    obj.year = [...arrayYear][idx].innerText;
   });
 
   // -------функции сортировки:
   function sortGenresFilmsDown() {
     arr.sort((a, b) => {
-      if (a.genre_ids < b.genre_ids) {
+      if (a.genre < b.genre) {
         return -1;
       }
-      if (a.genre_ids > b.genre_ids) {
+      if (a.genre > b.genre) {
         return 1;
       }
       return 0;
@@ -35,10 +38,10 @@ function sortFilms(arr) {
 
   function sortGenresFilmsUp() {
     arr.sort((a, b) => {
-      if (a.genre_ids < b.genre_ids) {
+      if (a.genre < b.genre) {
         return 1;
       }
-      if (a.genre_ids > b.genre_ids) {
+      if (a.genre > b.genre) {
         return -1;
       }
       return 0;
@@ -47,10 +50,10 @@ function sortFilms(arr) {
 
   function sortYearFilmsDown() {
     arr.sort((a, b) => {
-      if (a.release_date < b.release_date) {
+      if (a.year < b.year) {
         return -1;
       }
-      if (a.release_date > b.release_date) {
+      if (a.year > b.year) {
         return 1;
       }
       return 0;
@@ -59,10 +62,10 @@ function sortFilms(arr) {
 
   function sortYearFilmsUp() {
     arr.sort((a, b) => {
-      if (a.release_date < b.release_date) {
+      if (a.year < b.year) {
         return 1;
       }
-      if (a.release_date > b.release_date) {
+      if (a.year > b.year) {
         return -1;
       }
       return 0;
@@ -227,7 +230,7 @@ function sortFilms(arr) {
 
   function renderModifiedFilms(array) {
     refs.filmList.innerHTML = '';
-    refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
+    refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
     checkHasFilmImage(array);
   }
   function onRemoveEventListenerSubmitClick() {
