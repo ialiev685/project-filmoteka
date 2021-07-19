@@ -12,7 +12,7 @@ function sortFilms(arr) {
   const arrayGenres = document.querySelectorAll('.name-genres');
   const arrayYear = document.querySelectorAll('.year-list');
 
-  // ------------Создаю дополнительный ключ index:
+  // ------------Создаю дополнительные ключи индекса, года и жанра:
   arr.map((el, idx) => (el.index = idx));
   arr.map((el, idx) => (el.genre = idx));
   arr.map((el, idx) => (el.year = idx));
@@ -114,11 +114,6 @@ function sortFilms(arr) {
   btnYear.addEventListener('click', onSortYearClick);
 
   onRemoveEventListenerSubmitClick();
-  // if (refs.myLibraryBtn.classList.contains('current')) {
-  //     refs.sortFilmsBox.classList.add('is-hidden');
-  // } else if (!refs.myLibraryBtn.classList.contains('current')) {
-  //     refs.sortFilmsBox.classList.remove('is-hidden');
-  // };
   onRemoveEventListenerDayClick();
   onRemoveEventListenerWeekClick();
   onRemoveEventListenerPaginationClick();
