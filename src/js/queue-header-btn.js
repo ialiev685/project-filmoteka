@@ -10,6 +10,7 @@ import { onClickAppearVote } from './appear-votes.js';
 import ButtonAction from './button-action.js';
 import { onFilmLibClick } from './onFilmLibClick.js';
 import { renderPagination } from './paginationLibrary.js';
+import { checkHasFilmImage } from './is-image.js';
 
 const btnSwitch = new ButtonAction({
   textQueue: 'queue',
@@ -58,13 +59,13 @@ function renderQueueFilms(films, page) {
   // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
     if (
       localStorage.getItem('language') === 'ru'
-      
+
   ) {
       const newFilmsMarkup = films.map(elem => {
       return btnSwitchRus.addButtonText(elem);
       });
     const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
-   
+
       refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
 
       renderPagination(totalPage, page, { prop: 'watched', films });
@@ -72,6 +73,7 @@ function renderQueueFilms(films, page) {
       getGenres(procMarkup);
       getReleaseYear(procMarkup);
       getVote(procMarkup);
+      checkHasFilmImage(procMarkup);
     } else {
       const newFilmsMarkup = films.map(elem => {
       return btnSwitch.addButtonText(elem);
