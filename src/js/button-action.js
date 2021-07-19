@@ -1,5 +1,8 @@
 import { addedFilm } from './pnotify';
 import { removedFilm } from './pnotify';
+import defaultImage from '../images/filmoteka-plug.jpg';
+console.log(defaultImage);
+
 // import {removedFilmRu} from './pnotify';
 // import {addedFilmRu} from './pnotify';
 
@@ -36,16 +39,16 @@ export default class ButtonAction {
 
     const addQueueBtnText = this.selectButtonText(Movie.QUEUE, elem);
     const addWatchedBtnText = this.selectButtonText(Movie.WATCHED, elem);
+
     newDataObject.queueBtnText = addQueueBtnText;
     newDataObject.watchedBtnText = addWatchedBtnText;
-
     return newDataObject;
   }
 
   switchBtnText(button, e) {
     if (e.target.innerHTML === `${this.textAdd} ${button}`) {
       e.target.innerHTML = `${this.textRemove} ${button}`;
-      return addedFilm.open();      
+      return addedFilm.open();
 
     } else {
       e.target.innerHTML = `${this.textAdd} ${button}`;

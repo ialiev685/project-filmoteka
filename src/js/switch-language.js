@@ -39,7 +39,7 @@ refs.switchLangCheckbox.addEventListener('change', e => {
         renderQueueFilms(dataForRender, page);
       } else refs.watchedFilms.innerHTML = '';
     };
-    
+
     return
   };
   sortBtnRemove();
@@ -80,8 +80,8 @@ function checkAndSetLanguage() {
 
 export function translateInterface() {
   if (localStorage.getItem('language') === 'ru') {
-    refs.myLibraryBtn.innerHTML = 'Моя библиотека';
-    refs.homeBtn.innerHTML = 'На главную';
+    refs.myLibraryBtn.innerHTML = 'Библиотека';
+    refs.homeBtn.innerHTML = 'Главная';
     refs.headerInput.placeholder = 'Искать фильм';
     refs.popularData.innerHTML = 'Популярные';
     refs.sortFilmsText.innerHTML = 'Фильтр по';
