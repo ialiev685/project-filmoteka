@@ -8,6 +8,7 @@
   --color-accent: #ff6b08;
   --color-brown: #2d2925;
   --color-black: #000000;
+  --color-black-2: rgb(0, 0, 0, 0.6);
   --color-brown-2: #1d1713;
   --buttons-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   --color-card-overlay: rgba(17, 15, 15, 0.8);
@@ -20,6 +21,7 @@
   --color-text-primary: var(--color-black);
 
   --color-text-cell: var(--color-accent);
+  --color-text-transparent: var(--color-black-2);
   --color-bg-hover: var(--color-accent-trnsparent);
   --color-text-hint: var(--color-white-3);
   --color-bg-scroll: var(--color-white-3);

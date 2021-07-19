@@ -21,18 +21,21 @@ const Movie = {
   QUEUE: 'queue',
 };
 
+let msgEmpty = null;
+
 let page = 1;
 
 refs.queueBtn.addEventListener('click', () => {
   const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
   const dataForRenderQ = JSON.parse(dataFromLocalQ);
-  console.log(dataForRenderQ);
-  if (dataFromLocalQ?.length && dataFromLocalQ) {
+
+  if (dataForRenderQ?.length && dataForRenderQ) {
     renderQueueFilms(dataForRenderQ, page);
+
     showPaginatiron();
     // const filmLib = document.querySelectorAll('.film-card');
     // // console.log(filmLib);
-    onFilmLibClick();
+    onFilmLibClick('queue');
     // [...filmLib].forEach((el) => {
     //   el.addEventListener('click', (e) => {
 
@@ -42,8 +45,8 @@ refs.queueBtn.addEventListener('click', () => {
     //   });
     // });
   } else {
-    hidePagination();
     refs.watchedFilms.innerHTML = '';
+    hidePagination();
   }
 });
 
@@ -105,12 +108,10 @@ export { renderQueueFilms };
 
 function showPaginatiron() {
   refs.paginListLibrary.classList.remove('is-hidden');
+  refs.msgEmtpyEl.classList.add('is-hidden');
 }
 
 function hidePagination() {
   refs.paginListLibrary.classList.add('is-hidden');
-  const msgEmpty = document.createElement('p');
-  msgEmpty.textContent = 'Empty';
-  msgEmpty.className('msg-empty');
-  refs.watchedFilms.appendChild(msgEmpty);
+  refs.msgEmtpyEl.classList.remove('is-hidden');
 }

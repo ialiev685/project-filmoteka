@@ -50,4 +50,5 @@ export const refs = {
 
   authBtn: document.querySelector('.auth-btn'),
   // paginationBox: document.querySelector('.pagination'),
+  msgEmtpyEl: document.querySelector('.msg-empty'),
 };
