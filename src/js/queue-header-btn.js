@@ -26,8 +26,10 @@ let page = 1;
 refs.queueBtn.addEventListener('click', () => {
   const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
   const dataForRenderQ = JSON.parse(dataFromLocalQ);
-  if (dataFromLocalQ) {
+  console.log(dataForRenderQ);
+  if (dataFromLocalQ?.length && dataFromLocalQ) {
     renderQueueFilms(dataForRenderQ, page);
+    showPaginatiron();
     // const filmLib = document.querySelectorAll('.film-card');
     // // console.log(filmLib);
     onFilmLibClick();
@@ -39,7 +41,10 @@ refs.queueBtn.addEventListener('click', () => {
     //     }
     //   });
     // });
-  } else refs.watchedFilms.innerHTML = '';
+  } else {
+    hidePagination();
+    refs.watchedFilms.innerHTML = '';
+  }
 });
 
 function renderQueueFilms(films, page) {
@@ -97,3 +102,15 @@ function defineCountFilmsList(countFilms) {
 }
 
 export { renderQueueFilms };
+
+function showPaginatiron() {
+  refs.paginListLibrary.classList.remove('is-hidden');
+}
+
+function hidePagination() {
+  refs.paginListLibrary.classList.add('is-hidden');
+  const msgEmpty = document.createElement('p');
+  msgEmpty.textContent = 'Empty';
+  msgEmpty.className('msg-empty');
+  refs.watchedFilms.appendChild(msgEmpty);
+}
