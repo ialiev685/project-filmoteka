@@ -1,5 +1,8 @@
 import { addedFilm } from './pnotify';
 import { removedFilm } from './pnotify';
+import defaultImage from '../images/filmoteka-plug.jpg';
+console.log(defaultImage);
+
 // import {removedFilmRu} from './pnotify';
 // import {addedFilmRu} from './pnotify';
 
@@ -10,7 +13,9 @@ const Movie = {
 };
 
 export default class ButtonAction {
-  constructor({ textAdd, textRemove }) {
+  constructor({textQueue, textWatched, textAdd, textRemove }) {
+    this.textQueue = textQueue;
+    this.textWatched = textWatched;
     this.textAdd = textAdd;
     this.textRemove = textRemove;
   }
@@ -34,21 +39,20 @@ export default class ButtonAction {
 
     const addQueueBtnText = this.selectButtonText(Movie.QUEUE, elem);
     const addWatchedBtnText = this.selectButtonText(Movie.WATCHED, elem);
+
     newDataObject.queueBtnText = addQueueBtnText;
     newDataObject.watchedBtnText = addWatchedBtnText;
-
     return newDataObject;
   }
 
   switchBtnText(button, e) {
-    if (e.target.innerHTML === `add to ${button}`) {
-      addedFilm.open();
-      e.target.innerHTML = `remove from ${button}`;
-      return;
+    if (e.target.innerHTML === `${this.textAdd} ${button}`) {
+      e.target.innerHTML = `${this.textRemove} ${button}`;
+      return addedFilm.open();
+
     } else {
-      removedFilm.open();
-      e.target.innerHTML = `add to ${button}`;
-      return;
+      e.target.innerHTML = `${this.textAdd} ${button}`;
+      return removedFilm.open();
     }
   }
 
@@ -59,17 +63,17 @@ export default class ButtonAction {
       const buttonWatched = Array.from(btn)[1];
 
       buttonQueue.addEventListener('click', e => {
-        const button = 'queue';
+        const button = this.textQueue;
         this.switchBtnText(button, e);
-        buttonWatched.innerHTML = 'add to watched';
+        buttonWatched.innerHTML = `${this.textAdd} ${this.textWatched}`;
         this.writeDataToStorage(el.id, el, Movie.QUEUE);
         this.writeDataToStorage(el.id, el, Movie.WATCHED, buttonQueue);
       });
 
       buttonWatched.addEventListener('click', e => {
-        const button = 'watched';
+        const button = this.textWatched;
         this.switchBtnText(button, e);
-        buttonQueue.innerHTML = 'add to queue';
+        buttonQueue.innerHTML = `${this.textAdd} ${this.textQueue}`;
         this.writeDataToStorage(el.id, el, Movie.WATCHED);
         this.writeDataToStorage(el.id, el, Movie.QUEUE, buttonWatched);
       });
@@ -82,21 +86,21 @@ export default class ButtonAction {
       `.js-watched[data-value='${newFilmMarkup.id}']`,
     );
     buttonWatched.addEventListener('click', e => {
-      const button = 'watched';
+      const button = this.textWatched;
       this.switchBtnText(button, e);
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.WATCHED);
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.QUEUE, buttonWatched);
-      buttonQueue.innerHTML = 'add to queue';
+      buttonQueue.innerHTML = `${this.textAdd} ${this.textQueue}`;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
     });
 
     buttonQueue.addEventListener('click', e => {
-      const button = 'queue';
+      const button = this.textQueue;
       this.switchBtnText(button, e);
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.QUEUE);
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.WATCHED, buttonWatched);
-      buttonWatched.innerHTML = 'add to watched';
+      buttonWatched.innerHTML = `${this.textAdd} ${this.textWatched}`;
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
     });

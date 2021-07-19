@@ -3,9 +3,22 @@
   position: absolute;
   display: flex;
   align-items: center;
+  top: 142px;
+  // left: 112px;
   left: 50%;
+  z-index: 3;
+  // right: 0;
+  bottom: -55px;
   transform: translateX(-50%);
-  bottom: 45px;
+  @media screen and (min-width: $tablet) {
+    // top: 112px;
+    // left: 120px;
+    left: 180px;
+    // right: 0;
+  }
+  @media screen and (min-width: $desktop) {
+    left: 175px;
+  }
 
   &.is-hidden {
     opacity: 0;

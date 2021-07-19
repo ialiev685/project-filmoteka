@@ -1,0 +1,83 @@
+<header class="js-header overlay">
+    <div class="container">
+        <div class="navigation">
+            <span class="logo js-logo">
+                <img src="./images/header/header-logo.svg" alt="logo" />
+                <a class="logo-name" href="#">Filmoteka</a>
+                <a class="logo-name" onclick="window.location.href=this">Filmoteka</a>
+            </span>
+            <div class="btn-container">
+                <button type="button" class="header-button auth-btn">sign in</button>
+            </div>
+            <div class="group-buttons">
+                <button type="button" class="header-button js-header-btn current">{{home}}</button>
+                <button type="button" class="header-button js-my-library-btn">{{library}}</button>
+            </div>
+        </div>
+        <div class="js-library-btns library-btns-hidden library-btn-container">
+            <button type="button" class="header-button-low js-head-watched">{{watched}}</button>
+            <button type="button" class="header-button-low js-head-queue">{{queue}}</button>
+        </div>
+        <div class="home-search-div">
+            <input type="text" placeholder="Movie search" class="header-input js-header-input"
+                autocomplete="off" name="submit" />
+            <div class="search-hint is-hidden"></div>
+            <button type="submit" class="search-button">
+                <span class="magnifier-logo">
+                    <img src="../src/images/header/search.svg" alt="magnifier-logo" />
+                </span>
+            </button>
+            <p class="header-message is-hidden">
+                {{message}}
+            </p>
+        </div>
+        <div class="wrapper-lang-checkbox">
+            <p class="sign sign-eng">en</p>
+            <div class="switch_box-1 box_1">
+                <input type="checkbox" class="switch-lang" />
+            </div>
+            <p class="sign sign-rus">ru</p>
+        </div>
+        <div class="switch_box box_3">
+            <div class="toggle_switch">
+                <input type="checkbox" class="switch-theme" />
+                <svg class="checkbox" xmlns="http://www.w3.org/2000/svg" style="isolation: isolate"
+                    viewBox="0 0 168 80">
+                    <path class="outer-ring"
+                        d="M41.534 9h88.932c17.51 0 31.724 13.658 31.724 30.482 0 16.823-14.215 30.48-31.724 30.48H41.534c-17.51 0-31.724-13.657-31.724-30.48C9.81 22.658 24.025 9 41.534 9z"
+                        fill="none" stroke="#233043" stroke-width="3" stroke-linecap="square" stroke-miterlimit="3" />
+                    <path class="is_checked"
+                        d="M17 39.482c0-12.694 10.306-23 23-23s23 10.306 23 23-10.306 23-23 23-23-10.306-23-23z" />
+                    <path class="is_unchecked"
+                        d="M132.77 22.348c7.705 10.695 5.286 25.617-5.417 33.327-2.567 1.85-5.38 3.116-8.288 3.812 7.977 5.03 18.54 5.024 26.668-.83 10.695-7.706 13.122-22.634 5.418-33.33-5.855-8.127-15.88-11.474-25.04-9.23 2.538 1.582 4.806 3.676 6.66 6.25z" />
+                </svg>
+            </div>
+        </div>
+        <div class="sort-films-box">
+            <p class="sort-films-text">{{Sort by}}</p>
+            <ul class="sort-films-list list-no-style">
+                <li class="sort-films-item">
+                    <button id="genre" class="sort-films-btn">{{Genre}}</button>
+                </li>
+                <li class="sort-films-item">
+                    <button id="rating" class="sort-films-btn">{{Rating}}</button>
+                </li>
+                <li class="sort-films-item">
+                    <button id="year" class="sort-films-btn">{{Year}}</button>
+                </li>
+            </ul>
+        </div>
+        <div class="textarea-demo-left-item">
+            <div class="textarea-demo-left-item-left">{{popular}}</div>
+            <div class="textarea-demo-left-item-right">
+                <div id="textarea-demo-height" class="dropdown">
+                    <div class="dropdown-value">{{day}}</div>
+                    <div class="dropdown-list">
+                        <div id="day">{{day}}</div>
+                        <div id="week">{{week}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

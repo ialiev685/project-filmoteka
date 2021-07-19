@@ -16,7 +16,7 @@ export const refs = {
   queueBtn: document.querySelector('.js-head-queue'),
   overlay: document.querySelector('.js-header'),
   navContainer: document.querySelector('.navigation'),
-
+  popularData: document.querySelector('.popular-data'),
   warningString: document.querySelector('.header-message'),
 
   boxPopularSort: document.querySelector('.textarea-demo-left-item'),
@@ -24,31 +24,33 @@ export const refs = {
   dropdownListPopularSortDay: document.querySelector('#day'),
   dropdownListPopularSortWeek: document.querySelector('#week'),
   dropdownPopularSortValue: document.querySelector('.dropdown-value'),
+  dropdownValueP: document.querySelectorAll('.dropdown-value-p'),
 
   filmContainer: document.querySelector('.backdrop'),
 
   footerModal: document.querySelector('.js-footer-modal'),
 
   switchThemeCheckbox: document.querySelector('.switch-theme'),
-
+  switchLangCheckbox: document.querySelector('.switch-lang'),
+  wrapperLangCheckbox: document.querySelector('.wrapper-lang-checkbox'),
+  signLangEng: document.querySelector('.sign-eng'),
+  signLangRus: document.querySelector('.sign-rus'),
   bodyEl: document.body,
 
   paginListStart: document.querySelector('.pagination-start'),
   paginListLibrary: document.querySelector('.pagination-library'),
 
-  //paginListSearch
-
   sortFilmsBtnGenre: document.getElementById('genre'),
   sortFilmsBtnRating: document.getElementById('rating'),
   sortFilmsBtnYear: document.getElementById('year'),
   sortFilmsBox: document.querySelector('.sort-films-box'),
-  // paginationBox: document.querySelector('.pagination'),
+  sortFilmsText: document.querySelector('.sort-films-text'),
 
   watchedFilms: document.querySelector('.js-watched-films'),
   hintEl: document.querySelector('.search-hint'),
   rowTableEl: document.querySelector('.search-hint-table .row-table'),
 
   authBtn: document.querySelector('.auth-btn'),
-  // paginationBox: document.querySelector('.pagination'),
   msgEmtpyEl: document.querySelector('.msg-empty'),
+
 };

@@ -4,8 +4,8 @@ import { checkAndSetPopulation } from './popularity-sort/popularity-sort.js';
 checkAndSetPopulation();
 // const valueSort = localStorage.getItem('popularity');
 
-const URL_MOVIE_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-US&include_adult=false`;
-
+const currentLang = localStorage.getItem('language');
+const URL_MOVIE_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=${currentLang}&append_to_response=images&include_image_language=${currentLang}&include_adult=false`;
 export default class MovieApiService {
   constructor() {
     this.searchQuery = "";

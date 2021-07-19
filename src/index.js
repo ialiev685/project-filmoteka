@@ -36,4 +36,8 @@ import './js/hintSearch.js';
 
 import './js/auth-api.js';
 import './js/authorization.js';
+
+import './js/switch-language.js';
+
+import './js/render-header.js';
 import './js/paginationLibrary.js';
