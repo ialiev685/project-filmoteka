@@ -85,6 +85,7 @@ function renderQueueFilms(films, page) {
       getGenres(procMarkup);
       getReleaseYear(procMarkup);
       getVote(procMarkup);
+      checkHasFilmImage(procMarkup);
     }
   onClickAppearVote();
 }

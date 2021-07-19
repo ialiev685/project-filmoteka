@@ -94,6 +94,7 @@ refs.watchedBtn.addEventListener('click', () => {
       getReleaseYear(procMarkup);
     getVote(procMarkup);
     checkHasFilmImage(procMarkup);
+    
     } else {
       const newFilmsMarkup = films.map(elem => {
       return btnSwitch.addButtonText(elem);
@@ -105,6 +106,7 @@ refs.watchedBtn.addEventListener('click', () => {
       getGenres(procMarkup);
       getReleaseYear(procMarkup);
       getVote(procMarkup);
+    checkHasFilmImage(procMarkup);
     }
 
   // const newFilmsMarkup = films.map(elem => {
@@ -125,6 +127,7 @@ refs.watchedBtn.addEventListener('click', () => {
   // getGenres(procMarkup);
   // getReleaseYear(procMarkup);
   // getVote(procMarkup);
+  
   onClickAppearVote();
 }
 
