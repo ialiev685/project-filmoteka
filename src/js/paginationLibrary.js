@@ -8,7 +8,6 @@ let type = null;
 
 function renderPagination(total_pages, curPage, { prop, films }) {
   type = prop;
-  console.log(' type', type);
 
   dataFilms = films;
   page = curPage;
