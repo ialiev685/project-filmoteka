@@ -83,41 +83,37 @@ refs.watchedBtn.addEventListener('click', () => {
   }
 });
 
- function renderWatchedFilms(films, page) {
+function renderWatchedFilms(films, page) {
   openLibrary();
   refs.watchedFilms.innerHTML = '';
-  if (
-      localStorage.getItem('language') === 'ru'
-
-  ) {
-      const newFilmsMarkup = films.map(elem => {
+  if (localStorage.getItem('language') === 'ru') {
+    const newFilmsMarkup = films.map(elem => {
       return btnSwitchRus.addButtonText(elem);
-      });
-    console.log(newFilmsMarkup);
+    });
+
     const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
 
-      refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
+    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
 
-      renderPagination(totalPage, page, { prop: 'watched', films });
-      btnSwitchRus.clickButtonOverlay(procMarkup);
-      getGenres(procMarkup);
-      getReleaseYear(procMarkup);
+    renderPagination(totalPage, page, { prop: 'watched', films });
+    btnSwitchRus.clickButtonOverlay(procMarkup);
+    getGenres(procMarkup);
+    getReleaseYear(procMarkup);
     getVote(procMarkup);
     checkHasFilmImage(procMarkup);
-    
-    } else {
-      const newFilmsMarkup = films.map(elem => {
+  } else {
+    const newFilmsMarkup = films.map(elem => {
       return btnSwitch.addButtonText(elem);
-      });
-      const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
-      renderPagination(totalPage, page, { prop: 'watched', films });
-      refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
-      btnSwitch.clickButtonOverlay(procMarkup);
-      getGenres(procMarkup);
-      getReleaseYear(procMarkup);
-      getVote(procMarkup);
+    });
+    const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
+    renderPagination(totalPage, page, { prop: 'watched', films });
+    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
+    btnSwitch.clickButtonOverlay(procMarkup);
+    getGenres(procMarkup);
+    getReleaseYear(procMarkup);
+    getVote(procMarkup);
     checkHasFilmImage(procMarkup);
-    }
+  }
 
   // const newFilmsMarkup = films.map(elem => {
   //   return btnSwitch.addButtonText(elem);
@@ -137,7 +133,7 @@ refs.watchedBtn.addEventListener('click', () => {
   // getGenres(procMarkup);
   // getReleaseYear(procMarkup);
   // getVote(procMarkup);
-  
+
   onClickAppearVote();
 }
 
