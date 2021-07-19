@@ -25,21 +25,18 @@ export function onFilmLibClick(active) {
 }
 
 function checkEmptyLibrary() {
+  console.log('пришло');
   if (curLibrary === 'queue') {
     const dataFromLocalQ = JSON.parse(localStorage.getItem(Movie.QUEUE));
-    console.log('queue', dataFromLocalQ);
 
-    if (dataFromLocalQ?.length || dataFromLocalQ === null) {
+    if (dataFromLocalQ?.length === 0 || dataFromLocalQ === null) {
       hidePagination();
     }
   }
   if (curLibrary === 'watched') {
     const dataFromLocal = JSON.parse(localStorage.getItem(Movie.WATCHED));
-    if (dataFromLocal?.length || dataFromLocal === null) {
-      console.log('watched', dataFromLocal);
+    if (dataFromLocal?.length === 0 || dataFromLocal === null) {
       hidePagination();
     }
   }
-
-  // if(dataFromLocal)
 }

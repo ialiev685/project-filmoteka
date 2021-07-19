@@ -53,7 +53,6 @@ refs.watchedBtn.addEventListener('click', () => {
   const dataFromLocal = localStorage.getItem(Movie.WATCHED);
   const dataForRender = JSON.parse(dataFromLocal);
   if (dataForRender?.length && dataForRender) {
-    console.log(dataFromLocalQ.length);
     renderWatchedFilms(dataForRender, page);
     showPaginatiron();
     // const filmLib = document.querySelectorAll('.film-card');
@@ -129,7 +128,6 @@ function defineCountFilmsList(countFilms) {
   return { totalPage, countListFilms };
 }
 
-
 function showPaginatiron() {
   refs.paginListLibrary.classList.remove('is-hidden');
   refs.msgEmtpyEl.classList.add('is-hidden');
@@ -139,8 +137,5 @@ function hidePagination() {
   refs.paginListLibrary.classList.add('is-hidden');
   refs.msgEmtpyEl.classList.remove('is-hidden');
 }
-
-
-
 
 export { renderWatchedFilms, hidePagination };
