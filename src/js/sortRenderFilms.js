@@ -2,10 +2,20 @@ import { refs } from './refs.js';
 // import sortCardForm from '../hbs/sortCardForm.hbs';
 import { checkHasFilmImage } from './is-image.js';
 import cardForm from '../hbs/cardForm.hbs';
+import cardFormRus from '../hbs/cardFormRus.hbs';
 import ButtonAction from './button-action.js';
 const btnSwitch = new ButtonAction({
+  textQueue: 'queue',
+  textWatched: 'watched',
   textAdd: 'add to',
   textRemove: 'remove from',
+});
+
+const btnSwitchRus = new ButtonAction({
+  textQueue: 'очередь',
+  textWatched: 'просмотрено',
+  textAdd: 'в',
+  textRemove: 'из',
 });
 
 
@@ -232,24 +242,23 @@ function sortFilms(arr) {
   function renderModifiedFilms(array) {
     refs.filmList.innerHTML = '';
     
-    // refs.filmList.insertAdjacentHTML('beforeend', sortCardForm(array));
-    // if (
-    //   array.find(elem => {
-    //     console.log(/[а-я]/i.test(elem.title));
-    //     return /[а-я]/i.test(elem.title) === true;
-    //   })
-    // ) {
-    //   refs.filmList.insertAdjacentHTML('beforeend', cardFormRus(array));
-    //   btnSwitchRus.clickButtonOverlay(array);
-    // } else {
-    //   refs.filmList.insertAdjacentHTML('beforeend', cardForm(array));
-    //   btnSwitch.clickButtonOverlay(array);
-    // }
-    const newFilmsMarkup = array.map(elem => {
+    if (
+      array.find(elem => {
+        return /[а-я]/i.test(elem.title) === true;
+      })
+    ) {
+      const newFilmsMarkup = array.map(elem => {
+      return btnSwitchRus.addButtonText(elem);
+    });
+      refs.filmList.insertAdjacentHTML('beforeend', cardFormRus(newFilmsMarkup));
+      btnSwitchRus.clickButtonOverlay(newFilmsMarkup);
+    } else {
+      const newFilmsMarkup = array.map(elem => {
       return btnSwitch.addButtonText(elem);
     });
-    refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmsMarkup));
-    btnSwitch.clickButtonOverlay(newFilmsMarkup);
+      refs.filmList.insertAdjacentHTML('beforeend', cardForm(newFilmsMarkup));
+      btnSwitch.clickButtonOverlay(newFilmsMarkup);
+    }
 
     checkHasFilmImage(array);
   }

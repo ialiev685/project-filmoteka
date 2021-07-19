@@ -2,10 +2,19 @@ import { refs } from './refs.js';
 import langArray from '../json/lang.json';
 import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
+import { renderWatchedFilms } from './watched-header-btn.js';
+import { renderQueueFilms } from './queue-header-btn.js';
+import { sortFilms, sortBtnRemove, correctionMargin } from './sortRenderFilms.js'
 
 const Language = {
   EN: 'en',
   RU: 'ru',
+};
+
+const Movie = {
+  // Данные для Local Storage //
+  WATCHED: 'watched',
+  QUEUE: 'queue',
 };
 
 refs.switchLangCheckbox.addEventListener('change', e => {
@@ -13,7 +22,24 @@ refs.switchLangCheckbox.addEventListener('change', e => {
   const lang = switchLanguage(e);
   translateInterface(lang);
   if (refs.myLibraryBtn.classList.contains('current')) {
-    return;
+    if (refs.watchedHeaderBtn.classList.contains('current-btn')) {
+      let page = 1;
+      const dataFromLocal = localStorage.getItem(Movie.WATCHED);
+      const dataForRender = JSON.parse(dataFromLocal);
+      if (dataForRender) {
+        renderWatchedFilms(dataForRender, page);
+      } else refs.watchedFilms.innerHTML = '';
+    };
+    if (refs.queueHeaderBtn.classList.contains('current-btn')) {
+      let page = 1;
+      const dataFromLocal = localStorage.getItem(Movie.QUEUE);
+      const dataForRender = JSON.parse(dataFromLocal);
+      if (dataForRender) {
+        renderQueueFilms(dataForRender, page);
+      } else refs.watchedFilms.innerHTML = '';
+    };
+    
+    return
   }
   onChangeLang();
 });

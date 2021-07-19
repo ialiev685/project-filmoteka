@@ -27,8 +27,11 @@
             </ul>
             <h3 class='modal__flm-about'>Описание</h3>
             <p class='modal__flm-description'>{{overview}}</p>
-            <button class='modal__button watched js-watched'>{{watchedBtnText}} просмотрено</button>
-            <button class='modal__button queue js-queue'>{{queueBtnText}} очередь</button>
+            <button class="modal__button trailer js-trailer">Трейлер</button>
+            <div class="modal-buttons"> 
+                <button class='modal__button watched js-watched'>{{watchedBtnText}} просмотрено</button>
+                <button class='modal__button queue js-queue'>{{queueBtnText}} очередь</button>
+            </div>
         </div>
         <button type='button' class='modal__close-button' data-action='close-modal'></button>
     </article>
