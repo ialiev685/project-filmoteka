@@ -56,11 +56,12 @@ refs.paginListLibrary.addEventListener('click', listener, false);
 
 function nextRenderMarcup(page) {
   refs.watchedFilms.innerHTML = '';
+  refs.paginListLibrary.dataset.page = page;
 
   // на самом деле нет разницы какую функцию запускать, они индентичны.
-  if (type === 'watched') renderWatchedFilms(dataFilms, page);
+  if (type === 'watched') renderWatchedFilms(dataFilms, page, type);
 
-  if (type === 'queue') renderQueueFilms(dataFilms, page);
+  if (type === 'queue') renderQueueFilms(dataFilms, page, type);
 }
 
 function incremRenderMarcup() {

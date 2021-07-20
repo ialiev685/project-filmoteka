@@ -69,6 +69,7 @@ export default class ButtonAction {
         buttonWatched.innerHTML = `${this.textAdd} ${this.textWatched}`;
         this.writeDataToStorage(el.id, el, Movie.QUEUE);
         this.writeDataToStorage(el.id, el, Movie.WATCHED, buttonQueue);
+        renderLibrary(Movie.QUEUE);
       });
 
       buttonWatched.addEventListener('click', e => {
@@ -77,6 +78,8 @@ export default class ButtonAction {
         buttonQueue.innerHTML = `${this.textAdd} ${this.textQueue}`;
         this.writeDataToStorage(el.id, el, Movie.WATCHED);
         this.writeDataToStorage(el.id, el, Movie.QUEUE, buttonWatched);
+
+        renderLibrary(Movie.WATCHED);
       });
     });
   }
@@ -97,8 +100,6 @@ export default class ButtonAction {
       renderLibrary(Movie.WATCHED);
     });
 
-    // console.log(buttonQueue);
-
     buttonQueue.addEventListener('click', e => {
       const button = this.textQueue;
       this.switchBtnText(button, e);
@@ -107,9 +108,8 @@ export default class ButtonAction {
       buttonWatched.innerHTML = `${this.textAdd} ${this.textWatched}`;
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
-      // onRenderLibrary();
+      console.log('tut');
       renderLibrary(Movie.QUEUE);
-      // console.log(123);
     });
   }
 

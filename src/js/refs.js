@@ -52,5 +52,4 @@ export const refs = {
 
   authBtn: document.querySelector('.auth-btn'),
   msgEmtpyEl: document.querySelector('.msg-empty'),
-
 };

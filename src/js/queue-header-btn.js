@@ -32,8 +32,6 @@ const Movie = {
   QUEUE: 'queue',
 };
 
-let msgEmpty = null;
-
 let page = 1;
 
 refs.queueBtn.addEventListener('click', () => {
@@ -45,7 +43,8 @@ function renderLibrary(local) {
   const dataForRenderQ = JSON.parse(dataFromLocalQ);
 
   if (dataForRenderQ?.length && dataForRenderQ) {
-    renderQueueFilms(dataForRenderQ, page);
+    page = Number(refs.paginListLibrary.dataset.page);
+    renderQueueFilms(dataForRenderQ, page, local);
 
     showPaginatiron();
 
@@ -56,8 +55,11 @@ function renderLibrary(local) {
   }
 }
 
-function renderQueueFilms(films, page) {
+function renderQueueFilms(films, page, local) {
+  onFilmLibClick(local);
+
   refs.watchedFilms.innerHTML = '';
+
   // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
   if (localStorage.getItem('language') === 'ru') {
     const newFilmsMarkup = films.map(elem => {
@@ -66,8 +68,8 @@ function renderQueueFilms(films, page) {
     const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
 
     refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
-
-    renderPagination(totalPage, page, { prop: 'watched', films });
+    onFilmLibClick(local);
+    renderPagination(totalPage, page, { prop: local, films });
     btnSwitchRus.clickButtonOverlay(procMarkup);
     getGenres(procMarkup);
     getReleaseYear(procMarkup);
@@ -78,7 +80,7 @@ function renderQueueFilms(films, page) {
       return btnSwitch.addButtonText(elem);
     });
     const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
-    renderPagination(totalPage, page, { prop: 'watched', films });
+    renderPagination(totalPage, page, { prop: local, films });
     refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
     btnSwitch.clickButtonOverlay(procMarkup);
     getGenres(procMarkup);
@@ -130,7 +132,4 @@ function hidePagination() {
   refs.msgEmtpyEl.classList.remove('is-hidden');
 }
 
-// export { renderQueueFilms, onRenderLibrary };
-// export { onRenderLibrary };
-export { renderLibrary };
-// export { renderQueueFilms };
+export { renderQueueFilms, renderLibrary };
