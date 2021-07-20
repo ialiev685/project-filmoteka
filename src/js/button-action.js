@@ -1,6 +1,7 @@
 import { addedFilm } from './pnotify';
 import { removedFilm } from './pnotify';
-import defaultImage from '../images/filmoteka-plug.jpg';
+
+import { onRenderLibrary } from './queue-header-btn.js';
 
 // import {removedFilmRu} from './pnotify';
 // import {addedFilmRu} from './pnotify';
@@ -101,6 +102,7 @@ export default class ButtonAction {
       buttonWatched.innerHTML = `${this.textAdd} ${this.textWatched}`;
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
+      onRenderLibrary();
     });
   }
 

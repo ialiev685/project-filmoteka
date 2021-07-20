@@ -26,7 +26,6 @@ const btnSwitchRus = new ButtonAction({
   textRemove: 'из',
 });
 
-
 const Movie = {
   // Данные для Local Storage //
   WATCHED: 'watched',
@@ -37,7 +36,25 @@ let msgEmpty = null;
 
 let page = 1;
 
-refs.queueBtn.addEventListener('click', () => {
+// refs.queueBtn.addEventListener('click', () => {
+//   const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
+//   const dataForRenderQ = JSON.parse(dataFromLocalQ);
+
+//   if (dataForRenderQ?.length && dataForRenderQ) {
+//     renderQueueFilms(dataForRenderQ, page);
+
+//     showPaginatiron();
+
+//     onFilmLibClick('queue');
+//   } else {
+//     refs.watchedFilms.innerHTML = '';
+//     hidePagination();
+//   }
+// });
+
+refs.queueBtn.addEventListener('click', onRenderLibrary);
+
+function onRenderLibrary() {
   const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
   const dataForRenderQ = JSON.parse(dataFromLocalQ);
 
@@ -45,56 +62,44 @@ refs.queueBtn.addEventListener('click', () => {
     renderQueueFilms(dataForRenderQ, page);
 
     showPaginatiron();
-    // const filmLib = document.querySelectorAll('.film-card');
-    // // console.log(filmLib);
-    onFilmLibClick('queue');
-    // [...filmLib].forEach((el) => {
-    //   el.addEventListener('click', (e) => {
 
-    //     if (e.target.classList.contains('js-watched') || e.target.classList.contains('js-queue')) {
-    //       e.currentTarget.style.display = 'none';
-    //     }
-    //   });
-    // });
+    onFilmLibClick('queue');
   } else {
     refs.watchedFilms.innerHTML = '';
     hidePagination();
   }
-});
+}
 
 function renderQueueFilms(films, page) {
   refs.watchedFilms.innerHTML = '';
   // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
-    if (
-      localStorage.getItem('language') === 'ru'
-
-  ) {
-      const newFilmsMarkup = films.map(elem => {
+  if (localStorage.getItem('language') === 'ru') {
+    const newFilmsMarkup = films.map(elem => {
       return btnSwitchRus.addButtonText(elem);
-      });
+    });
     const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
 
-      refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
+    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
 
-      renderPagination(totalPage, page, { prop: 'watched', films });
-      btnSwitchRus.clickButtonOverlay(procMarkup);
-      getGenres(procMarkup);
-      getReleaseYear(procMarkup);
-      getVote(procMarkup);
-      checkHasFilmImage(procMarkup);
-    } else {
-      const newFilmsMarkup = films.map(elem => {
+    renderPagination(totalPage, page, { prop: 'watched', films });
+    btnSwitchRus.clickButtonOverlay(procMarkup);
+    getGenres(procMarkup);
+    getReleaseYear(procMarkup);
+    getVote(procMarkup);
+    checkHasFilmImage(procMarkup);
+  } else {
+    const newFilmsMarkup = films.map(elem => {
       return btnSwitch.addButtonText(elem);
-      });
-      const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
-      renderPagination(totalPage, page, { prop: 'watched', films });
-      refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
-      btnSwitch.clickButtonOverlay(procMarkup);
-      getGenres(procMarkup);
-      getReleaseYear(procMarkup);
-      getVote(procMarkup);
-      checkHasFilmImage(procMarkup);
-    }
+    });
+    const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
+    renderPagination(totalPage, page, { prop: 'watched', films });
+    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
+    btnSwitch.clickButtonOverlay(procMarkup);
+    getGenres(procMarkup);
+    getReleaseYear(procMarkup);
+    getVote(procMarkup);
+    checkHasFilmImage(procMarkup);
+  }
   onClickAppearVote();
 }
 
@@ -129,8 +134,6 @@ function defineCountFilmsList(countFilms) {
   return { totalPage, countListFilms };
 }
 
-export { renderQueueFilms };
-
 function showPaginatiron() {
   refs.paginListLibrary.classList.remove('is-hidden');
   refs.msgEmtpyEl.classList.add('is-hidden');
@@ -140,3 +143,5 @@ function hidePagination() {
   refs.paginListLibrary.classList.add('is-hidden');
   refs.msgEmtpyEl.classList.remove('is-hidden');
 }
+
+export { renderQueueFilms, onRenderLibrary };
