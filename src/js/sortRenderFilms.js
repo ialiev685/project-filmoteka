@@ -133,7 +133,7 @@ function sortFilms(arr) {
   onRemoveEventListenerDayClick();
   onRemoveEventListenerWeekClick();
   onRemoveEventListenerPaginationClick();
-
+  onRemoveEventListenerCheckLanguageChange();
   onRemoveEventListenerHomeBtnClick();
 
   function onSortGenreClick() {
@@ -294,6 +294,10 @@ function sortFilms(arr) {
     btnGenre.removeEventListener('click', onSortGenreClick);
     btnRating.removeEventListener('click', onSortRatingClick);
     btnYear.removeEventListener('click', onSortYearClick);
+  }
+  // Снятие слушателя с чекбокса языка:
+  function onRemoveEventListenerCheckLanguageChange() {
+    refs.switchLangCheckbox.addEventListener('change', removeEventListenerBtnClick);
   }
 }
 
