@@ -1,4 +1,4 @@
-import {success, notice} from '@pnotify/core';
+import {success, notice, error} from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
@@ -17,7 +17,7 @@ export const removedFilmRu = notice({
   title: 'Оповещение',
   text: 'Фильм был удалён из библиотеки!',
   autoOpen: false,
-  width: '2700px',
+  width: '270px',
   minHeight: '40px',
   delay: 500,
   sticker: false, 
@@ -46,3 +46,24 @@ export const addedFilmRu = success({
   destroy:false, 
 });
 
+export const incorrectData = error({
+  title: 'Oh No!',
+  text: 'Something terrible happened, please, try again!',
+  autoOpen: false,
+  width: '270px',
+  minHeight: '40px',
+  delay: 500,
+  sticker: false, 
+  destroy:false,
+});
+
+export const incorrectDataRu = error({
+  title: 'О, нет!',
+  text: 'Что-то пошло не так, попробуйте еще раз!',
+  autoOpen: false,
+  width: '270px',
+  minHeight: '40px',
+  delay: 500,
+  sticker: false, 
+  destroy:false,
+});

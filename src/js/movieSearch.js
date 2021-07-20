@@ -2,6 +2,11 @@ import MoviesApiService from './fetchMovie.js';
 import { refs } from './refs.js';
 import { renderFilms } from './renderFilms.js';
 import { sortBtnRemove } from './sortRenderFilms.js';
+import {incorrectData} from './pnotify';
+import {incorrectDataRu} from './pnotify';
+
+
+
 
 const moviesApiService = new MoviesApiService();
 
@@ -34,14 +39,17 @@ async function onMovieSearchClick(page) {
     if (refs.headerInput.value !== '' && moviesApiService.query) {
       let fatch = await moviesApiService.fetchMovie(page);
       BoxPopularSortRemove();
-      if (fatch.results !== undefined) {
+      if (fatch.results !== undefined) {      
         const valueSeatch = refs.headerInput.value.trim();
         renderFilmsCards(fatch, valueSeatch);
-        console.log(fatch)
-      }
+        console.log(fatch)        
+      } 
     }
   } catch (error) {
-    console.log('Ошибка catch ' + error);
+    if (localStorage.getItem('language') === 'ru') {
+      console.log('Ошибка catch ' + error);
+      return incorrectDataRu.open();
+    } return incorrectData.open();        
   }
 }
 
@@ -58,7 +66,7 @@ export function removeFilmList() {
 function onEnterInputClick(e) {
   if (e.key === 'Enter') {
     onMovieSearchClick(page);
-  }
+  }  
 }
 
 function DeleteWarningString() {
@@ -87,3 +95,4 @@ function newPage() {
   page = 1;
   return page;
 }
+
