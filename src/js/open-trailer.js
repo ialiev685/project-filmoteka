@@ -1,9 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 import { KEY } from './base-api.js';
 import { sortBtnRemove } from './sortRenderFilms.js';
-const lang = localStorage.getItem('language');
+// const lang = localStorage.getItem('language');
+// console.log(lang);
 
-function fetchFilmTrailer(movieId) {
+function fetchFilmTrailer(movieId, lang) {
   const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${KEY}&language=${lang}`;
 
   return fetch(url).then(response => response.json());
@@ -11,10 +12,34 @@ function fetchFilmTrailer(movieId) {
 
 
 async function onTrailerBtnClick(movieId) {
-  const trailer = await fetchFilmTrailer(movieId);
+  const lang = localStorage.getItem('language');
+  const trailer = await fetchFilmTrailer(movieId, lang);
   if (trailer.results.length === 0) {
-    if (lang === 'en') {
+    // console.log(lang);
+    if (lang === 'ru') {
+      const instance = basicLightbox.create(
+      `
+      <div class="modal">
+          <p class="trailer-info">Трейлер не найден</p>
+      </div>
+  `,
+      {
+        onShow: instance => {
+          window.addEventListener('keydown', function onEscClick(e) {
+            console.log(e);
+            if (e.code === 'Escape') {
+              instance.close();
+              window.removeEventListener('keydown', onEscClick);
+            }
+          });
 
+        },
+      },
+      );
+      instance.show();
+
+
+    } else {
       const instance = basicLightbox.create(
       `
       <div class="modal">
@@ -35,27 +60,7 @@ async function onTrailerBtnClick(movieId) {
       },
       );
       instance.show();
-    } else {
-       const instance = basicLightbox.create(
-      `
-      <div class="modal">
-          <p class="trailer-info">Трейлер не найден</p>
-      </div>
-  `,
-      {
-        onShow: instance => {
-          window.addEventListener('keydown', function onEscClick(e) {
-            console.log(e);
-            if (e.code === 'Escape') {
-              instance.close();
-              window.removeEventListener('keydown', onEscClick);
-            }
-          });
 
-        },
-      },
-      );
-      instance.show();
     }
   } else {
 
