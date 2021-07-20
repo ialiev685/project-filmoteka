@@ -56,11 +56,9 @@ refs.queueBtn.addEventListener('click', () => {
   renderLibrary(Movie.QUEUE);
 });
 
-// console.log(Movie.QUEUE);
- function renderLibrary(local) {
+function renderLibrary(local) {
   const dataFromLocalQ = localStorage.getItem(local);
-   const dataForRenderQ = JSON.parse(dataFromLocalQ);
-  //  console.log(dataForRenderQ);
+  const dataForRenderQ = JSON.parse(dataFromLocalQ);
 
   if (dataForRenderQ?.length && dataForRenderQ) {
     renderQueueFilms(dataForRenderQ, page);
