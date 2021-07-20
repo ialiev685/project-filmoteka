@@ -102,7 +102,7 @@ function listener(ev) {
 
   page = Number(ev.target.textContent);
   nextRenderMarcup(page);
-  sortBtnRemove();
+  //sortBtnRemove();
   // renderPagination();
 }
 
