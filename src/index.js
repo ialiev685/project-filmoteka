@@ -5,6 +5,7 @@ import './js/home-btn.js';
 import './js/library-btn.js';
 import './js/watched-header-btn.js';
 import './js/queue-header-btn.js';
+import './js/button-action.js';
 import './js/logoClick.js';
 
 import './js/start-site.js';

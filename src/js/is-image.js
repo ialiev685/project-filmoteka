@@ -1,4 +1,6 @@
 import defaultImage from '../images/filmoteka-plug.jpg';
+import { renderLibrary } from './queue-header-btn.js';
+// console.log(renderLibrary);
 
 export function checkHasFilmImage(data) {
   const filmImg = document.querySelectorAll('.js-film-image');

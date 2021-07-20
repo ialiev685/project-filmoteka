@@ -5,7 +5,7 @@ import { getGenres } from './genres.js';
 import { getReleaseYear } from './years.js';
 // import { checkHasFilmImage } from './is-image.js';
 import { getVote } from './vote-avarage.js';
-import { openLibrary } from './library-btn.js';
+// import { openLibrary } from './library-btn.js';
 import { onClickAppearVote } from './appear-votes.js';
 import ButtonAction from './button-action.js';
 import { onFilmLibClick } from './onFilmLibClick.js';
@@ -52,18 +52,23 @@ let page = 1;
 //   }
 // });
 
-refs.queueBtn.addEventListener('click', onRenderLibrary);
+refs.queueBtn.addEventListener('click', () => {
+  renderLibrary(Movie.QUEUE);
+});
 
-function onRenderLibrary() {
-  const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
-  const dataForRenderQ = JSON.parse(dataFromLocalQ);
+// console.log(Movie.QUEUE);
+ function renderLibrary(local) {
+  const dataFromLocalQ = localStorage.getItem(local);
+   const dataForRenderQ = JSON.parse(dataFromLocalQ);
+  //  console.log(dataForRenderQ);
 
   if (dataForRenderQ?.length && dataForRenderQ) {
     renderQueueFilms(dataForRenderQ, page);
 
     showPaginatiron();
 
-    onFilmLibClick('queue');
+    // onFilmLibClick('queue');
+    onFilmLibClick(local);
   } else {
     refs.watchedFilms.innerHTML = '';
     hidePagination();
@@ -144,4 +149,7 @@ function hidePagination() {
   refs.msgEmtpyEl.classList.remove('is-hidden');
 }
 
-export { renderQueueFilms, onRenderLibrary };
+// export { renderQueueFilms, onRenderLibrary };
+// export { onRenderLibrary };
+export { renderLibrary };
+// export { renderQueueFilms };

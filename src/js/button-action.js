@@ -1,8 +1,10 @@
 import { addedFilm } from './pnotify';
 import { removedFilm } from './pnotify';
-
-import { onRenderLibrary } from './queue-header-btn.js';
-
+import { renderLibrary } from './queue-header-btn.js';
+// import { renderLibrary } from './queue-header-btn.js';
+// import { renderQueueFilms } from './queue-header-btn.js';
+// import { checkHasFilmImage } from './is-image.js';
+// console.log(onRenderLibrary);
 // import {removedFilmRu} from './pnotify';
 // import {addedFilmRu} from './pnotify';
 
@@ -92,7 +94,10 @@ export default class ButtonAction {
       buttonQueue.innerHTML = `${this.textAdd} ${this.textQueue}`;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
+      renderLibrary(Movie.WATCHED);
     });
+
+    // console.log(buttonQueue);
 
     buttonQueue.addEventListener('click', e => {
       const button = this.textQueue;
@@ -102,7 +107,9 @@ export default class ButtonAction {
       buttonWatched.innerHTML = `${this.textAdd} ${this.textWatched}`;
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
-      onRenderLibrary();
+      // onRenderLibrary();
+      renderLibrary(Movie.QUEUE);
+      // console.log(123);
     });
   }
 

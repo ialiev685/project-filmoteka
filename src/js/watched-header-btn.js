@@ -19,6 +19,7 @@ import ButtonAction from './button-action.js';
 import { onFilmLibClick } from './onFilmLibClick.js';
 import { renderPagination } from './paginationLibrary.js';
 import { checkHasFilmImage } from './is-image.js';
+import { renderLibrary } from './queue-header-btn';
 
 const btnSwitch = new ButtonAction({
   textQueue: 'queue',
@@ -46,45 +47,50 @@ let page = 1;
 // const dataForRender = JSON.parse(dataFromLocal);
 
 refs.myLibraryBtn.addEventListener('click', () => {
-  const dataFromLocal = localStorage.getItem(Movie.WATCHED);
+  renderLibrary(Movie.WATCHED);
+  // const dataFromLocal = localStorage.getItem(Movie.WATCHED);
 
-  const dataForRender = JSON.parse(dataFromLocal);
+  // const dataForRender = JSON.parse(dataFromLocal);
 
-  if (dataForRender?.length && dataForRender) {
-    renderWatchedFilms(dataForRender, page);
-    showPaginatiron();
-    onFilmLibClick('watched');
-  } else {
-    refs.watchedFilms.innerHTML = '';
-    hidePagination();
-  }
+  // if (dataForRender?.length && dataForRender) {
+  //   renderWatchedFilms(dataForRender, page);
+  //   showPaginatiron();
+  //   onFilmLibClick('watched');
+  // } else {
+  //   refs.watchedFilms.innerHTML = '';
+  //   hidePagination();
+  // }
 });
 
 refs.watchedBtn.addEventListener('click', () => {
-  const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-  const dataForRender = JSON.parse(dataFromLocal);
-  if (dataForRender?.length && dataForRender) {
-    renderWatchedFilms(dataForRender, page);
-    showPaginatiron();
-    // const filmLib = document.querySelectorAll('.film-card');
-    // console.log(filmLib);
-    // [...filmLib].forEach((el) => {
-    //   el.addEventListener('click', (e) => {
-
-    //     if (e.target.classList.contains('js-queue') || e.target.classList.contains('js-watched')) {
-    //       e.currentTarget.style.display = 'none';
-    //     }
-    //   });
-    // });
-    onFilmLibClick('watched');
-  } else {
-    refs.watchedFilms.innerHTML = '';
-    hidePagination();
-  }
+  openLibrary();
+  renderLibrary(Movie.WATCHED);
 });
+// refs.watchedBtn.addEventListener('click', () => {
+//   const dataFromLocal = localStorage.getItem(Movie.WATCHED);
+//   const dataForRender = JSON.parse(dataFromLocal);
+//   if (dataForRender?.length && dataForRender) {
+//     renderWatchedFilms(dataForRender, page);
+//     showPaginatiron();
+//     // const filmLib = document.querySelectorAll('.film-card');
+//     // console.log(filmLib);
+//     // [...filmLib].forEach((el) => {
+//     //   el.addEventListener('click', (e) => {
+
+//     //     if (e.target.classList.contains('js-queue') || e.target.classList.contains('js-watched')) {
+//     //       e.currentTarget.style.display = 'none';
+//     //     }
+//     //   });
+//     // });
+//     onFilmLibClick('watched');
+//   } else {
+//     refs.watchedFilms.innerHTML = '';
+//     hidePagination();
+//   }
+// });
 
 function renderWatchedFilms(films, page) {
-  openLibrary();
+  // openLibrary();
   refs.watchedFilms.innerHTML = '';
   if (localStorage.getItem('language') === 'ru') {
     const newFilmsMarkup = films.map(elem => {
