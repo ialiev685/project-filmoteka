@@ -3,7 +3,7 @@
   position: absolute;
   display: flex;
   align-items: center;
-  top: 142px;
+  top: 137px;
   // left: 112px;
   left: 50%;
   z-index: 3;
@@ -13,6 +13,7 @@
   @media screen and (min-width: $tablet) {
     // top: 112px;
     // left: 120px;
+    top: 142px;
     left: 180px;
     // right: 0;
   }

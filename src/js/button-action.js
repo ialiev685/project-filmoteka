@@ -1,7 +1,7 @@
 import { addedFilm } from './pnotify';
 import { removedFilm } from './pnotify';
 import defaultImage from '../images/filmoteka-plug.jpg';
-console.log(defaultImage);
+// console.log(defaultImage);
 import {removedFilmRu} from './pnotify';
 import {addedFilmRu} from './pnotify';
 

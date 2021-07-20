@@ -5,4 +5,4 @@ import lang from '../json/lang.json';
 //     refs.body.insertAdjacentHTML('afterbegin', header(lang.en));
   
 // }
-console.log(lang.en)
+// console.log(lang.en)

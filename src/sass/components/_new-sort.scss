@@ -1,0 +1,102 @@
+.new-sort-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: -90px;
+
+  @media screen and (min-width: $tablet) {
+    bottom: -80px;
+  }
+}
+
+.new-sort-text {
+  display: inline-block;
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 1.143;
+  margin: 0;
+  margin-right: 5px;
+
+  @media screen and (max-width: $tablet - 1) {
+    min-width: 60px;
+    display: none;
+  }
+}
+
+.new-sort-list {
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: $tablet - 1) {
+    flex-wrap: wrap;
+    justify-content: start;
+    margin: -2px;
+  }
+}
+
+.new-sort-item {
+  width: calc((100% - 4 * 3px) / 2);
+  margin: 2px;
+  min-width: 80px;
+  height: 20px;
+
+  @media screen and (max-width: $tablet - 1) {
+    width: calc((100% - 6 * 3px) / 3);
+    margin: 3px;
+  }
+  &:not(:last-child) {
+    margin-right: 3px;
+  }
+}
+
+.new-sort-btn {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.143;
+  text-align: left;
+  color: var(--color-white);
+  background-color: var(--color-sort-btn);
+  border: 2px solid var(--color-sort-btn);
+  border-radius: 6px;
+  cursor: pointer;
+  padding-left: 2px;
+
+  &:active {
+    background-color: var(--color-sort-clear-btn);
+    border-color: var(--color-sort-clear-btn);
+    color: var(--color-black);
+  }
+
+  &:before {
+    content: '\2261';
+    display: block;
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 3px;
+    top: 2px;
+    font-weight: 700;
+    color: var(--color-card-overlay);
+    transition: border-color 0.3s;
+  }
+}
+
+.all-btn {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.143;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--color-sort-btn);
+  border: 2px solid var(--color-sort-btn);
+  color: var(--color-white);
+
+  &:active {
+    background-color: var(--color-sort-clear-btn);
+    border: 2px solid var(--color-sort-clear-btn);
+    color: var(--color-card-overlay);
+  }
+}

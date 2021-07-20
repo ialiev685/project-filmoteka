@@ -3,6 +3,8 @@
   display: flex;
   align-items: center;
   bottom: -80px;
+  opacity: 0;
+  pointer-events: none;
 
   @media screen and (max-width: $tablet - 1) {
     left: 50%;
