@@ -19,7 +19,6 @@ import ButtonAction from './button-action.js';
 import { onFilmLibClick } from './onFilmLibClick.js';
 import { renderPagination } from './paginationLibrary.js';
 import { checkHasFilmImage } from './is-image.js';
-// import { renderLibrary } from './queue-header-btn';
 
 const btnSwitch = new ButtonAction({
   textQueue: 'queue',
@@ -43,42 +42,12 @@ const Movie = {
 
 let page = 1;
 
-// const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-// const dataForRender = JSON.parse(dataFromLocal);
-
 refs.myLibraryBtn.addEventListener('click', () => {
   renderLibrary(Movie.WATCHED);
-
-  // const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-
-  // const dataForRender = JSON.parse(dataFromLocal);
-
-  // if (dataForRender?.length && dataForRender) {
-  //   renderWatchedFilms(dataForRender, page);
-  //   showPaginatiron();
-  //   onFilmLibClick('watched');
-  // } else {
-  //   refs.watchedFilms.innerHTML = '';
-  //   hidePagination();
-  // }
 });
 
-// refs.watchedBtn.addEventListener('click', () => {
-//   openLibrary();
-//   renderLibrary(Movie.WATCHED);
-// });
 refs.watchedBtn.addEventListener('click', () => {
   renderLibrary(Movie.WATCHED);
-  // const dataFromLocal = localStorage.getItem(Movie.WATCHED);
-  // const dataForRender = JSON.parse(dataFromLocal);
-  // if (dataForRender?.length && dataForRender) {
-  //   renderWatchedFilms(dataForRender, page);
-  //   showPaginatiron();
-  //   onFilmLibClick('watched');
-  // } else {
-  //   refs.watchedFilms.innerHTML = '';
-  //   hidePagination();
-  // }
 });
 
 function renderLibrary(local) {
@@ -87,7 +56,7 @@ function renderLibrary(local) {
   if (dataForRender?.length && dataForRender) {
     renderWatchedFilms(dataForRender, page);
     showPaginatiron();
-    onFilmLibClick('watched');
+    onFilmLibClick(local);
   } else {
     refs.watchedFilms.innerHTML = '';
     hidePagination();

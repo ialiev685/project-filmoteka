@@ -3,7 +3,7 @@ import cardMarkup from '../hbs/cardForm.hbs';
 import cardMarkupRus from '../hbs/cardFormRus.hbs';
 import { getGenres } from './genres.js';
 import { getReleaseYear } from './years.js';
-// import { checkHasFilmImage } from './is-image.js';
+
 import { getVote } from './vote-avarage.js';
 // import { openLibrary } from './library-btn.js';
 import { onClickAppearVote } from './appear-votes.js';
@@ -36,22 +36,6 @@ let msgEmpty = null;
 
 let page = 1;
 
-// refs.queueBtn.addEventListener('click', () => {
-//   const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
-//   const dataForRenderQ = JSON.parse(dataFromLocalQ);
-
-//   if (dataForRenderQ?.length && dataForRenderQ) {
-//     renderQueueFilms(dataForRenderQ, page);
-
-//     showPaginatiron();
-
-//     onFilmLibClick('queue');
-//   } else {
-//     refs.watchedFilms.innerHTML = '';
-//     hidePagination();
-//   }
-// });
-
 refs.queueBtn.addEventListener('click', () => {
   renderLibrary(Movie.QUEUE);
 });
@@ -65,7 +49,6 @@ function renderLibrary(local) {
 
     showPaginatiron();
 
-    // onFilmLibClick('queue');
     onFilmLibClick(local);
   } else {
     refs.watchedFilms.innerHTML = '';
