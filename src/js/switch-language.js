@@ -4,7 +4,10 @@ import { getTrendItems } from './base-api.js';
 import { renderFilms } from './renderFilms.js';
 import { renderWatchedFilms } from './watched-header-btn.js';
 import { renderQueueFilms } from './queue-header-btn.js';
-import { sortFilms, sortBtnRemove, correctionMargin } from './sortRenderFilms.js'
+import { sortFilms, sortBtnRemove, correctionMargin } from './sortRenderFilms.js';
+import {incorrectData} from './pnotify';
+import {incorrectDataRu} from './pnotify';
+
 
 
 const Language = {
@@ -40,7 +43,7 @@ refs.switchLangCheckbox.addEventListener('change', e => {
       } else refs.watchedFilms.innerHTML = '';
     };
 
-    return
+    return;
   };
   sortBtnRemove();
   onChangeLang();
@@ -90,7 +93,7 @@ export function translateInterface() {
     refs.sortFilmsBtnYear.innerHTML = 'Году';
     refs.watchedHeaderBtn.innerHTML = 'Просмотренные';
     refs.queueHeaderBtn.innerHTML = 'Очередь';
-    refs.msgEmtpyEl.innerHTML='Ничего нет'
+    refs.msgEmtpyEl.innerHTML='Ничего нет';    
   } else {
     refs.myLibraryBtn.innerHTML = 'My library';
     refs.homeBtn.innerHTML = 'Home';
@@ -102,7 +105,7 @@ export function translateInterface() {
     refs.sortFilmsBtnYear.innerHTML = 'Year';
     refs.watchedHeaderBtn.innerHTML = 'Watched';
     refs.queueHeaderBtn.innerHTML = 'Queue';
-    refs.msgEmtpyEl.innerHTML = 'Empty';
+    refs.msgEmtpyEl.innerHTML = 'Empty';    
   }
 }
 
@@ -116,3 +119,4 @@ function moveProperPositionOfToggle() {
     refs.signLangEng.classList.add('is-active-lang');
   }
 }
+
