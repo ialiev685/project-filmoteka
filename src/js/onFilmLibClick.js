@@ -10,7 +10,7 @@ let curLibrary = '';
 
 export function onFilmLibClick(active) {
   curLibrary = active;
-  const filmLib = document.querySelectorAll('.film-card');
+  const filmLib = document.querySelectorAll('.my-library .film-card');
   // console.log(filmLib);
   [...filmLib].forEach(el => {
     el.addEventListener('click', e => {
