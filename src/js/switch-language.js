@@ -9,7 +9,6 @@ import {incorrectData} from './pnotify';
 import {incorrectDataRu} from './pnotify';
 
 
-
 const Language = {
   EN: 'en',
   RU: 'ru',
@@ -80,6 +79,11 @@ function checkAndSetLanguage() {
     localStorage.getItem('language');
   }
 }
+// const dayBtn = document.querySelector('.dropdown-value');
+// const dayBtn = document.querySelector('#day');
+// const weekBtn = document.querySelector('#week');
+// const popInput = document.querySelector('.dropdown-value');
+// console.log(popInput.innerHTML);
 
 export function translateInterface() {
   if (localStorage.getItem('language') === 'ru') {
@@ -93,7 +97,16 @@ export function translateInterface() {
     refs.sortFilmsBtnYear.innerHTML = 'Году';
     refs.watchedHeaderBtn.innerHTML = 'Просмотренные';
     refs.queueHeaderBtn.innerHTML = 'Очередь';
-    refs.msgEmtpyEl.innerHTML='Ничего нет';
+    refs.msgEmtpyEl.innerHTML = 'Ничего нет';
+    refs.dropdownListPopularSortDay.innerHTML = 'день';
+    refs.dropdownListPopularSortWeek.innerHTML = 'неделя';
+    if (localStorage.getItem('popularity') === 'day') {
+      refs.dropdownPopularSortValue.innerHTML = 'день';
+    } else if (localStorage.getItem('popularity') === 'week') {
+      refs.dropdownPopularSortValue.innerHTML = 'неделя';
+    };
+    // popInput.innerHTML = 'день';
+
   } else {
     refs.myLibraryBtn.innerHTML = 'My library';
     refs.homeBtn.innerHTML = 'Home';
@@ -106,6 +119,14 @@ export function translateInterface() {
     refs.watchedHeaderBtn.innerHTML = 'Watched';
     refs.queueHeaderBtn.innerHTML = 'Queue';
     refs.msgEmtpyEl.innerHTML = 'Empty';
+    refs.dropdownListPopularSortDay.innerHTML = 'day';
+    refs.dropdownListPopularSortWeek.innerHTML = 'week';
+      if (localStorage.getItem('popularity') === 'day') {
+      refs.dropdownPopularSortValue.innerHTML = 'day';
+    } else if (localStorage.getItem('popularity') === 'week') {
+      refs.dropdownPopularSortValue.innerHTML = 'week';
+    };
+    // popInput.innerHTML = 'day';
   }
 }
 
@@ -119,4 +140,3 @@ function moveProperPositionOfToggle() {
     refs.signLangEng.classList.add('is-active-lang');
   }
 }
-
