@@ -10,7 +10,9 @@ function renderPagination(total_pages, curPage, { prop, films }) {
   type = prop;
 
   dataFilms = films;
+
   page = curPage;
+  refs.paginListLibrary.dataset.page = curPage;
   const numbers = Array(total_pages)
     .fill(0)
     .map((el, i) => i + 1);
@@ -56,7 +58,7 @@ refs.paginListLibrary.addEventListener('click', listener, false);
 
 function nextRenderMarcup(page) {
   refs.watchedFilms.innerHTML = '';
-
+  refs.paginListLibrary.dataset.page = page;
   // на самом деле нет разницы какую функцию запускать, они индентичны.
   if (type === 'watched') renderWatchedFilms(dataFilms, page);
 

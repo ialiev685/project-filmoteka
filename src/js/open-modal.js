@@ -9,24 +9,30 @@ import { putRoundedPopularity } from './put-rounded-pop';
 import movieRus from '../hbs/film-modal-rus.hbs';
 
 import { onTrailerBtnClick } from './open-trailer.js';
-
+import { renderLibraryQ } from './queue-header-btn.js';
+import { renderLibraryW } from './watched-header-btn.js';
 
 import { getVoteModal } from './vote-avarage.js';
 
-
 const btnSwitch = new ButtonAction({
   textQueue: 'queue',
-  textWatched:'watched',
+  textWatched: 'watched',
   textAdd: 'add to',
   textRemove: 'remove from',
 });
 
 const btnSwitchRus = new ButtonAction({
   textQueue: 'очередь',
-  textWatched:'просмотрено',
+  textWatched: 'просмотрено',
   textAdd: 'в',
   textRemove: 'из',
 });
+
+const Movie = {
+  // Данные для Local Storage //
+  WATCHED: 'watched',
+  QUEUE: 'queue',
+};
 
 refs.filmList.addEventListener('click', onMovieClick);
 refs.watchedFilms.addEventListener('click', onMovieClick);
@@ -34,7 +40,6 @@ refs.watchedFilms.addEventListener('click', onMovieClick);
 async function onMovieClick(e) {
   if (e.target.classList.value !== 'overlay-btn js-about') {
     return;
-
   }
 
   const movieId = e.target.dataset.value;
@@ -45,15 +50,11 @@ async function onMovieClick(e) {
   checkHasFilmModalImage(article);
 
   const trailerBtn = document.querySelector('.js-trailer');
-  trailerBtn.addEventListener('click', (e) => {
-
+  trailerBtn.addEventListener('click', e => {
     if (e.target.classList.contains('js-trailer')) {
-
       onTrailerBtnClick(article.id);
-
     }
   });
-
 
   const closeButton = document.querySelector('[data-action="close-modal"]');
   const backdrop = document.querySelector('.backdrop');
@@ -75,6 +76,7 @@ function fetchFilm(movieId) {
 function appendArticlesMarkup(article) {
   if (localStorage.getItem('language') === 'ru') {
     const newFilmMarkup = btnSwitchRus.addButtonText(article);
+
     refs.body.insertAdjacentHTML('afterbegin', movieRus(newFilmMarkup));
     const buttonWatched = document.querySelector('.js-watched');
     const buttonQueue = document.querySelector('.js-queue');
@@ -85,23 +87,19 @@ function appendArticlesMarkup(article) {
     const buttonWatched = document.querySelector('.js-watched');
     const buttonQueue = document.querySelector('.js-queue');
     btnSwitch.clickButtonModal(buttonWatched, buttonQueue, article.id, newFilmMarkup);
-  };
+  }
 
   putRoundedPopularity(article.popularity);
   // console.log(article);
   getVoteModal(article);
   checkHasFilmModalImage(article);
-  
-
 
   // const trailerBtn = document.querySelector('.js-trailer');
   // console.log(trailerBtn);
 
   // // trailerBtn.addEventListener('click', onTrailerBtnClick(article.id));
   // console.log(buttonWatched);
-
 }
-
 
 function toggleClass(backdrop) {
   backdrop.classList.toggle('is-hidden');
@@ -113,8 +111,13 @@ function closeModal(closeButton, backdrop, modalFilm) {
 
   window.addEventListener('keydown', onEscKeyPress);
 
-
   function onButtonClick() {
+    if (refs.watchedBtn.classList.contains('current-btn')) {
+      renderLibraryW(Movie.WATCHED);
+    } else if (refs.queueBtn.classList.contains('current-btn')) {
+      renderLibraryQ(Movie.QUEUE);
+    }
+
     toggleClass(backdrop);
     function removeMovie() {
       backdrop.remove();

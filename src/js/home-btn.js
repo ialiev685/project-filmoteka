@@ -4,13 +4,14 @@ import { renderFilms } from './renderFilms.js';
 import { onClickDisappearVote } from './appear-votes.js';
 import { onBoxPopularitySortAddClick } from './popularity-sort/popularity-sort.js';
 import { correctionMargin } from './sortRenderFilms.js';
-import { sortFilms, sortBtnRemove } from './sortRenderFilms.js'
+import { sortFilms, sortBtnRemove } from './sortRenderFilms.js';
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
 async function onHomeBtnClick() {
   refs.paginListLibrary.classList.add('is-hidden'); //тест
   refs.paginListStart.classList.remove('is-hidden'); //тест
+  refs.msgEmtpyEl.classList.add('is-hidden');
 
   refs.libraryBtns.classList.add('library-btns-hidden');
   // refs.filmList.innerHTML = '';
@@ -30,6 +31,6 @@ async function onHomeBtnClick() {
   refs.headerInput.value = '';
   onBoxPopularitySortAddClick();
   correctionMargin();
-  sortBtnRemove()
+  sortBtnRemove();
   // onClickDisappearVote();
 }
