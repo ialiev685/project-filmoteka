@@ -23,10 +23,25 @@ export function onFilmLibClick(active) {
     el.addEventListener('click', e => {
       if (e.target.classList.contains('js-watched') || e.target.classList.contains('js-queue')) {
         e.currentTarget.style.display = 'none';
+        e.currentTarget.classList.add('hidden');
         // console.log('1');
         const { totalPage, procMarkup } = checkCountCard();
         // console.log(procMarkup, totalPage);
+        const countVision = document.querySelectorAll('.my-library .film-card.hidden');
+        // console.log(filmLib.length);
+        // console.log(countVision.length);
+        let totalCard = filmLib.length - countVision.length;
+        // console.log(totalCard);
         if (procMarkup.length === 0 && totalPage > 0) {
+          refs.paginListLibrary.dataset.page -= 1;
+          const pageActive = refs.paginListLibrary.dataset.page;
+          // console.log(pageActive);
+          if (curLibrary === Movie.QUEUE) {
+            renderLibraryQ(curLibrary, Number(pageActive));
+          } else if (curLibrary === Movie.WATCHED) {
+            renderLibraryW(curLibrary, Number(pageActive));
+          }
+        } else if (totalCard === 0 && totalPage > 0) {
           refs.paginListLibrary.dataset.page -= 1;
           const pageActive = refs.paginListLibrary.dataset.page;
           // console.log(pageActive);
