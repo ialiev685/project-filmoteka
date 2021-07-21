@@ -104,7 +104,7 @@ export function translateInterface() {
       refs.dropdownPopularSortValue.innerHTML = 'день';
     } else if (localStorage.getItem('popularity') === 'week') {
       refs.dropdownPopularSortValue.innerHTML = 'неделя';      
-      refs.authBtn.innerHTML = 'ЗАРЕГИСТРИРОВАТЬСЯ';
+      refs.authBtn.innerHTML = 'ВОЙТИ';
       
     };
     // popInput.innerHTML = 'день';
