@@ -5,13 +5,17 @@ import cardFormRus from '../hbs/cardFormRus.hbs';
 function newSortFilms(arr) {
     const arrayGenres = document.querySelectorAll('.name-genres');
     const arrayYear = document.querySelectorAll('.year-list');
-    const newSortBtnEl = document.querySelector('.new-sort-btn');
+    const newSortBtnGenreEl = document.querySelector('#new-sort-btn-genre');
+    const newSortBtnYearEl = document.querySelector('#new-sort-btn-year');
     const listGenresEl = document.querySelector('.new-sort-list-genre');
     const listRatingEl = document.querySelector('.new-sort-list-rating');
     const listYearEl = document.querySelector('.new-sort-list-year');
     const arrayComeGenres = [];
     const arrayGenresNames = [];
     const normArrayGenresNames = [];
+
+    const arrayComeYear = [];
+    
     // ------------Создаю дополнительные ключи индекса, года и жанра:
     // arr.map((el, idx) => (el.index = idx));
     // arr.map((el, idx) => (el.genre = idx));
@@ -22,6 +26,7 @@ function newSortFilms(arr) {
         obj.genre = [...arrayGenres][idx].innerText;
         obj.year = [...arrayYear][idx].innerText;
         arrayComeGenres.push(obj.genre);
+        arrayComeYear.push(obj.year);
     })
 
     // --------Делаю нормальный массив жанров:
@@ -44,29 +49,58 @@ function newSortFilms(arr) {
             }
     });
 
-    // -------убираем повторяющиеся жанры в массиве:
+    // -------убираем повторяющиеся жанры, года и рейтинги в массиве:
    const shortArrayGenres = normArrayGenresNames.filter((el, idx, arr) => {
       return arr.lastIndexOf(el) === idx
     });
+   const shortArrayYear = arrayComeYear.filter((el, idx, arr) => {
+      return arr.lastIndexOf(el) === idx
+   });
     
-    // --------добавление жанров в всплывающее меню при клике:
-
+    // --------добавление жанров, годов и рейтингов в всплывающее меню при клике:
     const newShortArrayGenres = shortArrayGenres.map(element => {
         const genre = document.createElement('li');
         genre.textContent = element;
-        genre.classList.add('new-sort-item-genre');
+        genre.classList.add('new-sort-subitem');
         return genre
     });
-
-    listGenresEl.classList.add('is-hidden')
     listGenresEl.append(...newShortArrayGenres);
 
-    newSortBtnEl.addEventListener('click', onAdditionGenresClick)
-    
+    const newShortArrayYear = shortArrayYear.map(element => {
+        const year = document.createElement('li');
+        year.textContent = element;
+        year.classList.add('new-sort-subitem');
+        return year
+    });
+    listYearEl.append(...newShortArrayYear);
+
+    // -------делаю добавление галочек:
+    newSortBtnGenreEl.addEventListener('click', onAdditionGenresClick);
+    newSortBtnYearEl.addEventListener('click', onAdditionYearClick);
+
     function onAdditionGenresClick() {
         listGenresEl.classList.toggle('is-hidden');
+
+        const itemGenreEl = listGenresEl.querySelectorAll('.new-sort-subitem');
+        [...itemGenreEl].forEach(el => {
+            el.addEventListener('click', () => el.classList.toggle('new-sort-subitem-check-mark'));
+            if (listGenresEl.classList.contains('is-hidden')) {
+                el.removeEventListener('click', () => el.classList.toggle('new-sort-subitem-check-mark'));
+            }
+        })
     };
-    
+
+    function onAdditionYearClick() {
+        listYearEl.classList.toggle('is-hidden');
+
+        const itemYearEl = listYearEl.querySelectorAll('.new-sort-subitem');
+        [...itemYearEl].forEach(el => {
+            el.addEventListener('click', () => el.classList.toggle('new-sort-subitem-check-mark'));
+            if (listYearEl.classList.contains('is-hidden')) {
+                el.removeEventListener('click', () => el.classList.toggle('new-sort-subitem-check-mark'));
+            }
+        })
+    };
 }
 
 export {newSortFilms} 
