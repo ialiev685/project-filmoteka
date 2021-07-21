@@ -19,7 +19,7 @@ let page = 1;
 async function onMovieSearchClick(page) {
 
   sortBtnRemove();
-  
+
 
   refs.hintEl.classList.add('is-hidden');
 
@@ -39,17 +39,17 @@ async function onMovieSearchClick(page) {
     if (refs.headerInput.value !== '' && moviesApiService.query) {
       let fatch = await moviesApiService.fetchMovie(page);
       BoxPopularSortRemove();
-      if (fatch.results !== undefined) {      
+      if (fatch.results !== undefined) {
         const valueSeatch = refs.headerInput.value.trim();
         renderFilmsCards(fatch, valueSeatch);
-        console.log(fatch)        
-      } 
+        // console.log(fatch)
+      }
     }
   } catch (error) {
     if (localStorage.getItem('language') === 'ru') {
       console.log('Ошибка catch ' + error);
       return incorrectDataRu.open();
-    } return incorrectData.open();        
+    } return incorrectData.open();
   }
 }
 
@@ -66,7 +66,7 @@ export function removeFilmList() {
 function onEnterInputClick(e) {
   if (e.key === 'Enter') {
     onMovieSearchClick(page);
-  }  
+  }
 }
 
 function DeleteWarningString() {

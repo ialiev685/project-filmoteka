@@ -9,7 +9,7 @@ function getTrendItems(page) {
     const result = fetch(url).then(response => response.json());
     return result;
   } catch (error) {
-    console.log(`Ошбика + ${error}`);
+    console.log(`Ошибка + ${error}`);
     // поидее здесь должна быть нотификация, что что-то пошло не так и типо перезагрузите страницу
   }
 }

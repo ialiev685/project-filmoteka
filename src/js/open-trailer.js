@@ -26,7 +26,7 @@ async function onTrailerBtnClick(movieId) {
       {
         onShow: instance => {
           window.addEventListener('keydown', function onEscClick(e) {
-            console.log(e);
+            // console.log(e);
             if (e.code === 'Escape') {
               instance.close();
               window.removeEventListener('keydown', onEscClick);
@@ -49,7 +49,7 @@ async function onTrailerBtnClick(movieId) {
       {
         onShow: instance => {
           window.addEventListener('keydown', function onEscClick(e) {
-            console.log(e);
+            // console.log(e);
             if (e.code === 'Escape') {
               instance.close();
               window.removeEventListener('keydown', onEscClick);
@@ -75,7 +75,7 @@ async function onTrailerBtnClick(movieId) {
       {
         onShow: instance => {
           window.addEventListener('keydown', function onEscClick(e) {
-            console.log(e);
+            // console.log(e);
             if (e.code === 'Escape') {
               instance.close();
               window.removeEventListener('keydown', onEscClick);

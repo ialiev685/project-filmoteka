@@ -26,75 +26,74 @@ const btnSwitchRus = new ButtonAction({
   textRemove: 'из',
 });
 
-
 const Movie = {
   // Данные для Local Storage //
   WATCHED: 'watched',
   QUEUE: 'queue',
 };
 
-let msgEmpty = null;
-
 let page = 1;
 
 refs.queueBtn.addEventListener('click', () => {
-  const dataFromLocalQ = localStorage.getItem(Movie.QUEUE);
+  renderLibraryQ(Movie.QUEUE);
+});
+
+export function renderLibraryQ(local) {
+  const dataFromLocalQ = localStorage.getItem(local);
   const dataForRenderQ = JSON.parse(dataFromLocalQ);
 
   if (dataForRenderQ?.length && dataForRenderQ) {
     renderQueueFilms(dataForRenderQ, page);
 
     showPaginatiron();
-    // const filmLib = document.querySelectorAll('.film-card');
-    // // console.log(filmLib);
-    onFilmLibClick('queue');
-    // [...filmLib].forEach((el) => {
-    //   el.addEventListener('click', (e) => {
 
-    //     if (e.target.classList.contains('js-watched') || e.target.classList.contains('js-queue')) {
-    //       e.currentTarget.style.display = 'none';
-    //     }
-    //   });
-    // });
+    onFilmLibClick(local);
   } else {
     refs.watchedFilms.innerHTML = '';
     hidePagination();
   }
-});
+}
 
 function renderQueueFilms(films, page) {
   refs.watchedFilms.innerHTML = '';
-  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
-    if (
-      localStorage.getItem('language') === 'ru'
 
-  ) {
-      const newFilmsMarkup = films.map(elem => {
+  // refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(films));
+  if (localStorage.getItem('language') === 'ru') {
+    const newFilmsMarkup = films.map(elem => {
       return btnSwitchRus.addButtonText(elem);
-      });
+    });
     const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
 
-      refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
+    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkupRus(procMarkup));
 
-      renderPagination(totalPage, page, { prop: 'watched', films });
-      btnSwitchRus.clickButtonOverlay(procMarkup);
-      getGenres(procMarkup);
-      getReleaseYear(procMarkup);
-      getVote(procMarkup);
-      checkHasFilmImage(procMarkup);
-    } else {
-      const newFilmsMarkup = films.map(elem => {
+    renderPagination(totalPage, page, { prop: Movie.QUEUE, films });
+
+    btnSwitchRus.clickButtonOverlay(procMarkup);
+
+    getGenres(procMarkup);
+
+    getReleaseYear(procMarkup);
+    getVote(procMarkup);
+    checkHasFilmImage(procMarkup);
+    // console.log('повтор');
+    onFilmLibClick(Movie.QUEUE);
+  } else {
+    const newFilmsMarkup = films.map(elem => {
       return btnSwitch.addButtonText(elem);
-      });
-      const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
-      renderPagination(totalPage, page, { prop: 'watched', films });
-      refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
-      btnSwitch.clickButtonOverlay(procMarkup);
-      getGenres(procMarkup);
-      getReleaseYear(procMarkup);
-      getVote(procMarkup);
-      checkHasFilmImage(procMarkup);
-    }
+    });
+    const { totalPage, procMarkup } = makeRenderDependView(newFilmsMarkup, page);
+    renderPagination(totalPage, page, { prop: Movie.QUEUE, films });
+    refs.watchedFilms.insertAdjacentHTML('beforeend', cardMarkup(procMarkup));
+    btnSwitch.clickButtonOverlay(procMarkup);
+
+    getGenres(procMarkup);
+    getReleaseYear(procMarkup);
+    getVote(procMarkup);
+    checkHasFilmImage(procMarkup);
+    // console.log('повтор');
+    onFilmLibClick(Movie.QUEUE);
+  }
+
   onClickAppearVote();
 }
 

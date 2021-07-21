@@ -1,9 +1,8 @@
 import { addedFilm } from './pnotify';
 import { removedFilm } from './pnotify';
 import defaultImage from '../images/filmoteka-plug.jpg';
-console.log(defaultImage);
-import {removedFilmRu} from './pnotify';
-import {addedFilmRu} from './pnotify';
+import { removedFilmRu } from './pnotify';
+import { addedFilmRu } from './pnotify';
 
 const Movie = {
   // Данные для Local Storage //
@@ -89,9 +88,15 @@ export default class ButtonAction {
     const watchedBtnOverlay = document.querySelector(
       `.js-watched[data-value='${newFilmMarkup.id}']`,
     );
+
+    const genres = this.rewriteMurkup(newFilmMarkup);
+    // newFilmMarkup.genres = genres;
+    newFilmMarkup.genre_ids = genres;
+
     buttonWatched.addEventListener('click', e => {
       const button = this.textWatched;
       this.switchBtnText(button, e);
+
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.WATCHED);
       this.writeDataToStorage(movieId, newFilmMarkup, Movie.QUEUE, buttonWatched);
       buttonQueue.innerHTML = `${this.textAdd} ${this.textQueue}`;
@@ -108,6 +113,14 @@ export default class ButtonAction {
       queueBtnOverlay.innerHTML = buttonQueue.innerHTML;
       watchedBtnOverlay.innerHTML = buttonWatched.innerHTML;
     });
+  }
+
+  rewriteMurkup(newFilmMarkup) {
+    const procGenres = newFilmMarkup.genres.map(el => {
+      return el.id;
+    });
+    // console.log(procGenres);
+    return procGenres;
   }
 
   writeDataToStorage(movieId, newFilmMarkup, storageData, deleteList) {
