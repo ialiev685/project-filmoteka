@@ -35,6 +35,7 @@
 }
 
 .new-sort-item {
+  position: relative;
   width: calc((100% - 4 * 3px) / 2);
   margin: 2px;
   min-width: 80px;
@@ -58,10 +59,16 @@
   text-align: left;
   color: var(--color-white);
   background-color: var(--color-sort-btn);
-  border: 2px solid var(--color-sort-btn);
+  border: 1px solid var(--color-sort-btn);
   border-radius: 6px;
   cursor: pointer;
   padding-left: 2px;
+  transition: border-color 0.3s;
+  transition: background-color 0.3s;
+  &:hover {
+    border-color: var(--color-sort-clear-btn);
+    background-color: var(--color-sort-clear-btn);
+  }
 
   &:active {
     background-color: var(--color-sort-clear-btn);
@@ -70,15 +77,17 @@
   }
 
   &:before {
-    content: '\2261';
-    display: block;
-    position: absolute;
-    top: calc(50% - 3px);
-    right: 3px;
-    top: 2px;
-    font-weight: 700;
-    color: var(--color-card-overlay);
-    transition: border-color 0.3s;
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(50% - 3px);
+  right: 5px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: var(--color-card-overlay) transparent transparent transparent;
+  transition: border-color 0.3s;
   }
 }
 
@@ -98,5 +107,53 @@
     background-color: var(--color-sort-clear-btn);
     border: 2px solid var(--color-sort-clear-btn);
     color: var(--color-card-overlay);
+  }
+}
+
+.new-sort-list-genre {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+  transition: opacity 0.3s, visibility 0.3s, top 0.2s;
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+.new-sort-item-genre {
+  position: relative;
+  min-width: 80px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 1.143;
+  text-align: left;
+  color: var(--color-white);
+  background-color: var(--color-sort-btn);
+  border-left: 1px solid var(--color-sort-clear-btn);
+  border-right: 1px solid var(--color-sort-clear-btn);
+  cursor: pointer;
+  padding-left: 2px;
+  transition: border-color 0.3s;
+  transition: background-color 0.3s;
+  &:hover {
+    border: 1px solid var(--color-sort-clear-btn);
+    background-color: var(--color-sort-clear-btn);
+  }
+  &:active {
+    background-color: var(--color-sort-clear-btn);
+    border-color: var(--color-sort-clear-btn);
+    color: var(--color-black);
+  }
+  &:first-child {
+    border-top: 1px solid var(--color-sort-clear-btn);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom: 1px solid var(--color-sort-clear-btn);
   }
 }

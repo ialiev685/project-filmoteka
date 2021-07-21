@@ -10,7 +10,7 @@ import { translateInterface } from './switch-language.js';
 import langArray from '../json/lang.json';
 import cardFormRus from '../hbs/cardFormRus.hbs';
 import headerRender from './render-header.js';
-
+import { newSortFilms } from './newSort.js';
 import { sortFilms } from './sortRenderFilms';
 
 import { onClickDisappearVote } from './appear-votes';
@@ -56,7 +56,7 @@ export function renderFilms(array, valueSeatch = 'empty') {
   checkHasFilmImage(array.results);
   translateInterface();
   // headerRender();
-
+  newSortFilms(array.results);
   // onClickDisappearVote();
   sortFilms(array.results);
 }
