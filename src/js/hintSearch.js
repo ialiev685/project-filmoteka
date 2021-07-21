@@ -74,7 +74,7 @@ function closeWithKey(e) {
 }
 
 function addValueInput(e) {
-  console.log(e.target);
+  // console.log(e.target);
 
   if (e.target.className === 'item-table cell-one') {
     refs.headerInput.value = e.target.textContent.trim();

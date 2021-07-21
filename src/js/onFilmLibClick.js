@@ -15,7 +15,7 @@ let curPage = null;
 export function onFilmLibClick(active) {
   curLibrary = active;
 
-  console.log(curLibrary);
+  // console.log(curLibrary);
 
   const filmLib = document.querySelectorAll('.my-library .film-card');
 
@@ -23,13 +23,13 @@ export function onFilmLibClick(active) {
     el.addEventListener('click', e => {
       if (e.target.classList.contains('js-watched') || e.target.classList.contains('js-queue')) {
         e.currentTarget.style.display = 'none';
-        console.log('1');
+        // console.log('1');
         const { totalPage, procMarkup } = checkCountCard();
-        console.log(procMarkup, totalPage);
+        // console.log(procMarkup, totalPage);
         if (procMarkup.length === 0 && totalPage > 0) {
           refs.paginListLibrary.dataset.page -= 1;
           const pageActive = refs.paginListLibrary.dataset.page;
-          console.log(pageActive);
+          // console.log(pageActive);
           if (curLibrary === Movie.QUEUE) {
             renderLibraryQ(curLibrary, Number(pageActive));
           } else if (curLibrary === Movie.WATCHED) {
@@ -44,7 +44,7 @@ export function onFilmLibClick(active) {
 }
 
 function checkEmptyLibrary() {
-  console.log('сработало');
+  // console.log('сработало');
   if (curLibrary === 'queue') {
     const dataFromLocalQ = JSON.parse(localStorage.getItem(Movie.QUEUE));
 

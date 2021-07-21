@@ -51,7 +51,7 @@ refs.switchLangCheckbox.addEventListener('change', e => {
 
 async function onChangeLang() {
   const films = await getTrendItems(1);
-  console.log('сработало');
+  // console.log('сработало');
   renderFilms(films);
 }
 
@@ -93,7 +93,7 @@ export function translateInterface() {
     refs.sortFilmsBtnYear.innerHTML = 'Году';
     refs.watchedHeaderBtn.innerHTML = 'Просмотренные';
     refs.queueHeaderBtn.innerHTML = 'Очередь';
-    refs.msgEmtpyEl.innerHTML='Ничего нет';    
+    refs.msgEmtpyEl.innerHTML='Ничего нет';
   } else {
     refs.myLibraryBtn.innerHTML = 'My library';
     refs.homeBtn.innerHTML = 'Home';
@@ -105,7 +105,7 @@ export function translateInterface() {
     refs.sortFilmsBtnYear.innerHTML = 'Year';
     refs.watchedHeaderBtn.innerHTML = 'Watched';
     refs.queueHeaderBtn.innerHTML = 'Queue';
-    refs.msgEmtpyEl.innerHTML = 'Empty';    
+    refs.msgEmtpyEl.innerHTML = 'Empty';
   }
 }
 

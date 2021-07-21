@@ -75,7 +75,7 @@ function renderQueueFilms(films, page) {
     getReleaseYear(procMarkup);
     getVote(procMarkup);
     checkHasFilmImage(procMarkup);
-    console.log('повтор');
+    // console.log('повтор');
     onFilmLibClick(Movie.QUEUE);
   } else {
     const newFilmsMarkup = films.map(elem => {
@@ -90,7 +90,7 @@ function renderQueueFilms(films, page) {
     getReleaseYear(procMarkup);
     getVote(procMarkup);
     checkHasFilmImage(procMarkup);
-    console.log('повтор');
+    // console.log('повтор');
     onFilmLibClick(Movie.QUEUE);
   }
 

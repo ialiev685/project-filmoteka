@@ -90,7 +90,8 @@ export default class ButtonAction {
     );
 
     const genres = this.rewriteMurkup(newFilmMarkup);
-    newFilmMarkup.genres = genres;
+    // newFilmMarkup.genres = genres;
+    newFilmMarkup.genre_ids = genres;
 
     buttonWatched.addEventListener('click', e => {
       const button = this.textWatched;
@@ -118,7 +119,7 @@ export default class ButtonAction {
     const procGenres = newFilmMarkup.genres.map(el => {
       return el.id;
     });
-    console.log(procGenres);
+    // console.log(procGenres);
     return procGenres;
   }
 

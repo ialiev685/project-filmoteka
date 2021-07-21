@@ -81,11 +81,14 @@ function renderWatchedFilms(films, page) {
 
     renderPagination(totalPage, page, { prop: Movie.WATCHED, films });
     btnSwitchRus.clickButtonOverlay(procMarkup);
+    // console.log(procMarkup);
     getGenres(procMarkup);
     getReleaseYear(procMarkup);
     getVote(procMarkup);
     checkHasFilmImage(procMarkup);
-    openLibrary(Movie.WATCHED);
+    onFilmLibClick(Movie.WATCHED);
+    // openLibrary(Movie.WATCHED);
+    openLibrary();
   } else {
     const newFilmsMarkup = films.map(elem => {
       return btnSwitch.addButtonText(elem);
@@ -98,7 +101,9 @@ function renderWatchedFilms(films, page) {
     getReleaseYear(procMarkup);
     getVote(procMarkup);
     checkHasFilmImage(procMarkup);
-    openLibrary(Movie.WATCHED);
+    onFilmLibClick(Movie.WATCHED);
+    // openLibrary(Movie.WATCHED);
+    openLibrary();
   }
 
   // const newFilmsMarkup = films.map(elem => {
