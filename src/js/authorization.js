@@ -3,7 +3,6 @@ import { refs } from './refs.js';
 import { modalAuth } from './auth-modal.js';
 
 refs.authBtn.addEventListener('click', onBtnClick);
-console.dir(refs.authBtn);
 
 function onBtnClick() {
   modalAuth.show();
