@@ -27,7 +27,7 @@ function renderPagination(total_pages, curPage, searchValue) {
       <rect width="40" height="40" rx="5" class="arrow-rect" />
       <path
         d="M24.667 20h-9.334M20 24.667L15.333 20 20 15.334"
-     class='arrow-path'  
+     class='arrow-path'
         stroke-width="1.333"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -102,7 +102,7 @@ function listener(ev) {
 
   page = Number(ev.target.textContent);
   nextRenderMarcup(page);
-  //sortBtnRemove();
+  sortBtnRemove();
   // renderPagination();
 }
 
