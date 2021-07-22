@@ -68,3 +68,7 @@ body.light-theme {
 body.dark-theme .msg-empty {
   color: var(--color-text-inverse);
 }
+
+button {
+  cursor: pointer;
+}
