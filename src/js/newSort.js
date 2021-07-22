@@ -3,16 +3,19 @@ import cardFormRus from '../hbs/cardFormRus.hbs';
 function newSortFilms(arr) {
     const arrayGenres = document.querySelectorAll('.name-genres');
     const arrayYear = document.querySelectorAll('.year-list');
+
     const newSortBtnGenreEl = document.querySelector('#new-sort-btn-genre');
     const newSortBtnYearEl = document.querySelector('#new-sort-btn-year');
-    const newSortBtnRating = document.querySelector('#new-sort-btn-reting');
+    const newSortBtnRatingEl = document.querySelector('#new-sort-btn-reting');
+    const newSortBtnAllEl = document.querySelector('.all-btn');
+
     const listGenresEl = document.querySelector('.new-sort-list-genre');
     const listYearEl = document.querySelector('.new-sort-list-year');
     const listRatingEl = document.querySelector('.new-sort-list-rating');
+
     const arrayComeGenres = [];
     const arrayGenresNames = [];
     const normArrayGenresNames = [];
-
     const arrayComeYear = [];
     const arrayComeRating = [];
     // ------------Создаю дополнительные ключи индекса, года и жанра:
@@ -64,7 +67,7 @@ function newSortFilms(arr) {
     const newShortArrayGenres = shortArrayGenres.map(element => {
         const genre = document.createElement('li');
         genre.textContent = element;
-        genre.classList.add('new-sort-subitem');
+        genre.classList.add('new-sort-subitem-ganre');
         return genre
     });
     listGenresEl.append(...newShortArrayGenres);
@@ -72,7 +75,7 @@ function newSortFilms(arr) {
     const newShortArrayYear = shortArrayYear.map(element => {
         const year = document.createElement('li');
         year.textContent = element;
-        year.classList.add('new-sort-subitem');
+        year.classList.add('new-sort-subitem-year');
         return year
     });
     listYearEl.append(...newShortArrayYear);
@@ -80,7 +83,7 @@ function newSortFilms(arr) {
     const newShortArrayRating = shortArrayRating.map(element => {
         const rating = document.createElement('li');
         rating.textContent = element;
-        rating.classList.add('new-sort-subitem');
+        rating.classList.add('new-sort-subitem-rating');
         return rating
     });
     listRatingEl.append(...newShortArrayRating);
@@ -88,7 +91,8 @@ function newSortFilms(arr) {
     // ---------добавляю слушатели на кнопки сортиравки:
     newSortBtnGenreEl.addEventListener('click', onAdditionGenresClick);
     newSortBtnYearEl.addEventListener('click', onAdditionYearClick);
-    newSortBtnRating.addEventListener('click', onAdditionRatingClick);
+    newSortBtnRatingEl.addEventListener('click', onAdditionRatingClick);
+    newSortBtnAllEl.addEventListener('click', onRenderAllFilmsClick);
 
 //-------------Жанры:
     function onAdditionGenresClick() {
@@ -96,9 +100,9 @@ function newSortFilms(arr) {
         window.addEventListener('click', onRemoveSortInputClick);
 
         function onRemoveSortInputClick(e) {
-            if (e.target.classList[0] === 'new-sort-subitem') {
-                e.target.classList.toggle('new-sort-subitem-check-mark');
-            } else if (!listGenresEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem') {
+            if (e.target.classList[0] === 'new-sort-subitem-ganre') {
+                e.target.classList.toggle('new-sort-subitem-ganre-check-mark');
+            } else if (!listGenresEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem-ganre' && e.target.classList[0] !== 'new-sort-subitem-year' && e.target.classList[0] !== 'new-sort-subitem-rating') {
             removeNewSortInput();
             };
         };
@@ -115,9 +119,9 @@ function newSortFilms(arr) {
         window.addEventListener('click', onRemoveSortInputClick);
 
         function onRemoveSortInputClick(e) {
-            if (e.target.classList[0] === 'new-sort-subitem') {
-                e.target.classList.toggle('new-sort-subitem-check-mark');
-            } else if (!listYearEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem') {
+            if (e.target.classList[0] === 'new-sort-subitem-year') {
+                e.target.classList.toggle('new-sort-subitem-year-check-mark');
+            } else if (!listYearEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem-ganre' && e.target.classList[0] !== 'new-sort-subitem-year' && e.target.classList[0] !== 'new-sort-subitem-rating') {
             removeNewSortInput();
             };
         };
@@ -130,13 +134,13 @@ function newSortFilms(arr) {
 
 // ------------Рейтинги:
     function onAdditionRatingClick() {
-         listRatingEl.classList.toggle('is-hidden');
+        listRatingEl.classList.toggle('is-hidden');
         window.addEventListener('click', onRemoveSortInputClick);
 
         function onRemoveSortInputClick(e) {
-            if (e.target.classList[0] === 'new-sort-subitem') {
-                e.target.classList.toggle('new-sort-subitem-check-mark');
-            } else if (!listRatingEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem') {
+            if (e.target.classList[0] === 'new-sort-subitem-rating') {
+                e.target.classList.toggle('new-sort-subitem-rating-check-mark');
+            } else if (!listRatingEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem-ganre' && e.target.classList[0] !== 'new-sort-subitem-year' && e.target.classList[0] !== 'new-sort-subitem-rating') {
             removeNewSortInput();
             };
         };
@@ -145,7 +149,17 @@ function newSortFilms(arr) {
             listRatingEl.classList.add('is-hidden');
             window.removeEventListener('click', onRemoveSortInputClick);
         };
-    }
-}
+    };
+
+    function onRenderAllFilmsClick() {
+        const newSortSubitemGanres = document.querySelectorAll('.new-sort-subitem-ganre');
+        const newSortSubitemYear = document.querySelectorAll('.new-sort-subitem-year');
+        const newSortSubitemRating = document.querySelectorAll('.new-sort-subitem-rating');
+        
+        [...newSortSubitemGanres].forEach(el => el.classList.remove('new-sort-subitem-ganre-check-mark'));
+        [...newSortSubitemYear].forEach(el => el.classList.remove('new-sort-subitem-year-check-mark'));
+        [...newSortSubitemRating].forEach(el => el.classList.remove('new-sort-subitem-rating-check-mark'));
+    };
+};
 
 export {newSortFilms} 
