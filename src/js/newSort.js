@@ -95,6 +95,8 @@ function newSortFilms(arr) {
     newSortBtnAllEl.addEventListener('click', onRenderAllFilmsClick);
 
 //-------------Жанры:
+    let arrayObjGenresCheckMark = [];
+    
     function onAdditionGenresClick() {
         listGenresEl.classList.toggle('is-hidden');
         window.addEventListener('click', onRemoveSortInputClick);
@@ -103,10 +105,30 @@ function newSortFilms(arr) {
             if (e.target.classList[0] === 'new-sort-subitem-ganre') {
                 e.target.classList.toggle('new-sort-subitem-ganre-check-mark');
             } else if (!listGenresEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem-ganre' && e.target.classList[0] !== 'new-sort-subitem-year' && e.target.classList[0] !== 'new-sort-subitem-rating') {
-            removeNewSortInput();
+                removeNewSortInput();
             };
-        };
+            arr.forEach((obj, idx, array) => {
+               let idArray = [];
+               
+               if (obj.genre.includes(e.target.textContent) && e.target.classList[1] === 'new-sort-subitem-ganre-check-mark') {  
+                idArray.push(obj.id)
+                arrayObjGenresCheckMark.push(obj)  
+                } else if (!obj.genre.includes(e.target.textContent) && e.target.classList[1] === undefined) {
+                    const newIdArray = idArray.filter(id => id !== obj.id)
+                   idArray = newIdArray
 
+                }
+                // console.log(idArray[0]);
+                //    const newArray = arrayObjGenresCheckMark.filter((el, idx) => el.id !== idArray[0])
+                //    console.log(newArray);
+                //   arrayObjGenresCheckMark = newArray
+                
+           })
+                
+                console.log(arrayObjGenresCheckMark);
+            
+        };
+        
         function removeNewSortInput() {
             listGenresEl.classList.add('is-hidden');
             window.removeEventListener('click', onRemoveSortInputClick);
@@ -150,7 +172,7 @@ function newSortFilms(arr) {
             window.removeEventListener('click', onRemoveSortInputClick);
         };
     };
-
+// ------------Все:
     function onRenderAllFilmsClick() {
         const newSortSubitemGanres = document.querySelectorAll('.new-sort-subitem-ganre');
         const newSortSubitemYear = document.querySelectorAll('.new-sort-subitem-year');
@@ -160,6 +182,8 @@ function newSortFilms(arr) {
         [...newSortSubitemYear].forEach(el => el.classList.remove('new-sort-subitem-year-check-mark'));
         [...newSortSubitemRating].forEach(el => el.classList.remove('new-sort-subitem-rating-check-mark'));
     };
+
 };
 
 export {newSortFilms} 
+
