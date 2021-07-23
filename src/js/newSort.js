@@ -96,7 +96,8 @@ function newSortFilms(arr) {
 
 //-------------Жанры:
     let arrayObjGenresCheckMark = [];
-    
+    let idArray = [];
+
     function onAdditionGenresClick() {
         listGenresEl.classList.toggle('is-hidden');
         window.addEventListener('click', onRemoveSortInputClick);
@@ -107,27 +108,28 @@ function newSortFilms(arr) {
             } else if (!listGenresEl.classList.contains('is-hidden') && e.target.className !== 'new-sort-btn' && e.target.classList[0] !== 'new-sort-subitem-ganre' && e.target.classList[0] !== 'new-sort-subitem-year' && e.target.classList[0] !== 'new-sort-subitem-rating') {
                 removeNewSortInput();
             };
-            arr.forEach((obj, idx, array) => {
-               let idArray = [];
-               
+            addObjGenre(e);
+            // removeObjGenre(e);
+            console.log(arrayObjGenresCheckMark);    
+        };
+        
+        function addObjGenre(e) {
+            arr.forEach((obj) => {
                if (obj.genre.includes(e.target.textContent) && e.target.classList[1] === 'new-sort-subitem-ganre-check-mark') {  
                 idArray.push(obj.id)
                 arrayObjGenresCheckMark.push(obj)  
                 } else if (!obj.genre.includes(e.target.textContent) && e.target.classList[1] === undefined) {
                     const newIdArray = idArray.filter(id => id !== obj.id)
                    idArray = newIdArray
-
-                }
-                // console.log(idArray[0]);
+                } 
+           })
+        };
+        // function removeObjGenre(e) {
+            // console.log(idArray[0]);
                 //    const newArray = arrayObjGenresCheckMark.filter((el, idx) => el.id !== idArray[0])
                 //    console.log(newArray);
                 //   arrayObjGenresCheckMark = newArray
-                
-           })
-                
-                console.log(arrayObjGenresCheckMark);
-            
-        };
+        // }
         
         function removeNewSortInput() {
             listGenresEl.classList.add('is-hidden');
