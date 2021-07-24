@@ -124,6 +124,8 @@ function newSortFilms(arr) {
                 } 
            })
         };
+        // нужно сделать так, чтобы при клике объекты удалялись из массива arrayObjGenresCheckMark
+        
         // function removeObjGenre(e) {
             // console.log(idArray[0]);
                 //    const newArray = arrayObjGenresCheckMark.filter((el, idx) => el.id !== idArray[0])
