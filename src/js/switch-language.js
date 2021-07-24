@@ -103,7 +103,9 @@ export function translateInterface() {
     if (localStorage.getItem('popularity') === 'day') {
       refs.dropdownPopularSortValue.innerHTML = 'день';
     } else if (localStorage.getItem('popularity') === 'week') {
-      refs.dropdownPopularSortValue.innerHTML = 'неделя';
+      refs.dropdownPopularSortValue.innerHTML = 'неделя';      
+      refs.authBtn.innerHTML = 'ВОЙТИ';
+      
     };
     // popInput.innerHTML = 'день';
 
@@ -125,6 +127,7 @@ export function translateInterface() {
       refs.dropdownPopularSortValue.innerHTML = 'day';
     } else if (localStorage.getItem('popularity') === 'week') {
       refs.dropdownPopularSortValue.innerHTML = 'week';
+      refs.authBtn.innerHTML = 'SIGN IN';
     };
     // popInput.innerHTML = 'day';
   }

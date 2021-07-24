@@ -7,9 +7,9 @@ refs.authBtn.addEventListener('click', onBtnClick);
 function onBtnClick() {
   modalAuth.show();
 
-  const authForm = document.querySelector('.form-container');  
+  const authForm = document.querySelector('.form-container');
   authForm.addEventListener('submit', handleSubmit, { once: true });
-  authForm.reset();  
+  authForm.reset();
 }
 
 function handleSubmit(event) {
@@ -17,6 +17,6 @@ function handleSubmit(event) {
 
   const email = event.target.querySelector('#email').value.trim();
   const password = event.target.querySelector('#password').value.trim();
-  authWithEmailAndPassword(email, password);  
-   modalAuth.close();  
+  authWithEmailAndPassword(email, password);
+  modalAuth.close();
 }
